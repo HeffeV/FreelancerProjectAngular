@@ -1,6 +1,8 @@
 import { Tag } from './tag.model';
 import { Company } from './company.model';
 import { User } from './user.model';
+import { UserAssignment } from './user-assignment.model';
+import { Status } from './status.model';
 
 export class Assignment {
     constructor(
@@ -10,8 +12,8 @@ export class Assignment {
         public assignmentName:string,
         public location:Location,
         public company:Company,
-        public user:User,
-        public status:string
+        public userAssignments:UserAssignment[],
+        public status:Status
     ){
 
     }

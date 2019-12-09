@@ -6,6 +6,7 @@ import { Review } from './review.model';
 import { Tag } from './tag.model';
 import { UserType } from './user-type.model';
 import { Location } from './location.model';
+import { UserAssignment } from './user-assignment.model';
 
 export class User {
     constructor(
@@ -25,7 +26,7 @@ export class User {
         public contactInfo:ContactInfo,
         public userCompanies:UserCompany[],
         public tags:Tag[],
-        public assignments:Assignment[],
+        public userAssignments:UserAssignment[],
         public location:Location
     ){}
 }

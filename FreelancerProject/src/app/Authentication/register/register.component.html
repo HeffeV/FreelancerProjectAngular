@@ -1,3 +1,4 @@
+<div class="container">
 <mat-horizontal-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="registerForm" autocomplete="off">
@@ -30,19 +31,43 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="informationForm">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Street + number</label>
-                <input class="form-control" formControlName="Address">
+            <div class="form-group col-md-4">
+                <label>Name</label>
+                <input class="form-control" formControlName="Name">
             </div>
-            <div class="form-group col-md-3">
-                <label>Postcode</label>
-                <input class="form-control" formControlName="PostCode">
+            <div class="form-group col-md-4">
+                <label>Lastname</label>
+                <input class="form-control" formControlName="LastName">
             </div>
-            <div class="form-group col-md-3">
-                <label>Country</label>
-                <input class="form-control" formControlName="Country">
+            <div class="form-group col-md-4">
+                <label>Mobile</label>
+                <input class="form-control" formControlName="MobileNumber">
             </div>
           </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label>Street + number</label>
+                  <input class="form-control" formControlName="Address">
+              </div>
+              <div class="form-group col-md-3">
+                  <label>Postcode</label>
+                  <input class="form-control" formControlName="PostCode">
+              </div>
+              <div class="form-group col-md-3">
+                  <label>Country</label>
+                  <input class="form-control" formControlName="Country">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Year of birth</label>
+                    <input class="form-control" formControlName="BirthYear" type="number">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>UserType</label>
+                    <input class="form-control" formControlName="UserType">
+                </div>
+              </div>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
@@ -51,10 +76,11 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+    <h3>Overview</h3>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+</div>
