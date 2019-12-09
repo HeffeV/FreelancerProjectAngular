@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { RouterModule, Routes } from '@angular/router';
+import { RxFormModule } from './Authentication/rxform.module';
 
 const appRoutes: Routes = [
   {
@@ -28,8 +29,6 @@ const appRoutes: Routes = [
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    LoginComponent,
-    RegisterComponent,
     CompanyComponent,
     AddCompanyComponent
   ],
@@ -44,7 +43,8 @@ const appRoutes: Routes = [
     DashboardModule,
     MaterialModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RxFormModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
