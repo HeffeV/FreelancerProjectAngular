@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Company } from '../Models/company.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getCompaniesByUserID(userID: number) {
+    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/ByUser?userID=" + userID);
+  }
 }
