@@ -13,6 +13,8 @@ import { AssignmentsComponent } from './Dashboard/Assignments/assignments.compon
 import { DashboardModule } from './Dashboard/dashboard.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CompanyComponent } from './company/company.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavigationComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompanyComponent,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,
