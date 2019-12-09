@@ -1,20 +1,26 @@
 <mat-sidenav-container *ngIf="true">
-        <mat-sidenav #sidenav mode="side" [fixedInViewport]="true" class="text-center">
-            <ul *ngIf="loggedIn" class="list-group list-group-flush">
-                    <li class="list-group-item "  routerLink="/dashboard" routerLinkActive="active"><i class="material-icons ">dashboard</i>Dashboard</li>
-                    <li class="list-group-item "  routerLink="/assignments" routerLinkActive="active"><i class="material-icons ">person_pin</i>Assignments</li>
-                    <li class="list-group-item "  routerLink="/account" routerLinkActive="active"><i class="material-icons ">account_box</i>My account</li>
-                    <li class="list-group-item " (click)="logOut()" routerLink="" routerLinkActive="active"><i class="material-icons ">logout</i>Logout</li>
-                  </ul>
-                  <ul *ngIf="!loggedIn" class="list-group list-group-flush">
-                    <li class="list-group-item "  routerLink="/login" routerLinkActive="active"><i class="material-icons ">login</i>Login</li>
-                  </ul>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <button mat-button (click)="toggleSideNav()"><i class="material-icons menuknop">
-                    menu
-                </i></button>
-            <router-outlet *ngIf="true"></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-
+  <mat-sidenav #sidenav mode="side" [fixedInViewport]="true" class="text-center">
+    <ul *ngIf="loggedIn" class="list-group list-group-flush">
+      <li class="list-group-item " routerLink="/" routerLinkActive="active"><i class="material-icons ">home</i>Home</li>
+      <li class="list-group-item " routerLink="/dashboard" routerLinkActive="active"><i
+          class="material-icons ">dashboard</i>Dashboard</li>
+      <li class="list-group-item " routerLink="/assignments" routerLinkActive="active"><i
+          class="material-icons ">person_pin</i>Assignments</li>
+      <li class="list-group-item " routerLink="/account" routerLinkActive="active"><i
+          class="material-icons ">account_box</i>My account</li>
+      <li class="list-group-item " (click)="logOut()" routerLink="" routerLinkActive="active"><i
+          class="material-icons ">logout</i>Logout</li>
+    </ul>
+    <ul *ngIf="!loggedIn" class="list-group list-group-flush">
+      <li class="list-group-item " routerLink="/login" routerLinkActive="active"><i
+          class="material-icons ">login</i>Login</li>
+      <li class="list-group-item " routerLink="/" routerLinkActive="active"><i class="material-icons ">home</i>Home</li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-button (click)="toggleSideNav()"><i class="material-icons menuknop">
+        menu
+      </i></button>
+    <router-outlet *ngIf="true"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
