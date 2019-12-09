@@ -12,4 +12,8 @@ export class CompanyService {
   getCompaniesByUserID(userID: number) {
     return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/ByUser?userID=" + userID);
   }
+
+  addCompany(company) {
+    return this.http.post<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
+  }
 }

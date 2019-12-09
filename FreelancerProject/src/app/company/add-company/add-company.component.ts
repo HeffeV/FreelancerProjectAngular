@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/Models/company.model';
 import { ContactInfo } from 'src/app/Models/contact-info.model';
 import { Tag } from 'src/app/Models/tag.model';
+import { CompanyService } from '../../Services/company.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-company',
@@ -15,7 +17,7 @@ export class AddCompanyComponent implements OnInit {
   contactInfo: any = {};
   tags: string[] = [];
   tag = '';
-  constructor() { }
+  constructor(private companyService: CompanyService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -33,9 +35,12 @@ export class AddCompanyComponent implements OnInit {
       addTags.push(new Tag(0, element));
     });
     const newCompany = new Company(0, null, null, null, addTags, this.location,
-      this.company.CompanyName, this.contactInfo, this.company.About);
+      this.company.companyName, this.contactInfo, this.company.about);
 
     console.log(newCompany);
 
+    this.companyService.addCompany(newCompany).subscribe(
+      result => {console.log(result)}
+    );
   }
 }
