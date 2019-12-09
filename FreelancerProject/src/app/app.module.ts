@@ -17,6 +17,7 @@ import { AddCompanyComponent } from './company/add-company/add-company.component
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxFormModule } from './Authentication/rxform.module';
+import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RxFormModule } from './Authentication/rxform.module';
     NavigationComponent,
     HomeComponent,
     CompanyComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    DetailCompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +38,9 @@ import { RxFormModule } from './Authentication/rxform.module';
     HttpClientModule,
     DashboardModule,
     MaterialModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    RxFormModule
+    RxFormModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
