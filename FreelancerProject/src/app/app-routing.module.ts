@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 
 //app routes
 const routes: Routes = [
-  {path: '', component: HomeComponent,},
-  {path: 'login', component: LoginComponent,},
-  {path: 'register', component: RegisterComponent,}];
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'addcompany', component: AddCompanyComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
