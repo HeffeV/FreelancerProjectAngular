@@ -12,7 +12,7 @@ addUser(userReg: User) {
   return this.http.post<User>("https://freelancerprojectapi.azurewebsites.net/api/User", userReg);
 }
 
-//current user returned (username)
+//current user returned (userid)
   getUser(){
     if(localStorage.getItem('token')!=null){
       let jwtData=localStorage.getItem("token").split('.')[1];

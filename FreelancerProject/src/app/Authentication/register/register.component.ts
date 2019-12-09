@@ -72,8 +72,8 @@ export class RegisterComponent implements OnInit {
       "",
       this.informationForm.value.BirthYear,
       "",
-      new UserType(0,"user"),[],[],
-      new ContactInfo(0,this.registerForm.value.MobileNumber,""),
+      new UserType(1,"user"),[],[],
+      new ContactInfo(0,this.informationForm.value.MobileNumber,""),
       [],[],[],
       new Location(0,this.informationForm.value.Country,this.informationForm.value.PostCode,this.informationForm.value.Address)
       );

@@ -77,10 +77,58 @@
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <h3>Overview</h3>
+    <div class="container">
+
+    </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Username</th>
+          <td>{{this.registerForm.value.Username}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <td>{{this.registerForm.value.Email}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Name</th>
+          <td>{{this.informationForm.value.Name}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <td>{{this.registerForm.value.Email}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Year of birth</th>
+          <td>{{this.informationForm.value.BirthYear}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Mobile number</th>
+          <td>{{this.informationForm.value.MobileNumber}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Country</th>
+          <td>{{this.informationForm.value.Country}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Address</th>
+          <td>{{this.informationForm.value.Address}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Postcode</th>
+          <td>{{this.informationForm.value.PostCode}}</td>
+        </tr>
+      </tbody>
+    </table>
+
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="onSubmit()">Add</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+</div>
+<div class="container">
+  <div class="alert alert-danger" *ngIf="showError">{{registerError}}</div>
 </div>

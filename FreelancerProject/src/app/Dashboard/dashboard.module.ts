@@ -4,9 +4,10 @@ import { MatCardModule, MatInputModule, MatFormFieldModule,MatSelectModule,MatSt
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignmentsComponent } from './Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AssignmentsComponent, AddAssignmentComponent],
+  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent],
   imports: [
     CommonModule,
     MatCardModule,

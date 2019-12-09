@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         //als login klopt token aanvullen en naar dashboard navigeren.
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/dashboard');
         //gebruiker ingelogt zetten.
         this._authenticateService.isLoggedin.next(true);
       },
