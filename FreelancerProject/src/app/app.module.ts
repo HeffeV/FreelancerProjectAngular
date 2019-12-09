@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material';
 import { AssignmentsComponent } from './Dashboard/Assignments/assignments.component';
 import { DashboardModule } from './Dashboard/dashboard.module';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,12 @@ import { DashboardModule } from './Dashboard/dashboard.module';
     FormsModule,
     MatListModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent],exports:[AppComponent]
+  bootstrap: [AppComponent],
+  exports: [AppComponent]
 })
 export class AppModule { }
