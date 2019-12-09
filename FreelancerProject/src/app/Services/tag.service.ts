@@ -11,4 +11,8 @@ export class TagService {
   getTags() {
     return this.http.get<Tag[]>("https://freelancerprojectapi.azurewebsites.net/api/Tag");
   }
+  postTag(tag: Tag) {
+    return this.http.post<Tag>("https://freelancerprojectapi.azurewebsites.net/api/Tag", tag);
+    }
+
 }

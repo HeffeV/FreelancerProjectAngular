@@ -19,8 +19,9 @@ export class AddAssignmentComponent implements OnInit {
   addTags: FormGroup;
   tags: Tag[] = [];
   assignment: Assignment = new Assignment(0,[],"","",null,null,[],null);
-  tag: Tag;
+  tag: string;
   companiesByUser: Company[];
+  companyID: number;
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private _companyService: CompanyService) { }
 
@@ -39,13 +40,26 @@ export class AddAssignmentComponent implements OnInit {
       this.tags = result;
     });
   }
-  newAssignment(){
+  addNameToAssignment(){
     const { description, assignmentName} = this.addAssignment.value;
     this.assignment.description = description;
     this.assignment.assignmentName = assignmentName;
   }
   addTag(event) {
-    this.assignment.tags.push(this.tag);
+    const tagToAdd = new Tag(0, this.tag)
+    //this._tagService.postTag(tagToAdd).subscribe(result => {
+      this.assignment.tags.push(tagToAdd);
+    //});
     event.preventDefault();
+  }
+  selectCompany(company){
+    //this.assignment.company = company;
+    this.companyID = company.companyID;
+  }
+  postAssignment() {
+    console.log(this.assignment);
+    this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe(result => {
+      console.log(result);
+    });
   }
 }

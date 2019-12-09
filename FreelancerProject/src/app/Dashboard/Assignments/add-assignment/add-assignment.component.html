@@ -3,10 +3,10 @@
     <ng-template matStepLabel>Choose company</ng-template>
     <ul>
       <li *ngFor="let c of companiesByUser">
-        {{c.companyName}}
+        {{c.companyName}} <a (click)="selectCompany(c)" matStepperNext>Select this company</a>
       </li>
     </ul>
-    <button mat-button matStepperNext (click)="addCompanyToAssignment()">Next</button>
+    <!-- <button mat-button matStepperNext>Next</button> -->
   </mat-step>
 
   <mat-step [stepControl]="firstFormGroup">
@@ -19,7 +19,7 @@
         <textarea matInput placeholder="Add a description" formControlName="description"></textarea>
       </mat-form-field>
       <!-- <button type="submit" class="btn btn-default">New assignment</button> -->
-      <button mat-button matStepperNext (click)="newAssignment()">Next</button>
+      <button mat-button matStepperNext (click)="addNameToAssignment()">Next</button>
     </form>
   </mat-step>
 
@@ -28,17 +28,18 @@
 
     <label for="tag">Tags</label>
     <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
-    <span class="badge badge-primary mr-2" *ngFor="let tagname of assignment.tags">{{tagname}}</span>
+    <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span>
 
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button matStepperNext (click)="addTagsToAssignment()">Next</button>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+    {{assignment}}
+    <button (click)="postAssignment()">Post</button>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <!-- <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button> -->
     </div>
   </mat-step>
 </mat-horizontal-stepper>

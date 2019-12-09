@@ -41,12 +41,12 @@ export class AssignmentsComponent implements OnInit {
       user: ['']
     });
   }
-  newAssignment() {
-    const assignment = this.addAssignment.value;
-    this._assignmentService.postAssignment(assignment).subscribe(a => {
-      this.ngOnInit();
-    });
-  }
+  // newAssignment() {
+  //   const assignment = this.addAssignment.value;
+  //   this._assignmentService.postAssignment(assignment).subscribe(a => {
+  //     this.ngOnInit();
+  //   });
+  // }
   putAssignment() {
     const assignment = this.updateAssignment.value;
     this._assignmentService.putAssignment(assignment).subscribe(a => {
