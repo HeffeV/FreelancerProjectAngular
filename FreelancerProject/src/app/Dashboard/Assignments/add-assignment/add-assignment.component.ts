@@ -7,6 +7,7 @@ import { Assignment } from 'src/app/Models/assignment.model';
 import { isNullOrUndefined } from 'util';
 import { Company } from 'src/app/Models/company.model';
 import { CompanyService } from 'src/app/Services/company.service';
+import { UserserviceService } from 'src/app/Services/userservice.service';
 
 @Component({
   selector: 'app-add-assignment',
@@ -22,11 +23,12 @@ export class AddAssignmentComponent implements OnInit {
   tag: string;
   companiesByUser: Company[];
   companyID: number;
+  company: Company;
 
-  constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private _companyService: CompanyService) { }
+  constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
-    this._companyService.getCompaniesByUserID(1).subscribe(result => {
+    this._companyService.getCompaniesByUserID(this._userService.getUser().UserID).subscribe(result => {
       this.companiesByUser = result;
     });
     this.addAssignment = this._formBuilder.group({
@@ -49,11 +51,12 @@ export class AddAssignmentComponent implements OnInit {
     const tagToAdd = new Tag(0, this.tag)
     //this._tagService.postTag(tagToAdd).subscribe(result => {
       this.assignment.tags.push(tagToAdd);
+      this.tag = '';
     //});
     event.preventDefault();
   }
   selectCompany(company){
-    //this.assignment.company = company;
+    this.company = company;
     this.companyID = company.companyID;
   }
   postAssignment() {

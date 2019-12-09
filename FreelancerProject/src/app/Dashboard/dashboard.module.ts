@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatInputModule, MatFormFieldModule,MatSelectModule,MatStepperModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatFormFieldModule,MatSelectModule,MatStepperModule,MatTreeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignmentsComponent } from './Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
@@ -16,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTreeModule
   ],
   exports: [
     ReactiveFormsModule
