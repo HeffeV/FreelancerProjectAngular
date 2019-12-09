@@ -18,12 +18,6 @@ import { AddCompanyComponent } from './company/add-company/add-company.component
 import { RouterModule, Routes } from '@angular/router';
 import { RxFormModule } from './Authentication/rxform.module';
 
-const appRoutes: Routes = [
-  {
-    path: 'assignments',
-    component: AssignmentsComponent
-  }
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +30,6 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
     FormsModule,
     MatListModule,
     HttpClientModule,
