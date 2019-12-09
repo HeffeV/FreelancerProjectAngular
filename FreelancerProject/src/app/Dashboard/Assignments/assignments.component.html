@@ -1,5 +1,5 @@
 <mat-card *ngFor="let assignment of assignments" class="assignment-card">
-  <mat-card-title>{{assignment.assingmentName}}</mat-card-title>
+  <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
   <mat-card-content>
     <p>
       {{assignment.description}}
@@ -12,23 +12,23 @@
 
 <form [formGroup]="addAssignment" (ngSubmit)="newAssignment()">
   <mat-form-field>
-    <input matInput placeholder="assingmentname" formControlName="AssignmentName">
+    <input matInput placeholder="assignmentname" formControlName="assignmentName">
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Add a description" formControlName="Description"></textarea>
+    <textarea matInput placeholder="Add a description" formControlName="description"></textarea>
   </mat-form-field>
   <button type="submit" class="btn btn-default">New assignment</button>
 </form>
 
 <form [formGroup]="updateAssignment" (ngSubmit)="putAssignment()">
   <mat-form-field>
-    <input matInput placeholder="assingmentID" type="number" formControlName="AssignmentID">
+    <input matInput placeholder="assignmentID" type="number" formControlName="assignmentID">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="assingmentname" formControlName="AssignmentName">
+    <input matInput placeholder="assignmentname" formControlName="assignmentName">
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput placeholder="Add a description" formControlName="Description"></textarea>
+    <textarea matInput placeholder="Add a description" formControlName="description"></textarea>
   </mat-form-field>
   <button type="submit" class="btn btn-default">Update assignment</button>
 </form>

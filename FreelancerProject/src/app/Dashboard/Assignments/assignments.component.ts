@@ -18,29 +18,28 @@ export class AssignmentsComponent implements OnInit {
 
   ngOnInit() {
     this._assignmentService.getAssignments().subscribe(result => {
+      console.log(result);
       this.assignments = result;
+      console.log(this.assignments);
     });
     this.addAssignment = this._formBuilder.group({
-      Tags: [''],
-      Description: ['', Validators.required],
-      AssignmentName: ['', Validators.required],
-      Location: [''],
-      Company: [''],
-      User: ['']
+      tags: [''],
+      description: ['', Validators.required],
+      assignmentName: ['', Validators.required],
+      location: [''],
+      company: [''],
+      user: ['']
     });
     this.updateAssignment = this._formBuilder.group({
-      AssignmentID: ['', Validators.required],
-      Tags: [''],
-      Description: ['', Validators.required],
-      AssignmentName: ['', Validators.required],
-      Location: [''],
-      Company: [''],
-      User: ['']
+      assignmentID: ['', Validators.required],
+      tags: [''],
+      description: ['', Validators.required],
+      assignmentName: ['', Validators.required],
+      location: [''],
+      company: [''],
+      user: ['']
     });
   }
-
-
-
   newAssignment() {
     const assignment = this.addAssignment.value;
     this._assignmentService.postAssignment(assignment).subscribe(a => {
@@ -49,7 +48,7 @@ export class AssignmentsComponent implements OnInit {
     });
   }
   putAssignment() {
-    const assignment = this.addAssignment.value;
+    const assignment = this.updateAssignment.value;
     console.log(assignment);
     this._assignmentService.putAssignment(assignment).subscribe(a => {
       console.log(a);
@@ -57,7 +56,7 @@ export class AssignmentsComponent implements OnInit {
     });
   }
 
-  deleteAssignment(assignmentID){
+  deleteAssignment(assignmentID) {
     console.log(assignmentID);
     this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
       console.log(a);

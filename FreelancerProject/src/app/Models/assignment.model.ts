@@ -4,13 +4,13 @@ import { User } from './user.model';
 
 export class Assignment {
     constructor(
-        public AssignmentID:number,
-        public Tags:Tag[],
-        public Description:string,
-        public AssignmentName:string,
-        public Location:Location,
-        public Company:Company,
-        public User:User
+        public assignmentID:number,
+        public tags:Tag[],
+        public description:string,
+        public assignmentName:string,
+        public location:Location,
+        public company:Company,
+        public user:User
     ){
 
     }
