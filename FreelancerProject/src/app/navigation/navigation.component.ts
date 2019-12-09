@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
+  title = 'FreelancerProject';
+  @ViewChild('sidenav', { static: false }) sidenav: any;
 
-  constructor() { }
-
-  ngOnInit() {
+  toggleSideNav() {
+    this.sidenav.toggle();
   }
 
 }

@@ -1,0 +1,37 @@
+mat-sidenav {
+    padding: 50px;
+    background-color: white;
+}
+
+input {
+    width: 100%;
+}
+mat-option {
+    width: 200px;
+}
+mat-sidenav-content {
+    background-color:white;
+    height: 100vh;
+}
+.menuknop {
+    color: black;
+    background-color: white;
+    padding: 0px;
+
+    :focus {
+        outline: none;
+    }
+
+    :active {
+        outline:none;
+    }
+}
+
+mat-nav-list {
+    background-color: white;
+} 
+
+.mat-button, .mat-button-base {
+    background-color: white;
+    color:white;
+}

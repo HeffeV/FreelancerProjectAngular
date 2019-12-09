@@ -1,16 +1,2 @@
-<mat-sidenav-container *ngIf="true">
-        <mat-sidenav #sidenav mode="side" [fixedInViewport]="true" class="text-center">
-            <ul class="list-group list-group-flush">
-                    <li class="list-group-item va"  routerLink="/home" routerLinkActive="active"><i class="material-icons va">dashboard</i>Link</li>
-                    <li class="list-group-item va"  routerLink="/create-poll" routerLinkActive="active"><i class="material-icons va">library_add</i>Link</li>
-                    <li class="list-group-item va"  routerLink="/myfriends" routerLinkActive="active"><i class="material-icons va">person_pin</i>Link</li>
-                  </ul>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <button mat-button (click)="toggleSideNav()"><i class="material-icons menuknop">
-                    menu
-                </i></button>
-            <router-outlet *ngIf="true"></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+<app-navigation></app-navigation>
     <router-outlet *ngIf="false"></router-outlet>
