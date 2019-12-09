@@ -1,9 +1,9 @@
 export class Location {
     constructor(
-        public LocationID:number,
-        public Country:string,
-        public Postcode:string,
-        public Address:string
+        public locationID:number,
+        public country:string,
+        public postcode:string,
+        public address:string
     ){
 
     }

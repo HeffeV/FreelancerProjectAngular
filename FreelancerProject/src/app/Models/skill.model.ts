@@ -2,9 +2,9 @@ import { Category } from './category.model';
 
 export class Skill {
     constructor(
-        public SkillID:number,
-        public SkillName:string,
-        public Category:Category
+        public skillID:number,
+        public skillName:string,
+        public category:Category
     ){
 
     }

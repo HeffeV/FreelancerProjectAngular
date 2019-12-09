@@ -9,23 +9,23 @@ import { Location } from './location.model';
 
 export class User {
     constructor(
-        public UserID:number,
-        public Email:string,
-        public Password:string,
-        public Username:string,
-        public Name:string,
-        public LastName:string,
-        public Bio:string,
-        public BirthYear:number,
-        public Token:string,
+        public userID:number,
+        public email:string,
+        public password:string,
+        public username:string,
+        public name:string,
+        public lastName:string,
+        public bio:string,
+        public birthYear:number,
+        public token:string,
 
-        public UserType:UserType,
-        public Skills:Skill[],
-        public Reviews:Review[],
-        public ContactInfo:ContactInfo,
-        public UserCompanies:UserCompany[],
-        public Tags:Tag[],
-        public Assignments:Assignment[],
-        public Location:Location
+        public userType:UserType,
+        public skills:Skill[],
+        public reviews:Review[],
+        public contactInfo:ContactInfo,
+        public userCompanies:UserCompany[],
+        public tags:Tag[],
+        public assignments:Assignment[],
+        public location:Location
     ){}
 }

@@ -3,11 +3,11 @@ import { Company } from './company.model';
 
 export class Review {
     constructor(
-        public ReviewID:number,
-        public Score:number,
-        public Description:string,
-        public Title:string,
-        public User:User,
-        public Company:Company
+        public reviewID:number,
+        public score:number,
+        public description:string,
+        public title:string,
+        public user:User,
+        public company:Company
     ){}
 }

@@ -3,8 +3,8 @@ import { User } from './user.model';
 
 export class UserCompany {
     constructor(
-        public UserCompanyID:number,
-        public Company:Company,
-        public User:User
+        public userCompanyID:number,
+        public company:Company,
+        public user:User
     ){}
 }

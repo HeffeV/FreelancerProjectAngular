@@ -33,7 +33,7 @@ export class AddAssignmentComponent implements OnInit {
   }
   newAssignment(){
     const { description, assignmentName} = this.addAssignment.value;
-    this.assignment = new Assignment(0, [],description, assignmentName, null, null, null);
+    this.assignment = new Assignment(0, [],description, assignmentName, null, null, null,null);
   }
   addTagsToAssignment() {
     console.log(this.addTags.value);

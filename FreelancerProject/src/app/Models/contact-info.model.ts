@@ -1,7 +1,7 @@
 export class ContactInfo {
     constructor(
-        public ContactInfoID:number,
-        public MobileNumber:string,
-        public LinkedIn:string
+        public contactInfoID:number,
+        public mobileNumber:string,
+        public linkedIn:string
     ){}
 }

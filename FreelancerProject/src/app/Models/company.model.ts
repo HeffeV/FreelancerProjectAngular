@@ -6,14 +6,14 @@ import { Tag } from './tag.model';
 
 export class Company {
     constructor(
-    public CompanyID:number,
-    public UserCompanies:UserCompany[],
-    public Reviews:Review[],
-    public Assignments:Assignment[],
-    public Tags: Tag[],
-    public Location:Location,
-    public CompanyName:string,
-    public ContactInfo:ContactInfo,
-    public About:string
+    public companyID:number,
+    public userCompanies:UserCompany[],
+    public reviews:Review[],
+    public assignments:Assignment[],
+    public tags: Tag[],
+    public location:Location,
+    public companyName:string,
+    public contactInfo:ContactInfo,
+    public about:string
     ) {}
 }
