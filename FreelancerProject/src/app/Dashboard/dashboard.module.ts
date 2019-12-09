@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AssignmentsComponent } from './Assignments/assignments.component';
-import {MatCardModule,MatInputModule,MatFormFieldModule} from '@angular/material';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { MatCardModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AssignmentsComponent],
@@ -14,7 +14,7 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
     ReactiveFormsModule,
     MatFormFieldModule
   ],
-  exports :[
+  exports: [
     ReactiveFormsModule
   ]
 })
