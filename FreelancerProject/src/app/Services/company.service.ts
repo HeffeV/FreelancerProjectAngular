@@ -16,4 +16,8 @@ export class CompanyService {
   addCompany(company) {
     return this.http.post<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
   }
+
+  getCompanyDetail(companyId) {
+    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyId);
+  }
 }
