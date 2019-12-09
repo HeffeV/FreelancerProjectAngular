@@ -1,5 +1,76 @@
 <div class="container">
-    <div class="row">
-        <p>{{company.companyName}}</p>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <img src="https://www.veldhoencompany.com/wp-content/uploads/2016/09/Veldhoen-Company-Logo-1280-x-1280.png" alt=""
+        class="img-fluid" id="companyimage">
+      <h4 class="text-muted mt-3 mb-2">Contact
+        <hr>
+      </h4>
+      <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
+        {{company.userCompanies[0].user.lastName}}</h5>
+      <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
+      <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
+      <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
     </div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <h1 class="text-primary">{{company.companyName}} <button type="button"
+          class="btn btn-primary btn-pill m-2" [routerLink]="['/editcompany', company.companyID]" routerLinkActive="router-link-active" >Edit</button>
+        <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
+          data-target="#deleteModal">Delete</button></h1>
+      <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
+        {{company.location.postcode}}, {{company.location.address}}</h5>
+      <p>{{company.about}}</p>
+      <h3 class="ml-3 text-secondary">Assignments</h3>
+      <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let assignment of company.assignments">
+        <div class="card">
+          <img class="card-img-top"
+            src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+            alt="Assignment image">
+          <div class="card-body">
+            <h4 class="card-title">{{assignment.assignmentName}}</h4>
+            <p class="card-text">{{assignment.description}}</p>
+            <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3 class="text-secondary">Reviews</h3>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let review of company.reviews">
+        <div class="card">
+          <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+            alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">{{review.title}} <span class="badge badge-success"
+                *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
+                *ngIf="review.score<=5">{{review.score}}</span></h4>
+            <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
+            <p class="card-text">{{review.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="deleteModalLabel">Are you sure? 😢</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This action will delete the company itself including its assignments and its reviews!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nope</button>
+        <button type="button" class="btn btn-danger" (click)="deleteCompany(company.companyID)">Yes</button>
+      </div>
+    </div>
+  </div>
 </div>

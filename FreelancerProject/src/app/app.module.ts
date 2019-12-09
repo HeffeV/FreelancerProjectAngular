@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RxFormModule } from './Authentication/rxform.module';
 import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 import { AccountComponent } from './Account/account/account.component';
+import { EditCompanyComponent } from './company/edit-company/edit-company.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AccountComponent } from './Account/account/account.component';
     CompanyComponent,
     AddCompanyComponent,
     DetailCompanyComponent,
-    AccountComponent
+    AccountComponent,
+    EditCompanyComponent,
   ],
   imports: [
     BrowserModule,

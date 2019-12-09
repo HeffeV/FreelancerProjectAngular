@@ -22,4 +22,8 @@ export class CompanyService {
   getCompanyDetail(companyId) {
     return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyId);
   }
+
+  deleteCompany(id) {
+    return this.http.delete<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + id);
+  }
 }

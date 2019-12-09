@@ -9,14 +9,15 @@ import { AddAssignmentComponent } from './Dashboard/Assignments/add-assignment/a
 import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { AccountComponent } from './Account/account/account.component';
+import { EditCompanyComponent } from './company/edit-company/edit-company.component';
 
-//app routes
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'addcompany', component: AddCompanyComponent},
   {path: 'companydetail/:id', component: DetailCompanyComponent},
+  {path: 'editcompany/:id', component: EditCompanyComponent},
   {path: 'assignments',  component: AssignmentsComponent},
   {path: 'dashboard',  component: DashboardComponent},
   {path: 'account',  component: AccountComponent},
