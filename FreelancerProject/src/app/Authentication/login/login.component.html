@@ -1,20 +1,22 @@
 <div class="container">
-        <div *ngIf="true" class="card">
-                <div class="card-body">
-                <h3 class="card-title">Login</h3>
-                    <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                                <label>Username:</label>
-                                <input class="form-control" type="text" formControlName="username" />
-                                <label>Password:</label>
-                                <input class="form-control" type="password" formControlName="password" />
-                                <p>
-                                    <button class="btnMargin btn btn-light" type="submit" [disabled]="!loginForm.valid || submitted">Login</button>
-                                    
-                                </p>
-                    </form>
-                    <button class="btnMargin btn btn-light" routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Register</button>
-        </div>
-        </div>
-        
-        <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
+  <div *ngIf="true" class="card">
+    <div class="card-body">
+      <h3 class="card-title">Login</h3>
+      <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label>Username:</label>
+        <input class="form-control" type="text" formControlName="username" />
+        <label>Password:</label>
+        <input class="form-control" type="password" formControlName="password" />
+        <p>
+          <button class="btnMargin btn btn-light" type="submit"
+            [disabled]="!loginForm.valid || submitted">Login</button>
+
+        </p>
+      </form>
+      <button class="btnMargin btn btn-light" routerLink="/register" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Register</button>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
 </div>
