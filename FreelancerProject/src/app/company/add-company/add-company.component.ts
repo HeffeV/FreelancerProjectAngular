@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/Models/company.model';
 import { ContactInfo } from 'src/app/Models/contact-info.model';
 import { Tag } from 'src/app/Models/tag.model';
-import { CompanyService } from '../company.service';
+import { CompanyService } from '../../Services/company.service';
 import { Router } from '@angular/router';
 
 @Component({
