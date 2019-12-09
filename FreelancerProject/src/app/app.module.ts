@@ -12,6 +12,8 @@ import { MatListModule } from '@angular/material';
 import { AssignmentsComponent } from './Dashboard/Assignments/assignments.component';
 import { DashboardModule } from './Dashboard/dashboard.module';
 import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatListModule,
     HttpClientModule,
