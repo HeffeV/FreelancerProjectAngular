@@ -17,6 +17,7 @@ import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RxFormModule } from './Authentication/rxform.module';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    RxFormModule
   ],
   providers: [],
   bootstrap: [AppComponent],
