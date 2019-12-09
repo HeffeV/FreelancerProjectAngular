@@ -9,6 +9,8 @@ import { RegisterComponent } from './Authentication/register/register.component'
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material';
+import { AssignmentsComponent } from './Dashboard/Assignments/assignments.component';
+import { DashboardModule } from './Dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { MatListModule } from '@angular/material';
     AppRoutingModule,
     FormsModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],exports:[AppComponent]
