@@ -21,6 +21,7 @@ export class AddAssignmentComponent implements OnInit {
   assignment: Assignment = new Assignment(0,[],"","",null,null,[],null);
   tag: string;
   companiesByUser: Company[];
+  companyID: number;
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private _companyService: CompanyService) { }
 
@@ -52,11 +53,12 @@ export class AddAssignmentComponent implements OnInit {
     event.preventDefault();
   }
   selectCompany(company){
-    this.assignment.company = company;
+    //this.assignment.company = company;
+    this.companyID = company.companyID;
   }
   postAssignment() {
     console.log(this.assignment);
-    this._assignmentService.postAssignment(this.assignment).subscribe(result => {
+    this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe(result => {
       console.log(result);
     });
   }
