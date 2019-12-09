@@ -1,1 +1,21 @@
-<p>assignments works!</p>
+<mat-card *ngFor="let assignment of assignments" class="assignment-card">
+  <mat-card-title>{{assignment.assingmentName}}</mat-card-title>
+  <mat-card-content>
+    <p>
+      {{assignment.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
+
+
+
+<form [formGroup]="addAssignment" (ngSubmit)="newAssignment()">
+  <mat-form-field>
+    <input matInput placeholder="assingmentname" formControlName="assingmentName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Add a description" formControlName="description"></textarea>
+  </mat-form-field>
+  <button type="submit" class="btn btn-default">New assignment</button>
+</form>
