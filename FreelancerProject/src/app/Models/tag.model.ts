@@ -1,8 +1,7 @@
 export class Tag {
     constructor(
-        public TagID:number,
-        public TagName:string
-    ){
-
+        public tagID: number,
+        public tagName: string
+    ) {
     }
 }

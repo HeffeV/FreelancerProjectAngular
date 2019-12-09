@@ -4,7 +4,8 @@ import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
-import { AssignmentsComponent } from './Dashboard/Assignments/assignments.component';
+import { AssignmentsComponent } from './Dashboard/Assignments/assignments/assignments.component';
+import { AddAssignmentComponent } from './Dashboard/Assignments/add-assignment/add-assignment.component';
 
 //app routes
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'addcompany', component: AddCompanyComponent},
-  {path: 'assignments',  component: AssignmentsComponent}];
+  {path: 'assignments',  component: AssignmentsComponent},
+  {path: 'addAssignment',  component: AddAssignmentComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentService } from 'src/app/Services/assignment.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Assignment } from 'src/app/Models/assignment.model';
+import { Tag } from 'src/app/Models/tag.model';
+import { TagService } from 'src/app/Services/tag.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -14,13 +17,11 @@ export class AssignmentsComponent implements OnInit {
   addAssignment: FormGroup;
   updateAssignment: FormGroup;
 
-  constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder) { }
+  constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this._assignmentService.getAssignments().subscribe(result => {
-      console.log(result);
       this.assignments = result;
-      console.log(this.assignments);
     });
     this.addAssignment = this._formBuilder.group({
       tags: [''],
@@ -43,15 +44,12 @@ export class AssignmentsComponent implements OnInit {
   newAssignment() {
     const assignment = this.addAssignment.value;
     this._assignmentService.postAssignment(assignment).subscribe(a => {
-      console.log(a);
       this.ngOnInit();
     });
   }
   putAssignment() {
     const assignment = this.updateAssignment.value;
-    console.log(assignment);
     this._assignmentService.putAssignment(assignment).subscribe(a => {
-      console.log(a);
       this.ngOnInit();
     });
   }
@@ -59,8 +57,10 @@ export class AssignmentsComponent implements OnInit {
   deleteAssignment(assignmentID) {
     console.log(assignmentID);
     this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
-      console.log(a);
       this.ngOnInit();
     });
+  }
+  GoToNewAssignment(){
+    this.router.navigate(['/addAssignment']);
   }
 }
