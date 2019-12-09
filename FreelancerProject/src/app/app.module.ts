@@ -13,26 +13,38 @@ import { AssignmentsComponent } from './Dashboard/Assignments/assignments.compon
 import { DashboardModule } from './Dashboard/dashboard.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CompanyComponent } from './company/company.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const appRoutes: Routes = [
+  {
+    path: 'assignments',
+    component: AssignmentsComponent
+  }
+];
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompanyComponent,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: true }),
     FormsModule,
     MatListModule,
     HttpClientModule,
     DashboardModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
