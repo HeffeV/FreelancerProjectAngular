@@ -10,7 +10,8 @@ export class Assignment {
         public assignmentName:string,
         public location:Location,
         public company:Company,
-        public user:User
+        public user:User,
+        public status:string
     ){
 
     }

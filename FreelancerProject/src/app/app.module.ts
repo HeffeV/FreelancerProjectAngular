@@ -15,7 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RxFormModule } from './Authentication/rxform.module';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { RxFormModule } from './Authentication/rxform.module';
     MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RxFormModule,
+    ReactiveFormsModule,
+    RxFormModule
   ],
   providers: [],
   bootstrap: [AppComponent],

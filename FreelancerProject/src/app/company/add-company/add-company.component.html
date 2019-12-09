@@ -1,14 +1,20 @@
 <div class="container">
-  <form action="">
-    <div class="row">
-      <div class="form-group">
-        <label for="name">Company name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" name="name" />
-      </div>
-      <div class="row">
-        <div class="form-group">
-          <label for="country">Country</label>
-          <select id="country" name="country" class="form-control">
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="name">Company name</label>
+              <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="company.CompanyName" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" name="country" class="form-control" [(ngModel)]="location.Country">
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -138,7 +144,8 @@
                 <option value="Lithuania">Lithuania</option>
                 <option value="Luxembourg">Luxembourg</option>
                 <option value="Macao">Macao</option>
-                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of
+                </option>
                 <option value="Madagascar">Madagascar</option>
                 <option value="Malawi">Malawi</option>
                 <option value="Malaysia">Malaysia</option>
@@ -211,7 +218,9 @@
                 <option value="Solomon Islands">Solomon Islands</option>
                 <option value="Somalia">Somalia</option>
                 <option value="South Africa">South Africa</option>
-                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich
+                  Islands
+                </option>
                 <option value="Spain">Spain</option>
                 <option value="Sri Lanka">Sri Lanka</option>
                 <option value="Sudan">Sudan</option>
@@ -253,9 +262,56 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-            </select>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="form-group">
+              <label for="street">Address</label>
+              <input type="text" class="form-control" id="street" name="street" [(ngModel)]="location.Address">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="form-group">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="location.Postcode" />
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="bio">Biography</label>
+              <textarea class="form-control" id="bio" name="bio" [(ngModel)]="company.About"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="linked">LinkedIn</label>
+                    <input type="text" class="form-control" id="linked" name="linked" [(ngModel)]="contactInfo.LinkedIn">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="number">Phone</label>
+                    <input type="text" class="form-control" id="number" name="number" [(ngModel)]="contactInfo.MobileNumber">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+              <div class="form-group">
+                  <label for="tag">Tags</label>
+                  <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
+                  <span class="badge badge-primary mr-2" *ngFor="let tagname of tags">{{tagname}}</span>
+              </div>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary">
+      </form>
     </div>
-  </form>
+  </div>
 </div>
+<form>

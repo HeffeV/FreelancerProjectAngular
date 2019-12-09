@@ -5,6 +5,7 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -14,7 +15,8 @@ import { RegisterComponent } from './register/register.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatStepperModule
   ],
   exports:[LoginComponent,RegisterComponent]
 })

@@ -5,6 +5,7 @@ import { Skill } from './skill.model';
 import { Review } from './review.model';
 import { Tag } from './tag.model';
 import { UserType } from './user-type.model';
+import { Location } from './location.model';
 
 export class User {
     constructor(

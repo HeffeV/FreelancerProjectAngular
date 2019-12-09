@@ -2,6 +2,7 @@ import { UserCompany } from './user-company.model';
 import { Review } from './review.model';
 import { Assignment } from './assignment.model';
 import { ContactInfo } from './contact-info.model';
+import { Tag } from './tag.model';
 
 export class Company {
     constructor(
@@ -9,9 +10,10 @@ export class Company {
     public UserCompanies:UserCompany[],
     public Reviews:Review[],
     public Assignments:Assignment[],
+    public Tags: Tag[],
     public Location:Location,
     public CompanyName:string,
     public ContactInfo:ContactInfo,
     public About:string
-    ){}
+    ) {}
 }
