@@ -6,6 +6,7 @@ import { RegisterComponent } from './Authentication/register/register.component'
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { AssignmentsComponent } from './Dashboard/Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Dashboard/Assignments/add-assignment/add-assignment.component';
+import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 
 //app routes
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'addcompany', component: AddCompanyComponent},
+  {path: 'companydetail/:id', component: DetailCompanyComponent},
   {path: 'assignments',  component: AssignmentsComponent},
   {path: 'addAssignment',  component: AddAssignmentComponent}];
 

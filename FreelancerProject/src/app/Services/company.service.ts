@@ -19,4 +19,7 @@ export class CompanyService {
   getCompany(companyID) {
     return this.http.get<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyID);
   }
+  getCompanyDetail(companyId) {
+    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyId);
+  }
 }
