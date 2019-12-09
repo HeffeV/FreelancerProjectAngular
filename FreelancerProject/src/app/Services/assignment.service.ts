@@ -12,10 +12,10 @@ export class AssignmentService {
   getAssignments() {
     return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment");
   }
-  putAssignment(assignment: any) {
+  putAssignment(assignment: Assignment) {
     return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + assignment.assignmentID, assignment);
   }
-  postAssignment(assignment: any) {
+  postAssignment(assignment: Assignment) {
     return this.http.post<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment", assignment);
   }
   deleteAssigment(assignmentID) {
