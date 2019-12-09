@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Models/user.model';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/Services/userservice.service';
 import { UserType } from 'src/app/Models/user-type.model';
 import { ContactInfo } from 'src/app/Models/contact-info.model';
 import { Location } from 'src/app/Models/location.model';
+import { User } from 'src/app/Models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
       LastName:[''],
       UserType:['false'],
       MobileNumber:[''],
-      Postcode:[''],
     })
   constructor(private fb: FormBuilder, private _userservice:UserserviceService,private router:Router) { }
 
