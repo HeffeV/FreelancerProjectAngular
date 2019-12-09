@@ -25,9 +25,9 @@ export class AddAssignmentComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private _companyService: CompanyService) { }
 
   ngOnInit() {
-    // this._companyService.getCompaniesByUserID(1).subscribe(result => {
-    //   this.companiesByUser = result;
-    // });
+    this._companyService.getCompaniesByUserID(1).subscribe(result => {
+      this.companiesByUser = result;
+    });
     this.addAssignment = this._formBuilder.group({
       description: ['', Validators.required],
       assignmentName: ['', Validators.required]
