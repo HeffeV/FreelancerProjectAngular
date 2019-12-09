@@ -10,7 +10,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class AssignmentsComponent implements OnInit {
 
   assignments : any;
-  addAssignment: FormGroup;
+  addAssignment:FormGroup;
+   updateAssignment: FormGroup;
 
   constructor(private _assignmentService: AssignmentService,private _formBuilder: FormBuilder) { }
 
@@ -22,13 +23,29 @@ export class AssignmentsComponent implements OnInit {
       assingmentName: ['', Validators.required],
       description: ['',Validators.required]
     });
+    this.updateAssignment = this._formBuilder.group({
+      assignmentID: ['',Validators.required],
+      assingmentName: ['', Validators.required],
+      description: ['',Validators.required]
+    });
   }
 
   newAssignment() {
-    const assingment = this.addAssignment.value;
-    this._assignmentService.postAssignment(assingment).subscribe(a => {
+    const assignment = this.addAssignment.value;
+    this._assignmentService.postAssignment(assignment).subscribe(a => {
+      console.log(a);
+    });
+  }
+  putAssignment() {
+    const assignment = this.addAssignment.value;
+    this._assignmentService.putAssignment(assignment).subscribe(a => {
       console.log(a);
     });
   }
 
+  deleteAssignment(assignmentID) {
+    this._assignmentService.deleteAssigment(assignmentID).subscribe( a => {
+      console.log(a);
+    });
+  }
 }
