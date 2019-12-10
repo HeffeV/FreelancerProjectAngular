@@ -31,7 +31,8 @@ export class EditCompanyComponent implements OnInit {
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
       result => { console.log(result); this.company = result;
-                  this.fillTags(result.tagCompanies); }
+                  this.fillTags(result.tagCompanies); 
+                }
     );
   }
 
@@ -55,8 +56,8 @@ export class EditCompanyComponent implements OnInit {
       this.company.tagCompanies.push(new TagCompany(0, null, new Tag( 0, element)));
     });
     console.log(this.company);
-    //this.companyService.updateCompany(this.company).subscribe(
-      //result => { console.log(result); this.router.navigate(['']);  }
-    //);
+    this.companyService.updateCompany(this.company).subscribe(
+      result => { console.log(result); this.router.navigate(['']);  }
+    );
   }
 }

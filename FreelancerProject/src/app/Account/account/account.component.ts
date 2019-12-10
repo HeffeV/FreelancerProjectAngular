@@ -30,7 +30,8 @@ export class AccountComponent implements OnInit {
          userCompanies: null,
          tagUsers: null,
          userAssignments: null,
-         location: null
+         location: null,
+         image:null,
   };
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService : UserserviceService) { 

@@ -90,11 +90,4 @@ export class DetailCompanyComponent implements OnInit {
         data: JSON.parse(response)
       });
   }
-  private _filter(value: string) {
-    const filtervalue = value.toLowerCase();
-
-    return this.users.filter(
-      user => user.username.toLowerCase().indexOf(filtervalue) === 0
-    );
   }
-}
