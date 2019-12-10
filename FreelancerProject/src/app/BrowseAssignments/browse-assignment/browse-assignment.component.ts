@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BrowseAssignmentService } from 'src/app/Services/browseassignment.service';
 import { Assignment } from 'src/app/Models/assignment.model';
 import { FormBuilder } from '@angular/forms';
+import { Tag } from 'src/app/Models/tag.model';
+import { FilterModel } from 'src/app/Models/filter.model';
 
 @Component({
   selector: 'app-browse-assignment',
@@ -10,9 +12,14 @@ import { FormBuilder } from '@angular/forms';
 })
 export class BrowseAssignmentComponent implements OnInit {
 
+  hide:boolean=true;
   filterForm = this.fb.group({
     Title:[''],
+    Tag:['']
   })
+  tag:Tag;
+  tags:Tag[]=[];
+  filterModel=new FilterModel("",[],[],"","");
 
   assignments:Assignment[];
   constructor(private baService:BrowseAssignmentService,private fb: FormBuilder) { }
@@ -20,7 +27,13 @@ export class BrowseAssignmentComponent implements OnInit {
   ngOnInit() {
     this.baService.getAssignments().subscribe((res:any)=>{
       this.assignments=res
+      this.assignments.push(this.assignments[0]);
+      this.assignments.push(this.assignments[0]);
+      this.assignments.push(this.assignments[0]);
     });
+    this.baService.getTags().subscribe((res:any)=>{
+      this.tags=res;
+    })
     this.onChanges();
   }
 
@@ -30,10 +43,23 @@ export class BrowseAssignmentComponent implements OnInit {
 
   onChanges(): void {
     this.filterForm.valueChanges.subscribe(val => {
-      console.log(this.filterForm.value.Title);
-        this.baService.getFilteredAssignments(this.filterForm.value.Title).subscribe((res:any)=>{
-          this.assignments=res;      })
+      this.updateResults();
     });
+  }
+
+
+  updateResults(){
+    this.filterModel.title=this.filterForm.value.Title;
+    if(this.filterForm.value.Tag!=''){
+      this.tag = this.tags.find(i=>i.tagID==this.filterForm.value.Tag)
+      if(this.tag!=null){
+        this.tags.splice(this.tags.indexOf(this.tag),1);
+        this.filterModel.tags.push(this.tag);
+      }
+    }
+    console.log(this.filterModel)
+      this.baService.getFilteredAssignments(this.filterModel).subscribe((res:any)=>{
+        this.assignments=res;      })
   }
 
 }

@@ -1,14 +1,26 @@
-<div class=container>
+<div class="container">
     <h3>Browse assignments</h3>
     <form [formGroup]="filterForm" autocomplete="off">
             <div class="form-row">
-            <div class="form-group required">
+            <div class="form-group col-md-2 required">
               <label>Title</label>
               <input class="form-control" formControlName="Title">
             </div>
+            <div class="form-group col-md-2 required">
+                <label>Tags</label>
+                <select class="form-control" id="tagSelect" formControlName="Tag">
+                  <option *ngFor="let tag of tags" value="{{tag.tagID}}">{{tag.tagName}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="alert alert-light col-md-12" role="alert" *ngIf="filterModel.tags.length>0">
+                    <h6>Applied Tags:</h6>
+                    <span class="badge badge-primary mr-2" *ngFor="let tag of filterModel.tags">{{tag.tagName}}</span>
+                  </div>
             </div>
           </form>
-        <div class="row align-items-center">
+        <div class="row align-items-center ">
             <div class="col" *ngFor="let assignment of assignments; index as i">
                 <div class="card" style="width: 18rem;">
                     <img *ngIf="assignments[i].image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
