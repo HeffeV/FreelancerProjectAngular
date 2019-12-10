@@ -4,7 +4,8 @@
                 
                 <div class="col" *ngFor="let assignment of assignments">
                         <div class="card" style="width: 18rem;">
-                                <img src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+                                        <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+                                        <img *ngIf="!assignment.image==''" src="{{assignment.image}}" class="card-img-top" alt="img">
                                 <div class="card-body">
                                         <h5 class="card-title">{{assignment.assignmentName}}</h5>
                                         <p class="card-text">{{assignment.description.substring(0,60)}}...</p>

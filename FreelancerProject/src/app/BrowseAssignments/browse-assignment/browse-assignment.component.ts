@@ -15,17 +15,12 @@ export class BrowseAssignmentComponent implements OnInit {
   ngOnInit() {
     this.baService.getAssignments().subscribe((res:any)=>{
       this.assignments=res
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
     });
 
+  }
+
+  btnAssignmentDetails(id:number){
+    console.log(this.assignments[id].image);
   }
 
 }
