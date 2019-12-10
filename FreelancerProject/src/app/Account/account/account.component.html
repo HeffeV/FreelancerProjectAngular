@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Account information</h3>
-    <div class="row">
+    <div class="row" *ngIf="user!=null">
         <div class="col-sm-12 col-lg-3 pic">
             <div>
                 <img src="../../../assets/profilepic.png" height="200px" width="200px">
@@ -111,7 +111,7 @@
                     <div class="card mb-3" *ngFor="let skill of user.skills">
                         <div class="card-body">
                             <p class="card-title text-primary">{{skill.skillName}}</p>
-                            <p class="card-subtitle text-muted">{{skill.category.categoryName}}</p>
+                            <p class="card-subtitle text-muted" *ngIf="skill.category!=null">{{skill.category.categoryName}}</p>
                         </div>
                     </div>
                     <div class="col-12" *ngIf="user.skills != null && user.skills.length==0">

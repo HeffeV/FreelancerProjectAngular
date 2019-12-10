@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="company!=null">
     <div class="col-12">
       <form (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
         <div class="row">
