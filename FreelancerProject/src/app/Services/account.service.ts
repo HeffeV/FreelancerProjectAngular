@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../Models/user.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,6 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountService {
 
+  private account:number;
+
+  currentAccount = new BehaviorSubject(this.account);
+  
   constructor(private http: HttpClient) { }
 
   getUser(id: number) : Observable<User>{
