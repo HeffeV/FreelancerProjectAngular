@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  userType=new UserType(0,"")
   submitted: boolean = false;
   model: User;
   registerError;
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   registerForm = this.fb.group({
     Username: [''],
     Email: [''],
-    UserType: ['false'],
+    UserType: [''],
     Passwords: this.fb.group(
       {
         Password: ['', [Validators.required, Validators.minLength(4)]],
@@ -82,6 +83,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    if(this.registerForm.value.userType=="Recruiter"){
+      this.userType = new UserType(2,"recruiter");
+    }
+    else{
+      this.userType = new UserType(1,"user");
+    }
     this.model = new User(
       0,
       this.registerForm.value.Email,
@@ -93,7 +100,7 @@ export class RegisterComponent implements OnInit {
       this.informationForm.value.BirthYear,
       '',
       this.informationForm.value.Image,
-      new UserType(1, 'user'),
+      this.userType,
       [],
       [],
       new ContactInfo(0, this.informationForm.value.MobileNumber, ''),
