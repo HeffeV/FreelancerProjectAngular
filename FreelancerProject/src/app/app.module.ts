@@ -22,7 +22,10 @@ import { AccountComponent } from './Account/account/account.component';
 import { EditCompanyComponent } from './company/edit-company/edit-company.component';
 import { TokenInterceptor } from './Authentication/token.interceptor';
 import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.module';
+import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
+import {FileUploadModule} from 'ng2-file-upload';
 
+import * as cloudinary from 'cloudinary-core';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.mo
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RxFormModule,
-    BrowseAssignmentModule
+    BrowseAssignmentModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot(cloudinary, {cloud_name: 'mycloudname'}),
   ],
   providers: [
     {

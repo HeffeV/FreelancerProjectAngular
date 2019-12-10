@@ -2,8 +2,12 @@
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
       <img src="https://www.veldhoencompany.com/wp-content/uploads/2016/09/Veldhoen-Company-Logo-1280-x-1280.png" alt=""
-        class="img-fluid" id="companyimage">
-        <i class="fas fa-pen fa-3x float-right text-primary" id="editpen"></i>
+        class="img-fluid avatar" >
+        <label for="inputavatar">
+          <i class="fas fa-pen fa-3x text-info m-0" id="editpen"></i>
+        </label>
+        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+          [uploader]="uploader" (change)="fileInput.value=''" multiple />
       <h4 class="text-muted mt-3 mb-2">Contact
         <hr>
       </h4>
@@ -14,8 +18,8 @@
       <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12">
-      <h1 class="text-primary">{{company.companyName}} <button type="button"
-          class="btn btn-primary btn-pill m-2" (click)="editCompany(company.companyID)" >Edit</button>
+      <h1 class="text-primary">{{company.companyName}} <button type="button" class="btn btn-primary btn-pill m-2"
+          (click)="editCompany(company.companyID)">Edit</button>
         <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
           data-target="#deleteModal">Delete</button></h1>
       <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
@@ -35,11 +39,11 @@
         </div>
       </div>
       <div class="col-12" *ngIf="company.assignments.length==0">
-          <div class="card">
-              <div class="card-body">
-                <h4 class="card-title text-primary">This company doesn't have any assignments 😢</h4>
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-primary">This company doesn't have any assignments 😢</h4>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row mt-5">
@@ -60,11 +64,11 @@
         </div>
       </div>
       <div class="col-12" *ngIf="company.reviews.length==0">
-          <div class="card">
-              <div class="card-body">
-                <h4 class="card-title text-primary">This company doesn't have any reviews 😢</h4>
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-primary">This company doesn't have any reviews 😢</h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>

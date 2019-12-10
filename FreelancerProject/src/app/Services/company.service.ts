@@ -19,7 +19,7 @@ export class CompanyService {
   }
 
   addCompany(company) {
-    return this.http.post<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
+    return this.http.post<Company>('https://localhost:44308/api/Company/', company);
   }
   getCompany(companyID) {
     return this.http.get<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyID);
@@ -32,7 +32,7 @@ export class CompanyService {
     return this.http.delete<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + id);
   }
 
-  updateCompany(id, company) {
-    return this.http.put<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + id, company);
+  updateCompany(company) {
+    return this.http.put<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
   }
 }

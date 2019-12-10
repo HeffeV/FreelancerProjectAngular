@@ -33,7 +33,7 @@ export class AddCompanyComponent implements OnInit {
   onSubmit() {
     const addTags: TagCompany[] = [];
     this.tags.forEach(element => {
-      addTags.push(new TagCompany(0, this.company,new Tag(0,element)));
+      addTags.push(new TagCompany(0, null, new Tag(0, element)));
     });
     const newCompany = new Company(0, null, null, null, addTags, this.location,
       this.company.companyName, this.contactInfo, this.company.about);

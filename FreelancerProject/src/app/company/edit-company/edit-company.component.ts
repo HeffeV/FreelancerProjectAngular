@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/Services/company.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TagCompany } from 'src/app/Models/tag-company';
 import { Tag } from 'src/app/Models/tag.model';
 import { Company } from 'src/app/Models/company.model';
@@ -18,7 +18,7 @@ export class EditCompanyComponent implements OnInit {
   contactInfo: any = {};
   tags: string[] = [];
   tag = '';
-  constructor(private readonly companyService: CompanyService, private route: ActivatedRoute) { }
+  constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe( (res: any) => {
@@ -52,15 +52,11 @@ export class EditCompanyComponent implements OnInit {
   onSubmit() {
     const addTags: TagCompany[] = [];
     this.tags.forEach(element => {
-      addTags.push(new TagCompany(0, this.company, new Tag( 0, element)));
+      this.company.tagCompanies.push(new TagCompany(0, null, new Tag( 0, element)));
     });
-
-    this.company.tagCompanies = addTags;
-
-
     console.log(this.company);
-    //this.companyService.updateCompany(this.company.companyID, this.company).subscribe(
-      //result => { console.log(result); }
+    //this.companyService.updateCompany(this.company).subscribe(
+      //result => { console.log(result); this.router.navigate(['']);  }
     //);
   }
 }

@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CompanyService } from 'src/app/Services/company.service';
 import { Router } from '@angular/router';
+import {
+  FileUploader,
+  FileUploaderOptions,
+  ParsedResponseHeaders
+} from 'ng2-file-upload';
 
 @Component({
   selector: 'app-detail-company',
@@ -12,20 +17,25 @@ export class DetailCompanyComponent implements OnInit {
   id:number;
   company: any = {};
   show:Boolean=false;
+  fileToUpload: File = null;
+  @Input()
+  responses: Array<any>;
+  private uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router) { }
 
   ngOnInit() {
       this.companyService.currentCompany.subscribe((res:any)=>{
-      this.id=res;
+      this.id = res;
       this.getCompany(this.id);
     });
+      this.configureFileUploader();
   }
 
 
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
       result => {console.log(result); this.company = result; 
-      this.show=true;}
+                 this.show=true;}
     );
   }
 
@@ -38,5 +48,53 @@ export class DetailCompanyComponent implements OnInit {
   editCompany(id) {
     this.companyService.currentCompany.next(id);
     this.router.navigate(['editcompany']);
+  }
+
+  configureFileUploader() {
+    const uploaderOptions: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/dnyqfmbol/image/upload`,
+      autoUpload: true,
+      isHTML5: true,
+      removeAfterUpload: true,
+      headers: [
+        {
+          name: 'X-Requested-With',
+          value: 'XMLHttpRequest'
+        }
+      ]
+    };
+    this.uploader = new FileUploader(uploaderOptions);
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      form.append('upload_preset', 'angularupload');
+      form.append('folder', 'angular_sample');
+      form.append('file', fileItem);
+      fileItem.withCredentials = false;
+      return { fileItem, form };
+    };
+
+    const upsertResponse = fileItem => {
+      console.log(fileItem.data.url);
+      //this.appService
+        //.updateAvatar({ url: fileItem.data.url })
+        //.subscribe(() => this.initializeAccount());
+    };
+    this.uploader.onCompleteItem = (
+      item: any,
+      response: string,
+      status: number,
+      headers: ParsedResponseHeaders
+    ) =>
+      upsertResponse({
+        file: item.file,
+        status,
+        data: JSON.parse(response)
+      });
+  }
+  private _filter(value: string) {
+    const filtervalue = value.toLowerCase();
+
+    return this.users.filter(
+      user => user.username.toLowerCase().indexOf(filtervalue) === 0
+    );
   }
 }
