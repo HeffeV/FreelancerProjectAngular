@@ -1,3 +1,17 @@
 <div class=container>
     <h3>Browse assignments</h3>
-</div>
+    <div>
+        <div class="row align-items-center">               
+            <div class="col" *ngFor="let assignment of assignments; index as i">
+                    <div class="card" style="width: 18rem;">
+                            <img src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+                            <div class="card-body">
+                                    <h5 class="card-title">{{assignments[i].assignmentName}}</h5>
+                                    <p class="card-text">{{assignments[i].description.substring(0,60)}}...</p>
+                                    <button class="btn btn-primary">Details {{i}}</button>
+                            </div>
+                    </div>
+            </div>
+        </div>              
+       </div>          
+    </div>
