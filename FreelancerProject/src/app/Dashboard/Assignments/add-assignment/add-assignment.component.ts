@@ -52,7 +52,7 @@ export class AddAssignmentComponent implements OnInit {
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag)
     //this._tagService.postTag(tagToAdd).subscribe(result => {
-      const tagAssignments = new TagAssignment(0,this.assignment,tagToAdd)
+      const tagAssignments = new TagAssignment(0,null,tagToAdd)
       this.assignment.tagAssignments.push(tagAssignments);
       this.tag = '';
     //});
@@ -63,6 +63,8 @@ export class AddAssignmentComponent implements OnInit {
     this.companyID = company.companyID;
   }
   postAssignment() {
+
+  console.log(this.companyID);
     this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe();
     this.router.navigate(['/assignments']);
   }

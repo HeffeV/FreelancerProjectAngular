@@ -22,7 +22,7 @@ export class AssignmentService {
     return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + assignment.assignmentID, assignment);
   }
   postAssignment(assignment: Assignment, companyID) {
-    return this.http.post<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment", assignment, companyID);
+    return this.http.post<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment?companyID=" + companyID, assignment);
   }
   deleteAssigment(assignmentID) {
     return this.http.delete<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/"+ assignmentID);

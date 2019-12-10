@@ -16,8 +16,7 @@ import { TagAssignment } from 'src/app/Models/tag-assignment';
 })
 export class EditAssignmentComponent implements OnInit {
 
-  tassignment: any = {};
-  assignment: Assignment;// = new Assignment(0, [], "", "", null, null, [], null);
+  assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
   tag: string;
   tags: Tag[] = [];
   updateAssignment: FormGroup;
@@ -28,11 +27,12 @@ export class EditAssignmentComponent implements OnInit {
     this.updateAssignment = this._formBuilder.group({
       assignmentID: [0, Validators.required],
       tags: [''],
-      description: [this.assignment.description, Validators.required],
-      assignmentName: [this.assignment.assignmentName, Validators.required],
+      description: ['', Validators.required],
+      assignmentName: ['', Validators.required],
       location: [''],
-      company: [{value: this.assignment.company.companyName, disabled: true}],
-      user: ['']
+      company: [''],
+      user: [''],
+      status: ['']
     });
     this._assignmentService.getAssignmentEdit().subscribe(result => {
       this.assignment = result;
@@ -40,24 +40,28 @@ export class EditAssignmentComponent implements OnInit {
       this.updateAssignment.setValue({
         assignmentName: this.assignment.assignmentName,
         description: this.assignment.description,
-        //company: this.assignment.company.companyName
+        company: this.assignment.company.companyName,
         assignmentID: '',
-        tags:'',
+        tags: '',
         location: '',
-        company: '',
         user: '',
-        status: this.assignment.status
+        status: this.assignment.status.currentStatus
       });
-    });    
+    });
   }
   putAssignment() {
-    this.assignment.description = this.tassignment.description;
-    this.assignment.assignmentName = this.tassignment.assignmentName;
+    const {assignmentName, description} =  this.updateAssignment.value;
+    this.assignment.description  = description;
+    this.assignment.assignmentName = assignmentName;
+    console.log(this.assignment);
+    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
+      this.router.navigate(['/assignments']);
+    });
   }
 
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag);
-    const tagAssignments = new TagAssignment(0,this.assignment,tagToAdd)
+    const tagAssignments = new TagAssignment(0,null,tagToAdd)
     this.assignment.tagAssignments.push(tagAssignments);
     this.tag = '';
     event.preventDefault();
