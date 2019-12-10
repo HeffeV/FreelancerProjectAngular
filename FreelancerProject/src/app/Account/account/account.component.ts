@@ -28,7 +28,7 @@ export class AccountComponent implements OnInit {
          reviews: null,
          contactInfo: null,
          userCompanies: null,
-         tags: null,
+         tagUsers: null,
          userAssignments: null,
          location: null
   };
