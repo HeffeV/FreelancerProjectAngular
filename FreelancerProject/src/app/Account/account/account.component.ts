@@ -32,6 +32,7 @@ export class AccountComponent implements OnInit {
          userAssignments: null,
          location: null
   };
+  zeroAssignments : Boolean = false;
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService : UserserviceService) { 
   }
@@ -39,9 +40,17 @@ export class AccountComponent implements OnInit {
   loadUser(id: number){
     this.accountService.getUser(id)
     .subscribe(res => {
+      this.user.userAssignments = [];
       this.user = res;
       console.log(this.user);
+      this.checkStatusFinished();
     });
+  }
+
+  checkStatusFinished(){
+    if(this.user.userAssignments.filter(x => (x.assignment.status.statusID == 2) && (x.accepted == true)).length < 1){
+      this.zeroAssignments = true;
+    }
   }
 
   ngOnInit() {

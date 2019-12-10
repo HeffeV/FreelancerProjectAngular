@@ -33,8 +33,8 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active mt-1" id="personal" role="tabpanel"
-                    aria-labelledby="personal-tab">
+                <div class="tab-pane fade show active mt-1" id="personal" role="tabpanel" aria-labelledby="personal-tab"
+                    *ngIf="user != null && user.contactInfo != null">
                     <div class="row my-3">
                         <div class="col-sm-12 col-lg-6">
                             <div class="font-weight-bold">Name:</div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="tab-pane fade show mt-3" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
                     <div class="col-sm-12 col-lg-4" *ngFor="let assignment of user.userAssignments">
-                        <div class="card">
+                        <div class="card" *ngIf="assignment.assignment.status != null && !zeroAssignments">
                             <img class="card-img-top"
                                 src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
                                 alt="Assignment image">
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12" *ngIf="user.userAssignments.length==0">
+                    <div class="col-12" *ngIf="user.userAssignments != null && zeroAssignments">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title text-primary">No assignments 😢</h4>
@@ -107,7 +107,12 @@
                     </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="skills" role="tabpanel" aria-labelledby="skills-tab">
-                    skills
+                    <div class="card mb-3" *ngFor="let skill of user.skills">
+                        <div class="card-body">
+                            <p class="card-title text-primary">{{skill.skillName}}</p>
+                            <p class="card-subtitle text-muted">{{skill.category.categoryName}}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                     reviews
