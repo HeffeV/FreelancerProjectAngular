@@ -31,7 +31,12 @@ export class DetailCompanyComponent implements OnInit {
 
   deleteCompany(id) {
     this.companyService.deleteCompany(id).subscribe(
-      () => this.router.navigate(['home'])
+      () => this.router.navigate([''])
     );
+  }
+
+  editCompany(id) {
+    this.companyService.currentCompany.next(id);
+    this.router.navigate(['editcompany']);
   }
 }

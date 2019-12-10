@@ -14,7 +14,7 @@
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12">
       <h1 class="text-primary">{{company.companyName}} <button type="button"
-          class="btn btn-primary btn-pill m-2" [routerLink]="['/editcompany', company.companyID]" routerLinkActive="router-link-active" >Edit</button>
+          class="btn btn-primary btn-pill m-2" (click)="editCompany(company.companyID)" >Edit</button>
         <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
           data-target="#deleteModal">Delete</button></h1>
       <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
@@ -33,6 +33,13 @@
           </div>
         </div>
       </div>
+      <div class="col-12" *ngIf="company.assignments.length==0">
+          <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-primary">This company doesn't have any assignments 😢</h4>
+              </div>
+            </div>
+      </div>
     </div>
     <div class="row mt-5">
       <div class="col-12">
@@ -50,6 +57,13 @@
             <p class="card-text">{{review.description}}</p>
           </div>
         </div>
+      </div>
+      <div class="col-12" *ngIf="company.reviews.length==0">
+          <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-primary">This company doesn't have any reviews 😢</h4>
+              </div>
+            </div>
       </div>
     </div>
   </div>
