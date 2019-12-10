@@ -20,6 +20,7 @@ export class User {
         public bio:string,
         public birthYear:number,
         public token:string,
+        public image:string,
 
         public userType:UserType,
         public skills:Skill[],
