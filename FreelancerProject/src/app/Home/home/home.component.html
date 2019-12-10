@@ -12,7 +12,7 @@
         </div>
         <div class="card-footer">
           <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
-            <span class="badge badge-info mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
+            <span class="badge badge-info mr-2" *ngIf="3>i">{{tagAssignment.tag.tagName}}</span>
           </span>
         </div>
       </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="card-footer">
           <span *ngFor="let tagCompany of company.tagCompanies; let i=index">
-            <span class="badge badge-info mr-2" *ngIf="i<3">{{tagCompany.tag.tagName}}</span>
+            <span class="badge badge-info mr-2" *ngIf="3>i">{{tagCompany.tag.tagName}}</span>
           </span>
         </div>
       </div>
