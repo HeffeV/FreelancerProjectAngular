@@ -1,133 +1,140 @@
 <div class="container">
-<mat-horizontal-stepper [linear]="true" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="registerForm" autocomplete="off">
-      <div class="form-group required">
-        <label>Username</label>
-        <input class="form-control" formControlName="Username">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" formControlName="Email">
-      </div>
-      <div formGroupName="Passwords">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="registerForm" autocomplete="off">
         <div class="form-group required">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="Password">
+          <label>Username</label>
+          <input class="form-control" formControlName="Username">
         </div>
-        <div class="form-group required">
-          <label>Confirm Password</label>
-          <input type="password" class="form-control" formControlName="ConfirmPassword">
-          <label class="text-danger"
-            *ngIf="registerForm.get('Passwords.ConfirmPassword').touched && registerForm.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
-            Passwords do not match.</label>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" formControlName="Email">
         </div>
-      </div>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="informationForm">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Name</label>
-                <input class="form-control" formControlName="Name">
-            </div>
-            <div class="form-group col-md-4">
-                <label>Lastname</label>
-                <input class="form-control" formControlName="LastName">
-            </div>
-            <div class="form-group col-md-4">
-                <label>Mobile</label>
-                <input class="form-control" formControlName="MobileNumber">
-            </div>
+        <div formGroupName="Passwords">
+          <div class="form-group required">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="Password">
           </div>
-          <div class="form-row">
-              <div class="form-group col-md-6">
-                  <label>Street + number</label>
-                  <input class="form-control" formControlName="Address">
-              </div>
-              <div class="form-group col-md-3">
-                  <label>Postcode</label>
-                  <input class="form-control" formControlName="PostCode">
-              </div>
-              <div class="form-group col-md-3">
-                  <label>Country</label>
-                  <input class="form-control" formControlName="Country">
-              </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Year of birth</label>
-                    <input class="form-control" formControlName="BirthYear" type="number">
-                </div>
-                <div class="form-group col-md-3">
-                    <label>UserType</label>
-                    <input class="form-control" formControlName="UserType">
-                </div>
-              </div>
+          <div class="form-group required">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="ConfirmPassword">
+            <label class="text-danger"
+              *ngIf="registerForm.get('Passwords.ConfirmPassword').touched && registerForm.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
+              Passwords do not match.</label>
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="informationForm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Name</label>
+            <input class="form-control" formControlName="Name">
+          </div>
+          <div class="form-group col-md-4">
+            <label>Lastname</label>
+            <input class="form-control" formControlName="LastName">
+          </div>
+          <div class="form-group col-md-4">
+            <label>Mobile</label>
+            <input class="form-control" formControlName="MobileNumber">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Street + number</label>
+            <input class="form-control" formControlName="Address">
+          </div>
+          <div class="form-group col-md-3">
+            <label>Postcode</label>
+            <input class="form-control" formControlName="PostCode">
+          </div>
+          <div class="form-group col-md-3">
+            <label>Country</label>
+            <input class="form-control" formControlName="Country">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Year of birth</label>
+            <input class="form-control" formControlName="BirthYear" type="number">
+          </div>
+          <div class="form-group col-md-3">
+            <label>UserType</label>
+            <input class="form-control" formControlName="UserType">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12">
+            <label for="inputavatar" id="imagelabel" class="btn btn-primary">
+              Add Image
+            </label>
+            <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+              [uploader]="uploader" (change)="fileInput.value=''" multiple />
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <h3>Overview</h3>
+      <div class="container">
+
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Username</th>
+            <td>{{this.registerForm.value.Username}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Email</th>
+            <td>{{this.registerForm.value.Email}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Name</th>
+            <td>{{this.informationForm.value.Name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Email</th>
+            <td>{{this.registerForm.value.Email}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Year of birth</th>
+            <td>{{this.informationForm.value.BirthYear}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Mobile number</th>
+            <td>{{this.informationForm.value.MobileNumber}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Country</th>
+            <td>{{this.informationForm.value.Country}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Address</th>
+            <td>{{this.informationForm.value.Address}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Postcode</th>
+            <td>{{this.informationForm.value.PostCode}}</td>
+          </tr>
+        </tbody>
+      </table>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="onSubmit()">Add</button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <h3>Overview</h3>
-    <div class="container">
-
-    </div>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row">Username</th>
-          <td>{{this.registerForm.value.Username}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Email</th>
-          <td>{{this.registerForm.value.Email}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Name</th>
-          <td>{{this.informationForm.value.Name}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Email</th>
-          <td>{{this.registerForm.value.Email}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Year of birth</th>
-          <td>{{this.informationForm.value.BirthYear}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Mobile number</th>
-          <td>{{this.informationForm.value.MobileNumber}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Country</th>
-          <td>{{this.informationForm.value.Country}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Address</th>
-          <td>{{this.informationForm.value.Address}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Postcode</th>
-          <td>{{this.informationForm.value.PostCode}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-button (click)="onSubmit()">Add</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>
 <div class="container">
   <div class="alert alert-danger" *ngIf="showError">{{registerError}}</div>

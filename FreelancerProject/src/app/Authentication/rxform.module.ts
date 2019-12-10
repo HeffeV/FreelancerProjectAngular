@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -16,7 +17,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatInputModule,
     MatButtonModule,
     RouterModule,
-    MatStepperModule
+    MatStepperModule,
+    FileUploadModule,
   ],
   exports:[LoginComponent,RegisterComponent]
 })
