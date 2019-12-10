@@ -19,7 +19,7 @@ export class AddAssignmentComponent implements OnInit {
   addAssignment: FormGroup;
   addTags: FormGroup;
   tags: Tag[] = [];
-  assignment: Assignment = new Assignment(0,[],"","",null,null,[],null);
+  assignment: Assignment = new Assignment(0,[],"","",null,null,[],null,"");
   tag: string;
   companiesByUser: Company[];
   companyID: number;

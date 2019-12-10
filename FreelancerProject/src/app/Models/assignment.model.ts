@@ -13,7 +13,8 @@ export class Assignment {
         public location:Location,
         public company:Company,
         public userAssignments:UserAssignment[],
-        public status:Status
+        public status:Status,
+        public image:string
     ){
 
     }

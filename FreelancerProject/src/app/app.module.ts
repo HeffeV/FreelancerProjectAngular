@@ -21,6 +21,7 @@ import { DetailCompanyComponent } from './company/detail-company/detail-company.
 import { AccountComponent } from './Account/account/account.component';
 import { EditCompanyComponent } from './company/edit-company/edit-company.component';
 import { TokenInterceptor } from './Authentication/token.interceptor';
+import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.module';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { TokenInterceptor } from './Authentication/token.interceptor';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RxFormModule,
+    BrowseAssignmentModule
   ],
   providers: [
     {
