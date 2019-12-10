@@ -5,9 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignmentsComponent } from './Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditAssignmentComponent } from './Assignments/edit-assignment/edit-assignment.component';
 
 @NgModule({
-  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent],
+  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent, EditAssignmentComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -17,7 +18,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatFormFieldModule,
     MatSelectModule,
     MatStepperModule,
-    MatTreeModule
+    MatTreeModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     ReactiveFormsModule

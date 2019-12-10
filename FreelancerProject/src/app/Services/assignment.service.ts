@@ -6,6 +6,7 @@ import { Assignment } from '../Models/assignment.model';
   providedIn: 'root'
 })
 export class AssignmentService {
+  assignmentID: number;
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,12 @@ export class AssignmentService {
   }
   publishAssignment(assignmentID) {
      return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/PublishAssignment?id=" + assignmentID,null);
+  }
+
+  setAssignmentID(assignmentID){
+    this.assignmentID = assignmentID;
+  }
+  getAssignmentEdit(){
+    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + this.assignmentID);
   }
 }

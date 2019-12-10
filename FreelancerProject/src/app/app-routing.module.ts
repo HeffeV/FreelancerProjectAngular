@@ -10,6 +10,7 @@ import { DetailCompanyComponent } from './company/detail-company/detail-company.
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { AccountComponent } from './Account/account/account.component';
 import { EditCompanyComponent } from './company/edit-company/edit-company.component';
+import { EditAssignmentComponent } from './Dashboard/Assignments/edit-assignment/edit-assignment.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'assignments',  component: AssignmentsComponent},
   {path: 'dashboard',  component: DashboardComponent},
   {path: 'account',  component: AccountComponent},
-  {path: 'addAssignment',  component: AddAssignmentComponent}];
+  {path: 'addAssignment',  component: AddAssignmentComponent},
+  {path: 'editAssignment',  component: EditAssignmentComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

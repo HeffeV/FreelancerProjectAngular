@@ -6,10 +6,9 @@
       {{assignment.description}}
     </p>
     <p>{{assignment.status.statusID}}</p>
-
-
+    
     <p *ngIf="assignment.status.statusID == 1">
-      <button class="btn btn-light">Edit</button>
+      <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
       <button class="btn btn-light"(click)="publishAssignment(assignment)">Publish</button>
     </p>
   </mat-card-content>

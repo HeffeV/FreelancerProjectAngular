@@ -42,12 +42,6 @@ export class AssignmentsComponent implements OnInit {
       user: ['']
     });
   }
-  // newAssignment() {
-  //   const assignment = this.addAssignment.value;
-  //   this._assignmentService.postAssignment(assignment).subscribe(a => {
-  //     this.ngOnInit();
-  //   });
-  // }
   putAssignment() {
     const assignment = this.updateAssignment.value;
     this._assignmentService.putAssignment(assignment).subscribe(a => {
@@ -56,7 +50,6 @@ export class AssignmentsComponent implements OnInit {
   }
 
   deleteAssignment(assignmentID) {
-    console.log(assignmentID);
     this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
       this.ngOnInit();
     });
@@ -67,5 +60,10 @@ export class AssignmentsComponent implements OnInit {
 
   publishAssignment(assignment){
     this._assignmentService.publishAssignment(assignment.assignmentID).subscribe();
+    this.ngOnInit();
+  }
+  editAssignment(assignment: Assignment){
+    this._assignmentService.setAssignmentID(assignment.assignmentID);
+    this.router.navigate(['/editAssignment']);
   }
 }
