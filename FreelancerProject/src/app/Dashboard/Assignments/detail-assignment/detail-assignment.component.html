@@ -18,11 +18,11 @@
         (click)="deleteAssignment(assignment.assignmentID)">Delete</button>
       </h1>
       <h3 class="text-secondary">{{assignment.description}}</h3>
-      <h5><i class="material-icons">location_city</i> {{assignment.location.address}}, {{assignment.location.postcode}},
+      <h5><i class="material-icons">my_location</i> {{assignment.location.address}}, {{assignment.location.postcode}},
         {{assignment.location.country}}</h5>
-      <h5><i class="material-icons">assignment</i>Status : {{assignment.status.currentStatus}}</h5>
+      <h5><i class="material-icons">assignment</i> Status : {{assignment.status.currentStatus}}</h5>
 
-      <h5>Company</h5>
+      <h5><i class="material-icons">location_city</i> Company</h5>
       <div class="col-12">
         <div class="card">
           <img class="card-img-top"
