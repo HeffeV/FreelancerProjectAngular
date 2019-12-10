@@ -22,6 +22,7 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit() {
     this._assignmentService.getAssignments().subscribe(result => {
       this.assignments = result;
+      console.log(this.assignments);
     });
     this.addAssignment = this._formBuilder.group({
       tags: [''],
@@ -62,5 +63,9 @@ export class AssignmentsComponent implements OnInit {
   }
   GoToNewAssignment(){
     this.router.navigate(['/addAssignment']);
+  }
+
+  publishAssignment(assignment){
+    this._assignmentService.publishAssignment(assignment.assignmentID).subscribe();
   }
 }
