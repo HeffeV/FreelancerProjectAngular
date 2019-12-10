@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/Services/company.service';
 import { UserserviceService } from 'src/app/Services/userservice.service';
 import { Tag } from 'src/app/Models/tag.model';
+import { TagAssignment } from 'src/app/Models/tag-assignment';
 
 @Component({
   selector: 'app-edit-assignment',
@@ -56,7 +57,8 @@ export class EditAssignmentComponent implements OnInit {
 
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag);
-    this.assignment.tags.push(tagToAdd);
+    const tagAssignments = new TagAssignment(0,this.assignment,tagToAdd)
+    this.assignment.tagAssignments.push(tagAssignments);
     this.tag = '';
     event.preventDefault();
   }
