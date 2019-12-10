@@ -15,12 +15,15 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 export class DetailAssignmentComponent implements OnInit {
 
   assignment: Assignment;
+  show:Boolean=false;
   
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
     this._assignmentService.getAssignmentEdit().subscribe(result => {
       this.assignment = result;
+      console.log(this.assignment);
+      this.show=true;
     });
   }
 }

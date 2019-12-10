@@ -29,8 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   btnSelectAssignment(id:number){
-    this.assignmentservice.currentAssignment.next(id);
+    //this.assignmentservice.currentAssignment.next(id);
     //router hier
+    this.assignmentservice.setAssignmentID(id);
+    this.router.navigate(["/assignmentdetail"]);
   }
 
   btnSelectCompany(id:number){
