@@ -5,6 +5,5 @@ export class Location {
         public postcode:string,
         public address:string
     ){
-
     }
 }

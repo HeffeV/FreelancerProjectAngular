@@ -6,9 +6,10 @@ import { AssignmentsComponent } from './Assignments/assignments/assignments.comp
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditAssignmentComponent } from './Assignments/edit-assignment/edit-assignment.component';
+import { DetailAssignmentComponent } from './Assignments/detail-assignment/detail-assignment.component';
 
 @NgModule({
-  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent, EditAssignmentComponent],
+  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent],
   imports: [
     CommonModule,
     MatCardModule,
