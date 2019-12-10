@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Assignment } from '../Models/assignment.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentService {
+
+  private assignment:number;
+
+  currentAssignment = new BehaviorSubject(this.assignment);
 
   constructor(private http: HttpClient) { }
 

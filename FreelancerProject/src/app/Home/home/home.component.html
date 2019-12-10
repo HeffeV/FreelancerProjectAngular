@@ -7,8 +7,8 @@
                                 <img src="../../../assets/sea.jfif" class="card-img-top" alt="img">
                                 <div class="card-body">
                                         <h5 class="card-title">{{assignment.assignmentName}}</h5>
-                                        <p class="card-text">{{assignment.description}}</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <p class="card-text">{{assignment.description.substring(0,60)}}...</p>
+                                        <a href="#" class="btn btn-primary">Details</a>
                                 </div>
                         </div>
                 </div>
@@ -20,8 +20,8 @@
                                 <img src="../../../assets/company.jpg" class="card-img-top" alt="img">
                                 <div class="card-body">
                                         <h5 class="card-title">{{company.companyName}}</h5>
-                                        <p class="card-text">{{company.about}}</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <p class="card-text">{{company.about.substring(0,60)}}...</p>
+                                        <button (click)="btnSelectCompany(company.companyID)" class="btn btn-primary">Details</button>
                                 </div>
                         </div>
                 </div>
