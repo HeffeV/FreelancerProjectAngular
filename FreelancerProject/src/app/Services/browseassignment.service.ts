@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Assignment } from '../Models/assignment.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,8 @@ export class BrowseAssignmentService {
 
   getAssignments() {
     return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment");
+  }
+  getFilteredAssignments(title:string):Observable<Assignment[]>{
+    return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/filterAssignments?title="+title);
   }
 }

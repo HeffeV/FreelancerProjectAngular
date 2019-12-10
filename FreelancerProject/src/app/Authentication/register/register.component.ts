@@ -70,12 +70,12 @@ export class RegisterComponent implements OnInit {
       this.informationForm.value.Name,
       this.informationForm.value.LastName,
       "",
-      this.informationForm.value.BirthYear,
+      this.informationForm.value.BirthYear,"",
       "",
       new UserType(1,"user"),[],[],
       new ContactInfo(0,this.informationForm.value.MobileNumber,""),
       [],[],[],
-      new Location(0,this.informationForm.value.Country,this.informationForm.value.PostCode,this.informationForm.value.Address)
+      new Location(0,this.informationForm.value.Country,this.informationForm.value.PostCode,this.informationForm.value.Address),
       );
 
     //gebruiker aanmaken.
