@@ -6,7 +6,7 @@
       {{assignment.description}}
     </p>
     <p>{{assignment.status.statusID}}</p>
-    
+    <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
     <p *ngIf="assignment.status.statusID == 1">
       <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
       <button class="btn btn-light"(click)="publishAssignment(assignment)">Publish</button>

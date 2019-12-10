@@ -16,11 +16,16 @@
                         alt="img">
                     <div class="card-body">
                         <h5 class="card-title">{{assignments[i].assignmentName}}</h5>
-                        <p class="card-text">{{assignments[i].description.substring(0,60)}}...</p>
+                        <p class="card-text">{{assignments[i].description.substring(0,60)}}...
+                        </p>
                         <button class="btn btn-primary"
                             (click)="btnAssignmentDetails(assignments[i].assignmentID)">Details {{i}}</button>
                     </div>
+                    <div class="card-footer">
+                        <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignments[i].tagAssignments">{{tagAssignment.tag.tagName}}</span>
+                      </div>
                 </div>
+                
             </div>
         </div>
     </div>

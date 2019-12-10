@@ -11,6 +11,9 @@
                                         <p class="card-text">{{assignment.description.substring(0,60)}}...</p>
                                         <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Details</button>
                                 </div>
+                                <div class="card-footer">
+                                        <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
+                                      </div>
                         </div>
                 </div>
         </div>
@@ -24,6 +27,9 @@
                                         <p class="card-text">{{company.about.substring(0,60)}}...</p>
                                         <button (click)="btnSelectCompany(company.companyID)" class="btn btn-primary">Details</button>
                                 </div>
+                                <div class="card-footer">
+                                        <span class="badge badge-primary mr-2" *ngFor="let tagCompany of company.tagCompanies">{{tagCompany.tag.tagName}}</span>
+                                      </div>
                         </div>
                 </div>
         </div>

@@ -15,6 +15,7 @@ export class Company {
     public location:Location,
     public companyName:string,
     public contactInfo:ContactInfo,
-    public about:string
+    public about:string,
+    public image:string
     ) {}
 }

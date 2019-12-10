@@ -36,7 +36,7 @@ export class AddCompanyComponent implements OnInit {
       addTags.push(new TagCompany(0, null, new Tag(0, element)));
     });
     const newCompany = new Company(0, null, null, null, addTags, this.location,
-      this.company.companyName, this.contactInfo, this.company.about);
+      this.company.companyName, this.contactInfo, this.company.about,"");
 
     console.log(newCompany);
 
