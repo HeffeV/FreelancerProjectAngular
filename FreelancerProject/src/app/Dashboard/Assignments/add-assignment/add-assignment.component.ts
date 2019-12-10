@@ -67,6 +67,6 @@ export class AddAssignmentComponent implements OnInit {
 
     console.log(this.companyID);
     this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe();
-    this.router.navigate(['/assignments']);
+    this.router.navigate(['/dashboard']);
   }
 }

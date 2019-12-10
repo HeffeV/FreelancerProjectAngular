@@ -4,7 +4,7 @@ import { Assignment } from './assignment.model';
 
 export class TagAssignment {
     constructor(
-        public tagAssigmentID:number,
+        public tagAssignmentID:number,
         public assignment:Assignment,
         public tag:Tag
     ){}

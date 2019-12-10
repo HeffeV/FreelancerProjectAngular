@@ -66,4 +66,11 @@ export class EditAssignmentComponent implements OnInit {
     this.tag = '';
     event.preventDefault();
   }
+
+  deleteTagAssignment(tagAssignment: TagAssignment) {
+    console.log(tagAssignment);
+    this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
+      this.ngOnInit();
+    });
+  }
 }

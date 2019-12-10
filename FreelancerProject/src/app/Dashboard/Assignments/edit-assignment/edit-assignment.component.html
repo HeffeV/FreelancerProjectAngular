@@ -1,4 +1,5 @@
 <div *ngIf="assignment">
+  <h3>Assignment</h3>
   <form [formGroup]="updateAssignment">
     <div class="form-group required">
       <label for="assignmentName">Name</label>
@@ -13,15 +14,20 @@
       <input class="form-control" disabled formControlName="company">
     </div>
     <div>
-        <label for="status">Status</label>
-        <input class="form-control" disabled formControlName="status">
+      <label for="status">Status</label>
+      <input class="form-control" disabled formControlName="status">
     </div>
     <br>
     <p><button (click)="putAssignment()" class="btn btn-light">Save</button></p>
   </form>
+
+  <h3>Tags</h3>
+  <p *ngFor="let t of assignment.tagAssignments">
+    {{t.tag.tagName}} - <button (click)="deleteTagAssignment(t)">Delete</button>
+  </p>
 </div>
 
- <!-- <div>
+<!-- <div>
       <label for="tag">Tags</label>
       <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
       <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span>
