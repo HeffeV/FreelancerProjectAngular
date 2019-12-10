@@ -14,25 +14,26 @@ export class AccountComponent implements OnInit {
   loggedUser: any = null;
   id : number;
   user : User = {
-     userID: null,
-        email: null,
-         password: null,
-         username: null,
-         name: null,
-         lastName: null,
-         bio: null,
-         birthYear: null,
-         token: null,
+        userID: 0,
+        email: "",
+         password: "",
+         username: "",
+         name: "",
+         lastName: "",
+         bio: "",
+         birthYear: 0,
+         token: "",
          userType: null,
-         skills: null,
-         reviews: null,
+         skills: [],
+         reviews: [],
          contactInfo: null,
-         userCompanies: null,
-         tagUsers: null,
-         userAssignments: null,
+         userCompanies: [],
+         tagUsers: [],
+         userAssignments: [],
          location: null,
-         image:null,
+         image:"",
   };
+  zeroAssignments : Boolean = false;
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService : UserserviceService) { 
   }
@@ -40,9 +41,17 @@ export class AccountComponent implements OnInit {
   loadUser(id: number){
     this.accountService.getUser(id)
     .subscribe(res => {
+      this.user.userAssignments = [];
       this.user = res;
       console.log(this.user);
+      this.checkStatusFinished();
     });
+  }
+
+  checkStatusFinished(){
+    if(this.user.userAssignments.filter(x => (x.assignment.status.statusID == 2) && (x.accepted == true)).length < 1){
+      this.zeroAssignments = true;
+    }
   }
 
   ngOnInit() {
