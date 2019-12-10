@@ -26,10 +26,7 @@ export class BrowseAssignmentComponent implements OnInit {
 
   ngOnInit() {
     this.baService.getAssignments().subscribe((res:any)=>{
-      this.assignments=res
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
-      this.assignments.push(this.assignments[0]);
+      this.assignments=res;
     });
     this.baService.getTags().subscribe((res:any)=>{
       this.tags=res;
