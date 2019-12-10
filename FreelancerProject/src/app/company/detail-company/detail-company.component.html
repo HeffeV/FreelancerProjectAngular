@@ -25,7 +25,8 @@
       <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
         {{company.location.postcode}}, {{company.location.address}}</h5>
       <p>{{company.about}}</p>
-      <h3 class="ml-3 text-secondary">Assignments</h3>
+      <div class="row">
+      <h3 class="text-secondary col-12">Assignments</h3>
       <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let assignment of company.assignments">
         <div class="card">
           <img class="card-img-top"
@@ -37,10 +38,13 @@
             <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Tell me more &rarr;</button>
           </div>
           <div class="card-footer">
-            <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
+            <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
+                <span class="badge badge-info mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
+            </span>
           </div>
         </div>
       </div>
+    </div>
       <div class="col-12" *ngIf="company.assignments.length==0">
         <div class="card">
           <div class="card-body">

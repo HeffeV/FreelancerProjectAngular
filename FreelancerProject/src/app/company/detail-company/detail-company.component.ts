@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CompanyService } from 'src/app/Services/company.service';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { CompanyService } from "src/app/Services/company.service";
+import { Router } from "@angular/router";
 import {
   FileUploader,
   FileUploaderOptions,
@@ -8,10 +8,12 @@ import {
 } from 'ng2-file-upload';
 import { AssignmentService } from 'src/app/Services/assignment.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
-  selector: 'app-detail-company',
-  templateUrl: './detail-company.component.html',
-  styleUrls: ['./detail-company.component.scss']
+  selector: "app-detail-company",
+  templateUrl: "./detail-company.component.html",
+  styleUrls: ["./detail-company.component.scss"]
 })
 export class DetailCompanyComponent implements OnInit {
 
@@ -22,7 +24,8 @@ export class DetailCompanyComponent implements OnInit {
   @Input()
   responses: Array<any>;
   private uploader: FileUploader = new FileUploader(null);
-  constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService :AssignmentService) { }
+  constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService :AssignmentService,
+              private toast: ToastrService,) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -31,7 +34,6 @@ export class DetailCompanyComponent implements OnInit {
     });
     this.configureFileUploader();
   }
-
 
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
@@ -43,14 +45,14 @@ export class DetailCompanyComponent implements OnInit {
   }
 
   deleteCompany(id) {
-    this.companyService.deleteCompany(id).subscribe(
-      () => this.router.navigate([''])
-    );
+    this.companyService
+      .deleteCompany(id)
+      .subscribe(() => this.router.navigate([""]));
   }
 
   editCompany(id) {
     this.companyService.currentCompany.next(id);
-    this.router.navigate(['editcompany']);
+    this.router.navigate(["editcompany"]);
   }
 
   configureFileUploader() {
@@ -61,25 +63,26 @@ export class DetailCompanyComponent implements OnInit {
       removeAfterUpload: true,
       headers: [
         {
-          name: 'X-Requested-With',
-          value: 'XMLHttpRequest'
+          name: "X-Requested-With",
+          value: "XMLHttpRequest"
         }
       ]
     };
     this.uploader = new FileUploader(uploaderOptions);
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
-      form.append('upload_preset', 'angularupload');
-      form.append('folder', 'angular_sample');
-      form.append('file', fileItem);
+      form.append("upload_preset", "angularupload");
+      form.append("folder", "angular_sample");
+      form.append("file", fileItem);
       fileItem.withCredentials = false;
       return { fileItem, form };
     };
 
     const upsertResponse = fileItem => {
       console.log(fileItem.data.url);
-      //this.appService
-      //.updateAvatar({ url: fileItem.data.url })
-      //.subscribe(() => this.initializeAccount());
+      this.company.image = fileItem.data.url;
+      this.companyService.updateCompany(this.company).subscribe(
+        () => {this.ngOnInit(); this.toast.success('Image uploaded', 'Your company image has been changed'); }
+      )
     };
     this.uploader.onCompleteItem = (
       item: any,
@@ -95,8 +98,6 @@ export class DetailCompanyComponent implements OnInit {
   }
 
   btnSelectAssignment(id:number){
-    //this.assignmentservice.currentAssignment.next(id);
-    //router hier
     this._assignmentService.setAssignmentID(id);
     this.router.navigate(["/assignmentdetail"]);
   }

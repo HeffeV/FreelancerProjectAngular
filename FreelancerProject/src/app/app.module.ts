@@ -24,8 +24,8 @@ import { TokenInterceptor } from './Authentication/token.interceptor';
 import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.module';
 import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
 import {FileUploadModule} from 'ng2-file-upload';
-
 import * as cloudinary from 'cloudinary-core';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -52,6 +52,7 @@ import * as cloudinary from 'cloudinary-core';
     RxFormModule,
     BrowseAssignmentModule,
     FileUploadModule,
+    ToastrModule.forRoot(),
     CloudinaryModule.forRoot(cloudinary, {cloud_name: 'mycloudname'}),
   ],
   providers: [
