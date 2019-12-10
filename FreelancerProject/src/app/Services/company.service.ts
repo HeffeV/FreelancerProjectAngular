@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Company } from '../Models/company.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
+
+  private company:number;
+
+  currentCompany=new BehaviorSubject(this.company);
 
   constructor(private http: HttpClient) { }
 

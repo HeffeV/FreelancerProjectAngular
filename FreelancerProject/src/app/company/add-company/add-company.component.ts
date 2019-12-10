@@ -4,6 +4,7 @@ import { ContactInfo } from 'src/app/Models/contact-info.model';
 import { Tag } from 'src/app/Models/tag.model';
 import { CompanyService } from '../../Services/company.service';
 import { Router } from '@angular/router';
+import { TagCompany } from 'src/app/Models/tag-company';
 
 @Component({
   selector: 'app-add-company',
@@ -30,9 +31,9 @@ export class AddCompanyComponent implements OnInit {
   }
 
   onSubmit() {
-    const addTags: Tag[] = [];
+    const addTags: TagCompany[] = [];
     this.tags.forEach(element => {
-      addTags.push(new Tag(0, element));
+      addTags.push(new TagCompany(0, this.company,new Tag(0,element)));
     });
     const newCompany = new Company(0, null, null, null, addTags, this.location,
       this.company.companyName, this.contactInfo, this.company.about);

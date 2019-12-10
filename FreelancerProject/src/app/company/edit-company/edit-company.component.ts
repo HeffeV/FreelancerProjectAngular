@@ -18,14 +18,23 @@ export class EditCompanyComponent implements OnInit {
   constructor(private readonly companyService: CompanyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getCompany(this.id);
+    this.companyService.currentCompany.subscribe( (res: any) => {
+      this.id = res;
+      this.getCompany(this.id);
+    });
   }
 
 
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
-      result => { console.log(result); this.company = result; this.location = result.location; this.contactInfo = result.contactInfo; }
+      result => { console.log(result); this.company = result; this.location = result.location; this.contactInfo = result.contactInfo;
+                  result.tags = []; this.fillTags(result.tags); }
     );
+  }
+
+  fillTags(tags) {
+    tags.forEach(element => {
+      this.tags.push(element);
+    });
   }
 }

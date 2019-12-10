@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/Services/company.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail-company',
@@ -9,24 +9,34 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailCompanyComponent implements OnInit {
 
+  id:number;
   company: any = {};
-  constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router) { }
+  show:Boolean=false;
+  constructor(private readonly companyService: CompanyService, private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.getCompany(id);
+      this.companyService.currentCompany.subscribe((res:any)=>{
+      this.id=res;
+      this.getCompany(this.id);
+    });
   }
 
 
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
-      result => {console.log(result); this.company = result; }
+      result => {console.log(result); this.company = result; 
+      this.show=true;}
     );
   }
 
   deleteCompany(id) {
     this.companyService.deleteCompany(id).subscribe(
-      () => this.router.navigate(['home'])
+      () => this.router.navigate([''])
     );
+  }
+
+  editCompany(id) {
+    this.companyService.currentCompany.next(id);
+    this.router.navigate(['editcompany']);
   }
 }

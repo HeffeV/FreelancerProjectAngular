@@ -7,7 +7,7 @@ import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatListModule } from '@angular/material';
 import { DashboardModule } from './Dashboard/dashboard.module';
 import { MaterialModule } from './material/material.module';
@@ -20,6 +20,8 @@ import { RxFormModule } from './Authentication/rxform.module';
 import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 import { AccountComponent } from './Account/account/account.component';
 import { EditCompanyComponent } from './company/edit-company/edit-company.component';
+import { TokenInterceptor } from './Authentication/token.interceptor';
+import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.module';
 
 
 @NgModule({
@@ -45,8 +47,15 @@ import { EditCompanyComponent } from './company/edit-company/edit-company.compon
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RxFormModule,
+    BrowseAssignmentModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [AppComponent]
 })
