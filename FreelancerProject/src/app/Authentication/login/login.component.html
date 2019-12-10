@@ -7,16 +7,15 @@
         <input class="form-control" type="text" formControlName="email" />
         <label>Password:</label>
         <input class="form-control" type="password" formControlName="password" />
-        <p>
           <button class="btnMargin btn btn-light" type="submit"
             [disabled]="!loginForm.valid || submitted">Login</button>
 
-        </p>
       </form>
       <button class="btnMargin btn btn-light" routerLink="/register" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">Register</button>
     </div>
+    <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
   </div>
 
-  <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
+
 </div>
