@@ -55,21 +55,36 @@ export class EditAssignmentComponent implements OnInit {
     this.assignment.assignmentName = assignmentName;
     console.log(this.assignment);
     this._assignmentService.putAssignment(this.assignment).subscribe( result => {
-      this.router.navigate(['/assignments']);
+      this.ngOnInit();
     });
   }
 
   addTag(event) {
-    const tagToAdd = new Tag(0, this.tag);
-    const tagAssignments = new TagAssignment(0,null,tagToAdd)
+    const tagToAdd = new Tag(0, this.tag)
+    const tagAssignments = new TagAssignment(0, this.assignment, tagToAdd);
+    this._tagService.postTagAssignment(tagAssignments).subscribe();
     this.assignment.tagAssignments.push(tagAssignments);
     this.tag = '';
+    console.log(this.assignment);
+    // this._assignmentService.putAssignment(this.assignment).subscribe( result => {
+    //   this.ngOnInit();
+    // });
     event.preventDefault();
   }
 
   deleteTagAssignment(tagAssignment: TagAssignment) {
     console.log(tagAssignment);
     this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
+      this.ngOnInit();
+    });
+  }
+
+  saveAssignment() {
+    const {assignmentName, description} =  this.updateAssignment.value;
+    this.assignment.description  = description;
+    this.assignment.assignmentName = assignmentName;
+    console.log(this.assignment);
+    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
       this.ngOnInit();
     });
   }

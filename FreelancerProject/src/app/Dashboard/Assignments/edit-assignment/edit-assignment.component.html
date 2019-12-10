@@ -22,13 +22,14 @@
   </form>
 
   <h3>Tags</h3>
+  <div>
+    <!-- <label for="tag">Tags</label> -->
+    <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
+    <!-- <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span> -->
+  </div>
   <p *ngFor="let t of assignment.tagAssignments">
     {{t.tag.tagName}} - <button (click)="deleteTagAssignment(t)">Delete</button>
   </p>
-</div>
 
-<!-- <div>
-      <label for="tag">Tags</label>
-      <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
-      <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span>
-    </div> -->
+  <!-- <p><button (click)="saveAssignment()" class="btn btn-light">Save</button></p> -->
+</div>
