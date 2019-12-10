@@ -52,7 +52,7 @@ export class EditCompanyComponent implements OnInit {
       result => {
         console.log(result);
         this.companyService.currentCompany.next(this.company.companyID);
-        this.ngOnInit();
+        this.router.navigate(['companydetail']);
       }
     );
   }

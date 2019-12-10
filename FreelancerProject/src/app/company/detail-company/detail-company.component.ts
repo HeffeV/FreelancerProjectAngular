@@ -80,9 +80,11 @@ export class DetailCompanyComponent implements OnInit {
     const upsertResponse = fileItem => {
       console.log(fileItem.data.url);
       this.company.image = fileItem.data.url;
-      this.companyService.updateCompany(this.company).subscribe(
-        () => {this.ngOnInit(); this.toast.success('Image uploaded', 'Your company image has been changed'); }
-      )
+      console.log(this.company);
+      this.companyService.updateImage(this.company).subscribe(
+        result => {console.log('the server sends back: ', result);
+                   this.ngOnInit(); this.toast.success('Your company image has been changed'); }
+      );
     };
     this.uploader.onCompleteItem = (
       item: any,

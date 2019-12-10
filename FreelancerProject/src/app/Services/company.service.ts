@@ -33,6 +33,9 @@ export class CompanyService {
   }
 
   updateCompany(company) {
-    return this.http.put<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
+    return this.http.put<Company>('https://localhost:44308/api/Company/', company);
+  }
+  updateImage(company) {
+    return this.http.put<Company>('https://localhost:44308/api/Company/updateimage', company);
   }
 }
