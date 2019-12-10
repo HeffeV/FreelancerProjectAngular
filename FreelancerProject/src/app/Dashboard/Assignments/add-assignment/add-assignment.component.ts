@@ -21,14 +21,14 @@ export class AddAssignmentComponent implements OnInit {
   addAssignment: FormGroup;
   addTags: FormGroup;
   tags: Tag[] = [];
-  assignment: Assignment = new Assignment(0,[],"","",null,null,[],null,"");
+  assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
   tassignment: any = {};
   tag: string;
   companiesByUser: Company[];
   companyID: number;
   company: Company;
 
-  constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService,private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
+  constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
     this._companyService.getCompaniesByUserID(this._userService.getUser().UserID).subscribe(result => {
@@ -45,26 +45,27 @@ export class AddAssignmentComponent implements OnInit {
       this.tags = result;
     });
   }
-  addNameToAssignment(){
+  addNameToAssignment() {
     this.assignment.description = this.tassignment.description;
     this.assignment.assignmentName = this.tassignment.assignmentName;
   }
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag)
     //this._tagService.postTag(tagToAdd).subscribe(result => {
-      const tagAssignments = new TagAssignment(0,null,tagToAdd)
-      this.assignment.tagAssignments.push(tagAssignments);
-      this.tag = '';
+    const tagAssignments = new TagAssignment(0, null, tagToAdd)
+    this.assignment.tagAssignments.push(tagAssignments);
+    this.tag = '';
+    console.log(this.assignment);
     //});
     event.preventDefault();
   }
-  selectCompany(company){
+  selectCompany(company) {
     this.company = company;
     this.companyID = company.companyID;
   }
   postAssignment() {
 
-  console.log(this.companyID);
+    console.log(this.companyID);
     this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe();
     this.router.navigate(['/assignments']);
   }

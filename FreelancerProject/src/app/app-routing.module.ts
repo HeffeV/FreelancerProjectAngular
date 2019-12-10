@@ -20,7 +20,6 @@ const routes: Routes = [
   {path: 'addcompany', component: AddCompanyComponent},
   {path: 'companydetail', component: DetailCompanyComponent},
   {path: 'editcompany', component: EditCompanyComponent},
-  {path: 'assignments',  component: AssignmentsComponent},
   {path: 'dashboard',  component: DashboardComponent},
   {path: 'account',  component: AccountComponent},
   {path: 'editAssignment',  component: EditAssignmentComponent},

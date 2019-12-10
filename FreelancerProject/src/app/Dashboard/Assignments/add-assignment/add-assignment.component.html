@@ -26,7 +26,7 @@
 
     <label for="tag">Tags (Enter om toe te voegen)</label>
     <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
-    <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span>
+    <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tagAssignments">{{t.tag.tagName}}</span>
 
     <button mat-button matStepperPrevious class="btn btn-light">Back</button>
     <button mat-button matStepperNext class="btn btn-light">Next</button>
@@ -54,7 +54,9 @@
         <tr>
           <th scope="row">Tags</th>
           <td>
-            <p *ngFor="let tag of assignment.tags">{{tag.tagName}}</p>
+            <div *ngFor="let ta of assignment.tagAssignments">
+              {{ta.tag.tagName}}
+            </div>
           </td>
         </tr>
       </tbody>

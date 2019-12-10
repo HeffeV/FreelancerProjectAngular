@@ -59,8 +59,10 @@ export class AssignmentsComponent implements OnInit {
   }
 
   publishAssignment(assignment){
-    this._assignmentService.publishAssignment(assignment.assignmentID).subscribe();
-    this.ngOnInit();
+    this._assignmentService.publishAssignment(assignment.assignmentID).subscribe(result => {
+      this.ngOnInit();
+    });
+    
   }
   editAssignment(assignment: Assignment){
     this._assignmentService.setAssignmentID(assignment.assignmentID);
