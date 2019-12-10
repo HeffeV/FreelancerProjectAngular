@@ -14,22 +14,22 @@ export class AccountComponent implements OnInit {
   loggedUser: any = null;
   id : number;
   user : User = {
-     userID: null,
-        email: null,
-         password: null,
-         username: null,
-         name: null,
-         lastName: null,
-         bio: null,
-         birthYear: null,
-         token: null,
+        userID: 0,
+        email: "",
+         password: "",
+         username: "",
+         name: "",
+         lastName: "",
+         bio: "",
+         birthYear: 0,
+         token: "",
          userType: null,
-         skills: null,
-         reviews: null,
+         skills: [],
+         reviews: [],
          contactInfo: null,
-         userCompanies: null,
-         tagUsers: null,
-         userAssignments: null,
+         userCompanies: [],
+         tagUsers: [],
+         userAssignments: [],
          location: null
   };
   zeroAssignments : Boolean = false;

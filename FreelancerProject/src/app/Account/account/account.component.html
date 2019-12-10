@@ -8,6 +8,9 @@
             <div>
                 <h6 class="pt-2">{{user.username}}</h6>
             </div>
+            <div class="w-75 mx-auto">
+                <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers">{{t.tag.tagName}}</span>
+            </div>
         </div>
         <div class="col-sm-12 col-lg-9">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,10 +29,6 @@
                 <li class="nav-item">
                     <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
                         aria-controls="reviews" aria-selected="false">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="tags-tab" data-toggle="tab" href="#tags" role="tab" aria-controls="tags"
-                        aria-selected="false">Tags</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -86,22 +85,24 @@
                     </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
-                    <div class="col-sm-12 col-lg-4" *ngFor="let assignment of user.userAssignments">
-                        <div class="card" *ngIf="assignment.assignment.status != null && !zeroAssignments">
-                            <img class="card-img-top"
-                                src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-                                alt="Assignment image">
-                            <div class="card-body">
-                                <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
-                                <p class="card-text">{{assignment.assignment.description}}</p>
-                                <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4" *ngFor="let assignment of user.userAssignments">
+                            <div class="card" *ngIf="assignment.assignment.status != null && !zeroAssignments">
+                                <img class="card-img-top"
+                                    src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+                                    alt="Assignment image">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
+                                    <p class="card-text">{{assignment.assignment.description}}</p>
+                                    <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12" *ngIf="user.userAssignments != null && zeroAssignments">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title text-primary">No assignments 😢</h4>
+                        <div class="col-12" *ngIf="user.userAssignments != null && zeroAssignments">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-primary">No assignments 😢</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -113,12 +114,39 @@
                             <p class="card-subtitle text-muted">{{skill.category.categoryName}}</p>
                         </div>
                     </div>
+                    <div class="col-12" *ngIf="user.skills != null && user.skills.length==0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-primary">No skills 😢</h4>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                    reviews
-                </div>
-                <div class="tab-pane fade show mt-3" id="tags" role="tabpanel" aria-labelledby="tags-tab">
-                    tags
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4" *ngFor="let review of user.reviews">
+                            <div class="card mb-3">
+                                <img class="card-img-top"
+                                    src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{review.title}} <span class="badge badge-success"
+                                            *ngIf="review.score>5">{{review.score}}</span><span
+                                            class="badge badge-danger" *ngIf="review.score<=5">{{review.score}}</span>
+                                    </h4>
+                                    <h6 class="card-subtitle text-muted">By {{review.company.companyName}}</h6>
+                                    <p class="card-text">{{review.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" *ngIf="user.reviews != null && user.reviews.length==0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-primary">No reviews 😢</h4>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
