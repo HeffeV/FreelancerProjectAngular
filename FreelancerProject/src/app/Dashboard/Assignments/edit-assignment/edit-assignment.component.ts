@@ -8,6 +8,7 @@ import { CompanyService } from 'src/app/Services/company.service';
 import { UserserviceService } from 'src/app/Services/userservice.service';
 import { Tag } from 'src/app/Models/tag.model';
 import { TagAssignment } from 'src/app/Models/tag-assignment';
+import { Location } from 'src/app/Models/location.model';
 
 @Component({
   selector: 'app-edit-assignment',
@@ -16,7 +17,7 @@ import { TagAssignment } from 'src/app/Models/tag-assignment';
 })
 export class EditAssignmentComponent implements OnInit {
 
-  assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
+  assignment: Assignment;
   tag: string;
   tags: Tag[] = [];
   tagToAdd:Tag;
@@ -26,6 +27,7 @@ export class EditAssignmentComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
+    this.assignment =  new Assignment(0, [], "", "", null, null, [], null, "");
     this.updateAssignment = this._formBuilder.group({
       assignmentID: [0, Validators.required],
       tags: [''],
@@ -39,6 +41,7 @@ export class EditAssignmentComponent implements OnInit {
     this._assignmentService.getAssignmentEdit().subscribe(result => {
       this.assignment = result;
       console.log(this.assignment);
+      //var locationString = this.assignment.location.address;
       this.updateAssignment.setValue({
         assignmentName: this.assignment.assignmentName,
         description: this.assignment.description,

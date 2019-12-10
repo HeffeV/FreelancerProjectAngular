@@ -9,7 +9,7 @@
                                 <div class="card-body">
                                         <h5 class="card-title">{{assignment.assignmentName}}</h5>
                                         <p class="card-text">{{assignment.description.substring(0,60)}}...</p>
-                                        <a href="#" class="btn btn-primary">Details</a>
+                                        <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Details</button>
                                 </div>
                         </div>
                 </div>
