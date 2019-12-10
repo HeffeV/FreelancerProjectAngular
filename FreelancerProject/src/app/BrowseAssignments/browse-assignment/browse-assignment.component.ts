@@ -4,6 +4,8 @@ import { Assignment } from 'src/app/Models/assignment.model';
 import { FormBuilder } from '@angular/forms';
 import { Tag } from 'src/app/Models/tag.model';
 import { FilterModel } from 'src/app/Models/filter.model';
+import { AssignmentService } from 'src/app/Services/assignment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-browse-assignment',
@@ -22,7 +24,7 @@ export class BrowseAssignmentComponent implements OnInit {
   filterModel=new FilterModel("",[],[],"","");
 
   assignments:Assignment[];
-  constructor(private baService:BrowseAssignmentService,private fb: FormBuilder) { }
+  constructor(private router:Router,private baService:BrowseAssignmentService,private fb: FormBuilder,private _assignmentService:AssignmentService) { }
 
   ngOnInit() {
     this.baService.getAssignments().subscribe((res:any)=>{
@@ -35,7 +37,8 @@ export class BrowseAssignmentComponent implements OnInit {
   }
 
   btnAssignmentDetails(id:number){
-    console.log(this.assignments[id].image);
+    this._assignmentService.setAssignmentID(id);
+    this.router.navigate(["/assignmentdetail"]);
   }
 
   onChanges(): void {
@@ -43,7 +46,6 @@ export class BrowseAssignmentComponent implements OnInit {
       this.updateResults();
     });
   }
-
 
   updateResults(){
     this.filterModel.title=this.filterForm.value.Title;
