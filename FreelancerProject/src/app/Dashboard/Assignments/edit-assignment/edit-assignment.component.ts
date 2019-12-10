@@ -19,6 +19,8 @@ export class EditAssignmentComponent implements OnInit {
   assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
   tag: string;
   tags: Tag[] = [];
+  tagToAdd:Tag;
+  tagAssignments:TagAssignment;
   updateAssignment: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
@@ -53,19 +55,18 @@ export class EditAssignmentComponent implements OnInit {
     const {assignmentName, description} =  this.updateAssignment.value;
     this.assignment.description  = description;
     this.assignment.assignmentName = assignmentName;
-    console.log(this.assignment);
+    console.log("SAVE"+this.assignment);
     this._assignmentService.putAssignment(this.assignment).subscribe( result => {
       this.ngOnInit();
     });
   }
 
   addTag(event) {
-    const tagToAdd = new Tag(0, this.tag)
-    const tagAssignments = new TagAssignment(0, this.assignment, tagToAdd);
-    this._tagService.postTagAssignment(tagAssignments).subscribe();
-    this.assignment.tagAssignments.push(tagAssignments);
+    this.tagToAdd = new Tag(0, this.tag)
+    this.tagAssignments = new TagAssignment(0, null, this.tagToAdd);
+    this.assignment.tagAssignments.push(this.tagAssignments);
     this.tag = '';
-    console.log(this.assignment);
+    console.log("ADD TAG"+this.assignment);
     // this._assignmentService.putAssignment(this.assignment).subscribe( result => {
     //   this.ngOnInit();
     // });
@@ -73,18 +74,7 @@ export class EditAssignmentComponent implements OnInit {
   }
 
   deleteTagAssignment(tagAssignment: TagAssignment) {
-    console.log(tagAssignment);
     this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
-      this.ngOnInit();
-    });
-  }
-
-  saveAssignment() {
-    const {assignmentName, description} =  this.updateAssignment.value;
-    this.assignment.description  = description;
-    this.assignment.assignmentName = assignmentName;
-    console.log(this.assignment);
-    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
       this.ngOnInit();
     });
   }
