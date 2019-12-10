@@ -8,17 +8,21 @@
       <h4 class="text-muted mt-3 mb-2">
         <hr>
       </h4>
+      <span class="badge badge-primary mr-2 mb-2" *ngFor="let ta of assignment.tagAssignments">{{ta.tag.tagName}}</span>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12">
-      <h1 class="text-primary">{{assignment.assignmentName}} </h1>
-      <h5 class="text-muted">{{assignment.description}}</h5>
-      <p><i class="material-icons">location_city</i> {{assignment.location.country}}, {{assignment.location.postcode}},
-        {{assignment.location.address}}</p>
-      <p><i class="material-icons">assignment</i>{{assignment.status.currentStatus}}</p>
-      <div><i class="material-icons">ballot</i>
-        <div *ngFor="let ta of assignment.tagAssignments">{{ta.tag.tagName}}</div>
-      </div>
-      <h3 class="ml-3 text-secondary">Company</h3>
+      <h1 class="text-primary">{{assignment.assignmentName}}
+        <button type="button" class="btn btn-primary btn-pill m-2"
+          (click)="editAssignment(assignment.assignmentID)">Edit</button>
+        <button type="button" class="btn btn-danger btn-pill m-2"
+        (click)="deleteAssignment(assignment.assignmentID)">Delete</button>
+      </h1>
+      <h3 class="text-secondary">{{assignment.description}}</h3>
+      <h5><i class="material-icons">location_city</i> {{assignment.location.address}}, {{assignment.location.postcode}},
+        {{assignment.location.country}}</h5>
+      <h5><i class="material-icons">assignment</i>Status : {{assignment.status.currentStatus}}</h5>
+
+      <h5>Company</h5>
       <div class="col-12">
         <div class="card">
           <img class="card-img-top"
@@ -27,10 +31,14 @@
           <div class="card-body">
             <h4 class="card-title">{{assignment.company.companyName}}</h4>
             <p class="card-text">{{assignment.company.about}}</p>
-            <button class="btn btn-primary" (click)="btnSelectCompany(assignment.company.companyID)">Tell me more &rarr;</button>
+            <button class="btn btn-primary" (click)="btnSelectCompany(assignment.company.companyID)">Tell me more
+              &rarr;</button>
           </div>
         </div>
       </div>
     </div>
+
+
+
   </div>
 </div>

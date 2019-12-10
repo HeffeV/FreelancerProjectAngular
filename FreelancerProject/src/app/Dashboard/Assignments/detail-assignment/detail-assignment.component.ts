@@ -15,21 +15,30 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 export class DetailAssignmentComponent implements OnInit {
 
   assignment: Assignment;
-  show:Boolean=false;
-  
+  show: Boolean = false;
+
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
     this._assignmentService.getAssignmentEdit().subscribe(result => {
       this.assignment = result;
       console.log(this.assignment);
-      this.show=true;
+      this.show = true;
     });
   }
 
-  btnSelectCompany(id:number){
+  btnSelectCompany(id: number) {
     this._companyService.currentCompany.next(id);
     //router naar company details hier
     this.router.navigate(["/companydetail"]);
+  }
+  editAssignment(assignmentID) {
+    this._assignmentService.setAssignmentID(assignmentID);
+    this.router.navigate(['/editAssignment']);
+  }
+  deleteAssignment(assignmentID) {
+    this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
+      this.router.navigate(["/dashboard"]);
+    });
   }
 }
