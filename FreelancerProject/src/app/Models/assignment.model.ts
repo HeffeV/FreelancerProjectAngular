@@ -3,11 +3,12 @@ import { Company } from './company.model';
 import { User } from './user.model';
 import { UserAssignment } from './user-assignment.model';
 import { Status } from './status.model';
+import { TagAssignment } from './tag-assignment';
 
 export class Assignment {
     constructor(
         public assignmentID:number,
-        public tags:Tag[],
+        public tagAssignments:TagAssignment[],
         public description:string,
         public assignmentName:string,
         public location:Location,

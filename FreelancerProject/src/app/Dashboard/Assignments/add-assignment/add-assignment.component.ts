@@ -8,6 +8,7 @@ import { isNullOrUndefined } from 'util';
 import { Company } from 'src/app/Models/company.model';
 import { CompanyService } from 'src/app/Services/company.service';
 import { UserserviceService } from 'src/app/Services/userservice.service';
+import { TagAssignment } from 'src/app/Models/tag-assignment';
 
 @Component({
   selector: 'app-add-assignment',
@@ -50,7 +51,8 @@ export class AddAssignmentComponent implements OnInit {
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag)
     //this._tagService.postTag(tagToAdd).subscribe(result => {
-      this.assignment.tags.push(tagToAdd);
+      const tagAssignments = new TagAssignment(0,this.assignment,tagToAdd)
+      this.assignment.tagAssignments.push(tagAssignments);
       this.tag = '';
     //});
     event.preventDefault();
