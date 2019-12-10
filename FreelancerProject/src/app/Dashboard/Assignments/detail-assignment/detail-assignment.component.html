@@ -1,8 +1,10 @@
 <div class="container" *ngIf="show">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <img src="https://www.veldhoencompany.com/wp-content/uploads/2016/09/Veldhoen-Company-Logo-1280-x-1280.png" alt=""
-        class="img-fluid" id="assignmentimage">
+
+      <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="img-fluid" alt="img">
+      <img *ngIf="!assignment.image==''" src="{{assignment.image}}" class="img-fluid" alt="img">
+
       <h4 class="text-muted mt-3 mb-2">
         <hr>
       </h4>
@@ -15,6 +17,19 @@
       <p><i class="material-icons">assignment</i>{{assignment.status.currentStatus}}</p>
       <div><i class="material-icons">ballot</i>
         <div *ngFor="let ta of assignment.tagAssignments">{{ta.tag.tagName}}</div>
+      </div>
+      <h3 class="ml-3 text-secondary">Company</h3>
+      <div class="col-12">
+        <div class="card">
+          <img class="card-img-top"
+            src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+            alt="Assignment image">
+          <div class="card-body">
+            <h4 class="card-title">{{assignment.company.companyName}}</h4>
+            <p class="card-text">{{assignment.company.about}}</p>
+            <button class="btn btn-primary" (click)="btnSelectCompany(assignment.company.companyID)">Tell me more &rarr;</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

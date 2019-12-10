@@ -6,6 +6,7 @@ import {
   FileUploaderOptions,
   ParsedResponseHeaders
 } from 'ng2-file-upload';
+import { AssignmentService } from 'src/app/Services/assignment.service';
 
 @Component({
   selector: 'app-detail-company',
@@ -14,28 +15,30 @@ import {
 })
 export class DetailCompanyComponent implements OnInit {
 
-  id:number;
+  id: number;
   company: any = {};
-  show:Boolean=false;
+  show: Boolean = false;
   fileToUpload: File = null;
   @Input()
   responses: Array<any>;
   private uploader: FileUploader = new FileUploader(null);
-  constructor(private readonly companyService: CompanyService, private router: Router) { }
+  constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService :AssignmentService) { }
 
   ngOnInit() {
-      this.companyService.currentCompany.subscribe((res:any)=>{
+    this.companyService.currentCompany.subscribe((res: any) => {
       this.id = res;
       this.getCompany(this.id);
     });
-      this.configureFileUploader();
+    this.configureFileUploader();
   }
 
 
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
-      result => {console.log(result); this.company = result; 
-                 this.show=true;}
+      result => {
+        console.log(result); this.company = result;
+        this.show = true;
+      }
     );
   }
 
@@ -75,8 +78,8 @@ export class DetailCompanyComponent implements OnInit {
     const upsertResponse = fileItem => {
       console.log(fileItem.data.url);
       //this.appService
-        //.updateAvatar({ url: fileItem.data.url })
-        //.subscribe(() => this.initializeAccount());
+      //.updateAvatar({ url: fileItem.data.url })
+      //.subscribe(() => this.initializeAccount());
     };
     this.uploader.onCompleteItem = (
       item: any,
@@ -90,4 +93,11 @@ export class DetailCompanyComponent implements OnInit {
         data: JSON.parse(response)
       });
   }
+
+  btnSelectAssignment(id:number){
+    //this.assignmentservice.currentAssignment.next(id);
+    //router hier
+    this._assignmentService.setAssignmentID(id);
+    this.router.navigate(["/assignmentdetail"]);
   }
+}

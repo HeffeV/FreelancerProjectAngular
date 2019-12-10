@@ -34,7 +34,7 @@
           <div class="card-body">
             <h4 class="card-title">{{assignment.assignmentName}}</h4>
             <p class="card-text">{{assignment.description}}</p>
-            <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
+            <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Tell me more &rarr;</button>
           </div>
         </div>
       </div>

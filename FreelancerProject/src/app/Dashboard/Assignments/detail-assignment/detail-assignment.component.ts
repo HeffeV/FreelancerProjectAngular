@@ -26,4 +26,10 @@ export class DetailAssignmentComponent implements OnInit {
       this.show=true;
     });
   }
+
+  btnSelectCompany(id:number){
+    this._companyService.currentCompany.next(id);
+    //router naar company details hier
+    this.router.navigate(["/companydetail"]);
+  }
 }
