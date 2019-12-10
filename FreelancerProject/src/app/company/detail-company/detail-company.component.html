@@ -36,6 +36,9 @@
             <p class="card-text">{{assignment.description}}</p>
             <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
           </div>
+          <div class="card-footer">
+            <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
+          </div>
         </div>
       </div>
       <div class="col-12" *ngIf="company.assignments.length==0">
