@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="currentUser!=null">
   <h3>Dashboard</h3>
   <div *ngIf="currentUser.userType.userTypeID == 1">
     <app-dashboard-user></app-dashboard-user>
@@ -9,5 +9,4 @@
   <div *ngIf="currentUser.userType.userTypeID == 3">
     <app-dashboard-admin></app-dashboard-admin>
   </div>
-  <app-dashboard-user></app-dashboard-user>
 </div>

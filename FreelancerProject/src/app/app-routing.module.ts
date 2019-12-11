@@ -12,20 +12,21 @@ import { EditCompanyComponent } from './company/edit-company/edit-company.compon
 import { EditAssignmentComponent } from './Dashboard/Assignments/edit-assignment/edit-assignment.component';
 import { BrowseAssignmentComponent } from './BrowseAssignments/browse-assignment/browse-assignment.component';
 import { DetailAssignmentComponent } from './Dashboard/Assignments/detail-assignment/detail-assignment.component';
+import { AuthGuard } from './Services/guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'addcompany', component: AddCompanyComponent},
-  {path: 'companydetail', component: DetailCompanyComponent},
-  {path: 'editcompany', component: EditCompanyComponent},
-  {path: 'dashboard',  component: DashboardComponent},
-  {path: 'account',  component: AccountComponent},
-  {path: 'editAssignment',  component: EditAssignmentComponent},
-  {path: 'browseassignments',  component: BrowseAssignmentComponent},
-  {path: 'addAssignment',  component: AddAssignmentComponent},
-  {path: 'assignmentdetail', component: DetailAssignmentComponent},];
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'addcompany', component: AddCompanyComponent, canActivate: [AuthGuard] },
+  { path: 'companydetail', component: DetailCompanyComponent },
+  { path: 'editcompany', component: EditCompanyComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+  { path: 'editAssignment', component: EditAssignmentComponent, canActivate: [AuthGuard] },
+  { path: 'browseassignments', component: BrowseAssignmentComponent },
+  { path: 'addAssignment', component: AddAssignmentComponent, canActivate: [AuthGuard] },
+  { path: 'assignmentdetail', component: DetailAssignmentComponent },];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -10,19 +10,19 @@ import { Tag } from '../Models/tag.model';
 })
 export class BrowseAssignmentService {
 
-  private assignment:number;
+  private assignment: number;
 
   currentAssignment = new BehaviorSubject(this.assignment);
 
   constructor(private http: HttpClient) { }
 
   getAssignments() {
-    return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment");
+    return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/AllOpenAssignments");
   }
-  getFilteredAssignments(filterModel:FilterModel):Observable<Assignment[]>{
-    return this.http.post<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/filterAssignments",filterModel);
+  getFilteredAssignments(filterModel: FilterModel): Observable<Assignment[]> {
+    return this.http.post<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/filterAssignments", filterModel);
   }
-  getTags(){
+  getTags() {
     return this.http.get<Tag[]>("https://freelancerprojectapi.azurewebsites.net/api/Tag");
   }
 }

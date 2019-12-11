@@ -14,29 +14,30 @@ import { Router } from '@angular/router';
 })
 export class BrowseAssignmentComponent implements OnInit {
 
-  hide:boolean=true;
+  hide: boolean = true;
   filterForm = this.fb.group({
-    Title:[''],
-    Tag:['']
+    Title: [''],
+    Tag: ['']
   })
-  tag:Tag;
-  tags:Tag[]=[];
-  filterModel=new FilterModel("",[],[],"","");
+  tag: Tag;
+  tags: Tag[] = [];
+  filterModel = new FilterModel("", [], [], "", "");
 
-  assignments:Assignment[];
-  constructor(private router:Router,private baService:BrowseAssignmentService,private fb: FormBuilder,private _assignmentService:AssignmentService) { }
+  assignments: Assignment[];
+  constructor(private router: Router, private baService: BrowseAssignmentService, private fb: FormBuilder, private _assignmentService: AssignmentService) { }
 
   ngOnInit() {
-    this.baService.getAssignments().subscribe((res:any)=>{
-      this.assignments=res;
+    this.baService.getAssignments().subscribe((res: any) => {
+      this.assignments = res;
     });
-    this.baService.getTags().subscribe((res:any)=>{
-      this.tags=res;
+    this.baService.getTags().subscribe((res: any) => {
+      this.tags = res;
     })
     this.onChanges();
+    this.filterModel = new FilterModel("", [], [], "", "");
   }
 
-  btnAssignmentDetails(id:number){
+  btnAssignmentDetails(id: number) {
     this._assignmentService.setAssignmentID(id);
     this.router.navigate(["/assignmentdetail"]);
   }
@@ -47,18 +48,22 @@ export class BrowseAssignmentComponent implements OnInit {
     });
   }
 
-  updateResults(){
-    this.filterModel.title=this.filterForm.value.Title;
-    if(this.filterForm.value.Tag!=''){
-      this.tag = this.tags.find(i=>i.tagID==this.filterForm.value.Tag)
-      if(this.tag!=null){
-        this.tags.splice(this.tags.indexOf(this.tag),1);
+  updateResults() {
+    this.filterModel.title = this.filterForm.value.Title;
+    if (this.filterForm.value.Tag != '') {
+      this.tag = this.tags.find(i => i.tagID == this.filterForm.value.Tag)
+      if (this.tag != null) {
+        this.tags.splice(this.tags.indexOf(this.tag), 1);
         this.filterModel.tags.push(this.tag);
       }
     }
     console.log(this.filterModel)
-      this.baService.getFilteredAssignments(this.filterModel).subscribe((res:any)=>{
-        this.assignments=res;      })
+    this.baService.getFilteredAssignments(this.filterModel).subscribe((res: any) => {
+      this.assignments = res;
+    })
+  }
+  resetFilters() {
+    this.ngOnInit();
   }
 
 }
