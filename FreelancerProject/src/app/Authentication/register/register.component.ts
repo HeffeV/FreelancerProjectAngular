@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  userType=new UserType(0,"")
+  userType = new UserType(0, "")
   submitted: boolean = false;
   model: User;
   registerError;
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     private _userservice: UserserviceService,
     private router: Router,
     private toast: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.registerForm.reset();
@@ -83,11 +83,11 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if(this.registerForm.value.userType=="Recruiter"){
-      this.userType = new UserType(2,"recruiter");
+    if (this.registerForm.value.userType == "Recruiter") {
+      this.userType = new UserType(2, "recruiter");
     }
-    else{
-      this.userType = new UserType(1,"user");
+    else {
+      this.userType = new UserType(1, "user");
     }
     this.model = new User(
       0,
@@ -122,12 +122,26 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       e => {
+        console.log(e);
+        if (e.status == 400) {
+          this.registerError = 'Please fill in all fields!';
+        }
+        else if (e.status == 404) {
+          this.registerError = 'Username or Email already exists!';
+        }
+        else {
+          this.registerError = 'Something went wrong, please try again later.';
+        }
         //indien username of email al bestaat error tonen.
-        this.registerError = 'Username or Email already exists!';
         this.showError = true;
         this.submitted = false;
       }
     );
+  }
+
+  resetForm() {
+    this.registerForm.reset();
+    this.informationForm.reset();
   }
 
   configureFileUploader() {

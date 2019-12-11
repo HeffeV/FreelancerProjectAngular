@@ -49,8 +49,9 @@ export class DetailAssignmentComponent implements OnInit {
     this._assignmentService.applyForAssignment(assignment.assignmentID).subscribe((res: any) => {
       this.success = true;
     },
-      e => {
+      err => {
         this.error = true;
+        this.success = false;
       });
   }
 }
