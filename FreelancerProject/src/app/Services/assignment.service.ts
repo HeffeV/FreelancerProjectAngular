@@ -62,6 +62,7 @@ export class AssignmentService {
   }
   cancelAssignment(assignment) {
     this.userID = this._userService.getUserID();
+    return this.http.delete<UserAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/CancelAssignment?assignmentID=" + assignment.assignmentID + "&userID=" + this.userID);
   }
   setAssignmentID(assignmentID) {
     this.assignmentID = assignmentID;

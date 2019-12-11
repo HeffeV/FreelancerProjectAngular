@@ -20,7 +20,7 @@
                 {{assignment.description}}
               </p>
             </mat-card-content>
-            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">annuleren</button>
+            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
           </mat-card>
           <div *ngIf="requestedAssignments.length == 0">
             <mat-card class="assignment-card">
@@ -52,7 +52,6 @@
                 {{assignment.description}}
               </p>
             </mat-card-content>
-            <button type="button" class="btn btn-light">annuleren</button>
           </mat-card>
           <div *ngIf="inProgressAssignments.length == 0">
             <mat-card class="assignment-card">
@@ -84,7 +83,6 @@
                 {{assignment.description}}
               </p>
             </mat-card-content>
-            <button type="button" class="btn btn-light">annuleren</button>
           </mat-card>
           <div *ngIf="finishedAssignments.length == 0">
             <mat-card class="assignment-card">

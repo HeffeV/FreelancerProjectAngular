@@ -30,6 +30,8 @@ export class DashboardUserComponent implements OnInit {
  
   //aangevraagde assignment annumeren -> userassignment
   cancelAssignment(assignment){
-    
+    this._assignmentService.cancelAssignment(assignment).subscribe(result => {
+      this.ngOnInit();
+    });
   }
 }
