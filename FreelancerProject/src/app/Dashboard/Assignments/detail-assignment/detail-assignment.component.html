@@ -21,7 +21,7 @@
       <h5><i class="material-icons">my_location</i> {{assignment.location.address}}, {{assignment.location.postcode}},
         {{assignment.location.country}}</h5>
       <h5><i class="material-icons">assignment</i> Status : {{assignment.status.currentStatus}}</h5>
-
+      <button type="button" class="btn btn-primary btn-pill m-2" (click)="apply(assignment)">Apply for this assignment</button>
       <h5><i class="material-icons">location_city</i> Company</h5>
       <div class="col-12">
         <div class="card">

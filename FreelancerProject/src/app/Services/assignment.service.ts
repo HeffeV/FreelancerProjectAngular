@@ -4,6 +4,7 @@ import { Assignment } from '../Models/assignment.model';
 import { BehaviorSubject } from 'rxjs';
 import { UserserviceService } from './userservice.service';
 import { User } from '../Models/user.model';
+import { UserAssignment } from '../Models/user-assignment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,10 @@ export class AssignmentService {
     return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/FinishAssignment?id=" + assignmentID, null);
   }
 
+  applyForAssignment(assignmentID) {
+    this.userID = this._userService.getUserID();
+    return this.http.post<UserAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/ApplyForAssignment?assignmentID=" + assignmentID +"&userID=" + this.userID, null);
+  }
   cancelAssignment(assignment) {
     this.userID = this._userService.getUserID();
   }

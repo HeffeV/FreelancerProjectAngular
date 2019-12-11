@@ -41,4 +41,9 @@ export class DetailAssignmentComponent implements OnInit {
       this.router.navigate(["/dashboard"]);
     });
   }
+  apply(assignment) {
+    this._assignmentService.applyForAssignment(assignment.assignmentID).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
 }
