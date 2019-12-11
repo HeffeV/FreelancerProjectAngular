@@ -1,6 +1,10 @@
 <div class="container">
-    <h3>Account information</h3>
-    <div class="row" *ngIf="user!=null">
+    <h3>
+        Account information
+        <small class="btn btn-outline-primary" (click)="changeToEditable()" *ngIf="id == null && !isEditable">Edit
+            account</small>
+    </h3>
+    <div class="row" *ngIf="user!=null && !isEditable">
         <div class="col-sm-12 col-lg-3 pic">
             <div>
                 <img src="../../../assets/profilepic.png" height="200px" width="200px">
@@ -83,6 +87,30 @@
                             <div>{{user.contactInfo.linkedIn}}</div>
                         </div>
                     </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="font-weight-bold">Street + number:</div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div>{{user.location.address}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="font-weight-bold">Postcode:</div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div>{{user.location.postcode}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="font-weight-bold">Country:</div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div>{{user.location.country}}</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
                     <div class="row">
@@ -94,7 +122,8 @@
                                 <div class="card-body">
                                     <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
                                     <p class="card-text">{{assignment.assignment.description}}</p>
-                                    <a href="#" class="btn btn-primary">Tell me more &rarr;</a>
+                                    <button (click)="btnSelectAssignment(assignment.assignment.assignmentID)"
+                                        class="btn btn-primary mt-auto">More info &rarr;</button>
                                 </div>
                             </div>
                         </div>
@@ -111,16 +140,17 @@
                     <div class="card mb-3" *ngFor="let skill of user.skills">
                         <div class="card-body">
                             <p class="card-title text-primary">{{skill.skillName}}</p>
-                            <p class="card-subtitle text-muted" *ngIf="skill.category!=null">{{skill.category.categoryName}}</p>
+                            <p class="card-subtitle text-muted" *ngIf="skill.category!=null">
+                                {{skill.category.categoryName}}</p>
                         </div>
                     </div>
                     <div class="col-12" *ngIf="user.skills != null && user.skills.length==0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title text-primary">No skills 😢</h4>
-                                </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary">No skills 😢</h4>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                     <div class="row">
@@ -140,15 +170,104 @@
                             </div>
                         </div>
                         <div class="col-12" *ngIf="user.reviews != null && user.reviews.length==0">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title text-primary">No reviews 😢</h4>
-                                    </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-primary">No reviews 😢</h4>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div *ngIf="user!=null && isEditable">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-row mb-4">
+                <input type="submit" class="btn btn-primary btn-pill" value="Save">
+                <input type="button" class="btn btn-danger btn-pill mx-3" value="Cancel" (click)="cancelEdit()">
+            </div>
+            <h5>Personal info</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Name</label>
+                    <input class="form-control" name="Name" [(ngModel)]="user.name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Lastname</label>
+                    <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Email</label>
+                    <input class="form-control" name="Email" [(ngModel)]="user.email">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Username</label>
+                    <input class="form-control" name="Username" [(ngModel)]="user.username">
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Birthyear</label>
+                    <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Street + number</label>
+                    <input class="form-control" name="Address" [(ngModel)]="user.location.address">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Postcode</label>
+                    <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Country</label>
+                    <input class="form-control" name="Country" [(ngModel)]="user.location.country">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Bio</label>
+                    <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Mobile</label>
+                    <input class="form-control" name="MobileNumber" [(ngModel)]="user.contactInfo.mobileNumber">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>LinkedIn</label>
+                    <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn">
+                </div>
+            </div>
+            <h5>Skills
+                <small class="text-muted" *ngIf="user.skills.length > 0">Double click on card to delete</small>
+            </h5>
+            <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills != null" (change)="onChange($event.target.value)">
+                <option value="" selected disabled>Choose here</option>
+                <option *ngFor="let skill of skills" value="{{skill.skillID}}">{{skill.skillName}}</option>
+            </select>
+            <div class="card mb-3" *ngFor="let skill of user.skills" (dblclick)="deleteSkill(skill)">
+                <div class="card-body">
+                    <p class="card-title text-primary">{{skill.skillName}}</p>
+                    <p class="card-subtitle text-muted" *ngIf="skill.category!=null">
+                        {{skill.category.categoryName}}</p>
+                </div>
+            </div>
+            <h5>Tags
+                <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to delete</small>
+            </h5>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <input class="form-control" name="tag" #newtag>
+                </div>
+                <div class="form-group col-md-22">
+                    <input type="button" class="btn btn-primary btn-pill" value="Add tag"
+                        (click)="addTag(newtag.value)">
+                </div>
+            </div>
+            <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
+                (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
+        </form>
     </div>
 </div>

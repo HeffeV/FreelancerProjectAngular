@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
       confirmPswrdCtrl.errors == null ||
       'passwordMismatch' in confirmPswrdCtrl.errors
     ) {
-      // passwoords kloppen niet.
+      // passwords kloppen niet.
       if (fb.get('Password').value != confirmPswrdCtrl.value)
         confirmPswrdCtrl.setErrors({ passwordMismatch: true });
       // passwoords kloppen.
