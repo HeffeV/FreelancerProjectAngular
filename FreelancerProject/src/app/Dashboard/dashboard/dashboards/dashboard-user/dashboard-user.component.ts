@@ -28,10 +28,13 @@ export class DashboardUserComponent implements OnInit {
     });
   }
  
-  //aangevraagde assignment annumeren -> userassignment
   cancelAssignment(assignment){
     this._assignmentService.cancelAssignment(assignment).subscribe(result => {
       this.ngOnInit();
     });
+  }
+  viewDetails(assignment) {
+    this._assignmentService.setAssignmentID(assignment.assignmentID);
+    this.router.navigate(["/assignmentdetail"]);
   }
 }
