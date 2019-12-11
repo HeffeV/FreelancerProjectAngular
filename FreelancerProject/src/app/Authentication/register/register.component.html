@@ -3,22 +3,22 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="registerForm" autocomplete="off">
         <div class="form-row">
-            <div class="form-group col-md-8 required">
-                <label>Username</label>
-                <input class="form-control" formControlName="Username">
-              </div>
-              <div class="form-group col-md-4 required">
-                  <label>Account type</label>
-                  <select class="form-control" id="tagSelect" formControlName="UserType">
-                    <option value="Freelancer">Freelancer</option>
-                    <option value="Recruiter">Recruiter</option>
-                  </select>
-                </div>
+          <div class="form-group col-md-8 required">
+            <label>Username</label>
+            <input class="form-control" formControlName="Username">
+          </div>
+          <div class="form-group col-md-4 required">
+            <label>Account type</label>
+            <select class="form-control" id="tagSelect" formControlName="UserType" required>
+              <option value="Freelancer">Freelancer</option>
+              <option value="Recruiter">Recruiter</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
-            <label>Email</label>
-            <input class="form-control" formControlName="Email">
-          </div>
+          <label>Email</label>
+          <input class="form-control" formControlName="Email">
+        </div>
         <div formGroupName="Passwords">
           <div class="form-group required">
             <label>Password</label>
@@ -99,9 +99,9 @@
             <td>{{this.registerForm.value.Username}}</td>
           </tr>
           <tr>
-              <th scope="row">Account type</th>
-              <td>{{this.registerForm.value.UserType}}</td>
-            </tr>
+            <th scope="row">Account type</th>
+            <td>{{this.registerForm.value.UserType}}</td>
+          </tr>
           <tr>
             <th scope="row">Email</th>
             <td>{{this.registerForm.value.Email}}</td>
