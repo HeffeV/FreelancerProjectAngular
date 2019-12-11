@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AssignmentService } from 'src/app/Services/assignment.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Assignment } from 'src/app/Models/assignment.model';
-import { Tag } from 'src/app/Models/tag.model';
-import { TagService } from 'src/app/Services/tag.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AssignmentService } from 'src/app/Services/assignment.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-assignments',
-  templateUrl: './assignments.component.html',
-  styleUrls: ['./assignments.component.scss']
+  selector: 'app-dashboard-recruiter',
+  templateUrl: './dashboard-recruiter.component.html',
+  styleUrls: ['./dashboard-recruiter.component.scss']
 })
-export class AssignmentsComponent implements OnInit {
+export class DashboardRecruiterComponent implements OnInit {
 
   assignments: Assignment[] = [];
   addAssignment: FormGroup;
@@ -20,7 +18,7 @@ export class AssignmentsComponent implements OnInit {
   constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    this._assignmentService.getAssignments().subscribe(result => {
+    this._assignmentService.getAssignmentsByCompany().subscribe(result => {
       this.assignments = result;
       console.log(this.assignments);
     });
@@ -62,10 +60,21 @@ export class AssignmentsComponent implements OnInit {
     this._assignmentService.publishAssignment(assignment.assignmentID).subscribe(result => {
       this.ngOnInit();
     });
-    
   }
+  closeAssignment(assignment){
+    this._assignmentService.closeAssignment(assignment.assignmentID).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+  finishAssignment(assignment){
+    this._assignmentService.finishAssignment(assignment.assignmentID).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
   editAssignment(assignment: Assignment){
     this._assignmentService.setAssignmentID(assignment.assignmentID);
     this.router.navigate(['/editAssignment']);
   }
+
 }

@@ -1,0 +1,99 @@
+<div class="accordion" id="accordionAssignments">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          <h4>Requested Assignments</h4>
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionAssignments">
+      <div class="card-body">
+
+        <div *ngIf="requestedAssignments">
+          <mat-card *ngFor="let assignment of requestedAssignments" class="assignment-card">
+            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
+            <mat-card-content>
+              <p>
+                {{assignment.description}}
+              </p>
+            </mat-card-content>
+            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">annuleren</button>
+          </mat-card>
+          <div *ngIf="requestedAssignments.length == 0">
+            <mat-card class="assignment-card">
+              <p>No requested assignments</p>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          <h4>Assignments In Progress</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAssignments">
+      <div class="card-body">
+
+        <div *ngIf="inProgressAssignments">
+          <mat-card *ngFor="let assignment of inProgressAssignments" class="assignment-card">
+            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
+            <mat-card-content>
+              <p>
+                {{assignment.description}}
+              </p>
+            </mat-card-content>
+            <button type="button" class="btn btn-light">annuleren</button>
+          </mat-card>
+          <div *ngIf="inProgressAssignments.length == 0">
+            <mat-card class="assignment-card">
+              <p>No assignments in progress</p>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree">
+          <h4>Finished Assignments</h4>
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionAssignments">
+      <div class="card-body">
+
+        <div *ngIf="finishedAssignments">
+          <mat-card *ngFor="let assignment of finishedAssignments" class="assignment-card">
+            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
+            <mat-card-content>
+              <p>
+                {{assignment.description}}
+              </p>
+            </mat-card-content>
+            <button type="button" class="btn btn-light">annuleren</button>
+          </mat-card>
+          <div *ngIf="finishedAssignments.length == 0">
+            <mat-card class="assignment-card">
+              <p>No finished assignments</p>
+            </mat-card>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

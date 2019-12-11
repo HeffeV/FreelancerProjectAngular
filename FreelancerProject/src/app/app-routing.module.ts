@@ -4,7 +4,6 @@ import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
-import { AssignmentsComponent } from './Dashboard/Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Dashboard/Assignments/add-assignment/add-assignment.component';
 import { DetailCompanyComponent } from './company/detail-company/detail-company.component';
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';

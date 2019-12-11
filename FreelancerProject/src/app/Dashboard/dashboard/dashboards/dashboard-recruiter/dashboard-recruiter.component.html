@@ -1,29 +1,31 @@
 <button type="button" class="btn btn-default" (click)="GoToNewAssignment()">New Assignment</button>
+<div *ngIf="assignments">
 <mat-card *ngFor="let assignment of assignments" class="assignment-card">
   <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
   <mat-card-content>
     <p>
       {{assignment.description}}
     </p>
-    <p>{{assignment.status.statusID}}</p>
+    <p>Status: {{assignment.status.currentStatus}}</p>
     <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
+    
+    <!-- status is draft -> status to open -->
     <p *ngIf="assignment.status.statusID == 1">
       <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
       <button class="btn btn-light"(click)="publishAssignment(assignment)">Publish</button>
     </p>
+
+    <!-- status is open -> status to closed -->
+    <p *ngIf="assignment.status.statusID == 4">
+      <!-- apply -> student -->
+      <button class="btn btn-light"(click)="closeAssignment(assignment)">Close assignment</button>
+    </p>
+
+    <!-- status is close -> status to finished -->
+    <p *ngIf="assignment.status.statusID == 3">
+      <button class="btn btn-light"(click)="finishAssignment(assignment)">Finish assignment</button>
+    </p>
   </mat-card-content>
   <button type="button" class="btn btn-light" (click)="deleteAssignment(assignment.assignmentID)">delete</button>
 </mat-card>
-
-<!-- <form [formGroup]="updateAssignment" (ngSubmit)="putAssignment()">
-  <mat-form-field>
-    <input matInput placeholder="assignmentID" type="number" formControlName="assignmentID">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="assignmentname" formControlName="assignmentName">
-  </mat-form-field>
-  <mat-form-field>
-    <textarea matInput placeholder="Add a description" formControlName="description"></textarea>
-  </mat-form-field>
-  <button type="submit" class="btn btn-default">Update assignment</button>
-</form> -->
+</div>

@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule, MatInputModule, MatFormFieldModule,MatSelectModule,MatStepperModule,MatTreeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AssignmentsComponent } from './Assignments/assignments/assignments.component';
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditAssignmentComponent } from './Assignments/edit-assignment/edit-assignment.component';
 import { DetailAssignmentComponent } from './Assignments/detail-assignment/detail-assignment.component';
+import { DashboardRecruiterComponent } from './dashboard/dashboards/dashboard-recruiter/dashboard-recruiter.component';
+import { DashboardUserComponent } from './dashboard/dashboards/dashboard-user/dashboard-user.component';
+import { DashboardAdminComponent } from './dashboard/dashboards/dashboard-admin/dashboard-admin.component';
 
 @NgModule({
-  declarations: [AssignmentsComponent, AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent],
+  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent],
   imports: [
     CommonModule,
     MatCardModule,

@@ -22,4 +22,13 @@ addUser(userReg: User) {
     return null;
   }
 
+  getUserID(){
+    if(localStorage.getItem('token')!=null){
+      let jwtData=localStorage.getItem("token").split('.')[1];
+      let decodedJwt = window.atob(jwtData);
+      return JSON.parse(decodedJwt).UserID;
+    }
+    return null;
+  }
+
 }

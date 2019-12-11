@@ -1,4 +1,12 @@
 <div class="container">
-    <h3>Dashboard</h3>
-    <app-assignments></app-assignments>
+  <h3>Dashboard</h3>
+  <div *ngIf="currentUser.userType.userTypeID == 1">
+    <app-dashboard-user></app-dashboard-user>
+  </div>
+  <div *ngIf="currentUser.userType.userTypeID == 2">
+    <app-dashboard-recruiter></app-dashboard-recruiter>
+  </div>
+  <div *ngIf="currentUser.userType.userTypeID == 3">
+    <app-dashboard-admin></app-dashboard-admin>
+  </div>
 </div>
