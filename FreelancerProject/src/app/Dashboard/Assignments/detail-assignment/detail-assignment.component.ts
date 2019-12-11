@@ -16,10 +16,14 @@ export class DetailAssignmentComponent implements OnInit {
 
   assignment: Assignment;
   show: Boolean = false;
+  success: Boolean = false;
+  error: Boolean = false
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
+    this.success = false;
+    this.error = false
     this._assignmentService.getAssignmentEdit().subscribe(result => {
       this.assignment = result;
       console.log(this.assignment);
@@ -42,8 +46,11 @@ export class DetailAssignmentComponent implements OnInit {
     });
   }
   apply(assignment) {
-    this._assignmentService.applyForAssignment(assignment.assignmentID).subscribe(result => {
-      this.ngOnInit();
-    });
+    this._assignmentService.applyForAssignment(assignment.assignmentID).subscribe((res: any) => {
+      this.success = true;
+    },
+      e => {
+        this.error = true;
+      });
   }
 }

@@ -16,7 +16,7 @@ export class AssignmentService {
   userID: number;
   currentAssignment = new BehaviorSubject(this.assignment);
 
-  constructor(private http: HttpClient, private _userService : UserserviceService) { }
+  constructor(private http: HttpClient, private _userService: UserserviceService) { }
 
   getAssignments() {
     return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment");
@@ -58,7 +58,7 @@ export class AssignmentService {
 
   applyForAssignment(assignmentID) {
     this.userID = this._userService.getUserID();
-    return this.http.post<UserAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/ApplyForAssignment?assignmentID=" + assignmentID +"&userID=" + this.userID, null);
+    return this.http.post<UserAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/ApplyForAssignment?assignmentID=" + assignmentID + "&userID=" + this.userID, null);
   }
   cancelAssignment(assignment) {
     this.userID = this._userService.getUserID();
