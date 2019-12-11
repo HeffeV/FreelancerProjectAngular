@@ -139,6 +139,11 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  resetForm() {
+    this.registerForm.reset();
+    this.informationForm.reset();
+  }
+
   configureFileUploader() {
     const uploaderOptions: FileUploaderOptions = {
       url: `https://api.cloudinary.com/v1_1/dnyqfmbol/image/upload`,
