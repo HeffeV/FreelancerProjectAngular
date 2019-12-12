@@ -3,32 +3,35 @@
 
     <div class="col-lg-8 col-md-8 col-sm-12">
       <h1 class="text-primary">{{assignment.assignmentName}}
-        <button type="button" class="btn btn-primary btn-pill m-2"
-          (click)="editAssignment(assignment.assignmentID)">Edit</button>
-        <button type="button" class="btn btn-danger btn-pill m-2"
-          (click)="deleteAssignment(assignment.assignmentID)">Delete</button>
+        <div *ngIf="isAuthorized">
+          <button type="button" class="btn btn-primary btn-pill m-2"
+            (click)="editAssignment(assignment.assignmentID)">Edit</button>
+          <button type="button" class="btn btn-danger btn-pill m-2"
+            (click)="deleteAssignment(assignment.assignmentID)">Delete</button>
+        </div>
       </h1>
       <h3 class="text-secondary">{{assignment.description}}</h3>
       <h5><i class="material-icons">my_location</i> {{assignment.location.address}}, {{assignment.location.postcode}},
         {{assignment.location.country}}</h5>
       <h5><i class="material-icons">assignment</i> Status : {{assignment.status.currentStatus}}</h5>
 
-    <div *ngIf="alreadyApplied == false">
-      <button type="button" *ngIf="!success" class="btn btn-primary btn-pill m-2" (click)="apply(assignment)">Apply for this assignment</button>
-      <div class="alert alert-success" role="alert" *ngIf="success">
-        Successfully applied!
-        <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
+      <div *ngIf="alreadyApplied == false">
+        <button type="button" *ngIf="!success" class="btn btn-primary btn-pill m-2" (click)="apply(assignment)">Apply
+          for this assignment</button>
+        <div class="alert alert-success" role="alert" *ngIf="success">
+          Successfully applied!
+          <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+          Error applying!
+        </div>
       </div>
-      <div class="alert alert-danger" role="alert" *ngIf="error">
-        Error applying!
+      <div *ngIf="alreadyApplied == true">
+        <div class="alert alert-success" role="alert">
+          Successfully applied!
+          <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
+        </div>
       </div>
-    </div>
-    <div *ngIf="alreadyApplied == true">
-      <div class="alert alert-success" role="alert">
-        Successfully applied!
-        <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
-      </div>
-    </div>
 
       <h5><i class="material-icons">location_city</i> Company</h5>
       <div class="col-12">

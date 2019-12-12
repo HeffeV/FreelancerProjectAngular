@@ -6,6 +6,7 @@ import { AssignmentService } from 'src/app/Services/assignment.service';
 import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/Services/company.service';
 import { UserserviceService } from 'src/app/Services/userservice.service';
+import { AuthenticateService } from 'src/app/Services/authenticate.service';
 
 @Component({
   selector: 'app-detail-assignment',
@@ -21,7 +22,7 @@ export class DetailAssignmentComponent implements OnInit {
   alreadyApplied: boolean;
   isAuthorized: boolean = false;
 
-  constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
+  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService) { }
 
   ngOnInit() {
     this.success = false;
@@ -33,6 +34,11 @@ export class DetailAssignmentComponent implements OnInit {
       this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
         result == null ? this.alreadyApplied= false : this.alreadyApplied = true;
       });
+
+      if  (this._authenticateService.CheckLoggedIn()){
+        this.isAuthorized = true;
+      }
+
     });
   }
 
