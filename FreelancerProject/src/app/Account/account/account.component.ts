@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit {
     birthYear: 0,
     token: "",
     userType: null,
-    skills: [],
+    userSkills: [],
     reviews: [],
     contactInfo: null,
     userCompanies: [],
@@ -40,7 +40,7 @@ export class AccountComponent implements OnInit {
   };
   zeroAssignments: Boolean = false;
   isEditable: Boolean = false;
-  skills : Skill[] = [];
+  skills: Skill[] = [];
 
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, ) {
@@ -76,16 +76,16 @@ export class AccountComponent implements OnInit {
     const index = this.user.tagUsers.indexOf(tagUser, 0);
     if (index > -1) {
       this.user.tagUsers.splice(index, 1);
-    } 
+    }
   }
 
-  getSkills(){
+  getSkills() {
     this.accountService.getSkills().subscribe(res => {
       this.skills = res;
     });
   }
 
-  onChange(skill){
+  /*onChange(skill){
       this.user.skills.push(this.skills.find(s => s.skillID == skill));
   }
 
@@ -94,7 +94,7 @@ export class AccountComponent implements OnInit {
     if (index > -1) {
       this.user.skills.splice(index, 1);
     } 
-  }
+  }*/
 
   cancelEdit() {
     this.isEditable = false;

@@ -8,27 +8,28 @@ import { UserType } from './user-type.model';
 import { Location } from './location.model';
 import { UserAssignment } from './user-assignment.model';
 import { TagUser } from './tag-user';
+import { UserSkill } from './userskill.model';
 
 export class User {
     constructor(
-        public userID:number,
-        public email:string,
-        public password:string,
-        public username:string,
-        public name:string,
-        public lastName:string,
-        public bio:string,
-        public birthYear:number,
-        public token:string,
-        public image:string,
+        public userID: number,
+        public email: string,
+        public password: string,
+        public username: string,
+        public name: string,
+        public lastName: string,
+        public bio: string,
+        public birthYear: number,
+        public token: string,
+        public image: string,
 
-        public userType:UserType,
-        public skills:Skill[],
-        public reviews:Review[],
-        public contactInfo:ContactInfo,
-        public userCompanies:UserCompany[],
-        public tagUsers:TagUser[],
-        public userAssignments:UserAssignment[],
-        public location:Location
-    ){}
+        public userType: UserType,
+        public userSkills: UserSkill[],
+        public reviews: Review[],
+        public contactInfo: ContactInfo,
+        public userCompanies: UserCompany[],
+        public tagUsers: TagUser[],
+        public userAssignments: UserAssignment[],
+        public location: Location
+    ) { }
 }
