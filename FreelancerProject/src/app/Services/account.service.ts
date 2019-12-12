@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../Models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Skill } from '../Models/skill.model';
+import { UserSkill } from '../Models/userskill.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,14 @@ export class AccountService {
   }
 
   updateUser(user: User){
-    return this.http.put("http://localhost:63344/api/User", user);
+    return this.http.put("https://freelancerprojectapi.azurewebsites.net/api/User", user);
   }
 
   getSkills(id: number): Observable<Skill[]>{
-    return this.http.get<Skill[]>("http://localhost:63344/api/Skill/"+id);
+    return this.http.get<Skill[]>("https://freelancerprojectapi.azurewebsites.net/api/Skill/"+id);
+  }
+
+  deleteSkill(id: number){
+    return this.http.delete<UserSkill>("https://freelancerprojectapi.azurewebsites.net/api/Skill/userSkill/" + id);
   }
 }

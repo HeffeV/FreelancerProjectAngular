@@ -10,6 +10,7 @@ import { Tag } from 'src/app/Models/tag.model';
 import { TagUser } from 'src/app/Models/tag-user';
 import { Skill } from 'src/app/Models/skill.model';
 import { UserSkill } from 'src/app/Models/userskill.model';
+import { TagService } from 'src/app/Services/tag.service';
 
 @Component({
   selector: 'app-account',
@@ -44,7 +45,7 @@ export class AccountComponent implements OnInit {
   skills: Skill[] = [];
 
 
-  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, ) {
+  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService) {
   }
 
   loadUser(id: number) {
@@ -52,6 +53,7 @@ export class AccountComponent implements OnInit {
       .subscribe(res => {
         this.user.userAssignments = [];
         this.user = res;
+        this.user.reviews = this.user.reviews.filter(r => r.userReview == false);
         console.log(this.user);
         this.checkStatusFinished();
         this.getSkills();
@@ -74,33 +76,36 @@ export class AccountComponent implements OnInit {
   }
 
   deleteTag(tagUser: TagUser) {
-    const index = this.user.tagUsers.indexOf(tagUser, 0);
-    if (index > -1) {
-      this.user.tagUsers.splice(index, 1);
-    }
+    this._tagService.deleteTagUser(tagUser.tagUserID).subscribe(ta => {
+      const index = this.user.tagUsers.indexOf(tagUser, 0);
+      if (index > -1) {
+        this.user.tagUsers.splice(index, 1);
+      }
+    });
   }
 
   getSkills() {
     this.accountService.getSkills(this.user.userID).subscribe(res => {
       this.skills = res;
-      console.log(this.skills);
     });
   }
 
   onChange(skill) {
     if (skill != "") {
-      this.user.userSkills.push(new UserSkill(0, this.user, this.skills.find(s => s.skillID == skill)));
+      this.user.userSkills.push(new UserSkill(0, null, this.skills.find(s => s.skillID == skill)));
       this.skills.splice(this.skills.indexOf(this.skills.find(s => s.skillID == skill)), 1);
     }
     console.log(this.user.userSkills);
   }
 
   deleteSkill(us: UserSkill) {
-    const index = this.user.userSkills.indexOf(us, 0);
-    if (index > -1) {
-      this.user.userSkills.splice(index, 1);
-      this.skills.push(us.skill);
-    }
+    this.accountService.deleteSkill(us.userSkillID).subscribe(res => {
+      const index = this.user.userSkills.indexOf(us, 0);
+      if (index > -1) {
+        this.user.userSkills.splice(index, 1);
+        this.skills.push(us.skill);
+      }
+    });
   }
 
   cancelEdit() {

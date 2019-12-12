@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tag } from '../Models/tag.model';
 import { TagAssignment } from '../Models/tag-assignment';
+import { TagUser } from '../Models/tag-user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,10 @@ export class TagService {
   }
   postTagAssignment(tagAssignment: TagAssignment) {
     return this.http.post<TagAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Tag/tagAssignment", tagAssignment);
+  }
+
+  //TagUsers
+  deleteTagUser(id) {
+    return this.http.delete<TagUser>("https://freelancerprojectapi.azurewebsites.net/api/Tag/tagUser/" + id);
   }
 }
