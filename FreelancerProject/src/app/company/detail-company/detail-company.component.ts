@@ -11,6 +11,10 @@ import { AssignmentService } from 'src/app/Services/assignment.service';
 import { ToastrService } from 'ngx-toastr';
 import { Review } from 'src/app/Models/review.model';
 import { ReviewService } from 'src/app/Services/review.service';
+import { UserserviceService } from 'src/app/Services/userservice.service';
+import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { AccountService } from 'src/app/Services/account.service';
+import { User } from 'src/app/Models/user.model';
 
 @Component({
   selector: "app-detail-company",
@@ -21,14 +25,16 @@ export class DetailCompanyComponent implements OnInit {
 
   id: number;
   company: any = {};
-  review: any = {} = new Review(0, 0 , '', '', null, null);
+  review: any = {} = new Review(0, 0, '', '', null, null);
   show: Boolean = false;
   fileToUpload: File = null;
+  isAuthorized: boolean = false;
+
   @Input()
   responses: Array<any>;
   private uploader: FileUploader = new FileUploader(null);
-  constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService :AssignmentService,
-              private toast: ToastrService) { }
+  constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService: AssignmentService,
+    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -37,14 +43,28 @@ export class DetailCompanyComponent implements OnInit {
     });
     this.configureFileUploader();
   }
-
   getCompany(id) {
     this.companyService.getCompanyDetail(id).subscribe(
       result => {
         console.log(result); this.company = result;
         this.show = true;
+
+        this.hideButtons(result);
+       
       }
     );
+  }
+  hideButtons(company){
+    var userID = this._userService.getUserID();
+    this._accountService.getUser(userID).subscribe(currentUser => {
+      this.companyService.checkIfOwnCompany(this.company).subscribe(isOwnCompany => {
+        if (this._authenticateService.CheckLoggedIn() &&
+          isOwnCompany == true && currentUser.userType.type == "recruiter") {
+          this.isAuthorized = true;
+        }
+      });
+    });
+
   }
 
   deleteCompany(id) {
@@ -85,8 +105,10 @@ export class DetailCompanyComponent implements OnInit {
       this.company.image = fileItem.data.url;
       console.log(this.company);
       this.companyService.updateImage(this.company).subscribe(
-        result => {console.log('the server sends back: ', result);
-                   this.ngOnInit(); this.toast.success('Your company image has been changed'); }
+        result => {
+          console.log('the server sends back: ', result);
+          this.ngOnInit(); this.toast.success('Your company image has been changed');
+        }
       );
     };
     this.uploader.onCompleteItem = (
@@ -102,7 +124,7 @@ export class DetailCompanyComponent implements OnInit {
       });
   }
 
-  btnSelectAssignment(id:number){
+  btnSelectAssignment(id: number) {
     this._assignmentService.setAssignmentID(id);
     this.router.navigate(["/assignmentdetail"]);
   }

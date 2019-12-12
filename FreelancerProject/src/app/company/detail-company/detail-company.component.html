@@ -18,10 +18,14 @@
       <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12">
-      <h1 class="text-primary">{{company.companyName}} <button type="button" class="btn btn-primary btn-pill m-2"
-          (click)="editCompany(company.companyID)">Edit</button>
-        <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
-          data-target="#deleteModal">Delete</button></h1>
+      <h1 class="text-primary">{{company.companyName}}
+        <div *ngIf="isAuthorized">
+          <button type="button" class="btn btn-primary btn-pill m-2"
+            (click)="editCompany(company.companyID)">Edit</button>
+          <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
+            data-target="#deleteModal">Delete</button>
+        </div>
+      </h1>
       <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
         {{company.location.postcode}}, {{company.location.address}}</h5>
       <p>{{company.about}}</p>
