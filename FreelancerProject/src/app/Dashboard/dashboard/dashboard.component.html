@@ -1,12 +1,12 @@
 <div class="container" *ngIf="currentUser!=null">
   <h3>Dashboard</h3>
-  <div *ngIf="currentUser.userType.userTypeID == 1">
+  <div *ngIf="currentUser.userType.type == 'user'">
     <app-dashboard-user></app-dashboard-user>
   </div>
-  <div *ngIf="currentUser.userType.userTypeID == 2">
+  <div *ngIf="currentUser.userType.type == 'recruiter'">
     <app-dashboard-recruiter></app-dashboard-recruiter>
   </div>
-  <div *ngIf="currentUser.userType.userTypeID == 3">
+  <div *ngIf="currentUser.userType.type == 'admin'">
     <app-dashboard-admin></app-dashboard-admin>
   </div>
 </div>

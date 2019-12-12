@@ -1,13 +1,13 @@
 <div class="container" *ngIf="show">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
-      <img [src]="company.image" alt="Company Logo"
-        class="img-fluid avatar" >
-        <label for="inputavatar" id="penlabel">
-          <h6 class="text-info">Edit Picture</h6>
-        </label>
-        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-          [uploader]="uploader" (change)="fileInput.value=''" multiple />
+      <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
+      <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
+      <label for="inputavatar" id="penlabel">
+        <h6 class="text-info">Edit Picture</h6>
+      </label>
+      <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+        [uploader]="uploader" (change)="fileInput.value=''" multiple />
       <h4 class="text-muted mt-3 mb-2">Contact
         <hr>
       </h4>
@@ -26,25 +26,25 @@
         {{company.location.postcode}}, {{company.location.address}}</h5>
       <p>{{company.about}}</p>
       <div class="row">
-      <h3 class="text-secondary col-12">Assignments</h3>
-      <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let assignment of company.assignments">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-            alt="Assignment image">
-          <div class="card-body">
-            <h4 class="card-title">{{assignment.assignmentName}}</h4>
-            <p class="card-text">{{assignment.description}}</p>
-            <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Tell me more &rarr;</button>
-          </div>
-          <div class="card-footer">
-            <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
+        <h3 class="text-secondary col-12">Assignments</h3>
+        <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let assignment of company.assignments">
+          <div class="card">
+            <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+            <img *ngIf="!assignment.image==''" src="{{assignment.image}}" class="card-img-top" alt="img">
+            <div class="card-body">
+              <h4 class="card-title">{{assignment.assignmentName}}</h4>
+              <p class="card-text">{{assignment.description}}</p>
+              <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary">Tell me more
+                &rarr;</button>
+            </div>
+            <div class="card-footer">
+              <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
                 <span class="badge badge-info mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
-            </span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <div class="col-12" *ngIf="company.assignments.length==0">
         <div class="card">
           <div class="card-body">
