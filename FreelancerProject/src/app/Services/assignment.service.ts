@@ -11,10 +11,8 @@ import { UserAssignment } from '../Models/user-assignment.model';
 })
 export class AssignmentService {
   assignmentID: number;
-
-  private assignment: number;
   userID: number;
-  currentAssignment = new BehaviorSubject(this.assignment);
+  currentAssignment = new BehaviorSubject(this.assignmentID);
 
   constructor(private http: HttpClient, private _userService: UserserviceService) { }
 
@@ -73,12 +71,7 @@ export class AssignmentService {
     this.userID = this._userService.getUserID();
     return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/CheckIfOwnAssignment?assignmentID=" + assignment.assignmentID + "&userID=" + this.userID);
   }
-
-  setAssignmentID(assignmentID) {
-    this.assignmentID = assignmentID;
-    //return this.http.delete<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + assignmentID);
-  }
-  getAssignmentEdit() {
-    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + this.assignmentID);
+  getAssignmentEdit(assignmentID) {
+    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" +  assignmentID);
   }
 }

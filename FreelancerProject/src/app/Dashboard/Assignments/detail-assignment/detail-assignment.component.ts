@@ -30,7 +30,9 @@ export class DetailAssignmentComponent implements OnInit {
   ngOnInit() {
     this.success = false;
     this.error = false;
-    this._assignmentService.getAssignmentEdit().subscribe(result => {
+    this._assignmentService.currentAssignment.subscribe(assignmentID => {
+   
+    this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result => {
       this.assignment = result;
       console.log(this.assignment);
       this.show = true;
@@ -53,6 +55,7 @@ export class DetailAssignmentComponent implements OnInit {
       });
 
     });
+  })
   }
 
   btnSelectCompany(id: number) {
@@ -61,7 +64,7 @@ export class DetailAssignmentComponent implements OnInit {
     this.router.navigate(["/companydetail"]);
   }
   editAssignment(assignmentID) {
-    this._assignmentService.setAssignmentID(assignmentID);
+    this._assignmentService.currentAssignment.next(assignmentID);
     this.router.navigate(['/editAssignment']);
   }
   deleteAssignment(assignmentID) {

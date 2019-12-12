@@ -57,7 +57,7 @@ export class DashboardRecruiterComponent implements OnInit {
   }
 
   editAssignment(assignment: Assignment){
-    this._assignmentService.setAssignmentID(assignment.assignmentID);
+    this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(['/editAssignment']);
   }
 

@@ -24,8 +24,8 @@ export class EditAssignmentComponent implements OnInit {
   assignment: Assignment;
   tag: string;
   tags: Tag[] = [];
-  tagToAdd:Tag;
-  tagAssignments:TagAssignment;
+  tagToAdd: Tag;
+  tagAssignments: TagAssignment;
   updateAssignment: FormGroup;
   fileToUpload: File = null;
   @Input()
@@ -34,7 +34,7 @@ export class EditAssignmentComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
-    this.assignment =  new Assignment(0, [], "", "", null, null, [], null, "");
+    this.assignment = new Assignment(0, [], "", "", null, null, [], null, "");
     this.updateAssignment = this._formBuilder.group({
       assignmentID: [0, Validators.required],
       tags: [''],
@@ -45,30 +45,33 @@ export class EditAssignmentComponent implements OnInit {
       user: [''],
       status: ['']
     });
-    this._assignmentService.getAssignmentEdit().subscribe(result => {
-      this.assignment = result;
-      console.log(this.assignment);
-      //var locationString = this.assignment.location.address;
-      this.updateAssignment.setValue({
-        assignmentName: this.assignment.assignmentName,
-        description: this.assignment.description,
-        company: this.assignment.company.companyName,
-        assignmentID: '',
-        tags: '',
-        location: '',
-        user: '',
-        status: this.assignment.status.currentStatus
+    this._assignmentService.currentAssignment.subscribe(assignmentID => {
+      this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result => {
+        this.assignment = result;
+        console.log(this.assignment);
+        //var locationString = this.assignment.location.address;
+        this.updateAssignment.setValue({
+          assignmentName: this.assignment.assignmentName,
+          description: this.assignment.description,
+          company: this.assignment.company.companyName,
+          assignmentID: '',
+          tags: '',
+          location: '',
+          user: '',
+          status: this.assignment.status.currentStatus
+        });
       });
     });
+
     this.configureFileUploader();
 
   }
   putAssignment() {
-    const {assignmentName, description} =  this.updateAssignment.value;
-    this.assignment.description  = description;
+    const { assignmentName, description } = this.updateAssignment.value;
+    this.assignment.description = description;
     this.assignment.assignmentName = assignmentName;
-    console.log("SAVE"+this.assignment);
-    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
+    console.log("SAVE" + this.assignment);
+    this._assignmentService.putAssignment(this.assignment).subscribe(result => {
       this.ngOnInit();
     });
   }
@@ -78,7 +81,7 @@ export class EditAssignmentComponent implements OnInit {
     this.tagAssignments = new TagAssignment(0, null, this.tagToAdd);
     this.assignment.tagAssignments.push(this.tagAssignments);
     this.tag = '';
-    console.log("ADD TAG"+this.assignment);
+    console.log("ADD TAG" + this.assignment);
     // this._assignmentService.putAssignment(this.assignment).subscribe( result => {
     //   this.ngOnInit();
     // });

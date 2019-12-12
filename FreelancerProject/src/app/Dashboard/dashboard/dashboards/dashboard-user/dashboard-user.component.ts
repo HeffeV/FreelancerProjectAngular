@@ -43,7 +43,7 @@ export class DashboardUserComponent implements OnInit {
     });
   }
   viewDetails(assignment) {
-    this._assignmentService.setAssignmentID(assignment.assignmentID);
+    this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(["/assignmentdetail"]);
   }
 

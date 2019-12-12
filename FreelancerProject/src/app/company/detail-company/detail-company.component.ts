@@ -125,7 +125,7 @@ export class DetailCompanyComponent implements OnInit {
   }
 
   btnSelectAssignment(id: number) {
-    this._assignmentService.setAssignmentID(id);
+    this._assignmentService.currentAssignment.next(id);
     this.router.navigate(["/assignmentdetail"]);
   }
 

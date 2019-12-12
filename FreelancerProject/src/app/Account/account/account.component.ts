@@ -68,7 +68,7 @@ export class AccountComponent implements OnInit {
   }
 
   btnSelectAssignment(id: number) {
-    this.assignmentservice.setAssignmentID(id);
+    this.assignmentservice.currentAssignment.next(id);
     this.router.navigate(["/assignmentdetail"]);
   }
 
