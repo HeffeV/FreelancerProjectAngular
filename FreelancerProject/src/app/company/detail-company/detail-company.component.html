@@ -1,21 +1,21 @@
 <div class="container" *ngIf="show">
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
-        <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
-        <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
-        <label for="inputavatar" id="penlabel">
-          <h6 class="text-info">Edit Picture</h6>
-        </label>
-        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-          [uploader]="uploader" (change)="fileInput.value=''" multiple />
-        <h4 class="text-muted mt-3 mb-2">Contact
-          <hr>
-        </h4>
-        <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
-          {{company.userCompanies[0].user.lastName}}</h5>
-        <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
-        <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
-        <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
+      <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
+      <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
+      <label for="inputavatar" id="penlabel">
+        <h6 class="text-info">Edit Picture</h6>
+      </label>
+      <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+        [uploader]="uploader" (change)="fileInput.value=''" multiple />
+      <h4 class="text-muted mt-3 mb-2">Contact
+        <hr>
+      </h4>
+      <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
+        {{company.userCompanies[0].user.lastName}}</h5>
+      <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
+      <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
+      <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12">
       <h1 class="text-primary">{{company.companyName}} <button type="button" class="btn btn-primary btn-pill m-2"
@@ -66,16 +66,18 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let review of company.reviews">
-        <div class="card mb-5">
-          <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
-            alt="card image cap">
-          <div class="card-body h-100">
-            <h5 class="card-title">{{review.title}} <span class="badge badge-success"
-                *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
-                *ngIf="review.score<=5">{{review.score}}</span></h5>
-            <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
-            <p class="card-text">{{review.description}}</p>
+      <div *ngFor="let review of company.reviews">
+        <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="review.userReview">
+          <div class="card mb-5">
+            <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+              alt="card image cap">
+            <div class="card-body h-100">
+              <h5 class="card-title">{{review.title}} <span class="badge badge-success"
+                  *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
+                  *ngIf="review.score<=5">{{review.score}}</span></h5>
+              <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
+              <p class="card-text">{{review.description}}</p>
+            </div>
           </div>
         </div>
       </div>
