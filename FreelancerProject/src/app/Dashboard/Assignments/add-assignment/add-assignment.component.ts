@@ -46,6 +46,10 @@ export class AddAssignmentComponent implements OnInit {
     });
      this._companyService.currentCompany.subscribe(result => {
       this.companyID = result;
+      this._companyService.getCompany(this.companyID).subscribe(result => {
+        this.company = result;
+      })
+
     });
   }
   addNameToAssignment() {
