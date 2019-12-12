@@ -1,31 +1,52 @@
 <button type="button" class="btn btn-default" (click)="GoToNewAssignment()">New Assignment</button>
-<div *ngIf="assignments">
-<mat-card *ngFor="let assignment of assignments" class="assignment-card">
-  <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
-  <mat-card-content>
-    <p>
-      {{assignment.description}}
-    </p>
-    <p>Status: {{assignment.status.currentStatus}}</p>
-    <span class="badge badge-primary mr-2" *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
-    
-    <!-- status is draft -> status to open -->
-    <p *ngIf="assignment.status.statusID == 1">
-      <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
-      <button class="btn btn-light"(click)="publishAssignment(assignment)">Publish</button>
-    </p>
+<button type="button" class="btn btn-default" (click)="GoToNewCompany()">New Company</button>
 
-    <!-- status is open -> status to closed -->
-    <p *ngIf="assignment.status.statusID == 4">
-      <!-- apply -> student -->
-      <button class="btn btn-light"(click)="closeAssignment(assignment)">Close assignment</button>
-    </p>
+<div class="accordion" id="accordionRecruiterDashboard">
+  <div *ngFor="let c of companies"  class="card">
+      <div class="card-header" [id]="'heading'+ c.companyID">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true" aria-controls="'collapse' + c.companyID">
+          {{c.companyName}}
+        </button>
+      </h2>
+    </div>
 
-    <!-- status is close -> status to finished -->
-    <p *ngIf="assignment.status.statusID == 3">
-      <button class="btn btn-light"(click)="finishAssignment(assignment)">Finish assignment</button>
-    </p>
-  </mat-card-content>
-  <button type="button" class="btn btn-light" (click)="deleteAssignment(assignment.assignmentID)">delete</button>
-</mat-card>
+    <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID" data-parent="#accordionRecruiterDashboard">
+      <div class="card-body">
+          <button type="button" class="btn btn-light" (click)="GoToNewAssignment()">New Assignment</button>
+        <mat-card *ngFor="let assignment of c.assignments" class="assignment-card">
+          <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
+          <mat-card-content>
+            <p>
+              {{assignment.description}}
+            </p>
+            <p>Status: {{assignment.status.currentStatus}}</p>
+
+            <span class="badge badge-primary mr-2"
+              *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
+
+            <!-- status is draft -> status to open -->
+            <p *ngIf="assignment.status.currentStatus == 'Draft'">
+              <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
+              <button class="btn btn-light" (click)="publishAssignment(assignment)">Publish</button>
+            </p>
+
+            <!-- status is open -> status to closed -->
+            <p *ngIf="assignment.status.currentStatus == 'Open'">
+              <!-- apply -> student -->
+              <button class="btn btn-light" (click)="closeAssignment(assignment)">Close assignment</button>
+            </p>
+
+            <!-- status is close -> status to finished -->
+            <p *ngIf="assignment.status.currentStatus == 'Closed'">
+              <button class="btn btn-light" (click)="finishAssignment(assignment)">Finish assignment</button>
+            </p>
+          </mat-card-content>
+          <button type="button" class="btn btn-light"
+            (click)="deleteAssignment(assignment.assignmentID)">delete</button>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
 </div>
