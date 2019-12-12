@@ -6,7 +6,7 @@
     </h3>
     <div class="row" *ngIf="user!=null && !isEditable">
         <div class="col-sm-12 col-lg-3 pic">
-            <div>
+            <div class="profilepic">
                 <img src="../../../assets/profilepic.png" height="200px" width="200px">
             </div>
             <div>
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12" *ngIf="user.userAssignments != null && zeroAssignments">
+                        <div class="col-12" *ngIf="zeroAssignments">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title text-primary">No assignments 😢</h4>
@@ -137,14 +137,14 @@
                     </div>
                 </div>
                 <div class="tab-pane fade show mt-3" id="skills" role="tabpanel" aria-labelledby="skills-tab">
-                    <div class="card mb-3" *ngFor="let skill of user.skills">
+                    <div class="card mb-3" *ngFor="let skill of user.userSkills">
                         <div class="card-body">
-                            <p class="card-title text-primary">{{skill.skillName}}</p>
-                            <p class="card-subtitle text-muted" *ngIf="skill.category!=null">
-                                {{skill.category.categoryName}}</p>
+                            <p class="card-title text-primary">{{skill.skill.skillName}}</p>
+                            <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
+                                {{skill.skill.category.categoryName}}</p>
                         </div>
                     </div>
-                    <div class="col-12" *ngIf="user.skills != null && user.skills.length==0">
+                    <div class="col-12" *ngIf="user.userSkills != null && user.userSkills.length==0">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title text-primary">No skills 😢</h4>
@@ -241,17 +241,20 @@
                 </div>
             </div>
             <h5>Skills
-                <small class="text-muted" *ngIf="user.skills.length > 0">Double click on card to delete</small>
+                <small class="text-muted" *ngIf="user.userSkills.length > 0">Double click on card to delete</small>
             </h5>
-            <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills != null" (change)="onChange($event.target.value)">
-                <option value="" selected disabled>Choose here</option>
+
+            <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills.length != 0"
+                (change)="onChange($event.target.value)">
+                <option value="" selected>Choose here</option>
                 <option *ngFor="let skill of skills" value="{{skill.skillID}}">{{skill.skillName}}</option>
             </select>
-            <div class="card mb-3" *ngFor="let skill of user.skills" (dblclick)="deleteSkill(skill)">
+
+            <div class="card mb-3" *ngFor="let skill of user.userSkills" (dblclick)="deleteSkill(skill)">
                 <div class="card-body">
-                    <p class="card-title text-primary">{{skill.skillName}}</p>
-                    <p class="card-subtitle text-muted" *ngIf="skill.category!=null">
-                        {{skill.category.categoryName}}</p>
+                    <p class="card-title text-primary">{{skill.skill.skillName}}</p>
+                    <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
+                        {{skill.skill.category.categoryName}}</p>
                 </div>
             </div>
             <h5>Tags
