@@ -69,6 +69,10 @@ export class AssignmentService {
     return this.http.get<UserAssignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/UserAssignment?assignmentID=" + assignment.assignmentID + "&userID=" + this.userID);
   }
 
+  checkIfOwnAssignment(assignment) {
+    this.userID = this._userService.getUserID();
+    return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/CheckIfOwnAssignment?assignmentID=" + assignment.assignmentID + "&userID=" + this.userID);
+  }
 
   setAssignmentID(assignmentID) {
     this.assignmentID = assignmentID;
