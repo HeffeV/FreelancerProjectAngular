@@ -70,9 +70,10 @@ export class EditAssignmentComponent implements OnInit {
     const { assignmentName, description } = this.updateAssignment.value;
     this.assignment.description = description;
     this.assignment.assignmentName = assignmentName;
-    console.log("SAVE" + this.assignment);
-    this._assignmentService.putAssignment(this.assignment).subscribe(result => {
-      this.ngOnInit();
+
+    console.log("SAVE"+this.assignment);
+    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
+      this.router.navigate(['dashboard']);
     });
   }
 

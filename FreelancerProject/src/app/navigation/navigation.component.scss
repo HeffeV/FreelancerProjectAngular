@@ -1,5 +1,5 @@
 mat-sidenav {
-    padding: 50px;
+    padding: 0px;
     background-color: white;
 }
 
@@ -34,4 +34,19 @@ mat-nav-list {
 .mat-button, .mat-button-base {
     background-color: white;
     color:white;
+}
+
+.active i {
+    &:before {
+        color: white;
+    }
+}
+
+.va {
+    vertical-align: bottom;
+}
+
+.avatar {
+    max-width: 250px;
+    max-height: 250px;
 }

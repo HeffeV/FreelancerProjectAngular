@@ -34,7 +34,7 @@ export class DetailCompanyComponent implements OnInit {
   responses: Array<any>;
   private uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService: AssignmentService,
-    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
+  private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {

@@ -54,7 +54,7 @@ export class AddCompanyComponent implements OnInit {
     console.log(newCompany);
 
     this.companyService.addCompany(newCompany).subscribe(
-      result => {console.log(result); this.router.navigate(['']); }
+      result => {console.log(result); this.router.navigate(['dashboard']); }
     );
   }
 

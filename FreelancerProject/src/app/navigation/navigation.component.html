@@ -1,28 +1,32 @@
-<mat-sidenav-container *ngIf="true">
-  <mat-sidenav #sidenav mode="over" [fixedInViewport]="true" class="text-center">
-    <ul *ngIf="loggedIn" class="list-group list-group-flush">
-      
-      <li class="list-group-item " routerLink="/" routerLinkActive="active"><i class="material-icons ">home</i>Home</li>
-      <li class="list-group-item " routerLink="/browseassignments" routerLinkActive="active"><i
-        class="material-icons ">search</i>Browse Assignments</li>
-      <li class="list-group-item " routerLink="/dashboard" routerLinkActive="active"><i
-          class="material-icons ">dashboard</i>Dashboard</li>
-      <li class="list-group-item " routerLink="/account" routerLinkActive="active"><i
-          class="material-icons ">account_box</i>My account</li>
-      <li class="list-group-item " (click)="logOut()" routerLink="" routerLinkActive="active"><i
-          class="material-icons ">logout</i>Logout</li>
+<mat-sidenav-container *ngIf="checkIfLoggedIn()">
+  <mat-sidenav #sidenav mode="over" [fixedInViewport]="true" class="text-center d-flex align-items-center">
+    <img *ngIf="user.image==''" src="../../assets/profilepic.png" class="img-fluid avatar" alt="standard avatar">
+    <img *ngIf="user.image!=''" [src]="user.image" alt="avatar" class="img-fluid avatar">
+    <ul *ngIf="checkIfLoggedIn()" class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-light va" routerLink="/home" routerLinkActive="active"><i
+          class="material-icons float-left text-primary">home</i>Home</li>
+      <li class="list-group-item list-group-item-light va" routerLink="/browseassignments" routerLinkActive="active"><i
+          class="material-icons float-left text-primary">search</i>Browse Assignments</li>
+      <li class="list-group-item list-group-item-light va" routerLink="/dashboard" routerLinkActive="active"><i
+          class="material-icons float-left text-primary">dashboard</i>Dashboard</li>
+      <li class="list-group-item list-group-item-light va" routerLink="/account" routerLinkActive="active"><i
+          class="material-icons float-left text-primary">account_box</i>My account</li>
+
     </ul>
-    <ul *ngIf="!loggedIn" class="list-group list-group-flush">
+    <button class="list-group-item " (click)="logOut()" routerLink="" routerLinkActive="active"><i
+      class="material-icons float-left">logout</i>Logout</button>
+    <!-- <ul *ngIf="!loggedIn" class="list-group">
       <li class="list-group-item " routerLink="/" routerLinkActive="active"><i class="material-icons ">home</i>Home</li>
       <li class="list-group-item " routerLink="/login" routerLinkActive="active"><i
-        class="material-icons ">login</i>Login</li>
-    </ul>
+          class="material-icons">login</i>Login</li>
+    </ul> -->
   </mat-sidenav>
   <mat-sidenav-content>
     <button mat-button (click)="toggleSideNav()"><i class="material-icons menuknop">
         menu
       </i></button>
-    <router-outlet *ngIf="true"></router-outlet>
+    <router-outlet *ngIf="checkIfLoggedIn()"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<router-outlet *ngIf="!checkIfLoggedIn()"></router-outlet>
 
