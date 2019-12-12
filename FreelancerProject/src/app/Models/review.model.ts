@@ -6,10 +6,11 @@ export class Review {
 
     constructor(
         public reviewID?: number,
-        public score?:number,
-        public description?:string,
-        public title?:string,
-        public user?:User,
-        public company?:Company
-    ){}
+        public score?: number,
+        public description?: string,
+        public title?: string,
+        public user?: User,
+        public company?: Company,
+        public userReview?: boolean
+    ) { }
 }
