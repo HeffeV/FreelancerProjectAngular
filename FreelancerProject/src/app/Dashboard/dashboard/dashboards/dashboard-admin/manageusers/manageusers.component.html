@@ -3,6 +3,53 @@
     <div class="card-body">
         <h5 class="card-title">Manage Users</h5>
         <p class="card-text">Manage users.</p>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#ModalUserss">Open window</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#ModalUsers">Open window</button>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalUsers" tabindex="-1" role="dialog" aria-labelledby="ModalUsersLabel" aria-hidden="true"
+    data-backdrop="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="ModalUsersLabel">Manage users</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-createuser-list"
+                                data-toggle="list" href="#list-createuser" role="tab" aria-controls="create">Create</a>
+                            <a class="list-group-item list-group-item-action" id="list-edituser-list" data-toggle="list"
+                                href="#list-edituser" role="tab" aria-controls="edit">Edit</a>
+                            <a class="list-group-item list-group-item-action" id="list-deleteuser-list"
+                                data-toggle="list" href="#list-deleteuser" role="tab" aria-controls="delete">Delete</a>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-createuser" role="tabpanel"
+                                aria-labelledby="list-createuser-list">
+
+                            </div>
+                            <div class="tab-pane fade" id="list-edituser" role="tabpanel"
+                                aria-labelledby="list-edituser-list">
+
+                            </div>
+                            <div class="tab-pane fade" id="list-deleteuser" role="tabpanel"
+                                aria-labelledby="list-deleteuser-list">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
