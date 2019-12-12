@@ -9,6 +9,6 @@ export class ReviewService {
   constructor(private http: HttpClient) { }
 
   addReview(review) {
-    return this.http.post<any>('https://localhost:44308/api/Review/addReviewToCompany', review);
+    return this.http.post<any>('https://localhost:44308/api/Review/addreviewtocompany', review);
   }
 }

@@ -112,10 +112,9 @@ export class DetailCompanyComponent implements OnInit {
     if (this.review.score > 10 || this.review.score < 0 || this.review.title === '' || this.review.description === '') {
       this.toast.error('Please fill in the fields correctly');
     } else {
-      this.toast.success('Your review has been added');
       console.log(this.review);
       this.reviewService.addReview(this.review).subscribe(
-        result => {console.log(result); this.ngOnInit(); }
+        result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
       );
     }
   }
