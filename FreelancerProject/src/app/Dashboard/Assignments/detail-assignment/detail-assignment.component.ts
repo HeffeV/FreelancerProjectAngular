@@ -18,6 +18,7 @@ export class DetailAssignmentComponent implements OnInit {
   show: Boolean = false;
   success: Boolean = false;
   error: Boolean = false
+  alreadyApplied: boolean;
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
@@ -28,6 +29,14 @@ export class DetailAssignmentComponent implements OnInit {
       this.assignment = result;
       console.log(this.assignment);
       this.show = true;
+      this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
+        if (result == null) {
+          this.alreadyApplied = false;
+        }
+        else {
+          this.alreadyApplied = true;
+        }
+      });
     });
   }
 
@@ -53,5 +62,22 @@ export class DetailAssignmentComponent implements OnInit {
         this.error = true;
         this.success = false;
       });
+  }
+
+  // getAlreadyApplied() {
+  //   this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
+  //     if (result == null) {
+  //       this.alreadyApplied = false;
+  //     }
+  //     else {
+  //       this.alreadyApplied = true;
+  //     }
+  //   });
+  // }
+
+  cancelAssignment(assignment){
+    this._assignmentService.cancelAssignment(assignment).subscribe(result => {
+      this.ngOnInit();
+    });
   }
 }
