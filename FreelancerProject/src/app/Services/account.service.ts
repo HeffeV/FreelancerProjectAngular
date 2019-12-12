@@ -23,7 +23,7 @@ export class AccountService {
     return this.http.put("http://localhost:63344/api/User", user);
   }
 
-  getSkills(): Observable<Skill[]>{
-    return this.http.get<Skill[]>("http://localhost:63344/api/Skill");
+  getSkills(id: number): Observable<Skill[]>{
+    return this.http.get<Skill[]>("http://localhost:63344/api/Skill/"+id);
   }
 }

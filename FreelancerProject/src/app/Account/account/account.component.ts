@@ -5,10 +5,11 @@ import { CompanyService } from 'src/app/Services/company.service';
 import { UserserviceService } from 'src/app/Services/userservice.service';
 import { AssignmentService } from 'src/app/Services/assignment.service';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Tag } from 'src/app/Models/tag.model';
 import { TagUser } from 'src/app/Models/tag-user';
 import { Skill } from 'src/app/Models/skill.model';
+import { UserSkill } from 'src/app/Models/userskill.model';
 
 @Component({
   selector: 'app-account',
@@ -80,21 +81,27 @@ export class AccountComponent implements OnInit {
   }
 
   getSkills() {
-    this.accountService.getSkills().subscribe(res => {
+    this.accountService.getSkills(this.user.userID).subscribe(res => {
       this.skills = res;
+      console.log(this.skills);
     });
   }
 
-  /*onChange(skill){
-      this.user.skills.push(this.skills.find(s => s.skillID == skill));
+  onChange(skill) {
+    if (skill != "") {
+      this.user.userSkills.push(new UserSkill(0, this.user, this.skills.find(s => s.skillID == skill)));
+      this.skills.splice(this.skills.indexOf(this.skills.find(s => s.skillID == skill)), 1);
+    }
+    console.log(this.user.userSkills);
   }
 
-  deleteSkill(skill: Skill) {
-    const index = this.user.skills.indexOf(skill, 0);
+  deleteSkill(us: UserSkill) {
+    const index = this.user.userSkills.indexOf(us, 0);
     if (index > -1) {
-      this.user.skills.splice(index, 1);
-    } 
-  }*/
+      this.user.userSkills.splice(index, 1);
+      this.skills.push(us.skill);
+    }
+  }
 
   cancelEdit() {
     this.isEditable = false;
