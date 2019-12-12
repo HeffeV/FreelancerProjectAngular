@@ -12,10 +12,13 @@ import { DashboardAdminComponent } from './dashboard/dashboards/dashboard-admin/
 import { FileUploadModule } from 'ng2-file-upload';
 import { ManagetagsComponent } from './dashboard/dashboards/dashboard-admin/managetags/managetags.component';
 import { ManageskillsComponent } from './dashboard/dashboards/dashboard-admin/manageskills/manageskills.component';
+import { ManageusersComponent } from './dashboard/dashboards/dashboard-admin/manageusers/manageusers.component';
+import { ManageassignmentsComponent } from './dashboard/dashboards/dashboard-admin/manageassignments/manageassignments.component';
+import { ManagecompaniesComponent } from './dashboard/dashboards/dashboard-admin/managecompanies/managecompanies.component';
 
 
 @NgModule({
-  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent, ManagetagsComponent, ManageskillsComponent],
+  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent, ManagetagsComponent, ManageskillsComponent, ManageusersComponent, ManageassignmentsComponent, ManagecompaniesComponent],
   imports: [
     CommonModule,
     MatCardModule,
