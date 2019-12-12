@@ -1,276 +1,280 @@
 <div class="container">
-    <h3>
-        Account information
-        <small class="btn btn-outline-primary" (click)="changeToEditable()" *ngIf="id == null && !isEditable">Edit
-            account</small>
-    </h3>
-    <div class="row" *ngIf="user!=null && !isEditable">
-        <div class="col-sm-12 col-lg-3 pic">
-            <div class="profilepic">
-                <img src="../../../assets/profilepic.png" height="200px" width="200px">
-            </div>
-            <div>
-                <h6 class="pt-2">{{user.username}}</h6>
-            </div>
-            <div class="w-75 mx-auto">
-                <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers">{{t.tag.tagName}}</span>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-9">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="personal-tab" data-toggle="tab" href="#personal" role="tab"
-                        aria-controls="personal" aria-selected="true">Personal info</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="assignments-tab" data-toggle="tab" href="#assignments" role="tab"
-                        aria-controls="assignments" aria-selected="false">Assignments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="skills-tab" data-toggle="tab" href="#skills" role="tab"
-                        aria-controls="skills" aria-selected="false">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
-                        aria-controls="reviews" aria-selected="false">Reviews</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active mt-1" id="personal" role="tabpanel" aria-labelledby="personal-tab"
-                    *ngIf="user != null && user.contactInfo != null">
-                    <div class="row my-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Name:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            {{user.name}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Lastname:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            {{user.lastName}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Email:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            {{user.email}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Birthyear:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            {{user.birthYear}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Bio:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            {{user.bio}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Contact:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div>{{user.contactInfo.mobileNumber}}</div>
-                            <div>{{user.contactInfo.linkedIn}}</div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Street + number:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div>{{user.location.address}}</div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Postcode:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div>{{user.location.postcode}}</div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="font-weight-bold">Country:</div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div>{{user.location.country}}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade show mt-3" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4" *ngFor="let assignment of user.userAssignments">
-                            <div class="card" *ngIf="assignment.assignment.status != null && !zeroAssignments">
-                                <img class="card-img-top"
-                                    src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-                                    alt="Assignment image">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
-                                    <p class="card-text">{{assignment.assignment.description}}</p>
-                                    <button (click)="btnSelectAssignment(assignment.assignment.assignmentID)"
-                                        class="btn btn-primary mt-auto">More info &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12" *ngIf="zeroAssignments">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title text-primary">No assignments 😢</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade show mt-3" id="skills" role="tabpanel" aria-labelledby="skills-tab">
-                    <div class="card mb-3" *ngFor="let skill of user.userSkills">
-                        <div class="card-body">
-                            <p class="card-title text-primary">{{skill.skill.skillName}}</p>
-                            <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
-                                {{skill.skill.category.categoryName}}</p>
-                        </div>
-                    </div>
-                    <div class="col-12" *ngIf="user.userSkills != null && user.userSkills.length==0">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title text-primary">No skills 😢</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade show mt-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4" *ngFor="let review of user.reviews">
-                            <div class="card mb-3">
-                                <img class="card-img-top"
-                                    src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{review.title}} <span class="badge badge-success"
-                                            *ngIf="review.score>5">{{review.score}}</span><span
-                                            class="badge badge-danger" *ngIf="review.score<=5">{{review.score}}</span>
-                                    </h4>
-                                    <h6 class="card-subtitle text-muted">By {{review.company.companyName}}</h6>
-                                    <p class="card-text">{{review.description}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12" *ngIf="user.reviews != null && user.reviews.length==0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title text-primary">No reviews 😢</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <h3>
+    Account information
+    <small class="btn btn-outline-primary" (click)="changeToEditable()" *ngIf="id == null && !isEditable">Edit
+      account</small>
+  </h3>
+  <div class="row" *ngIf="user!=null && !isEditable">
+    <div class="col-sm-12 col-lg-3 pic">
+      <div class="profilepic">
+        <img *ngIf="user.image==''" src="../../../assets/profilepic.png" class="img-fluid">
+        <img *ngIf="user.image!=''" [src]="user.image" class="img-fluid">
+        <label for="inputavatar" id="penlabel">
+          <h6 class="text-info">Edit Picture</h6>
+        </label>
+        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+          [uploader]="uploader" (change)="fileInput.value=''" multiple />
+      </div>
+      <div>
+        <h6 class="pt-2">{{user.username}}</h6>
+      </div>
+      <div class="w-75 mx-auto">
+        <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers">{{t.tag.tagName}}</span>
+      </div>
     </div>
-    <div *ngIf="user!=null && isEditable">
-        <form (ngSubmit)="onSubmit()">
-            <div class="form-row mb-4">
-                <input type="submit" class="btn btn-primary btn-pill" value="Save">
-                <input type="button" class="btn btn-danger btn-pill mx-3" value="Cancel" (click)="cancelEdit()">
+    <div class="col-sm-12 col-lg-9">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="personal-tab" data-toggle="tab" href="#personal" role="tab"
+            aria-controls="personal" aria-selected="true">Personal info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="assignments-tab" data-toggle="tab" href="#assignments" role="tab"
+            aria-controls="assignments" aria-selected="false">Assignments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="skills-tab" data-toggle="tab" href="#skills" role="tab" aria-controls="skills"
+            aria-selected="false">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+            aria-selected="false">Reviews</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active mt-1" id="personal" role="tabpanel" aria-labelledby="personal-tab"
+          *ngIf="user != null && user.contactInfo != null">
+          <div class="row my-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Name:</div>
             </div>
-            <h5>Personal info</h5>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Name</label>
-                    <input class="form-control" name="Name" [(ngModel)]="user.name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Lastname</label>
-                    <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
-                </div>
+            <div class="col-sm-12 col-lg-6">
+              {{user.name}}
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Email</label>
-                    <input class="form-control" name="Email" [(ngModel)]="user.email">
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Username</label>
-                    <input class="form-control" name="Username" [(ngModel)]="user.username">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Birthyear</label>
-                    <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
-                </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Lastname:</div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Street + number</label>
-                    <input class="form-control" name="Address" [(ngModel)]="user.location.address">
-                </div>
-                <div class="form-group col-md-3">
-                    <label>Postcode</label>
-                    <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
-                </div>
-                <div class="form-group col-md-3">
-                    <label>Country</label>
-                    <input class="form-control" name="Country" [(ngModel)]="user.location.country">
-                </div>
+            <div class="col-sm-12 col-lg-6">
+              {{user.lastName}}
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Bio</label>
-                    <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
-                </div>
-                <div class="form-group col-md-3">
-                    <label>Mobile</label>
-                    <input class="form-control" name="MobileNumber" [(ngModel)]="user.contactInfo.mobileNumber">
-                </div>
-                <div class="form-group col-md-3">
-                    <label>LinkedIn</label>
-                    <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn">
-                </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Email:</div>
             </div>
-            <h5>Skills
-                <small class="text-muted" *ngIf="user.userSkills.length > 0">Double click on card to delete</small>
-            </h5>
-
-            <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills.length != 0"
-                (change)="onChange($event.target.value)">
-                <option value="" selected>Choose here</option>
-                <option *ngFor="let skill of skills" value="{{skill.skillID}}">{{skill.skillName}}</option>
-            </select>
-
-            <div class="card mb-3" *ngFor="let skill of user.userSkills" (dblclick)="deleteSkill(skill)">
+            <div class="col-sm-12 col-lg-6">
+              {{user.email}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Birthyear:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              {{user.birthYear}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Bio:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              {{user.bio}}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Contact:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <div>{{user.contactInfo.mobileNumber}}</div>
+              <div>{{user.contactInfo.linkedIn}}</div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Street + number:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <div>{{user.location.address}}</div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Postcode:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <div>{{user.location.postcode}}</div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-lg-6">
+              <div class="font-weight-bold">Country:</div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <div>{{user.location.country}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show mt-3" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
+          <div class="row">
+            <div class="col-sm-12 col-lg-4 d-flex align-items-stretch" *ngFor="let assignment of user.userAssignments">
+              <div class="card" *ngIf="assignment.assignment.status != null && !zeroAssignments">
+                <img class="card-img-top"
+                  src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+                  alt="Assignment image">
+                <div class="card-body d-flex flex-column h-100">
+                  <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
+                  <p class="card-text">{{assignment.assignment.description}}</p>
+                  <button (click)="btnSelectAssignment(assignment.assignment.assignmentID)"
+                    class="btn btn-primary mt-auto">More info &rarr;</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" *ngIf="zeroAssignments">
+              <div class="card">
                 <div class="card-body">
-                    <p class="card-title text-primary">{{skill.skill.skillName}}</p>
-                    <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
-                        {{skill.skill.category.categoryName}}</p>
+                  <h4 class="card-title text-primary">No assignments 😢</h4>
                 </div>
+              </div>
             </div>
-            <h5>Tags
-                <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to delete</small>
-            </h5>
-            <div class="form-row">
-                <div class="form-group col-md-10">
-                    <input class="form-control" name="tag" #newtag>
-                </div>
-                <div class="form-group col-md-22">
-                    <input type="button" class="btn btn-primary btn-pill" value="Add tag"
-                        (click)="addTag(newtag.value)">
-                </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show mt-3" id="skills" role="tabpanel" aria-labelledby="skills-tab">
+          <div class="card mb-3" *ngFor="let skill of user.userSkills">
+            <div class="card-body">
+              <p class="card-title text-primary">{{skill.skill.skillName}}</p>
+              <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
+                {{skill.skill.category.categoryName}}</p>
             </div>
-            <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
-                (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
-        </form>
+          </div>
+          <div class="col-12" *ngIf="user.userSkills != null && user.userSkills.length==0">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-primary">No skills 😢</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show mt-3" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+          <div class="row">
+            <div class="col-sm-12 col-lg-4 d-flex align-items-stretch" *ngFor="let review of user.reviews">
+              <div class="card mb-3">
+                <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+                  alt="Card image cap">
+                <div class="card-body d-flex flex-column h-100">
+                  <h5 class="card-title mb-3">{{review.title}} <span class="badge badge-success"
+                      *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
+                      *ngIf="review.score<=5">{{review.score}}</span>
+                  </h5>
+                  <h6 class="card-subtitle text-muted">By {{review.company.companyName}}</h6>
+                  <p class="card-text">{{review.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" *ngIf="user.reviews != null && user.reviews.length==0">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-primary">No reviews 😢</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div *ngIf="user!=null && isEditable">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-row mb-4">
+        <input type="submit" class="btn btn-primary btn-pill" value="Save">
+        <input type="button" class="btn btn-danger btn-pill mx-3" value="Cancel" (click)="cancelEdit()">
+      </div>
+      <h5>Personal info</h5>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Name</label>
+          <input class="form-control" name="Name" [(ngModel)]="user.name">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Lastname</label>
+          <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Email</label>
+          <input class="form-control" name="Email" [(ngModel)]="user.email">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Username</label>
+          <input class="form-control" name="Username" [(ngModel)]="user.username">
+        </div>
+        <div class="form-group col-md-2">
+          <label>Birthyear</label>
+          <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Street + number</label>
+          <input class="form-control" name="Address" [(ngModel)]="user.location.address">
+        </div>
+        <div class="form-group col-md-3">
+          <label>Postcode</label>
+          <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
+        </div>
+        <div class="form-group col-md-3">
+          <label>Country</label>
+          <input class="form-control" name="Country" [(ngModel)]="user.location.country">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Bio</label>
+          <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Mobile</label>
+          <input class="form-control" name="MobileNumber" [(ngModel)]="user.contactInfo.mobileNumber">
+        </div>
+        <div class="form-group col-md-3">
+          <label>LinkedIn</label>
+          <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn">
+        </div>
+      </div>
+      <h5>Skills
+        <small class="text-muted" *ngIf="user.userSkills.length > 0">Double click on card to delete</small>
+      </h5>
+
+      <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills.length != 0"
+        (change)="onChange($event.target.value)">
+        <option value="" selected>Choose here</option>
+        <option *ngFor="let skill of skills" value="{{skill.skillID}}">{{skill.skillName}}</option>
+      </select>
+
+      <div class="card mb-3" *ngFor="let skill of user.userSkills" (dblclick)="deleteSkill(skill)">
+        <div class="card-body">
+          <p class="card-title text-primary">{{skill.skill.skillName}}</p>
+          <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
+            {{skill.skill.category.categoryName}}</p>
+        </div>
+      </div>
+      <h5>Tags
+        <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to delete</small>
+      </h5>
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <input class="form-control" name="tag" #newtag>
+        </div>
+        <div class="form-group col-md-22">
+          <input type="button" class="btn btn-primary btn-pill" value="Add tag" (click)="addTag(newtag.value)">
+        </div>
+      </div>
+      <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
+        (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
+    </form>
+  </div>
 </div>

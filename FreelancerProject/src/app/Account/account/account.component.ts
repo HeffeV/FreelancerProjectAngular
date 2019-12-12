@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AccountService } from 'src/app/Services/account.service';
 import { User } from 'src/app/Models/user.model';
 import { CompanyService } from 'src/app/Services/company.service';
@@ -11,7 +11,11 @@ import { TagUser } from 'src/app/Models/tag-user';
 import { Skill } from 'src/app/Models/skill.model';
 import { UserSkill } from 'src/app/Models/userskill.model';
 import { TagService } from 'src/app/Services/tag.service';
-
+import {
+  FileUploader,
+  FileUploaderOptions,
+  ParsedResponseHeaders
+} from 'ng2-file-upload';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -43,7 +47,10 @@ export class AccountComponent implements OnInit {
   zeroAssignments: Boolean = false;
   isEditable: Boolean = false;
   skills: Skill[] = [];
-
+  fileToUpload: File = null;
+  @Input()
+  responses: Array<any>;
+  private uploader: FileUploader = new FileUploader(null);
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService) {
   }
@@ -134,6 +141,49 @@ export class AccountComponent implements OnInit {
         this.loadUser(this.loggedUser.UserID);
       }
     });
+
+    this.configureFileUploader();
   }
 
+  configureFileUploader() {
+    const uploaderOptions: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/dnyqfmbol/image/upload`,
+      autoUpload: true,
+      isHTML5: true,
+      removeAfterUpload: true,
+      headers: [
+        {
+          name: "X-Requested-With",
+          value: "XMLHttpRequest"
+        }
+      ]
+    };
+    this.uploader = new FileUploader(uploaderOptions);
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      form.append("upload_preset", "angularupload");
+      form.append("folder", "angular_sample");
+      form.append("file", fileItem);
+      fileItem.withCredentials = false;
+      return { fileItem, form };
+    };
+
+    const upsertResponse = fileItem => {
+      console.log(fileItem.data.url);
+      this.user.image = fileItem.data.url;
+      this.accountService.updateAvater(this.user).subscribe(
+        result => {console.log(result); this.ngOnInit(); }
+      );
+    };
+    this.uploader.onCompleteItem = (
+      item: any,
+      response: string,
+      status: number,
+      headers: ParsedResponseHeaders
+    ) =>
+      upsertResponse({
+        file: item.file,
+        status,
+        data: JSON.parse(response)
+      });
+  }
 }

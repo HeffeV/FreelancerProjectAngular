@@ -13,7 +13,7 @@ export class AccountService {
   private account:number;
 
   currentAccount = new BehaviorSubject(this.account);
-  
+
   constructor(private http: HttpClient) { }
 
   getUser(id: number) : Observable<User>{
@@ -30,5 +30,9 @@ export class AccountService {
 
   deleteSkill(id: number){
     return this.http.delete<UserSkill>("https://freelancerprojectapi.azurewebsites.net/api/Skill/userSkill/" + id);
+  }
+
+  updateAvater(user) {
+    return this.http.put('https://https://freelancerprojectapi.azurewebsites.net/api/User/updateavatar', user);
   }
 }
