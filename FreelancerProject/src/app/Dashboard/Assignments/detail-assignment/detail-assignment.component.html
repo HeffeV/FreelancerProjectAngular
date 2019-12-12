@@ -17,6 +17,7 @@
       <button type="button" *ngIf="!success" class="btn btn-primary btn-pill m-2" (click)="apply(assignment)">Apply for this assignment</button>
       <div class="alert alert-success" role="alert" *ngIf="success">
         Successfully applied!
+        <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="error">
         Error applying!

@@ -19,6 +19,7 @@ export class DetailAssignmentComponent implements OnInit {
   success: Boolean = false;
   error: Boolean = false
   alreadyApplied: boolean;
+  isAuthorized: boolean = false;
 
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
@@ -30,12 +31,7 @@ export class DetailAssignmentComponent implements OnInit {
       console.log(this.assignment);
       this.show = true;
       this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
-        if (result == null) {
-          this.alreadyApplied = false;
-        }
-        else {
-          this.alreadyApplied = true;
-        }
+        result == null ? this.alreadyApplied= false : this.alreadyApplied = true;
       });
     });
   }
