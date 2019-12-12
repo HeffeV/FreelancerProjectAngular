@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Featured assignments</h3>
-  <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let assignment of assignments">
+  <div class="row text-center">
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let assignment of assignments">
       <div class="card">
         <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
         <img *ngIf="!assignment.image==''" src="{{assignment.image}}" class="card-img-top" alt="img">
@@ -10,7 +10,7 @@
           <p class="card-text">{{assignment.description.substring(0,60)}}...</p>
           <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary mt-auto">More info &rarr;</button>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
             <span class="badge badge-info mr-2" *ngIf="3>i">{{tagAssignment.tag.tagName}}</span>
           </span>
@@ -20,7 +20,7 @@
   </div>
   <h3>Featured companies</h3>
   <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let company of companies">
+    <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let company of companies">
       <div class="card">
         <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="card-img-top" alt="img">
         <img [src]="company.image" *ngIf="company.image!=''" class="card-img-top" alt="img">
@@ -29,7 +29,7 @@
           <p class="card-text">{{company.about.substring(0,60)}}...</p>
           <button (click)="btnSelectCompany(company.companyID)" class="btn btn-primary mt-auto">More info &rarr;</button>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <span *ngFor="let tagCompany of company.tagCompanies; let i=index">
             <span class="badge badge-info mr-2" *ngIf="3>i">{{tagCompany.tag.tagName}}</span>
           </span>

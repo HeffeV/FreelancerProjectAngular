@@ -28,7 +28,7 @@ export class DetailCompanyComponent implements OnInit {
   responses: Array<any>;
   private uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService :AssignmentService,
-              private toast: ToastrService, private readonly reviewService: ReviewService) { }
+              private toast: ToastrService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -107,15 +107,4 @@ export class DetailCompanyComponent implements OnInit {
     this.router.navigate(["/assignmentdetail"]);
   }
 
-  addReview() {
-    this.review.company = this.company;
-    if (this.review.score > 10 || this.review.score < 0 || this.review.title === '' || this.review.description === '') {
-      this.toast.error('Please fill in the fields correctly');
-    } else {
-      console.log(this.review);
-      this.reviewService.addReview(this.review).subscribe(
-        result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
-      );
-    }
-  }
 }

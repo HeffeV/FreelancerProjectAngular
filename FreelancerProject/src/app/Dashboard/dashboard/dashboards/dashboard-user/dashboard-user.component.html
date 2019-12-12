@@ -86,6 +86,8 @@
               </p>
             </mat-card-content>
             <button type="button" class="btn btn-light" (click)="viewDetails(assignment)">View Details</button>
+            <button type="button" class="btn btn-primary btn-circle btn-md float-right text-light" (click)="changeCompany(assignment.company)"> <i class="fas fa-feather-alt fa-2x" id="addreview" data-toggle="modal"
+              data-target="#reviewModal"></i></button>
           </mat-card>
           <div *ngIf="finishedAssignments.length == 0">
             <mat-card class="assignment-card">
@@ -94,6 +96,49 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="reviewModalLabel">Give your opinion about your </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewtitle">Title</label>
+                <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" [(ngModel)]="review.title">
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewdescription">Description</label>
+                <input type="text" class="form-control" id="reviewdescription" name="reviewdescription"
+                  [(ngModel)]="review.description">
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewscore">Score</label>
+                <input type="number" class="form-control" id="reviewscore" name="reviewscore" min="0"
+                  [(ngModel)]="review.score">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
       </div>
     </div>
   </div>
