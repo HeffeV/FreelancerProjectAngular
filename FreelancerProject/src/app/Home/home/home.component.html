@@ -1,14 +1,14 @@
 <div class="container">
   <h3>Featured assignments</h3>
-  <div class="row text-center">
+  <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let assignment of assignments">
-      <div class="card">
+      <div class="card w-100">
         <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
         <img *ngIf="!assignment.image==''" src="{{assignment.image}}" class="card-img-top" alt="img">
-        <div class="card-body d-flex flex-column h-100">
+        <div class="card-body h-100">
           <h5 class="card-title">{{assignment.assignmentName}}</h5>
           <p class="card-text">{{assignment.description.substring(0,60)}}...</p>
-          <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary mt-auto">More info &rarr;</button>
+          <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary mt-auto w-100">More info &rarr;</button>
         </div>
         <div class="card-footer text-center">
           <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">

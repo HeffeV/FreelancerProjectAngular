@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Review } from 'src/app/Models/review.model';
 import { ToastrService } from 'ngx-toastr';
 import { ReviewService } from 'src/app/Services/review.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -14,11 +15,12 @@ import { ReviewService } from 'src/app/Services/review.service';
 })
 export class DashboardUserComponent implements OnInit {
 
+  checkSub: Subscription;
   requestedAssignments: Assignment[];
   inProgressAssignments: Assignment[];
   finishedAssignments: Assignment[];
   company: any = {};
-  review: any = {} = new Review(0, 0 , '', '', null, null);
+  review: any = {} = new Review(0, 0 , '', '', null, null, true);
   constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router,
               private toast: ToastrService, private readonly reviewService: ReviewService) { }
 
@@ -59,5 +61,16 @@ export class DashboardUserComponent implements OnInit {
         result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
       );
     }
+  }
+
+  checkIfUserReviewedCompany(companyID) {
+    let show = false;
+    this.checkSub = this.reviewService.checkIfUserReviewedCompany(companyID).subscribe(
+      result => {show = result; console.log('the loggedin user has reviewed this ', result);
+    }
+    );
+
+    this.checkSub.unsubscribe();
+    return show;
   }
 }
