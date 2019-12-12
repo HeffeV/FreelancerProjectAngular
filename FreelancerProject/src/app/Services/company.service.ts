@@ -8,7 +8,6 @@ import { UserserviceService } from './userservice.service';
   providedIn: 'root'
 })
 export class CompanyService {
-
   private company:number;
 
   currentCompany=new BehaviorSubject(this.company);
@@ -44,3 +43,4 @@ export class CompanyService {
     return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
   }
 }
+

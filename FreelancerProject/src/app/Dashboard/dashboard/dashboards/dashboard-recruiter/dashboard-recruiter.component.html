@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-default" (click)="GoToNewAssignment()">New Assignment</button>
+<!-- <button type="button" class="btn btn-default" (click)="GoToNewAssignment()">New Assignment</button> -->
 <button type="button" class="btn btn-default" (click)="GoToNewCompany()">New Company</button>
 
 <div class="accordion" id="accordionRecruiterDashboard">
@@ -13,7 +13,7 @@
 
     <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID" data-parent="#accordionRecruiterDashboard">
       <div class="card-body">
-          <button type="button" class="btn btn-light" (click)="GoToNewAssignment()">New Assignment</button>
+          <button type="button" class="btn btn-light" (click)="GoToNewAssignment(c.companyID)">New Assignment</button>
         <mat-card *ngFor="let assignment of c.assignments" class="assignment-card">
           <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
           <mat-card-content>

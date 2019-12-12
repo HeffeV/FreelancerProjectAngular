@@ -32,7 +32,8 @@ export class DashboardRecruiterComponent implements OnInit {
       this.ngOnInit();
     });
   }
-  GoToNewAssignment(){
+  GoToNewAssignment(companyID){
+    this._companyService.currentCompany.next(companyID);
     this.router.navigate(['/addAssignment']);
   }
   GoToNewCompany(){
