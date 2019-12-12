@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatInputModule, MatFormFieldModule,MatSelectModule,MatStepperModule,MatTreeModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatStepperModule, MatTreeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddAssignmentComponent } from './Assignments/add-assignment/add-assignment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,11 +9,13 @@ import { DetailAssignmentComponent } from './Assignments/detail-assignment/detai
 import { DashboardRecruiterComponent } from './dashboard/dashboards/dashboard-recruiter/dashboard-recruiter.component';
 import { DashboardUserComponent } from './dashboard/dashboards/dashboard-user/dashboard-user.component';
 import { DashboardAdminComponent } from './dashboard/dashboards/dashboard-admin/dashboard-admin.component';
-import {FileUploadModule} from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
+import { ManagetagsComponent } from './dashboard/dashboards/dashboard-admin/managetags/managetags.component';
+import { ManageskillsComponent } from './dashboard/dashboards/dashboard-admin/manageskills/manageskills.component';
 
 
 @NgModule({
-  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent],
+  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent, ManagetagsComponent, ManageskillsComponent],
   imports: [
     CommonModule,
     MatCardModule,

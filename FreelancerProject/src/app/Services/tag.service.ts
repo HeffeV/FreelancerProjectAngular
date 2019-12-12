@@ -16,6 +16,12 @@ export class TagService {
   postTag(tag: Tag) {
     return this.http.post<Tag>("https://freelancerprojectapi.azurewebsites.net/api/Tag", tag);
   }
+  updateTag(tag: Tag) {
+    return this.http.put<Tag>("https://freelancerprojectapi.azurewebsites.net/api/Tag", tag);
+  }
+  deleteTag(id: number) {
+    return this.http.delete<Tag>("https://freelancerprojectapi.azurewebsites.net/api/Tag/" + id);
+  }
 
 
   //TagAssignments

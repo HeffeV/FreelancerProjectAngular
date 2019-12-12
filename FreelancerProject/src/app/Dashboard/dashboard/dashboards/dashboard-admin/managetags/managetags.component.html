@@ -1,0 +1,123 @@
+<div class="card" style="width: 18rem;">
+    <img src="../../../../../../assets/tag.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Manage Tags</h5>
+        <p class="card-text">Create, edit and remove tags.</p>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTag">Open window</button>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalTag" tabindex="-1" role="dialog" aria-labelledby="ModalTagLabel" aria-hidden="true"
+    data-backdrop="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="ModalTagLabel">Manage tags</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-create-list"
+                                data-toggle="list" href="#list-create" role="tab" aria-controls="create">Create</a>
+                            <a class="list-group-item list-group-item-action" id="list-edit-list" data-toggle="list"
+                                href="#list-edit" role="tab" aria-controls="edit">Edit</a>
+                            <a class="list-group-item list-group-item-action" id="list-delete-list" data-toggle="list"
+                                href="#list-delete" role="tab" aria-controls="delete">Delete</a>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-create" role="tabpanel"
+                                aria-labelledby="list-create-list">
+                                <form [formGroup]="createForm" autocomplete="off">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-2 required">
+                                            <input class="form-control" formControlName="TagName" placeholder="tagname">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary" (click)="createTag()">Add</button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary" (click)="reset()">Reset</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="alert alert-light col-md-12" role="alert" *ngIf="tags.length>0">
+                                            <h6>Tags to create:</h6>
+                                            <span class="badge badge-primary mr-2"
+                                                *ngFor="let tag of tags">{{tag.tagName}}</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" (click)="createAllTags()">Create
+                                        tags</button>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>
+                                    </div>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="list-edit" role="tabpanel" aria-labelledby="list-edit-list">
+                                <form [formGroup]="editForm" autocomplete="off">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 required">
+                                            <label>Select tag</label>
+                                            <select class="form-control" id="tagSelect" formControlName="Tag"
+                                                (change)="onChange($event.target.value)">
+                                                <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">
+                                                    {{tag.tagName}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4 required">
+                                            <label>Tagname</label>
+                                            <input class="form-control" formControlName="TagName">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" (click)="saveTag()">Save</button>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>
+                                    </div>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="list-delete" role="tabpanel"
+                                aria-labelledby="list-delete-list">
+                                <form [formGroup]="deleteForm" autocomplete="off">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 required">
+                                            <label>Select tag</label>
+                                            <select class="form-control" id="tagSelect" formControlName="Tag"
+                                                (change)="onDeleteChange($event.target.value)">
+                                                <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">
+                                                    {{tag.tagName}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" (click)="deleteTag()">Delete</button>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>
+                                    </div>
+                                    <div class="container containermargin">
+                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
