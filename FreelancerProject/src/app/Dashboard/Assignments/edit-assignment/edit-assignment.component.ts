@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Assignment } from 'src/app/Models/assignment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TagService } from 'src/app/Services/tag.service';
@@ -9,7 +9,11 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 import { Tag } from 'src/app/Models/tag.model';
 import { TagAssignment } from 'src/app/Models/tag-assignment';
 import { Location } from 'src/app/Models/location.model';
-
+import {
+  FileUploader,
+  FileUploaderOptions,
+  ParsedResponseHeaders
+} from 'ng2-file-upload';
 @Component({
   selector: 'app-edit-assignment',
   templateUrl: './edit-assignment.component.html',
@@ -23,7 +27,10 @@ export class EditAssignmentComponent implements OnInit {
   tagToAdd:Tag;
   tagAssignments:TagAssignment;
   updateAssignment: FormGroup;
-
+  fileToUpload: File = null;
+  @Input()
+  responses: Array<any>;
+  private uploader: FileUploader = new FileUploader(null);
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
@@ -53,6 +60,8 @@ export class EditAssignmentComponent implements OnInit {
         status: this.assignment.status.currentStatus
       });
     });
+    this.configureFileUploader();
+
   }
   putAssignment() {
     const {assignmentName, description} =  this.updateAssignment.value;
@@ -80,5 +89,45 @@ export class EditAssignmentComponent implements OnInit {
     this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
       this.ngOnInit();
     });
+  }
+
+  configureFileUploader() {
+    const uploaderOptions: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/dnyqfmbol/image/upload`,
+      autoUpload: true,
+      isHTML5: true,
+      removeAfterUpload: true,
+      headers: [
+        {
+          name: "X-Requested-With",
+          value: "XMLHttpRequest"
+        }
+      ]
+    };
+    this.uploader = new FileUploader(uploaderOptions);
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      form.append("upload_preset", "angularupload");
+      form.append("folder", "angular_sample");
+      form.append("file", fileItem);
+      fileItem.withCredentials = false;
+      return { fileItem, form };
+    };
+
+    const upsertResponse = fileItem => {
+      console.log(fileItem.data.url);
+      this.assignment.image = fileItem.data.url;
+      console.log(this.assignment);
+    };
+    this.uploader.onCompleteItem = (
+      item: any,
+      response: string,
+      status: number,
+      headers: ParsedResponseHeaders
+    ) =>
+      upsertResponse({
+        file: item.file,
+        status,
+        data: JSON.parse(response)
+      });
   }
 }

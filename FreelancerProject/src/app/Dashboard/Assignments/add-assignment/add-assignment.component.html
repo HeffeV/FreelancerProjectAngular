@@ -16,6 +16,13 @@
       <input [(ngModel)]="tassignment.assignmentName" id="assignmentName" name="assignmentName" class="form-control">
       <label for="description">Description</label>
       <input [(ngModel)]="tassignment.description" id="description" name="desscription" class="form-control">
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <label for="inputavatar" id="imagelabel" class="btn btn-primary">
+          Add Image
+        </label>
+        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+          [uploader]="uploader" (change)="fileInput.value=''" multiple />
+      </div>
     </form>
     <button mat-button matStepperNext class="btn btn-light" (click)="addNameToAssignment()">Next</button>
 

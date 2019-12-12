@@ -9,6 +9,8 @@ import { DetailAssignmentComponent } from './Assignments/detail-assignment/detai
 import { DashboardRecruiterComponent } from './dashboard/dashboards/dashboard-recruiter/dashboard-recruiter.component';
 import { DashboardUserComponent } from './dashboard/dashboards/dashboard-user/dashboard-user.component';
 import { DashboardAdminComponent } from './dashboard/dashboards/dashboard-admin/dashboard-admin.component';
+import {FileUploadModule} from 'ng2-file-upload';
+
 
 @NgModule({
   declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent],
@@ -24,7 +26,8 @@ import { DashboardAdminComponent } from './dashboard/dashboards/dashboard-admin/
     MatTreeModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FileUploadModule
   ],
   exports: [
     ReactiveFormsModule

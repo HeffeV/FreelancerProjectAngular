@@ -25,6 +25,7 @@ mat-sidenav-content {
     :active {
         outline:none;
     }
+    position: fixed;
 }
 
 mat-nav-list {
