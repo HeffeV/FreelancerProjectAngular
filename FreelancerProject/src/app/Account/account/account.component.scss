@@ -1,10 +1,19 @@
-.profilepic{
-    border-radius: 50%;
-}
 .pic{
     text-align: center;
 }
 
+.profilepic{
+    border-radius: 50%;
+}
+
 #penlabel {
     cursor: pointer;
+}
+
+span.badge{
+    cursor: pointer;
+}
+
+.modal div.alert{
+    border-radius: 5px;
 }

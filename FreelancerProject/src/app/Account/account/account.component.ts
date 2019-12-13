@@ -16,6 +16,8 @@ import {
   FileUploaderOptions,
   ParsedResponseHeaders
 } from 'ng2-file-upload';
+import { AuthenticateService } from 'src/app/Services/authenticate.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -42,17 +44,21 @@ export class AccountComponent implements OnInit {
     tagUsers: [],
     userAssignments: [],
     location: null,
-    image: "",
+    image: '',
   };
   zeroAssignments: Boolean = false;
   isEditable: Boolean = false;
   skills: Skill[] = [];
   fileToUpload: File = null;
+  newPass: string = null;
+  newPass2: string = null;
+  error: string = null;
+
   @Input()
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
 
-  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService) {
+  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService, private _authenticateService: AuthenticateService, private toast: ToastrService) {
   }
 
   loadUser(id: number) {
@@ -73,8 +79,9 @@ export class AccountComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.user);
-    this.accountService.updateUser(this.user).subscribe();
+    this.accountService.updateUser(this.user).subscribe(res => {
+      this.toast.success('Account saved');
+    });
     this.isEditable = false;
   }
 
@@ -128,6 +135,33 @@ export class AccountComponent implements OnInit {
 
   changeToEditable() {
     this.isEditable = true;
+  }
+
+  deleteAccount() {
+    this.userService.deleteUser(this.user.userID).subscribe(e => {
+      this._authenticateService.logOut();
+      this.toast.success('Your account was successfully deleted');
+    });
+  }
+
+  changePass() {
+    this.error = null;
+
+    if (this.loggedUser.password == this.user.password) {
+      if (this.newPass == this.newPass2) {
+        console.log(this.newPass);
+        this.user.password = this.newPass;
+        this.accountService.updateUser(this.user).subscribe(res => {
+          this.toast.success('Password changed');
+        });
+      }
+      else {
+        this.error = "Passwords do not match.";
+      }
+    }
+    else {
+      this.error = "Old password not correct.";
+    }
   }
 
   ngOnInit() {

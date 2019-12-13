@@ -6,9 +6,10 @@
   </h3>
   <div class="row" *ngIf="user!=null && !isEditable">
     <div class="col-sm-12 col-lg-3 pic">
-      <div class="profilepic">
-        <img *ngIf="user.image==''" src="../../../assets/profilepic.png" class="img-fluid">
-        <img *ngIf="user.image!=''" [src]="user.image" class="img-fluid">
+      <div>
+        <img *ngIf="user.image==''" src="../../../assets/profilepic.png" class="img-fluid profilepic" width="200px"
+          height="200px">
+        <img *ngIf="user.image!=''" [src]="user.image" class="img-fluid profilepic" width="200px" height="200px">
         <label for="inputavatar" id="penlabel">
           <h6 class="text-info">Edit Picture</h6>
         </label>
@@ -191,6 +192,8 @@
       <div class="form-row mb-4">
         <input type="submit" class="btn btn-primary btn-pill" value="Save">
         <input type="button" class="btn btn-danger btn-pill mx-3" value="Cancel" (click)="cancelEdit()">
+        <input type="button" class="btn btn-outline-info btn-pill float-right" value="Change password"
+          data-toggle="modal" data-target="#ModalPass">
       </div>
       <h5>Personal info</h5>
       <div class="form-row">
@@ -276,5 +279,74 @@
       <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
         (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
     </form>
+    <div class="w-100">
+      <hr>
+      <input type="button" class="btn btn-danger btn-pill float-right my-4" value="Delete account" data-toggle="modal"
+        data-target="#ModalConfirm">
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ModalPass" tabindex="-1" role="dialog" aria-labelledby="ModalPassLabel" aria-hidden="true"
+  data-backdrop="false">
+  <form #form="ngForm" (ngSubmit)="changePass()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="ModalPassLabel">Change password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label>Old password</label>
+              <input type="password" class="form-control" name="oldPass" [(ngModel)]="loggedUser.password" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label>New password</label>
+              <input type="password" class="form-control" name="newPass" [(ngModel)]="newPass" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label>Confirm new password</label>
+              <input type="password" class="form-control" name="confirmNewPass" [(ngModel)]="newPass2" required>
+            </div>
+          </div>
+          <div class="container">
+              <div class="alert alert-danger" *ngIf="error != null">{{error}}</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="changePass()" [disabled]="!form.form.valid">Change password</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="ModalConfirmLabel">Delete account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You are deleting your account. Are you sure you want to delete it?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteAccount()">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+      </div>
+    </div>
   </div>
 </div>
