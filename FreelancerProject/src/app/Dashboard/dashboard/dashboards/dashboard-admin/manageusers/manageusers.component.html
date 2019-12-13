@@ -18,33 +18,147 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-createuser-list"
-                                data-toggle="list" href="#list-createuser" role="tab" aria-controls="create">Create</a>
-                            <a class="list-group-item list-group-item-action" id="list-edituser-list" data-toggle="list"
-                                href="#list-edituser" role="tab" aria-controls="edit">Edit</a>
-                            <a class="list-group-item list-group-item-action" id="list-deleteuser-list"
-                                data-toggle="list" href="#list-deleteuser" role="tab" aria-controls="delete">Delete</a>
-                        </div>
-                    </div>
-                    <div class="col-10">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-createuser" role="tabpanel"
-                                aria-labelledby="list-createuser-list">
-
+                <div class="container">
+                    <form [formGroup]="filterForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 required">
+                                <label>Username</label>
+                                <input class="form-control" formControlName="Username">
                             </div>
-                            <div class="tab-pane fade" id="list-edituser" role="tabpanel"
-                                aria-labelledby="list-edituser-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>Email</label>
+                                <input class="form-control" formControlName="Email">
                             </div>
-                            <div class="tab-pane fade" id="list-deleteuser" role="tabpanel"
-                                aria-labelledby="list-deleteuser-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>UserType</label>
+                                <select class="form-control" id="typeSelect" formControlName="UserType">
+                                    <option value="admin">Admin</option>
+                                    <option value="user">Freelancer</option>
+                                    <option value="recruiter">Recruiter</option>
+                                </select>
                             </div>
                         </div>
+                    </form>
+                    <div class="overflow-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Account type</th>
+                                    <th scope="col">Edit user</th>
+                                    <th scope="col">Delete user</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <th scope="row">{{user.userID}}</th>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td *ngIf="user.userType.type=='user'">Freelancer</td>
+                                    <td *ngIf="user.userType.type=='recruiter'">Recruiter</td>
+                                    <td *ngIf="user.userType.type=='admin'">Admin</td>
+                                    <td><button type="button" (click)="selectUser(user)"
+                                            class="btn btn-success">Edit</button></td>
+                                    <td><button type="button" (click)="deleteUser(user.userID)"
+                                            class="btn btn-warning">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <form *ngIf="user.username!=''">
+                        <h5>Personal info of {{user.username}}</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Name</label>
+                                <input class="form-control" name="Name" [(ngModel)]="user.name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Lastname</label>
+                                <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Email</label>
+                                <input class="form-control" name="Email" [(ngModel)]="user.email">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Username</label>
+                                <input class="form-control" name="Username" [(ngModel)]="user.username">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Birthyear</label>
+                                <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Street + number</label>
+                                <input class="form-control" name="Address" [(ngModel)]="user.location.address">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Postcode</label>
+                                <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Country</label>
+                                <input class="form-control" name="Country" [(ngModel)]="user.location.country">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Bio</label>
+                                <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Mobile</label>
+                                <input class="form-control" name="MobileNumber"
+                                    [(ngModel)]="user.contactInfo.mobileNumber">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>LinkedIn</label>
+                                <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn">
+                            </div>
+                        </div>
+                        <h5>Skills
+                            <small class="text-muted" *ngIf="user.userSkills.length > 0">Double click on card to
+                                delete</small>
+                        </h5>
+
+                        <select class="form-control mb-3" id="skillSelect" name="skillSelect" *ngIf="skills.length != 0"
+                            (change)="onChange($event.target.value)">
+                            <option value="" selected>Choose here</option>
+                            <option *ngFor="let skill of skills" value="{{skill.skillID}}">{{skill.skillName}}</option>
+                        </select>
+
+                        <div class="card mb-3" *ngFor="let skill of user.userSkills" (dblclick)="deleteSkill(skill)">
+                            <div class="card-body">
+                                <p class="card-title text-primary">{{skill.skill.skillName}}</p>
+                                <p class="card-subtitle text-muted" *ngIf="skill.skill.category!=null">
+                                    {{skill.skill.category.categoryName}}</p>
+                            </div>
+                        </div>
+                        <h5>Tags
+                            <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to
+                                delete</small>
+                        </h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <input class="form-control" name="tag" #newtag>
+                            </div>
+                            <div class="form-group col-md-22">
+                                <input type="button" class="btn btn-primary btn-pill" value="Add tag"
+                                    (click)="addTag(newtag.value)">
+                            </div>
+                        </div>
+                        <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
+                            (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
+                        <div class="form-row">
+                            <button type="button" (click)="saveUser()" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
