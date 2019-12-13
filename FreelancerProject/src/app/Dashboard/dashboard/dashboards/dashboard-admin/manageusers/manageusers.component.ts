@@ -97,7 +97,6 @@ export class ManageusersComponent implements OnInit {
   }
 
   saveUser() {
-    console.log(this.user);
     this.accountService.updateUser(this.user).subscribe();
   }
   deleteUser(userid: number) {
