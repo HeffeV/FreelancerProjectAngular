@@ -50,7 +50,7 @@ export class AccountComponent implements OnInit {
   fileToUpload: File = null;
   @Input()
   responses: Array<any>;
-  private uploader: FileUploader = new FileUploader(null);
+  uploader: FileUploader = new FileUploader(null);
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService) {
   }
@@ -172,7 +172,7 @@ export class AccountComponent implements OnInit {
       console.log(fileItem.data.url);
       this.user.image = fileItem.data.url;
       this.accountService.updateAvater(this.user).subscribe(
-        result => {console.log(result); this.ngOnInit(); }
+        result => { console.log(result); this.ngOnInit(); }
       );
     };
     this.uploader.onCompleteItem = (
