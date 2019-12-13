@@ -18,6 +18,7 @@ export class DashboardRecruiterComponent implements OnInit {
   companies: Company[] = [];
   addAssignment: FormGroup;
   updateAssignment: FormGroup;
+  selectedAssignment: any = {};
 
   constructor(private _assignmentService: AssignmentService, private _userService: UserserviceService, private _companyService: CompanyService, private _formBuilder: FormBuilder, private router: Router, private _accountService: AccountService) { }
 
@@ -78,5 +79,9 @@ export class DashboardRecruiterComponent implements OnInit {
   viewCandidate(candidateID) {
     this._accountService.currentAccount.next(candidateID);
     this.router.navigate(["/account"]);
+  }
+
+  changeSelectedAssignment(assignment) {
+    this.selectedAssignment = assignment;
   }
 }

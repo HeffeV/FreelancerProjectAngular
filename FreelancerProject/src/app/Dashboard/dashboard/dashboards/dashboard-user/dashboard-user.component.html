@@ -86,8 +86,8 @@
               </p>
             </mat-card-content>
             <button type="button" class="btn btn-light" (click)="viewDetails(assignment)">View Details</button>
-            <button *ngIf="checkIfUserReviewedCompany(assignment.company.companyID)" type="button" class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company)"> <i class="fas fa-feather-alt fa-2x text-info" id="addreview" data-toggle="modal"
-              data-target="#reviewModal"></i></button>
+            <button *ngIf="checkIfUserReviewedCompany(assignment.company.companyID)" type="button" class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company)" data-toggle="modal"
+            data-target="#reviewModal"> <i class="fas fa-feather-alt fa-2x text-info" id="addreview"></i></button>
           </mat-card>
           <div *ngIf="finishedAssignments.length == 0">
             <mat-card class="assignment-card">
@@ -95,7 +95,6 @@
             </mat-card>
           </div>
         </div>
-
       </div>
     </div>
   </div>

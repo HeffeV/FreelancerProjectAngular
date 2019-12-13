@@ -1,47 +1,107 @@
 <div class="container">
-  <h3>Browse assignments</h3>
-  <form [formGroup]="filterForm" autocomplete="off">
-    <div class="form-row">
-      <div class="form-group col-md-2 required">
-        <label>Title</label>
-        <input class="form-control" formControlName="Title">
-      </div>
-      <div class="form-group col-md-2 required">
-        <label>Tags</label>
-        <select class="form-control" id="tagSelect" formControlName="Tag">
-          <option *ngFor="let tag of tags" value="{{tag.tagID}}">{{tag.tagName}}</option>
-        </select>
-
-      </div>
-      <div class="col-md-2">
-        <button class="btnMargin btn btn-light" (click)="resetFilters()">Reset</button>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="alert alert-light col-md-12" role="alert" *ngIf="filterModel.tags.length>0">
-        <h6>Applied Tags:</h6>
-        <span class="badge badge-primary mr-2" *ngFor="let tag of filterModel.tags">{{tag.tagName}}</span>
-      </div>
-    </div>
-  </form>
-  <div class="row align-items-center ">
-    <div class="col" *ngFor="let assignment of assignments; index as i">
-      <div class="card" style="width: 18rem;">
-        <img *ngIf="assignments[i].image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
-        <img *ngIf="assignments[i].image!=''" src="{{assignments[i].image}}" class="card-img-top" alt="img">
+  <h2 class="text-primary">Browse assignments</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{assignments[i].assignmentName}}</h5>
-          <p class="card-text">{{assignments[i].description.substring(0,60)}}...
-          </p>
-          <button class="btn btn-primary" (click)="btnAssignmentDetails(assignments[i].assignmentID)">More info
-            &rarr;</button>
-        </div>
-        <div class="card-footer">
-          <span class="badge badge-primary mr-2"
-            *ngFor="let tagAssignment of assignments[i].tagAssignments">{{tagAssignment.tag.tagName}}</span>
+          <form [formGroup]="filterForm" autocomplete="off">
+            <div class="row">
+              <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="form-group required">
+                  <label>Title</label>
+                  <input class="form-control" formControlName="Title">
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-3 col-sm-12">
+                <div class="form-group required">
+                  <label>Tags</label>
+                  <select class="form-control" id="tagSelect" formControlName="Tag">
+                    <option *ngFor="let tag of tags" value="{{tag.tagID}}">{{tag.tagName}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-12 va">
+                <button class="btn btn-light btn-circle btn-md resetknop mt-4" (click)="resetFilters()"><i
+                    class="fas fa-redo-alt fa-2x"></i></button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row align-items-center ">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let assignment of assignments; index as i">
+              <div class="card" style="width: 100%">
+                <img *ngIf="assignments[i].image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+                <img *ngIf="assignments[i].image!=''" src="{{assignments[i].image}}" class="card-img-top" alt="img">
+                <div class="card-body">
+                  <h5 class="card-title">{{assignments[i].assignmentName}}</h5>
+                  <p class="card-text">{{assignments[i].description.substring(0,60)}}...
+                  </p>
+                  <button class="btn btn-primary" (click)="btnAssignmentDetails(assignments[i].assignmentID)">More info
+                    &rarr;</button>
+                </div>
+                <div class="card-footer">
+                  <span class="badge badge-primary mr-2"
+                    *ngFor="let tagAssignment of assignments[i].tagAssignments">{{tagAssignment.tag.tagName}}</span>
+                </div>
+              </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th scope="col" class="text-primary">Name</th>
+                <th scope="col" class="text-primary">Company</th>
+                <th scope="col" class="text-primary">Description</th>
+                <th scope="col" class="text-primary">Tags</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let assignment of assignments" class="text-center">
+                <td>
+                  <img *ngIf="assignment.image!=''" [src]="assignment.image" class="img-fluid tableimage"
+                    alt="assignment image">
+                  <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="img-fluid tableimage"
+                    alt="img">
+                  {{assignment.assignmentName}}
+                </td>
+                <td>
+                  <img *ngIf="assignment.company.image==''" src="../../../assets/company.jpg" alt="company image"
+                    class="img-fluid tableimage">
+                  <img *ngIf="assignment.company.image!=''" [src]="assignment.company.image" alt="company image"
+                    class="img-fluid tableimage">
+                  {{assignment.company.companyName}}
+                </td>
+                <td>
+                  {{assignment.description.substring(0,60)}}...
+                </td>
+                <td>
+                  <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
+                    <span class="badge badge-primary mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

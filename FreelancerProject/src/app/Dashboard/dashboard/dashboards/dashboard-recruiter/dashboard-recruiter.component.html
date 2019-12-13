@@ -1,81 +1,115 @@
-<!-- <button type="button" class="btn btn-default" (click)="GoToNewAssignment()">New Assignment</button> -->
-<button type="button" class="btn btn-default" (click)="GoToNewCompany()">New Company</button>
-
-<div class="accordion" id="accordionRecruiterDashboard">
-  <div *ngFor="let c of companies" class="card">
-    <div class="card-header" [id]="'heading'+ c.companyID">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse"
-          [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true" aria-controls="'collapse' + c.companyID">
-          {{c.companyName}}
-        </button>
-      </h2>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary float-right" (click)="GoToNewCompany()"><i class="fas fa-plus"></i>
+        New Company</button>
     </div>
+    <div class="col-12">
+      <div class="accordion" id="accordionRecruiterDashboard">
+        <div *ngFor="let c of companies" class="card">
+          <div class="card-header" [id]="'heading'+ c.companyID" data-toggle="collapse"
+            [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true"
+            aria-controls="'collapse' + c.companyID">
+            <h3 class="mb-0 text-primary">
+              {{c.companyName}}
+              <i class="fas fa-sort-down float-right text-primary"></i>
+            </h3>
+          </div>
 
-    <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID"
-      data-parent="#accordionRecruiterDashboard">
-      <div class="card-body">
-        <button type="button" class="btn btn-light" (click)="GoToNewAssignment(c.companyID)">New Assignment</button>
-        <mat-card *ngFor="let assignment of c.assignments" class="assignment-card">
-          <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
-          <mat-card-content>
-            <p>
-              {{assignment.description}}
-            </p>
-            <p>Status: {{assignment.status.currentStatus}}</p>
+          <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID"
+            data-parent="#accordionRecruiterDashboard">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <button type="button" class="btn btn-primary float-right" (click)="GoToNewAssignment(c.companyID)"><i
+                      class="fas fa-plus"></i> New
+                    Assignment</button>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch"
+                  *ngFor="let assignment of c.assignments">
+                  <div class="card w-100 m-3">
+                    <div class="card-body d-flex flex-column">
+                      <h3 class="card-title">{{assignment.assignmentName}}</h3>
+                      <p>
+                        {{assignment.description}}
+                      </p>
+                      <button *ngIf="assignment.status.currentStatus == 'Draft'" class="btn btn-primary mb-2"
+                        (click)="editAssignment(assignment)">Edit</button>
+                      <button *ngIf="assignment.status.currentStatus == 'Draft'" class="btn btn-primary mb-2"
+                        (click)="publishAssignment(assignment)">Publish</button>
 
-            <span class="badge badge-primary mr-2"
-              *ngFor="let tagAssignment of assignment.tagAssignments">{{tagAssignment.tag.tagName}}</span>
-
-            <!-- status is draft -> status to open -->
-            <p *ngIf="assignment.status.currentStatus == 'Draft'">
-              <button class="btn btn-light" (click)="editAssignment(assignment)">Edit</button>
-              <button class="btn btn-light" (click)="publishAssignment(assignment)">Publish</button>
-            </p>
-
-            <!-- status is open -> status to closed -->
-            <p *ngIf="assignment.status.currentStatus == 'Open'">
-              <!-- apply -> student -->
-              <button class="btn btn-light" (click)="closeAssignment(assignment)">Close assignment</button>
-            </p>
-
-            <!-- status is close -> status to finished -->
-            <p *ngIf="assignment.status.currentStatus == 'Closed'">
-              <button class="btn btn-light" (click)="finishAssignment(assignment)">Finish assignment</button>
-            </p>
-          </mat-card-content>
-          <button type="button" class="btn btn-light"
-            (click)="deleteAssignment(assignment.assignmentID)">delete</button>
-          <button class="btn btn-light" (click)="viewAssignment(assignment)">View assignment</button>
-
-          <div class="accordion" id="accordionUserAssignments">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    Candidates
-                  </button>
-                </h2>
-              </div>
-
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                data-parent="#accordionUserAssignments">
-                <div class="card-body">
-                  <div *ngFor="let ua of assignment.userAssignments">
-                    <p>{{ua.user.username}} ({{ua.user.name}} {{ua.user.lastName}})</p>
-                    <button class="btn btn-light" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
-                      candidate</button>
-                    <button class="btn btn-light" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
-                      candidate</button>
-                      <button class="btn btn-light" (click)="viewCandidate(ua.user.userID)">View info</button>
+                      <button *ngIf="assignment.status.currentStatus == 'Open'" class="btn btn-primary mb-2"
+                        (click)="closeAssignment(assignment)">Close assignment</button>
+                      <button class="btn btn-primary mb-2" (click)="finishAssignment(assignment)">Finish
+                        assignment</button>
+                      <button type="button" class="btn btn-danger mb-2"
+                        (click)="deleteAssignment(assignment.assignmentID)">Delete assignment</button>
+                      <button class="btn btn-primary mb-2" (click)="viewAssignment(assignment)">View assignment</button>
+                      <p class="mt-auto">
+                        <i class="fas fa-lock-open fa-2x float-right text-success mt-auto"
+                          *ngIf="assignment.status.statusID==4"></i>
+                        <i class="fas fa-lock fa-2x float-right text-danger mt-auto"
+                          *ngIf="assignment.status.statusID==2"></i>
+                        <i class="fas fa-clipboard-list fa-2x float-right text-warning mt-auto"
+                          *ngIf="assignment.status.statusID==1"></i>
+                        <i class="fas fa-check-square fa-2x float-right text-primary mt-auto"
+                          *ngIf="assignment.status.statusID==3"></i>
+                        <i class="fas fa-users fa-2x text-info usersicon" data-toggle="modal" data-target="#userModal"
+                          (click)="changeSelectedAssignment(assignment)"></i>
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index;">
+                        <span class="badge badge-primary mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        </mat-card>
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="userModalLabel">Creators that have applied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div *ngFor="let ua of selectedAssignment.userAssignments">
+            <div class="row">
+              <div class="col-12">
+                <h4>{{ua.user.username}}</h4>
+                <h5 class="text-muted">{{ua.user.name}} {{ua.user.lastName}}</h5>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <button class="btn btn-primary" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
+                  candidate</button>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <button class="btn btn-primary" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
+                  candidate</button>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
