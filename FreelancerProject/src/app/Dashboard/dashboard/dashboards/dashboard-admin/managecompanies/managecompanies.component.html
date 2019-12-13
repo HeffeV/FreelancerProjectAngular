@@ -2,7 +2,7 @@
     <img src="../../../../../../assets/building.png" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Manage Companies</h5>
-        <p class="card-text">Manage companies.</p>
+        <p class="card-text">Edit and remove companies.</p>
         <button class="btn btn-primary" data-toggle="modal" data-target="#ModalCompanies">Open window</button>
     </div>
 </div>
@@ -18,35 +18,130 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-createcompany-list"
-                                data-toggle="list" href="#list-createcompany" role="tab"
-                                aria-controls="create">Create</a>
-                            <a class="list-group-item list-group-item-action" id="list-editcompany-list"
-                                data-toggle="list" href="#list-editcompany" role="tab" aria-controls="edit">Edit</a>
-                            <a class="list-group-item list-group-item-action" id="list-deletecompany-list"
-                                data-toggle="list" href="#list-deletecompany" role="tab"
-                                aria-controls="delete">Delete</a>
-                        </div>
-                    </div>
-                    <div class="col-10">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-createcompany" role="tabpanel"
-                                aria-labelledby="list-createcompany-list">
-
+                <div class="container">
+                    <form [formGroup]="filterForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 required">
+                                <label>Name</label>
+                                <input class="form-control" formControlName="Name">
                             </div>
-                            <div class="tab-pane fade" id="list-editcompany" role="tabpanel"
-                                aria-labelledby="list-editcompany-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>Country</label>
+                                <input class="form-control" formControlName="Country">
                             </div>
-                            <div class="tab-pane fade" id="list-deletecompany" role="tabpanel"
-                                aria-labelledby="list-deletecompany-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>Postcode</label>
+                                <input class="form-control" formControlName="Postcode">
                             </div>
                         </div>
+                    </form>
+                    <div class="overflow-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Street</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">Postcode</th>
+                                    <th scope="col">Edit company</th>
+                                    <th scope="col">Delete company</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let company of companies">
+                                    <th scope="row">{{company.companyID}}</th>
+                                    <td>{{company.companyName}}</td>
+                                    <td>{{company.location.address}}</td>
+                                    <td>{{company.location.country}}</td>
+                                    <td>{{company.location.postcode}}</td>
+                                    <td><button type="button" (click)="selectCompany(company)"
+                                            class="btn btn-success">Edit</button></td>
+                                    <td><button type="button" (click)="deleteCompany(company.companyID)"
+                                            class="btn btn-warning">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <form *ngIf="company!=null">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="name">Company name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                                        [(ngModel)]="company.companyName" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" name="country" class="custom-select"
+                                        [(ngModel)]="company.location.country">
+                                        <option value="Afghanistan">Afghanistan</option>
+                                        <option value="Åland Islands">Åland Islands</option>
+                                        <option value="Albania">Albania</option>
+                                        <option value="Algeria">Algeria</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <div class="form-group">
+                                    <label for="street">Address</label>
+                                    <input type="text" class="form-control" id="street" name="street"
+                                        [(ngModel)]="company.location.address" placeholder="Address" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" class="form-control" id="zip" name="zip"
+                                        [(ngModel)]="company.location.postcode" placeholder="Zip" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="bio">Biography</label>
+                                    <textarea class="form-control" id="bio" name="bio"
+                                        [(ngModel)]="company.about"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="linked">LinkedIn</label>
+                                    <input type="text" class="form-control" id="linked" name="linked"
+                                        [(ngModel)]="company.contactInfo.linkedIn" placeholder="LinkedIn" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="number">Phone</label>
+                                    <input type="text" class="form-control" id="number" name="number"
+                                        [(ngModel)]="company.contactInfo.mobileNumber" placeholder="Phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="tag">Tags</label>
+                                    <input type="text" class="form-control" id="tag" name="tag"
+                                        (keyup.enter)="addTag($event)" [(ngModel)]="tag" placeholder="Tag name"
+                                        required>
+                                    <span class="badge badge-primary mr-2"
+                                        *ngFor="let tagCompany of company.tagCompanies">{{tagCompany.tag.tagName}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" (click)="saveCompany()" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">

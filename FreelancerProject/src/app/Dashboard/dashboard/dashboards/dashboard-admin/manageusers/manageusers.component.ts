@@ -97,7 +97,9 @@ export class ManageusersComponent implements OnInit {
   }
 
   saveUser() {
-    this.accountService.updateUser(this.user).subscribe();
+    this.accountService.updateUser(this.user).subscribe(e => {
+      this.ngOnInit();
+    });
   }
   deleteUser(userid: number) {
     this.userservice.deleteUser(userid).subscribe(e => {

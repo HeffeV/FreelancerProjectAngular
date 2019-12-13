@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { UserserviceService } from './userservice.service';
 import { User } from '../Models/user.model';
 import { UserAssignment } from '../Models/user-assignment.model';
+import { AssignmentFilterModel } from '../Models/assignmentfilter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +73,9 @@ export class AssignmentService {
     return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/CheckIfOwnAssignment?assignmentID=" + assignment.assignmentID + "&userID=" + this.userID);
   }
   getAssignmentEdit(assignmentID) {
-    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" +  assignmentID);
+    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" + assignmentID);
+  }
+  filterAssignments(filtermodel: AssignmentFilterModel) {
+    return this.http.post<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/adminFilteredAssignments", filtermodel);
   }
 }
