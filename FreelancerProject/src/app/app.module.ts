@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
@@ -25,7 +24,8 @@ import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.mo
 import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-5.x';
 import { FileUploadModule } from 'ng2-file-upload';
 import * as cloudinary from 'cloudinary-core';
-import { ToastrModule } from 'ngx-toastr';
+import {ToastrModule} from 'ngx-toastr';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
