@@ -22,16 +22,24 @@
                     <form [formGroup]="filterForm" autocomplete="off">
                         <div class="form-row">
                             <div class="form-group col-md-4 required">
-                                <label>Name</label>
+                                <label>Assignment Name</label>
                                 <input class="form-control" formControlName="Title">
                             </div>
                             <div class="form-group col-md-4 required">
-                                <label>Country</label>
-                                <input class="form-control" formControlName="Status">
+                                <label>Company Name</label>
+                                <select *ngIf="companies!=null" class="custom-select" formControlName="Company">
+                                    <option *ngFor="let company of companies" value="{{company.companyName}}">
+                                        {{company.companyName}}</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-4 required">
-                                <label>Postcode</label>
-                                <input class="form-control" formControlName="Company">
+                                <label>Status</label>
+                                <select class="form-control" id="typeSelect" formControlName="Status">
+                                    <option value="draft">Draft</option>
+                                    <option value="open">Open</option>
+                                    <option value="closed">Closed</option>
+                                    <option value="Finished">Finished</option>
+                                </select>
                             </div>
                         </div>
                     </form>
@@ -52,7 +60,7 @@
                                 <tr *ngFor="let assignment of assignments">
                                     <th scope="row">{{assignment.assignmentID}}</th>
                                     <td>{{assignment.assignmentName}}</td>
-                                    <td>{{assignment.company.companyName}}</td>
+                                    <td *ngIf="assignment.company!=null">{{assignment.company.companyName}}</td>
                                     <td>{{assignment.status.currentStatus}}</td>
                                     <td>{{assignment.location.country}}</td>
                                     <td><button type="button" (click)="selectAssignment(assignment)"
@@ -63,6 +71,28 @@
                             </tbody>
                         </table>
                     </div>
+                    <form *ngIf="assignment!=null">
+                        <div class="form-group required">
+                            <label for="assignmentName">Name</label>
+                            <input class="form-control" name="assignmentName" [(ngModel)]="assignment.assignmentName">
+                        </div>
+                        <div>
+                            <label for="description">Description</label>
+                            <input class="form-control" name="description" [(ngModel)]="assignment.description">
+                        </div>
+                        <div>
+                            <label for="company">Company</label>
+                            <input class="form-control" name="companyName" disabled
+                                [(ngModel)]="assignment.company.companyName">
+                        </div>
+                        <div>
+                            <label for="status">Status</label>
+                            <input class="form-control" disabled name="currentStatus"
+                                [(ngModel)]="assignment.status.currentStatus">
+                        </div>
+                        <br>
+                        <p><button (click)="saveAssignment()" class="btn btn-success">Save</button></p>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">

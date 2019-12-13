@@ -46,5 +46,8 @@ export class CompanyService {
   filterCompanies(filtermodel: CompanyFilterModel) {
     return this.http.post<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/filteredCompanies", filtermodel);
   }
+  getAllCompanies() {
+    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company");
+  }
 }
 

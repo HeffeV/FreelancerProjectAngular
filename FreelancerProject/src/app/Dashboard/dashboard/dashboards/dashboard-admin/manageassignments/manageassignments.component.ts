@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentService } from 'src/app/Services/assignment.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AssignmentFilterModel } from 'src/app/Models/assignmentfilter.model';
 import { FilterModel } from 'src/app/Models/filter.model';
 import { Assignment } from 'src/app/Models/assignment.model';
+import { Company } from 'src/app/Models/company.model';
+import { CompanyService } from 'src/app/Services/company.service';
 
 @Component({
   selector: 'app-manageassignments',
@@ -12,6 +14,7 @@ import { Assignment } from 'src/app/Models/assignment.model';
 })
 export class ManageassignmentsComponent implements OnInit {
 
+  companies: Company[];
   assignment: Assignment;
   assignments: Assignment[];
   filterModel: AssignmentFilterModel;
@@ -20,12 +23,20 @@ export class ManageassignmentsComponent implements OnInit {
     Status: [''],
     Company: ['']
   });
+  updateAssignment = this.fb.group({
+    tags: [''],
+    description: ['', Validators.required],
+    assignmentName: ['', Validators.required],
+  });
 
-  constructor(private fb: FormBuilder, private assignmentService: AssignmentService) { }
+  constructor(private fb: FormBuilder, private assignmentService: AssignmentService, private companyService: CompanyService) { }
 
   ngOnInit() {
     this.findAssignment();
     this.filterForm.reset();
+    this.companyService.getAllCompanies().subscribe(e => {
+      this.companies = e;
+    })
   }
 
   findAssignment() {
@@ -36,6 +47,21 @@ export class ManageassignmentsComponent implements OnInit {
       this.assignmentService.filterAssignments(this.filterModel).subscribe(e => {
         this.assignments = e;
       })
+    })
+  }
+
+  deleteAssignment(id: number) {
+    this.assignmentService.deleteAssigment(id).subscribe(e => {
+      this.ngOnInit();
+    });
+  }
+
+  selectAssignment(assignment: Assignment) {
+    this.assignment = assignment;
+  }
+  saveAssignment() {
+    this.assignmentService.putAssignment(this.assignment).subscribe(e => {
+      this.ngOnInit();
     })
   }
 
