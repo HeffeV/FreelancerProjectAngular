@@ -81,21 +81,24 @@ export class DetailAssignmentComponent implements OnInit {
         this.success = false;
       });
   }
-
-  // getAlreadyApplied() {
-  //   this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
-  //     if (result == null) {
-  //       this.alreadyApplied = false;
-  //     }
-  //     else {
-  //       this.alreadyApplied = true;
-  //     }
-  //   });
-  // }
-
   cancelAssignment(assignment) {
     this._assignmentService.cancelAssignment(assignment).subscribe(result => {
       this.ngOnInit();
     });
   }
+  acceptCandidate(assignment,candidateID){
+    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+      this.ngOnInit();
+    })
+  }
+  declineCandidate(assignment,candidateID){
+    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+      this.ngOnInit();
+    })
+  }
+  viewCandidate(candidateID) {
+    this._accountService.currentAccount.next(candidateID);
+    this.router.navigate(["/account"]);
+  }
+
 }

@@ -74,4 +74,10 @@ export class AssignmentService {
   getAssignmentEdit(assignmentID) {
     return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/" +  assignmentID);
   }
+  acceptCandidate(assignmentID,candidateID){
+    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/AcceptAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID);
+  }
+  declineCandidate(assignmentID,candidateID){
+    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/DeclineAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID);
+  }
 }

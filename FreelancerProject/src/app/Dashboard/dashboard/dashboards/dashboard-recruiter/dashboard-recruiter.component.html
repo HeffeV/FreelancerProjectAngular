@@ -2,18 +2,20 @@
 <button type="button" class="btn btn-default" (click)="GoToNewCompany()">New Company</button>
 
 <div class="accordion" id="accordionRecruiterDashboard">
-  <div *ngFor="let c of companies"  class="card">
-      <div class="card-header" [id]="'heading'+ c.companyID">
-          <h2 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true" aria-controls="'collapse' + c.companyID">
+  <div *ngFor="let c of companies" class="card">
+    <div class="card-header" [id]="'heading'+ c.companyID">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse"
+          [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true" aria-controls="'collapse' + c.companyID">
           {{c.companyName}}
         </button>
       </h2>
     </div>
 
-    <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID" data-parent="#accordionRecruiterDashboard">
+    <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID"
+      data-parent="#accordionRecruiterDashboard">
       <div class="card-body">
-          <button type="button" class="btn btn-light" (click)="GoToNewAssignment(c.companyID)">New Assignment</button>
+        <button type="button" class="btn btn-light" (click)="GoToNewAssignment(c.companyID)">New Assignment</button>
         <mat-card *ngFor="let assignment of c.assignments" class="assignment-card">
           <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
           <mat-card-content>
@@ -44,8 +46,36 @@
           </mat-card-content>
           <button type="button" class="btn btn-light"
             (click)="deleteAssignment(assignment.assignmentID)">delete</button>
-        </mat-card>
+          <button class="btn btn-light" (click)="viewAssignment(assignment)">View assignment</button>
 
+          <div class="accordion" id="accordionUserAssignments">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Candidates
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                data-parent="#accordionUserAssignments">
+                <div class="card-body">
+                  <div *ngFor="let ua of assignment.userAssignments">
+                    <p>{{ua.user.username}} ({{ua.user.name}} {{ua.user.lastName}})</p>
+                    <button class="btn btn-light" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
+                      candidate</button>
+                    <button class="btn btn-light" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
+                      candidate</button>
+                      <button class="btn btn-light" (click)="viewCandidate(ua.user.userID)">View info</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </mat-card>
       </div>
     </div>
   </div>

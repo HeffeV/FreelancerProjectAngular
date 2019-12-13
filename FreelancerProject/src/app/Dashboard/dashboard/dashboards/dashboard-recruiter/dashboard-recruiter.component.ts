@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/Services/company.service';
 import { Company } from 'src/app/Models/company.model';
 import { UserserviceService } from 'src/app/Services/userservice.service';
+import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-dashboard-recruiter',
@@ -18,14 +19,14 @@ export class DashboardRecruiterComponent implements OnInit {
   addAssignment: FormGroup;
   updateAssignment: FormGroup;
 
-  constructor(private _assignmentService: AssignmentService, private _userService: UserserviceService, private _companyService: CompanyService, private _formBuilder: FormBuilder, private router: Router) { }
+  constructor(private _assignmentService: AssignmentService, private _userService: UserserviceService, private _companyService: CompanyService, private _formBuilder: FormBuilder, private router: Router, private _accountService: AccountService) { }
 
   ngOnInit() {
     var userID = this._userService.getUserID();
    this._companyService.getCompaniesByUserID(userID).subscribe(result => {
      console.log(result);
      this.companies = result;
-   })
+   });
   }
   deleteAssignment(assignmentID) {
     this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
@@ -60,5 +61,22 @@ export class DashboardRecruiterComponent implements OnInit {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(['/editAssignment']);
   }
-
+  viewAssignment(assignment: Assignment){
+    this._assignmentService.currentAssignment.next(assignment.assignmentID);
+    this.router.navigate(['/assignmentdetail']);
+  }
+  acceptCandidate(assignment,candidateID){
+    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+      this.ngOnInit();
+    })
+  }
+  declineCandidate(assignment,candidateID){
+    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+      this.ngOnInit();
+    })
+  }
+  viewCandidate(candidateID) {
+    this._accountService.currentAccount.next(candidateID);
+    this.router.navigate(["/account"]);
+  }
 }

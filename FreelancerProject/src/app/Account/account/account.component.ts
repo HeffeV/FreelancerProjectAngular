@@ -134,6 +134,7 @@ export class AccountComponent implements OnInit {
     this.loggedUser = this.userService.getUser();
     this.accountService.currentAccount.subscribe((res: any) => {
       this.id = res;
+      console.log(this.id)
       if (this.id != null) {
         this.loadUser(this.id);
       }
