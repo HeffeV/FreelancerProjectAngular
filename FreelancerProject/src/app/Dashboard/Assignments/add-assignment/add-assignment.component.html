@@ -9,7 +9,7 @@
     </ul>
   </mat-step> -->
 
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step [stepControl]="addAssignment">
     <form>
       <ng-template matStepLabel>Fill out the name and description of the assignment</ng-template>
       <label for="assignmentName">Name</label>
@@ -28,7 +28,7 @@
 
   </mat-step>
 
-  <mat-step [stepControl]="secondFormGroup">
+  <mat-step [stepControl]="addTags">
     <ng-template matStepLabel>Add tags</ng-template>
 
     <label for="tag">Tags (Enter om toe te voegen)</label>

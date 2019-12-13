@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './Navigation/navigation.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './Home/home/home.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
@@ -22,10 +22,10 @@ import { AccountComponent } from './Account/account/account.component';
 import { EditCompanyComponent } from './company/edit-company/edit-company.component';
 import { TokenInterceptor } from './Authentication/token.interceptor';
 import { BrowseAssignmentModule } from './BrowseAssignments/browse-assignment.module';
-import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
-import {FileUploadModule} from 'ng2-file-upload';
+import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-5.x';
+import { FileUploadModule } from 'ng2-file-upload';
 import * as cloudinary from 'cloudinary-core';
-import {ToastrModule} from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import {ToastrModule} from 'ngx-toastr';
     BrowseAssignmentModule,
     FileUploadModule,
     ToastrModule.forRoot(),
-    CloudinaryModule.forRoot(cloudinary, {cloud_name: 'mycloudname'}),
+    CloudinaryModule.forRoot(cloudinary, { cloud_name: 'mycloudname' }),
   ],
   providers: [
     {

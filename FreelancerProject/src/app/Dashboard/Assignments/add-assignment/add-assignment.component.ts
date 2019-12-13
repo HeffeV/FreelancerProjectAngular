@@ -22,8 +22,6 @@ import {
 })
 export class AddAssignmentComponent implements OnInit {
 
-  addAssignment: FormGroup;
-  addTags: FormGroup;
   tags: Tag[] = [];
   assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
   tassignment: any = {};
@@ -32,22 +30,22 @@ export class AddAssignmentComponent implements OnInit {
   companyID: number;
   company: Company;
   fileToUpload: File = null;
+  addAssignment = this._formBuilder.group({
+    description: ['', Validators.required],
+    assignmentName: ['', Validators.required]
+  });
+  addTags = this._formBuilder.group({
+    tags: ['', Validators.required]
+  });
   @Input()
   responses: Array<any>;
-  private uploader: FileUploader = new FileUploader(null);
+  uploader: FileUploader = new FileUploader(null);
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
     // this._companyService.getCompaniesByUserID(this._userService.getUser().UserID).subscribe(result => {
     //   this.companiesByUser = result;
     // });
-    this.addAssignment = this._formBuilder.group({
-      description: ['', Validators.required],
-      assignmentName: ['', Validators.required]
-    });
-    this.addTags = this._formBuilder.group({
-      tags: ['', Validators.required]
-    });
     this._tagService.getTags().subscribe(result => {
       this.tags = result;
     });

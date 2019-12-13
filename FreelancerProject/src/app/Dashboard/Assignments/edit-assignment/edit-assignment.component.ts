@@ -30,7 +30,7 @@ export class EditAssignmentComponent implements OnInit {
   fileToUpload: File = null;
   @Input()
   responses: Array<any>;
-  private uploader: FileUploader = new FileUploader(null);
+  uploader: FileUploader = new FileUploader(null);
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
@@ -71,8 +71,8 @@ export class EditAssignmentComponent implements OnInit {
     this.assignment.description = description;
     this.assignment.assignmentName = assignmentName;
 
-    console.log("SAVE"+this.assignment);
-    this._assignmentService.putAssignment(this.assignment).subscribe( result => {
+    console.log("SAVE" + this.assignment);
+    this._assignmentService.putAssignment(this.assignment).subscribe(result => {
       this.router.navigate(['dashboard']);
     });
   }

@@ -28,9 +28,9 @@ export class AddCompanyComponent implements OnInit {
   fileToUpload: File = null;
   @Input()
   responses: Array<any>;
-  private uploader: FileUploader = new FileUploader(null);
+  uploader: FileUploader = new FileUploader(null);
   constructor(private companyService: CompanyService, private router: Router,
-              private toast: ToastrService) { }
+    private toast: ToastrService) { }
 
   ngOnInit() {
     this.configureFileUploader();
@@ -54,7 +54,7 @@ export class AddCompanyComponent implements OnInit {
     console.log(newCompany);
 
     this.companyService.addCompany(newCompany).subscribe(
-      result => {console.log(result); this.router.navigate(['dashboard']); }
+      result => { console.log(result); this.router.navigate(['dashboard']); }
     );
   }
 

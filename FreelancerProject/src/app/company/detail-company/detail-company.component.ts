@@ -32,9 +32,9 @@ export class DetailCompanyComponent implements OnInit {
 
   @Input()
   responses: Array<any>;
-  private uploader: FileUploader = new FileUploader(null);
+  uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService: AssignmentService,
-  private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
+    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -50,11 +50,11 @@ export class DetailCompanyComponent implements OnInit {
         this.show = true;
 
         this.hideButtons(result);
-       
+
       }
     );
   }
-  hideButtons(company){
+  hideButtons(company) {
     var userID = this._userService.getUserID();
     this._accountService.getUser(userID).subscribe(currentUser => {
       this.companyService.checkIfOwnCompany(this.company).subscribe(isOwnCompany => {
@@ -127,6 +127,10 @@ export class DetailCompanyComponent implements OnInit {
   btnSelectAssignment(id: number) {
     this._assignmentService.currentAssignment.next(id);
     this.router.navigate(["/assignmentdetail"]);
+  }
+
+  addReview() {
+
   }
 
 }
