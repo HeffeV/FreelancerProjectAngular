@@ -15,7 +15,7 @@ import { DetailAssignmentComponent } from './Dashboard/Assignments/detail-assign
 import { AuthGuard } from './Services/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

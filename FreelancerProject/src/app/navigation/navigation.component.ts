@@ -15,14 +15,9 @@ export class NavigationComponent implements OnInit {
   user: any = {};
   constructor(
     private _authenticateService: AuthenticateService,
-    private accountService: AccountService,
-    private userService: UserserviceService
   ) {}
 
   ngOnInit() {
-    this.accountService.getUser(2).subscribe(
-      result => {this.user = result; console.log('logged in user: ', result); }
-    );
   }
   toggleSideNav() {
     this.sidenav.toggle();
