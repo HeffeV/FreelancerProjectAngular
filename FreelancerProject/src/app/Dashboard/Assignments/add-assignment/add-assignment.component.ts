@@ -51,7 +51,7 @@ export class AddAssignmentComponent implements OnInit {
     this._tagService.getTags().subscribe(result => {
       this.tags = result;
     });
-     this._companyService.currentCompany.subscribe(result => {
+    this._companyService.currentCompany.subscribe(result => {
       this.companyID = result;
       this._companyService.getCompany(this.companyID).subscribe(result => {
         this.company = result;

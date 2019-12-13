@@ -2,7 +2,7 @@
     <img src="../../../../../../assets/assignment.png" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Manage Assignments</h5>
-        <p class="card-text">Manage assignments.</p>
+        <p class="card-text">Edit and remove assignments.</p>
         <button class="btn btn-primary" data-toggle="modal" data-target="#ModalAssignments">Open window</button>
     </div>
 </div>
@@ -18,35 +18,81 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-createassignment-list"
-                                data-toggle="list" href="#list-createassignment" role="tab"
-                                aria-controls="create">Create</a>
-                            <a class="list-group-item list-group-item-action" id="list-editassignment-list"
-                                data-toggle="list" href="#list-editassignment" role="tab" aria-controls="edit">Edit</a>
-                            <a class="list-group-item list-group-item-action" id="list-deleteassignment-list"
-                                data-toggle="list" href="#list-deleteassignment" role="tab"
-                                aria-controls="delete">Delete</a>
-                        </div>
-                    </div>
-                    <div class="col-10">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-createassignment" role="tabpanel"
-                                aria-labelledby="list-createassignment-list">
-
+                <div class="container">
+                    <form [formGroup]="filterForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 required">
+                                <label>Assignment Name</label>
+                                <input class="form-control" formControlName="Title">
                             </div>
-                            <div class="tab-pane fade" id="list-editassignment" role="tabpanel"
-                                aria-labelledby="list-editassignment-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>Company Name</label>
+                                <select *ngIf="companies!=null" class="custom-select" formControlName="Company">
+                                    <option *ngFor="let company of companies" value="{{company.companyName}}">
+                                        {{company.companyName}}</option>
+                                </select>
                             </div>
-                            <div class="tab-pane fade" id="list-deleteassignment" role="tabpanel"
-                                aria-labelledby="list-deleteassignment-list">
-
+                            <div class="form-group col-md-4 required">
+                                <label>Status</label>
+                                <select class="form-control" id="typeSelect" formControlName="Status">
+                                    <option value="draft">Draft</option>
+                                    <option value="open">Open</option>
+                                    <option value="closed">Closed</option>
+                                    <option value="Finished">Finished</option>
+                                </select>
                             </div>
                         </div>
+                    </form>
+                    <div class="overflow-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">Edit assignment</th>
+                                    <th scope="col">Delete assignment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let assignment of assignments">
+                                    <th scope="row">{{assignment.assignmentID}}</th>
+                                    <td>{{assignment.assignmentName}}</td>
+                                    <td *ngIf="assignment.company!=null">{{assignment.company.companyName}}</td>
+                                    <td>{{assignment.status.currentStatus}}</td>
+                                    <td>{{assignment.location.country}}</td>
+                                    <td><button type="button" (click)="selectAssignment(assignment)"
+                                            class="btn btn-success">Edit</button></td>
+                                    <td><button type="button" (click)="deleteAssignment(assignment.assignmentID)"
+                                            class="btn btn-warning">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <form *ngIf="assignment!=null">
+                        <div class="form-group required">
+                            <label for="assignmentName">Name</label>
+                            <input class="form-control" name="assignmentName" [(ngModel)]="assignment.assignmentName">
+                        </div>
+                        <div>
+                            <label for="description">Description</label>
+                            <input class="form-control" name="description" [(ngModel)]="assignment.description">
+                        </div>
+                        <div>
+                            <label for="company">Company</label>
+                            <input class="form-control" name="companyName" disabled
+                                [(ngModel)]="assignment.company.companyName">
+                        </div>
+                        <div>
+                            <label for="status">Status</label>
+                            <input class="form-control" disabled name="currentStatus"
+                                [(ngModel)]="assignment.status.currentStatus">
+                        </div>
+                        <br>
+                        <p><button (click)="saveAssignment()" class="btn btn-success">Save</button></p>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">

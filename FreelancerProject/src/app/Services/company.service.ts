@@ -3,16 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Company } from '../Models/company.model';
 import { BehaviorSubject } from 'rxjs';
 import { UserserviceService } from './userservice.service';
+import { CompanyFilterModel } from '../Models/companyfilter.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-  private company:number;
+  private company: number;
 
-  currentCompany=new BehaviorSubject(this.company);
+  currentCompany = new BehaviorSubject(this.company);
 
-  constructor(private http: HttpClient, private _userService : UserserviceService) { }
+  constructor(private http: HttpClient, private _userService: UserserviceService) { }
 
   getCompaniesByUserID(userID: number) {
     return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/ByUser?userID=" + userID);
@@ -41,6 +42,12 @@ export class CompanyService {
   checkIfOwnCompany(company) {
     const userID = this._userService.getUserID();
     return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
+  }
+  filterCompanies(filtermodel: CompanyFilterModel) {
+    return this.http.post<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/filteredCompanies", filtermodel);
+  }
+  getAllCompanies() {
+    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company");
   }
 }
 

@@ -51,6 +51,7 @@ export class ManageusersComponent implements OnInit {
   ngOnInit() {
     this.findUser();
     this.filterForm.reset();
+    this.getSkills();
   }
 
   findUser() {
@@ -86,6 +87,15 @@ export class ManageusersComponent implements OnInit {
     });
   }
 
+
+  onChange(skill) {
+    if (skill != "") {
+      this.user.userSkills.push(new UserSkill(0, null, this.skills.find(s => s.skillID == skill)));
+      this.skills.splice(this.skills.indexOf(this.skills.find(s => s.skillID == skill)), 1);
+    }
+    console.log(this.user.userSkills);
+  }
+
   deleteSkill(us: UserSkill) {
     this.accountService.deleteSkill(us.userSkillID).subscribe(res => {
       const index = this.user.userSkills.indexOf(us, 0);
@@ -97,8 +107,9 @@ export class ManageusersComponent implements OnInit {
   }
 
   saveUser() {
-    console.log(this.user);
-    this.accountService.updateUser(this.user).subscribe();
+    this.accountService.updateUser(this.user).subscribe(e => {
+      this.ngOnInit();
+    });
   }
   deleteUser(userid: number) {
     this.userservice.deleteUser(userid).subscribe(e => {
