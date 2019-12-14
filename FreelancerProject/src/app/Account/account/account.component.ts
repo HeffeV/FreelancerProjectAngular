@@ -44,7 +44,7 @@ export class AccountComponent implements OnInit {
     tagUsers: [],
     userAssignments: [],
     location: null,
-    image: '',
+    image: null,
   };
   zeroAssignments: Boolean = false;
   isEditable: Boolean = false;
@@ -59,6 +59,7 @@ export class AccountComponent implements OnInit {
   uploader: FileUploader = new FileUploader(null);
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService, private _authenticateService: AuthenticateService, private toast: ToastrService) {
+
   }
 
   loadUser(id: number) {
@@ -67,7 +68,6 @@ export class AccountComponent implements OnInit {
         this.user.userAssignments = [];
         this.user = res;
         this.user.reviews = this.user.reviews.filter(r => r.userReview == false);
-        console.log(this.user);
         this.checkStatusFinished();
         this.getSkills();
       });
@@ -168,12 +168,13 @@ export class AccountComponent implements OnInit {
     this.loggedUser = this.userService.getUser();
     this.accountService.currentAccount.subscribe((res: any) => {
       this.id = res;
-      console.log(this.id)
       if (this.id != null) {
         this.loadUser(this.id);
+        console.log("id");
       }
       else {
         this.loadUser(this.loggedUser.UserID);
+        console.log("loggedUser id");
       }
     });
 

@@ -10,7 +10,7 @@ import { UserSkill } from '../Models/userskill.model';
 })
 export class AccountService {
 
-  private account:number;
+  private account:number = null;
 
   currentAccount = new BehaviorSubject(this.account);
 
