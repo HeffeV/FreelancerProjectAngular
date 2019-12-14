@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Review } from '../Models/review.model';
+import { FilterReviewModel } from '../Models/reviewfilter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +16,18 @@ export class ReviewService {
 
   checkIfUserReviewedCompany(companyid) {
     return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifuserreviewedcompany/' + companyid);
+  }
+
+  getAllReviews() {
+    return this.http.get<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review");
+  }
+  adminUpdateReview(review: Review) {
+    return this.http.put<Review>("https://freelancerprojectapi.azurewebsites.net/api/Review/adminPut", review);
+  }
+  adminDeleteReview(id: number) {
+    return this.http.delete<Review>("https://freelancerprojectapi.azurewebsites.net/api/Review/" + id);
+  }
+  getFilteredReviews(filterModel: FilterReviewModel) {
+    return this.http.post<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review/filterReviews", filterModel);
   }
 }

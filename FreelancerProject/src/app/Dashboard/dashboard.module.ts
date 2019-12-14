@@ -15,10 +15,11 @@ import { ManageskillsComponent } from './dashboard/dashboards/dashboard-admin/ma
 import { ManageusersComponent } from './dashboard/dashboards/dashboard-admin/manageusers/manageusers.component';
 import { ManageassignmentsComponent } from './dashboard/dashboards/dashboard-admin/manageassignments/manageassignments.component';
 import { ManagecompaniesComponent } from './dashboard/dashboards/dashboard-admin/managecompanies/managecompanies.component';
+import { ManagereviewsComponent } from './dashboard/dashboards/dashboard-admin/managereviews/managereviews.component';
 
 
 @NgModule({
-  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent, ManagetagsComponent, ManageskillsComponent, ManageusersComponent, ManageassignmentsComponent, ManagecompaniesComponent],
+  declarations: [AddAssignmentComponent, DashboardComponent, EditAssignmentComponent, DetailAssignmentComponent, DashboardRecruiterComponent, DashboardUserComponent, DashboardAdminComponent, ManagetagsComponent, ManageskillsComponent, ManageusersComponent, ManageassignmentsComponent, ManagecompaniesComponent, ManagereviewsComponent],
   imports: [
     CommonModule,
     MatCardModule,
