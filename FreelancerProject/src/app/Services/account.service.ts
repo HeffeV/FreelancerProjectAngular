@@ -21,7 +21,7 @@ export class AccountService {
   }
 
   updateUser(user: User){
-    return this.http.put("http://localhost:63344/api/User", user);
+    return this.http.put("https://freelancerprojectapi.azurewebsites.net/api/User", user);
   }
 
   getSkills(id: number): Observable<Skill[]>{
