@@ -1,49 +1,66 @@
-<div *ngIf="assignment">
-  <h3>Assignment</h3>
-  <form [formGroup]="updateAssignment">
-    <div class="form-group required">
-      <label for="assignmentName">Name</label>
-      <input class="form-control" formControlName="assignmentName">
+<div class="container" *ngIf="assignment">
+  <div class="row">
+    <div class="col-12">
+      <h3>Assignment</h3>
     </div>
-    <div>
-      <label for="description">Description</label>
-      <input class="form-control" formControlName="description">
-    </div>
-    <div>
-      <label for="company">Company</label>
-      <input class="form-control" disabled formControlName="company">
-    </div>
-    <div>
-      <label for="location">Location</label>
-      <!-- <input class="form-control" disabled formControlName="location"
-        value={{assignment.location.address}}> -->
-      <p *ngIf="assignment.location!=null">{{assignment.location.country}}, {{assignment.location.postcode}},
-        {{assignment.location.address}}</p>
-    </div>
-    <div>
-      <label for="status">Status</label>
-      <input class="form-control" disabled formControlName="status">
-    </div>
-    <br>
-    <div class="col-lg-3 col-md-3 col-sm-12">
-      <label for="inputavatar" id="imagelabel" class="btn btn-primary">
-        Add Image
-      </label>
-      <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-        [uploader]="uploader" (change)="fileInput.value=''" multiple />
-    </div>
-    <p><button (click)="putAssignment()" class="btn btn-light">Save</button></p>
-  </form>
-
-  <h3>Tags</h3>
-  <div>
-    <!-- <label for="tag">Tags</label> -->
-    <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
-    <!-- <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tags">{{t.tagName}}</span> -->
   </div>
-  <p *ngFor="let t of assignment.tagAssignments">
-    {{t.tag.tagName}} - <button (click)="deleteTagAssignment(t)">Delete</button>
-  </p>
-
-  <!-- <p><button (click)="saveAssignment()" class="btn btn-light">Save</button></p> -->
+  <form [formGroup]="updateAssignment">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group required">
+          <label for="assignmentName">Name</label>
+          <input class="form-control" formControlName="assignmentName" id="assignmentName">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group required">
+          <label for="description">Description</label>
+          <textarea class="form-control" formControlName="description" id="description"></textarea>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input class="form-control" disabled formControlName="company" id="company">
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="form-group">
+          <label for="location">Country</label>
+          <input type="text" [value]="assignment.location.country" disabled class="form-control" id="location">
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" [value]="assignment.location.address + ' ' + assignment.location.postcode" disabled
+            class="form-control">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <label for="tags">Tags <span class="text-muted">Double click tags to delete</span></label>
+        <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
+        <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of assignment.tagAssignments"
+          (dblclick)="deleteTagAssignment(t)">{{t.tag.tagName}}</span>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input class="form-control" disabled formControlName="status" id="status">
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-12">
+        <div class="form-group">
+          <label for="inputavatar" id="imagelabel" class="btn btn-primary mt-4">
+            Change Image
+          </label>
+          <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+            [uploader]="uploader" (change)="fileInput.value=''" multiple />
+        </div>
+      </div>
+      <div class="col-12">
+          <button (click)="putAssignment()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
 </div>

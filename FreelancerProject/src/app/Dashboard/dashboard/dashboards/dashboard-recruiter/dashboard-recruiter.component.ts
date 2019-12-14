@@ -20,7 +20,13 @@ export class DashboardRecruiterComponent implements OnInit {
   updateAssignment: FormGroup;
   selectedAssignment: any = {};
 
-  constructor(private _assignmentService: AssignmentService, private _userService: UserserviceService, private _companyService: CompanyService, private _formBuilder: FormBuilder, private router: Router, private _accountService: AccountService) { }
+  constructor(private _assignmentService: AssignmentService,
+              private _userService: UserserviceService,
+              private _companyService: CompanyService,
+              private _formBuilder: FormBuilder,
+              private router: Router,
+              private _accountService: AccountService,
+              private companyService: CompanyService) { }
 
   ngOnInit() {
     var userID = this._userService.getUserID();
@@ -83,5 +89,11 @@ export class DashboardRecruiterComponent implements OnInit {
 
   changeSelectedAssignment(assignment) {
     this.selectedAssignment = assignment;
+  }
+
+  goSelectCompany(id:number){
+    this.companyService.currentCompany.next(id);
+
+    this.router.navigate(["/companydetail"]);
   }
 }

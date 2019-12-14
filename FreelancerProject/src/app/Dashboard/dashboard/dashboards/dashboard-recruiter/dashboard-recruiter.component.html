@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <button type="button" class="btn btn-primary float-right" (click)="GoToNewCompany()"><i class="fas fa-plus"></i>
+      <button type="button" class="btn btn-primary float-right mb-3" (click)="GoToNewCompany()"><i class="fas fa-plus"></i>
         New Company</button>
     </div>
     <div class="col-12">
@@ -10,10 +10,10 @@
           <div class="card-header" [id]="'heading'+ c.companyID" data-toggle="collapse"
             [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true"
             aria-controls="'collapse' + c.companyID">
-            <h3 class="mb-0">
+            <h4 class="mb-0">
               {{c.companyName}}
               <i class="fas fa-sort-down float-right text-primary"></i>
-            </h3>
+            </h4>
           </div>
 
           <div [id]="'collapse' + c.companyID" class="collapse" aria-labelledby="'heading' + c.companyID"
@@ -21,6 +21,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12">
+                    <button type="button" class="btn btn-info float-left"
+                    (click)="goSelectCompany(c.companyID)"><i class="fas fa-feather-alt"></i> Details Company</button>
                   <button type="button" class="btn btn-primary float-right" (click)="GoToNewAssignment(c.companyID)"><i
                       class="fas fa-plus"></i> New
                     Assignment</button>
