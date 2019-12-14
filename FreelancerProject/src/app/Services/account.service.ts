@@ -35,4 +35,8 @@ export class AccountService {
   updateAvater(user) {
     return this.http.put('https://https://freelancerprojectapi.azurewebsites.net/api/User/updateavatar', user);
   }
+
+  resetPassword(email: string){
+    return this.http.put("https://https://freelancerprojectapi.azurewebsites.net/api/User/resetPassword/"+ email, null);
+  }
 }

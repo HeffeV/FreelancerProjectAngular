@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from 'src/app/Models/user-login.model';
 import { FormBuilder } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/Services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,35 +15,48 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginError;
-  showError=false;
+  showError = false;
   loggedIn = true;
-  model:UserLogin = new UserLogin("","");
+  model: UserLogin = new UserLogin("", "");
   loginForm = this.fb.group({
-  email: [''],
-  password: ['']
+    email: [''],
+    password: ['']
   });
-  submitted : boolean = false;
+  submitted: boolean = false;
 
-  constructor(private fb: FormBuilder,private _authenticateService : AuthenticateService,private router: Router) { 
-    this._authenticateService.isLoggedin.subscribe(e=> {
-      this.loggedIn=e
-      })
+  resetPassForm = this.fb.group({
+    email: [''],
+  });
+
+  constructor(private fb: FormBuilder, private _authenticateService: AuthenticateService, private router: Router, private _accountService: AccountService, private toast: ToastrService) {
+    this._authenticateService.isLoggedin.subscribe(e => {
+      this.loggedIn = e
+    })
   }
 
   ngOnInit() {
-        //dubbele controle of er zeker een token aanwezig is en dus een gebruiker ingelogt is.
-        if(localStorage.getItem("token")!=null){
-          this.loggedIn=true
-        }
-        else{
-          this.loggedIn=false;
-        }
-        //alle errors afzetten.
-        this.showError=false;
+    //dubbele controle of er zeker een token aanwezig is en dus een gebruiker ingelogt is.
+    if (localStorage.getItem("token") != null) {
+      this.loggedIn = true
+    }
+    else {
+      this.loggedIn = false;
+    }
+    //alle errors afzetten.
+    this.showError = false;
   }
 
-  onSubmit()
-  {
+  resetPass() {
+    this._accountService.resetPassword(this.resetPassForm.controls["email"].value).subscribe(res => {
+      this.toast.success('An email has beent sent to your email adress');
+    },
+    (err) => {
+     // this.toast.error('An error has occurred');
+     this.toast.error(err.error.title);
+    });
+  }
+
+  onSubmit() {
     this.submitted = true;
     //model aanvullen met data van form
     this.model.password = this.loginForm.controls["password"].value;
@@ -56,9 +72,9 @@ export class LoginComponent implements OnInit {
       },
       err => {
         //indien inloggen niet gelukt is errors tonen.
-          this.loginError='Incorrect username or password.';
-          this.showError=true;
-          this.submitted = false;
+        this.loginError = 'Incorrect username or password.';
+        this.showError = true;
+        this.submitted = false;
       }
     );
   }

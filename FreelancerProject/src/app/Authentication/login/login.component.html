@@ -7,15 +7,42 @@
         <input class="form-control" type="text" formControlName="email" />
         <label>Password:</label>
         <input class="form-control" type="password" formControlName="password" />
-          <button class="btnMargin btn btn-light" type="submit"
-            [disabled]="!loginForm.valid || submitted">Login</button>
-
+        <button class="btnMargin btn btn-light" type="submit" [disabled]="!loginForm.valid || submitted">Login</button>
+        <button class="btnMargin btn btn-light mx-3" routerLink="/register" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Register</button>
+        <label class="d-block pt-3" data-toggle="modal" data-target="#ModalPass">Forgot password?</label>
       </form>
-      <button class="btnMargin btn btn-light" routerLink="/register" routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">Register</button>
     </div>
     <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
   </div>
+</div>
 
-
+<div class="modal fade" id="ModalPass" tabindex="-1" role="dialog" aria-labelledby="ModalPassLabel" aria-hidden="true"
+  data-backdrop="false">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="ModalPassLabel">Forgot password?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="resetPassForm">
+        <div class="modal-body">
+          <p>Fill in you email below to reset your password.</p>
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label>Email</label>
+              <input class="form-control" formControlName="email">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetPass()" >Reset
+            password</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
