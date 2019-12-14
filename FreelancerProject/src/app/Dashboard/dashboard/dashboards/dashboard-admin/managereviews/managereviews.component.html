@@ -1,0 +1,118 @@
+<div class="card" style="width: 18rem;">
+    <img src="../../../../../../assets/review.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Manage reviews</h5>
+        <p class="card-text">Edit and remove reviews.</p>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#Modalreview" (click)="ngOnInit()">Open
+            window</button>
+    </div>
+</div>
+
+<div class="modal fade" id="Modalreview" tabindex="-1" role="dialog" aria-labelledby="ModalreviewLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="ModalreviewLabel">Manage reviews</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form [formGroup]="filterForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group col-md-3 required">
+                                <label>Title</label>
+                                <input class="form-control" formControlName="Title">
+                            </div>
+                            <div class="form-group col-md-3 required">
+                                <label>User</label>
+                                <input class="form-control" formControlName="Username">
+                            </div>
+                            <div class="form-group col-md-3 required">
+                                <label>Company</label>
+                                <input class="form-control" formControlName="CompanyName">
+                            </div>
+                            <div class="form-group col-md-3 required">
+                                <label>UserReview</label>
+                                <select class="form-control" id="typeSelect" formControlName="UserReview">
+                                    <option value="True">User Reviews</option>
+                                    <option value="False">Company Reviews</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="overflow-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">User</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Edit company</th>
+                                    <th scope="col">Delete company</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let review of reviews">
+                                    <th scope="row">{{review.reviewID}}</th>
+                                    <td>{{review.title}}</td>
+                                    <td>{{review.score}}</td>
+                                    <td>{{review.user.username}}</td>
+                                    <td>{{review.company.companyName}}</td>
+                                    <td><button type="button" (click)="selectReview(review)"
+                                            class="btn btn-success">Edit</button></td>
+                                    <td><button type="button" (click)="deleteReview(review.reviewID)"
+                                            class="btn btn-warning">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <form *ngIf="review!=null">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="name">Review Title</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                        [(ngModel)]="review.title" required />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="linked">Score</label>
+                                    <input type="text" class="form-control" id="score" name="score" disabled="true"
+                                        [(ngModel)]="review.score" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="bio">Description</label>
+                                    <textarea class="form-control" id="description" name="description"
+                                        [(ngModel)]="review.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <button type="button" (click)="saveReview()" class="btn btn-success">Save</button>
+                        </div>
+                    </form>
+                    <div class="container containermargin">
+                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>
+                    </div>
+                    <div class="container containermargin">
+                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
