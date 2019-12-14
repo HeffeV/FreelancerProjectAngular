@@ -36,4 +36,8 @@ export class TagService {
   deleteTagUser(id) {
     return this.http.delete<TagUser>("https://freelancerprojectapi.azurewebsites.net/api/Tag/tagUser/" + id);
   }
+
+  deleteTagCompany(id) {
+    return this.http.delete<TagUser>("https://freelancerprojectapi.azurewebsites.net/api/Tag/tagCompany/" + id);
+  }
 }

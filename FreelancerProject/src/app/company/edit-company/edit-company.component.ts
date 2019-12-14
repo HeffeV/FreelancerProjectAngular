@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TagCompany } from 'src/app/Models/tag-company';
 import { Tag } from 'src/app/Models/tag.model';
 import { Company } from 'src/app/Models/company.model';
+import { TagService } from 'src/app/Services/tag.service';
 
 @Component({
   selector: 'app-edit-company',
@@ -20,7 +21,8 @@ export class EditCompanyComponent implements OnInit {
   tagToAdd:Tag;
   tagCompany:TagCompany;
 
-  constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router,
+              private readonly _tagService: TagService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -55,5 +57,14 @@ export class EditCompanyComponent implements OnInit {
         this.router.navigate(['companydetail']);
       }
     );
+  }
+
+  deleteTag(tagCompany) {
+    this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+      const index = this.company.tagCompanies.indexOf(tagCompany, 0);
+      if (index > -1) {
+        this.company.tagCompanies.splice(index, 1);
+      }
+    });
   }
 }
