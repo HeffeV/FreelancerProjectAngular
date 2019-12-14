@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { CompanyFilterModel } from 'src/app/Models/companyfilter.model';
 import { Tag } from 'src/app/Models/tag.model';
 import { TagCompany } from 'src/app/Models/tag-company';
+import { TagService } from 'src/app/Services/tag.service';
 
 @Component({
   selector: 'app-managecompanies',
@@ -27,7 +28,8 @@ export class ManagecompaniesComponent implements OnInit {
     Name: ['']
   });
 
-  constructor(private fb: FormBuilder, private companyService: CompanyService) { }
+  constructor(private fb: FormBuilder, private companyService: CompanyService,
+              private _tagService: TagService) { }
 
   ngOnInit() {
     this.findCompany();
@@ -67,6 +69,15 @@ export class ManagecompaniesComponent implements OnInit {
     this.company.tagCompanies.push(this.tagCompany);
     this.tag = '';
     event.preventDefault();
+  }
+
+  deleteTag(tagCompany) {
+    this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+      const index = this.company.tagCompanies.indexOf(tagCompany, 0);
+      if (index > -1) {
+        this.company.tagCompanies.splice(index, 1);
+      }
+    });
   }
 
 }
