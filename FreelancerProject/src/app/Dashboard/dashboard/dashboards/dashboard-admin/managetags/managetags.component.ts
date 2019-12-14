@@ -33,7 +33,6 @@ export class ManagetagsComponent implements OnInit {
     this.tags = [];
     this.tagservice.getTags().subscribe(e => {
       this.existingTags = e;
-      console.log(this.existingTags);
     })
     this.error = false;
     this.success = false;
@@ -86,7 +85,6 @@ export class ManagetagsComponent implements OnInit {
         this.successInfo += t.tagName + " created successfully. "
       },
         e => {
-          console.log(e);
           if (e.status == 404) {
             this.registerError += t.tagName + ' already exists! ';
           }

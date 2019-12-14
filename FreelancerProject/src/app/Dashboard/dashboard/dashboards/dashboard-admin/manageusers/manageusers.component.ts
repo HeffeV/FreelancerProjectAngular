@@ -93,7 +93,6 @@ export class ManageusersComponent implements OnInit {
       this.user.userSkills.push(new UserSkill(0, null, this.skills.find(s => s.skillID == skill)));
       this.skills.splice(this.skills.indexOf(this.skills.find(s => s.skillID == skill)), 1);
     }
-    console.log(this.user.userSkills);
   }
 
   deleteSkill(us: UserSkill) {

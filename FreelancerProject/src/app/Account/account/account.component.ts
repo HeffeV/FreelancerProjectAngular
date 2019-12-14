@@ -78,8 +78,8 @@ export class AccountComponent implements OnInit {
       });
   }
 
-  getAgeFromBirthYear(birthYear: any): number{
-    return moment().diff(moment("01-01-"+birthYear).format("DD-MM-YYYY"), 'years');
+  getAgeFromBirthYear(birthYear: any): number {
+    return moment().diff(moment("01-01-" + birthYear).format("DD-MM-YYYY"), 'years');
   }
 
   btnSelectAssignment(id: number) {

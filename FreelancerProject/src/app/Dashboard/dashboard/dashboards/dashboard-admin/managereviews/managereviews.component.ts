@@ -64,7 +64,6 @@ export class ManagereviewsComponent implements OnInit {
   }
 
   saveReview() {
-    console.log(this.review);
     this.reviewService.adminUpdateReview(this.review).subscribe((res: any) => {
       this.success = true;
       this.successInfo = "Review updated successfully";

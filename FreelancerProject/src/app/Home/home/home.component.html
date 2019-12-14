@@ -1,6 +1,11 @@
 <div class="container">
   <h3>Featured assignments</h3>
-  <div class="row">
+  <div class="d-flex justify-content-center" *ngIf="assignments==null">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="assignments!=null">
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let assignment of assignments">
       <div class="card w-100">
         <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
@@ -20,7 +25,12 @@
     </div>
   </div>
   <h3>Featured companies</h3>
-  <div class="row">
+  <div class="d-flex justify-content-center" *ngIf="companies==null">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="row" *ngIf="companies!=null">
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let company of companies">
       <div class="card">
         <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="card-img-top" alt="img">

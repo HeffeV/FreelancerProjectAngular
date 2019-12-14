@@ -13,29 +13,29 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  companies:Company[];
-  assignments:Assignment[];
+  companies: Company[];
+  assignments: Assignment[];
 
-  constructor(private homeservice:HomeService,private companyservice:CompanyService,private assignmentservice:AssignmentService,private router:Router) {
-   }
+  constructor(private homeservice: HomeService, private companyservice: CompanyService, private assignmentservice: AssignmentService, private router: Router) {
+  }
 
   ngOnInit() {
-    this.homeservice.getAssignments().subscribe((res:any)=>{
-      this.assignments=res;
+    this.homeservice.getAssignments().subscribe((res: any) => {
+      this.assignments = res;
     });
-    this.homeservice.getCompanies().subscribe((res:any)=>{
-      this.companies=res;
+    this.homeservice.getCompanies().subscribe((res: any) => {
+      this.companies = res;
     })
   }
 
-  btnSelectAssignment(id:number){
+  btnSelectAssignment(id: number) {
     //this.assignmentservice.currentAssignment.next(id);
     //router hier
     this.assignmentservice.currentAssignment.next(id);
     this.router.navigate(["/assignmentdetail"]);
   }
 
-  btnSelectCompany(id:number){
+  btnSelectCompany(id: number) {
     this.companyservice.currentCompany.next(id);
     //router naar company details hier
     this.router.navigate(["/companydetail"]);

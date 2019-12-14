@@ -7,9 +7,10 @@
   <div class="row" *ngIf="user!=null && !isEditable">
     <div class="col-sm-12 col-lg-3 pic">
       <div>
-        <img *ngIf="user.image==null || user.image==''" src="../../../assets/profilepic.png" class="img-fluid profilepic" width="200px"
+        <img *ngIf="user.image==null || user.image==''" src="../../../assets/profilepic.png"
+          class="img-fluid profilepic" width="200px" height="200px">
+        <img *ngIf="user.image!=null && user.image !=''" [src]="user.image" class="img-fluid profilepic" width="200px"
           height="200px">
-        <img *ngIf="user.image!=null && user.image !=''" [src]="user.image" class="img-fluid profilepic" width="200px" height="200px">
         <label for="inputavatar" id="penlabel">
           <h6 class="text-info">Edit Picture</h6>
         </label>
@@ -43,6 +44,11 @@
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
+        <div class="d-flex justify-content-center" *ngIf="user==null">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
         <div class="tab-pane fade show active mt-1" id="personal" role="tabpanel" aria-labelledby="personal-tab"
           *ngIf="user != null && user.contactInfo != null">
           <div class="row my-3">
@@ -318,11 +324,12 @@
             </div>
           </div>
           <div class="container">
-              <div class="alert alert-danger" *ngIf="error != null">{{error}}</div>
-            </div>
+            <div class="alert alert-danger" *ngIf="error != null">{{error}}</div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="changePass()" [disabled]="!form.form.valid">Change password</button>
+          <button type="button" class="btn btn-primary" (click)="changePass()" [disabled]="!form.form.valid">Change
+            password</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
