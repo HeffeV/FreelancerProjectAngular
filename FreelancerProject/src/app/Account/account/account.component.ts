@@ -11,6 +11,7 @@ import { TagUser } from 'src/app/Models/tag-user';
 import { Skill } from 'src/app/Models/skill.model';
 import { UserSkill } from 'src/app/Models/userskill.model';
 import { TagService } from 'src/app/Services/tag.service';
+import * as moment from 'moment';
 import {
   FileUploader,
   FileUploaderOptions,
@@ -53,6 +54,7 @@ export class AccountComponent implements OnInit {
   newPass: string = null;
   newPass2: string = null;
   error: string = null;
+  age: number = null;
 
   @Input()
   responses: Array<any>;
@@ -70,7 +72,14 @@ export class AccountComponent implements OnInit {
         this.user.reviews = this.user.reviews.filter(r => r.userReview == false);
         this.checkStatusFinished();
         this.getSkills();
+        this.age = this.getAgeFromBirthYear(this.user.birthYear);
+        console.log(this.age);
+        console.log(this.user.birthYear);
       });
+  }
+
+  getAgeFromBirthYear(birthYear: any): number{
+    return moment().diff(moment("01-01-"+birthYear).format("DD-MM-YYYY"), 'years');
   }
 
   btnSelectAssignment(id: number) {
@@ -83,6 +92,7 @@ export class AccountComponent implements OnInit {
       this.toast.success('Account saved');
     });
     this.isEditable = false;
+    this.loadUser(this.user.userID);
   }
 
   addTag(tag: string) {

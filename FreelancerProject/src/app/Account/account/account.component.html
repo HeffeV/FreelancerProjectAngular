@@ -7,9 +7,9 @@
   <div class="row" *ngIf="user!=null && !isEditable">
     <div class="col-sm-12 col-lg-3 pic">
       <div>
-        <img *ngIf="user.image==null" src="../../../assets/profilepic.png" class="img-fluid profilepic" width="200px"
+        <img *ngIf="user.image==null || user.image==''" src="../../../assets/profilepic.png" class="img-fluid profilepic" width="200px"
           height="200px">
-        <img *ngIf="user.image!=null" [src]="user.image" class="img-fluid profilepic" width="200px" height="200px">
+        <img *ngIf="user.image!=null && user.image !=''" [src]="user.image" class="img-fluid profilepic" width="200px" height="200px">
         <label for="inputavatar" id="penlabel">
           <h6 class="text-info">Edit Picture</h6>
         </label>
@@ -71,10 +71,10 @@
           </div>
           <div class="row mt-3">
             <div class="col-sm-12 col-lg-6">
-              <div class="font-weight-bold">Birthyear:</div>
+              <div class="font-weight-bold">Age:</div>
             </div>
             <div class="col-sm-12 col-lg-6">
-              {{user.birthYear}}
+              {{age}}
             </div>
           </div>
           <div class="row mt-3">
