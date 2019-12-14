@@ -26,7 +26,6 @@ export class AddAssignmentComponent implements OnInit {
   assignment: Assignment = new Assignment(0, [], "", "", null, null, [], null, "");
   tassignment: any = {};
   tag: string;
-  // companiesByUser: Company[];
   companyID: number;
   company: Company;
   fileToUpload: File = null;
@@ -37,20 +36,20 @@ export class AddAssignmentComponent implements OnInit {
   addTags = this._formBuilder.group({
     tags: ['', Validators.required]
   });
+
   @Input()
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
-    // this._companyService.getCompaniesByUserID(this._userService.getUser().UserID).subscribe(result => {
-    //   this.companiesByUser = result;
-    // });
     this._tagService.getTags().subscribe(result => {
       this.tags = result;
     });
+    //get currentCompanyID to add to assignment
     this._companyService.currentCompany.subscribe(result => {
       this.companyID = result;
+      //get currentCompany to show in overview
       this._companyService.getCompany(this.companyID).subscribe(result => {
         this.company = result;
       })
@@ -58,10 +57,16 @@ export class AddAssignmentComponent implements OnInit {
     });
     this.configureFileUploader();
   }
+
+  //fill description and name into assignment
   addNameToAssignment() {
     this.assignment.description = this.tassignment.description;
     this.assignment.assignmentName = this.tassignment.assignmentName;
   }
+  
+  //create new tag 
+  //backend checks if this tag already exists
+  //add tag to list of tagsAssignment-objects in assignment
   addTag(event) {
     const tagToAdd = new Tag(0, this.tag)
     const tagAssignments = new TagAssignment(0, null, tagToAdd)
@@ -69,11 +74,8 @@ export class AddAssignmentComponent implements OnInit {
     this.tag = '';
     event.preventDefault();
   }
-  // selectCompany(company) {
-  //   this.company = company;
-  //   this.companyID = company.companyID;
-  // }
 
+  //create assignment-object and navigate to dashboard
   postAssignment() {
     this._assignmentService.postAssignment(this.assignment, this.companyID).subscribe(
       (res: any) => {

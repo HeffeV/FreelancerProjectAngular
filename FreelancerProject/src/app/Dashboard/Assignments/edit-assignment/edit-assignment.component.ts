@@ -34,6 +34,7 @@ export class EditAssignmentComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _tagService: TagService, private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _userService: UserserviceService) { }
 
   ngOnInit() {
+    //create a form to edit the assignment
     this.assignment = new Assignment(0, [], "", "", null, null, [], null, "");
     this.updateAssignment = this._formBuilder.group({
       assignmentID: [0, Validators.required],
@@ -48,8 +49,7 @@ export class EditAssignmentComponent implements OnInit {
     this._assignmentService.currentAssignment.subscribe(assignmentID => {
       this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result => {
         this.assignment = result;
-        console.log(this.assignment);
-        //var locationString = this.assignment.location.address;
+        //fill the values with the data from the assignment
         this.updateAssignment.setValue({
           assignmentName: this.assignment.assignmentName,
           description: this.assignment.description,
@@ -66,29 +66,31 @@ export class EditAssignmentComponent implements OnInit {
     this.configureFileUploader();
 
   }
+
+  //save the assignment 
+  //only values that are saved are the name and description
   putAssignment() {
     const { assignmentName, description } = this.updateAssignment.value;
     this.assignment.description = description;
     this.assignment.assignmentName = assignmentName;
 
-    console.log("SAVE" + this.assignment);
     this._assignmentService.putAssignment(this.assignment).subscribe(result => {
       this.router.navigate(['assignmentdetail']);
     });
   }
 
+  //create new tag 
+  //backend checks if this tag already exists
+  //add tag to list of tagsAssignment-objects in assignment
   addTag(event) {
     this.tagToAdd = new Tag(0, this.tag)
     this.tagAssignments = new TagAssignment(0, null, this.tagToAdd);
     this.assignment.tagAssignments.push(this.tagAssignments);
     this.tag = '';
-    console.log("ADD TAG" + this.assignment);
-    // this._assignmentService.putAssignment(this.assignment).subscribe( result => {
-    //   this.ngOnInit();
-    // });
     event.preventDefault();
   }
 
+  //delete the tag from this assignment
   deleteTagAssignment(tagAssignment: TagAssignment) {
     this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
       this.ngOnInit();

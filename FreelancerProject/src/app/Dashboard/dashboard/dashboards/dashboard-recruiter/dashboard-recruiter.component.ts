@@ -21,67 +21,78 @@ export class DashboardRecruiterComponent implements OnInit {
   selectedAssignment: any = {};
 
   constructor(private _assignmentService: AssignmentService,
-              private _userService: UserserviceService,
-              private _companyService: CompanyService,
-              private _formBuilder: FormBuilder,
-              private router: Router,
-              private _accountService: AccountService,
-              private companyService: CompanyService) { }
+    private _userService: UserserviceService,
+    private _companyService: CompanyService,
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private _accountService: AccountService,
+    private companyService: CompanyService) { }
 
   ngOnInit() {
     var userID = this._userService.getUserID();
-   this._companyService.getCompaniesByUserID(userID).subscribe(result => {
-     console.log(result);
-     this.companies = result;
-   });
+    //get the currentUser that is logged in
+    this._companyService.getCompaniesByUserID(userID).subscribe(result => {
+      console.log(result);
+      this.companies = result;
+    });
   }
+  //delete the assignment
   deleteAssignment(assignmentID) {
     this._assignmentService.deleteAssigment(assignmentID).subscribe(a => {
       this.ngOnInit();
     });
   }
-  GoToNewAssignment(companyID){
+  //navigate to page to add a new assignment for this company
+  GoToNewAssignment(companyID) {
     this._companyService.currentCompany.next(companyID);
     this.router.navigate(['/addAssignment']);
   }
-  GoToNewCompany(){
+  //navigate to page to add a new company
+  GoToNewCompany() {
     this.router.navigate(['/addcompany']);
   }
 
-  publishAssignment(assignment){
+  //publishAssignment - means set status to Open
+  publishAssignment(assignment) {
     this._assignmentService.publishAssignment(assignment.assignmentID).subscribe(result => {
       this.ngOnInit();
     });
   }
-  closeAssignment(assignment){
+  //publishAssignment - means set status to Closed
+  closeAssignment(assignment) {
     this._assignmentService.closeAssignment(assignment.assignmentID).subscribe(result => {
       this.ngOnInit();
     });
   }
-  finishAssignment(assignment){
+  //publishAssignment - means set status to Finished
+  finishAssignment(assignment) {
     this._assignmentService.finishAssignment(assignment.assignmentID).subscribe(result => {
       this.ngOnInit();
     });
   }
-
-  editAssignment(assignment: Assignment){
+  //navigate to the edit-page for this assignment
+  editAssignment(assignment: Assignment) {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(['/editAssignment']);
   }
-  viewAssignment(assignment: Assignment){
+  //navigate to the details of this assignment
+  viewAssignment(assignment: Assignment) {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(['/assignmentdetail']);
   }
-  acceptCandidate(assignment,candidateID){
-    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+  //company accepts this user for the assignment
+  acceptCandidate(assignment, candidateID) {
+    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe(result => {
       this.ngOnInit();
     })
   }
-  declineCandidate(assignment,candidateID){
-    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+  //company accepts this user for the assignment
+  declineCandidate(assignment, candidateID) {
+    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe(result => {
       this.ngOnInit();
     })
   }
+  //navigate to the details page of this user
   viewCandidate(candidateID) {
     this._accountService.currentAccount.next(candidateID);
     this.router.navigate(["/account"]);
@@ -91,9 +102,9 @@ export class DashboardRecruiterComponent implements OnInit {
     this.selectedAssignment = assignment;
   }
 
-  goSelectCompany(id:number){
+  //navigate to the details of the company thats owns this assignment
+  goSelectCompany(id: number) {
     this.companyService.currentCompany.next(id);
-
     this.router.navigate(["/companydetail"]);
   }
 }

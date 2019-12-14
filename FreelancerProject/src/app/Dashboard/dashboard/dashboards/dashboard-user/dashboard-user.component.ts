@@ -20,28 +20,31 @@ export class DashboardUserComponent implements OnInit {
   inProgressAssignments: Assignment[];
   finishedAssignments: Assignment[];
   company: any = {};
-  review: any = {} = new Review(0, 0 , '', '', null, null, true);
+  review: any = {} = new Review(0, 0, '', '', null, null, true);
   constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router,
-              private toast: ToastrService, private readonly reviewService: ReviewService) { }
+    private toast: ToastrService, private readonly reviewService: ReviewService) { }
 
   ngOnInit() {
-    this._assignmentService.getRequestedAssignmentsByUserID().subscribe(result =>{
+    //get the requested assignments for this user - the ones he applied for - hasnt been accepted or declined yet
+    this._assignmentService.getRequestedAssignmentsByUserID().subscribe(result => {
       this.requestedAssignments = result;
     });
+    //get the in progress assignments for this user - the ones he applied for and has been selected for
     this._assignmentService.getInProgressAssignmentsByUserID().subscribe(result => {
       this.inProgressAssignments = result;
     });
+    //get the finished assignments for this user - the ones he applied for and has been selected for and he finished
     this._assignmentService.getFinishedAssignmentsByUserID().subscribe(result => {
       this.finishedAssignments = result;
-      console.log(result);
     });
   }
- 
-  cancelAssignment(assignment){
+  //user cancels his apply for this assignment
+  cancelAssignment(assignment) {
     this._assignmentService.cancelAssignment(assignment).subscribe(result => {
       this.ngOnInit();
     });
   }
+  //navigate to the details of this assignment
   viewDetails(assignment) {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
     this.router.navigate(["/assignmentdetail"]);
@@ -49,7 +52,6 @@ export class DashboardUserComponent implements OnInit {
 
   changeCompany(company) {
     this.company = company;
-    console.log(company);
   }
   addReview() {
     this.review.company = this.company;
@@ -58,7 +60,7 @@ export class DashboardUserComponent implements OnInit {
     } else {
       console.log(this.review);
       this.reviewService.addReview(this.review).subscribe(
-        result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
+        result => { console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
       );
     }
   }
@@ -66,8 +68,9 @@ export class DashboardUserComponent implements OnInit {
   checkIfUserReviewedCompany(companyID) {
     let show = false;
     this.checkSub = this.reviewService.checkIfUserReviewedCompany(companyID).subscribe(
-      result => {show = result; console.log('the loggedin user has reviewed this ', result);
-    }
+      result => {
+        show = result; console.log('the loggedin user has reviewed this ', result);
+      }
     );
 
     this.checkSub.unsubscribe();
