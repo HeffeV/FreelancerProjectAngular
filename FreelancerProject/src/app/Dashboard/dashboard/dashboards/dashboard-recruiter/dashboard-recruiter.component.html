@@ -50,15 +50,19 @@
                       <button class="btn btn-primary mb-2" (click)="viewAssignment(assignment)">View assignment</button>
                       <p class="mt-auto">
                         <i class="fas fa-lock-open fa-2x float-right text-success mt-auto"
-                          *ngIf="assignment.status.statusID==4"></i>
+                          *ngIf="assignment.status.currentStatus=='Open'"></i>
                         <i class="fas fa-lock fa-2x float-right text-danger mt-auto"
-                          *ngIf="assignment.status.statusID==2"></i>
+                          *ngIf="assignment.status.currentStatus=='Closed'"></i>
                         <i class="fas fa-clipboard-list fa-2x float-right text-warning mt-auto"
-                          *ngIf="assignment.status.statusID==1"></i>
-                        <i class="fas fa-check-square fa-2x float-right text-primary mt-auto"
-                          *ngIf="assignment.status.statusID==3"></i>
+                          *ngIf="assignment.status.currentStatus=='Draft'"></i>
+                        <i class="fas fa-check-square fa-2x float-right text-primary mt-2"
+                          *ngIf="assignment.status.currentStatus=='Finished'"></i>
                         <i class="fas fa-users fa-2x text-info usersicon" data-toggle="modal" data-target="#userModal"
-                          (click)="changeSelectedAssignment(assignment)"></i>
+                          (click)="changeSelectedAssignment(assignment)" *ngIf="assignment.status.statusID==4"></i>
+                        <button *ngIf="assignment.status.currentStatus=='Open' && assignment.userAssignments.length > 0 && checkIfCompanyReviewedUser(c.companyID, assignment.userAssignments[0].user.userID)" type="button"
+                          class="btn btn-light btn-circle btn-md float-left mt-1"
+                          (click)="changeSelectedUser(assignment.userAssignments[0].user, c)" data-toggle="modal" data-target="#reviewModal"> <i
+                            class="fas fa-feather-alt fa-2x text-info" id="addreview"></i></button>
                       </p>
                     </div>
                     <div class="card-footer">
@@ -119,6 +123,49 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="reviewModalLabel">Give your opinion about {{selectedUser.username}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewtitle">Title</label>
+                <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" [(ngModel)]="review.title">
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewdescription">Description</label>
+                <input type="text" class="form-control" id="reviewdescription" name="reviewdescription"
+                  [(ngModel)]="review.description">
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+                <label for="reviewscore">Score</label>
+                <input type="number" class="form-control" id="reviewscore" name="reviewscore" min="0"
+                  [(ngModel)]="review.score">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
       </div>
     </div>
   </div>

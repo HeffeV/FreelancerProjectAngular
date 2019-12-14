@@ -37,12 +37,20 @@ export class AddCompanyComponent implements OnInit {
   }
 
 
+  /**
+   * Adds a company to the recruiter that is logged in.
+   * @param event The enter that happens and which whe prevent so that it doesn't submit the form
+   */
   addTag(event) {
     this.tags.push(this.tag);
     this.tag = '';
     event.preventDefault();
   }
 
+
+  /**
+   * Adds a new company to the database
+   */
   onSubmit() {
     const addTags: TagCompany[] = [];
     this.tags.forEach(element => {
@@ -58,6 +66,9 @@ export class AddCompanyComponent implements OnInit {
     );
   }
 
+  /**
+   * Configures the file uploader to change your image
+   */
   configureFileUploader() {
     const uploaderOptions: FileUploaderOptions = {
       url: `https://api.cloudinary.com/v1_1/dnyqfmbol/image/upload`,

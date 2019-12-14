@@ -1,36 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { Assignment } from 'src/app/Models/assignment.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AssignmentService } from 'src/app/Services/assignment.service';
-import { Router } from '@angular/router';
-import { CompanyService } from 'src/app/Services/company.service';
-import { Company } from 'src/app/Models/company.model';
-import { UserserviceService } from 'src/app/Services/userservice.service';
-import { AccountService } from 'src/app/Services/account.service';
+import { Component, OnInit } from "@angular/core";
+import { Assignment } from "src/app/Models/assignment.model";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AssignmentService } from "src/app/Services/assignment.service";
+import { Router } from "@angular/router";
+import { CompanyService } from "src/app/Services/company.service";
+import { Company } from "src/app/Models/company.model";
+import { UserserviceService } from "src/app/Services/userservice.service";
+import { AccountService } from "src/app/Services/account.service";
+import { Review } from 'src/app/Models/review.model';
+import { ReviewService } from 'src/app/Services/review.service';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard-recruiter',
-  templateUrl: './dashboard-recruiter.component.html',
-  styleUrls: ['./dashboard-recruiter.component.scss']
+  selector: "app-dashboard-recruiter",
+  templateUrl: "./dashboard-recruiter.component.html",
+  styleUrls: ["./dashboard-recruiter.component.scss"]
 })
 export class DashboardRecruiterComponent implements OnInit {
-
   companies: Company[] = [];
   addAssignment: FormGroup;
   updateAssignment: FormGroup;
   selectedAssignment: any = {};
-
-  constructor(private _assignmentService: AssignmentService,
+  selectedUser: any = {};
+  selectedCompany: any = {};
+  review: any = {} = new Review(0, 0 , '', '', null, null, false);
+  checkSub: Subscription;
+  constructor(
+    private _assignmentService: AssignmentService,
     private _userService: UserserviceService,
     private _companyService: CompanyService,
     private _formBuilder: FormBuilder,
     private router: Router,
     private _accountService: AccountService,
-    private companyService: CompanyService) { }
+    private companyService: CompanyService,
+    private reviewService: ReviewService,
+    private toast: ToastrService,
+  ) {}
 
   ngOnInit() {
     var userID = this._userService.getUserID();
-    //get the currentUser that is logged in
     this._companyService.getCompaniesByUserID(userID).subscribe(result => {
       console.log(result);
       this.companies = result;
@@ -45,7 +54,7 @@ export class DashboardRecruiterComponent implements OnInit {
   //navigate to page to add a new assignment for this company
   GoToNewAssignment(companyID) {
     this._companyService.currentCompany.next(companyID);
-    this.router.navigate(['/addAssignment']);
+    this.router.navigate(["/addAssignment"]);
   }
   //navigate to page to add a new company
   GoToNewCompany() {
@@ -73,12 +82,12 @@ export class DashboardRecruiterComponent implements OnInit {
   //navigate to the edit-page for this assignment
   editAssignment(assignment: Assignment) {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
-    this.router.navigate(['/editAssignment']);
+    this.router.navigate(["/editAssignment"]);
   }
   //navigate to the details of this assignment
   viewAssignment(assignment: Assignment) {
     this._assignmentService.currentAssignment.next(assignment.assignmentID);
-    this.router.navigate(['/assignmentdetail']);
+    this.router.navigate(["/assignmentdetail"]);
   }
   //company accepts this user for the assignment
   acceptCandidate(assignment, candidateID) {
@@ -106,5 +115,33 @@ export class DashboardRecruiterComponent implements OnInit {
   goSelectCompany(id: number) {
     this.companyService.currentCompany.next(id);
     this.router.navigate(["/companydetail"]);
+  }
+
+  changeSelectedUser(user, company) {
+    this.selectedUser = user;
+    this.selectedCompany = company;
+    console.log('this is : ', this.selectedUser, this.selectedCompany);
+  }
+  addReview() {
+    this.review.company = this.selectedCompany;
+    this.review.user = this.selectedUser;
+    if (this.review.score > 10 || this.review.score < 0 || this.review.title === '' || this.review.description === '') {
+      this.toast.error('Please fill in the fields correctly');
+    } else {
+      console.log(this.review);
+      this.reviewService.addReviewToUser(this.review).subscribe(
+        result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
+      );
+    }
+  }
+
+  checkIfCompanyReviewedUser(companyID, userID) {
+    let show = false;
+    this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID).subscribe(
+      result => {show = result; console.log('the loggedin user has reviewed this ', result);
+    }
+    );
+    this.checkSub.unsubscribe();
+    return show;
   }
 }

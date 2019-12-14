@@ -14,9 +14,14 @@ export class ReviewService {
     return this.http.post<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/addreviewtocompany', review);
   }
 
+  addReviewToUser(review) {
+    return this.http.post<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/addreviewtouser', review);
+  }
+
   checkIfUserReviewedCompany(companyid) {
     return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifuserreviewedcompany/' + companyid);
   }
+
 
   getAllReviews() {
     return this.http.get<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review");
@@ -29,5 +34,10 @@ export class ReviewService {
   }
   getFilteredReviews(filterModel: FilterReviewModel) {
     return this.http.post<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review/filterReviews", filterModel);
+  }
+  
+  checkIfCompanyReviewUser(companyid, userid) {
+    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifcompanyrevieweduser/'
+     + companyid + '/' + userid);
   }
 }
