@@ -79,9 +79,9 @@ export class AssignmentService {
     return this.http.post<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/adminFilteredAssignments", filtermodel);
   }
   acceptCandidate(assignmentID,candidateID){
-    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/AcceptAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID);
+    return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/AcceptAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID,null);
   }
   declineCandidate(assignmentID,candidateID){
-    return this.http.get<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/DeclineAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID);
+    return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/DeclineAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID, null);
   }
 }
