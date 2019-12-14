@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <button type="button" class="btn btn-primary float-right mb-3" (click)="GoToNewCompany()"><i class="fas fa-plus"></i>
+      <button type="button" class="btn btn-primary float-right mb-3" (click)="GoToNewCompany()"><i
+          class="fas fa-plus"></i>
         New Company</button>
     </div>
     <div class="col-12">
@@ -21,8 +22,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12">
-                    <button type="button" class="btn btn-info float-left"
-                    (click)="goSelectCompany(c.companyID)"><i class="fas fa-feather-alt"></i> Details Company</button>
+                  <button type="button" class="btn btn-info float-left" (click)="goSelectCompany(c.companyID)"><i
+                      class="fas fa-feather-alt"></i> Details Company</button>
                   <button type="button" class="btn btn-primary float-right" (click)="GoToNewAssignment(c.companyID)"><i
                       class="fas fa-plus"></i> New
                     Assignment</button>
@@ -42,8 +43,8 @@
 
                       <button *ngIf="assignment.status.currentStatus == 'Open'" class="btn btn-primary mb-2"
                         (click)="closeAssignment(assignment)">Close assignment</button>
-                      <button class="btn btn-primary mb-2" (click)="finishAssignment(assignment)">Finish
-                        assignment</button>
+                      <button *ngIf="assignment.status.currentStatus == 'Closed'" class="btn btn-primary mb-2"
+                       (click)="finishAssignment(assignment)">Finish assignment</button>
                       <button type="button" class="btn btn-danger mb-2"
                         (click)="deleteAssignment(assignment.assignmentID)">Delete assignment</button>
                       <button class="btn btn-primary mb-2" (click)="viewAssignment(assignment)">View assignment</button>
@@ -95,11 +96,13 @@
                 <h5 class="text-muted">{{ua.user.name}} {{ua.user.lastName}}</h5>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="btn btn-primary" (click)="acceptCandidate(selectedAssignment, ua.user.userID)">Accept this
+                <button class="btn btn-primary" (click)="acceptCandidate(selectedAssignment, ua.user.userID)">Accept
+                  this
                   candidate</button>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="btn btn-primary" (click)="declineCandidate(selectedAssignment, ua.user.userID)">Decline this
+                <button class="btn btn-primary" (click)="declineCandidate(selectedAssignment, ua.user.userID)">Decline
+                  this
                   candidate</button>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
@@ -109,7 +112,7 @@
           </div>
           <div *ngIf="!selectedAssignment.userAssignments" class="card">
             <div class="card-body">
-                <h4 class="card-title text-primary">This assignment doesn't have any participants 😢</h4>
+              <h4 class="card-title text-primary">This assignment doesn't have any participants 😢</h4>
             </div>
           </div>
         </div>

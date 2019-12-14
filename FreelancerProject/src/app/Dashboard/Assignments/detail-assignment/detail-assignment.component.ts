@@ -99,7 +99,7 @@ export class DetailAssignmentComponent implements OnInit {
       this.ngOnInit();
     })
   }
-  //company declines this user's apply for the assignment
+  //company accepts this user for the assignment
   declineCandidate(assignment,candidateID){
     this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe( result => {
       this.ngOnInit();
