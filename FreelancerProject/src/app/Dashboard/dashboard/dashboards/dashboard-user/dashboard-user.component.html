@@ -1,98 +1,109 @@
-<div class="accordion" id="accordionAssignments">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
-          <h4>Requested Assignments</h4>
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionAssignments">
-      <div class="card-body">
-
-        <div *ngIf="requestedAssignments">
-          <mat-card *ngFor="let assignment of requestedAssignments" class="assignment-card">
-            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
-            <mat-card-content>
-              <p>
-                {{assignment.description}}
-              </p>
-            </mat-card-content>
-            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>
-            <button type="button" class="btn btn-light" (click)="viewDetails(assignment)">View Details</button>
-          </mat-card>
-          <div *ngIf="requestedAssignments.length == 0">
-            <mat-card class="assignment-card">
-              <p>No requested assignments</p>
-            </mat-card>
+<div class="container">
+  <div class="col-12">
+    <div class="accordion" id="accordionAssignments">
+      <div class="card">
+        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          <h4 class="mb-0">
+            Requested Assignments
+            <i class="fas fa-sort-down float-right text-primary"></i>
+          </h4>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionAssignments">
+          <div class="row" *ngIf="requestedAssignments">
+            <div class="col-lg-4 col-md-6 col-sm-12 w-100 d-flex align-items-stretch"
+              *ngFor="let assignment of requestedAssignments">
+              <div class="card m-4">
+                <img *ngIf="assignment.image==''" src="../../../../../assets/sea.jfif" class="card-img-top" alt="img">
+                <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{assignment.assignmentName}}</h5>
+                  <h6 class="card-subtitle text-muted">By {{assignment.company.companyName}}</h6>
+                  <p>{{assignment.description.substring(0,60)}}</p>
+                  <button type="button" class="btn btn-primary mb-2 mt-auto" (click)="viewDetails(assignment)">View
+                    Details</button>
+                  <button type="button" class="btn btn-danger mt-auto"
+                    (click)="cancelAssignment(assignment)">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="requestedAssignments.length == 0">
+            <div class="card m-4">
+              <div class="card-header">
+                <h4 class="card-title text-primary">You don't have any requested assignments 😢</h4>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-          aria-expanded="false" aria-controls="collapseTwo">
-          <h4>Assignments In Progress</h4>
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAssignments">
-      <div class="card-body">
-
-        <div *ngIf="inProgressAssignments">
-          <mat-card *ngFor="let assignment of inProgressAssignments" class="assignment-card">
-            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
-            <mat-card-content>
-              <p>
-                {{assignment.description}}
-              </p>
-            </mat-card-content>
-            <button type="button" class="btn btn-light" (click)="viewDetails(assignment)">View Details</button>
-          </mat-card>
-          <div *ngIf="inProgressAssignments.length == 0">
-            <mat-card class="assignment-card">
-              <p>No assignments in progress</p>
-            </mat-card>
+      <div class="card">
+        <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+          aria-controls="collapseTwo">
+          <h4>Assignments In Progress
+            <i class="fas fa-sort-down float-right text-primary"></i>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionAssignments">
+          <div class="row" *ngIf="inProgressAssignments">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch"
+              *ngFor="let assignment of inProgressAssignments">
+              <div class="card m-4 w-100">
+                <img *ngIf="assignment.image==''" src="../../../../../assets/sea.jfif" class="card-img-top" alt="img">
+                <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">{{assignment.assignmentName}}</h5>
+                  <h6 class="card-subtitle text-muted">By {{assignment.company.companyName}}</h6>
+                  <p>{{assignment.description.substring(0,60)}}</p>
+                  <button type="button" class="btn btn-primary mb-2 mt-auto" (click)="viewDetails(assignment)">View
+                    Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="inProgressAssignments.length == 0">
+            <div class="card m-4 w-100">
+              <div class="card-header">
+                <h4 class="card-title text-primary">You don't have any assignments in progress 😢</h4>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+      <div class="card">
+        <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree"
           aria-expanded="false" aria-controls="collapseThree">
-          <h4>Finished Assignments</h4>
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionAssignments">
-      <div class="card-body">
-
-        <div *ngIf="finishedAssignments">
-          <mat-card *ngFor="let assignment of finishedAssignments" class="assignment-card">
-            <mat-card-title>{{assignment.assignmentName}}</mat-card-title>
-            <mat-card-content>
-              <p>
-                {{assignment.description}}
-              </p>
-            </mat-card-content>
-            <button type="button" class="btn btn-light" (click)="viewDetails(assignment)">View Details</button>
-            <button *ngIf="checkIfUserReviewedCompany(assignment.company.companyID)" type="button" class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company)" data-toggle="modal"
-            data-target="#reviewModal"> <i class="fas fa-feather-alt fa-2x text-info" id="addreview"></i></button>
-          </mat-card>
-          <div *ngIf="finishedAssignments.length == 0">
-            <mat-card class="assignment-card">
-              <p>No finished assignments</p>
-            </mat-card>
+          <h4>Finished assignments
+            <i class="fas fa-sort-down float-right text-primary"></i>
+          </h4>
+        </div>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionAssignments">
+        <div class="row" *ngIf="finishedAssignments">
+          <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let assignment of finishedAssignments">
+            <div class="card m-4 w-100">
+              <img *ngIf="assignment.image==''" src="../../../../../assets/sea.jfif" class="card-img-top" alt="img">
+              <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{assignment.assignmentName}}
+                  <button *ngIf="checkIfUserReviewedCompany(assignment.company.companyID)" type="button"
+                    class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company)"
+                    data-toggle="modal" data-target="#reviewModal"> <i class="fas fa-feather-alt fa-2x text-info"
+                      id="addreview"></i></button>
+                </h5>
+                <h6 class="card-subtitle text-muted">By {{assignment.company.companyName}}</h6>
+                <p>{{assignment.description.substring(0,60)}}</p>
+                <button type="button" class="btn btn-primary mb-2 mt-auto" (click)="viewDetails(assignment)">View
+                  Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="finishedAssignments.length == 0">
+          <div class="card m-4 w-100">
+            <div class="card-header">
+              <h4 class="card-title text-primary">You don't have any finished assignmens 😢</h4>
+            </div>
           </div>
         </div>
       </div>

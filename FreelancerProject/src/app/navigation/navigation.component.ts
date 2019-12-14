@@ -15,6 +15,8 @@ export class NavigationComponent implements OnInit {
   user: any = {};
   constructor(
     private _authenticateService: AuthenticateService,
+    private accountService: AccountService,
+    private userService: UserserviceService,
   ) {}
 
   ngOnInit() {
@@ -28,6 +30,14 @@ export class NavigationComponent implements OnInit {
   }
   checkIfLoggedIn() {
     return this._authenticateService.CheckLoggedIn();
+  }
+
+  changeAccount() {
+    const loggedInUserId = this.userService.getUserID();
+    console.log('the id of the user is: ', loggedInUserId);
+    this.accountService.currentAccount.next(
+      loggedInUserId
+    );
   }
 
 }

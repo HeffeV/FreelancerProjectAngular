@@ -10,7 +10,7 @@
           <div class="card-header" [id]="'heading'+ c.companyID" data-toggle="collapse"
             [attr.data-target]="'#collapse' + c.companyID " aria-expanded="true"
             aria-controls="'collapse' + c.companyID">
-            <h3 class="mb-0 text-primary">
+            <h3 class="mb-0">
               {{c.companyName}}
               <i class="fas fa-sort-down float-right text-primary"></i>
             </h3>
@@ -93,17 +93,21 @@
                 <h5 class="text-muted">{{ua.user.name}} {{ua.user.lastName}}</h5>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="btn btn-primary" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
+                <button class="btn btn-primary" (click)="acceptCandidate(selectedAssignment, ua.user.userID)">Accept this
                   candidate</button>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="btn btn-primary" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
+                <button class="btn btn-primary" (click)="declineCandidate(selectedAssignment, ua.user.userID)">Decline this
                   candidate</button>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>
-
+                <button class="btn btn-primary h-100" (click)="viewCandidate(ua.user.userID)">View info</button>
               </div>
+            </div>
+          </div>
+          <div *ngIf="!selectedAssignment.userAssignments" class="card">
+            <div class="card-body">
+                <h4 class="card-title text-primary">This assignment doesn't have any participants 😢</h4>
             </div>
           </div>
         </div>

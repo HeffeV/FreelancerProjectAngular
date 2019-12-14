@@ -8,9 +8,9 @@
           class="material-icons float-left">search</i>Browse Assignments</li>
       <li class="list-group-item va" routerLink="/dashboard" routerLinkActive="active"><i
           class="material-icons float-left">dashboard</i>Dashboard</li>
-      <li class="list-group-item va" routerLink="/account" routerLinkActive="active"><i
-          class="material-icons float-left">account_box</i>My account</li>
-      <li class="list-group-item " (click)="logOut()" routerLink="" routerLinkActive="active"><i
+      <li class="list-group-item va" routerLink="/account" routerLinkActive="active" (click)="changeAccount()"><i
+          class="material-icons float-left" >account_box</i>My account</li>
+      <li class="list-group-item logout" (click)="logOut()" routerLink="" routerLinkActive="active"><i
           class="material-icons float-left">logout</i>Logout</li>
     </ul>
 
