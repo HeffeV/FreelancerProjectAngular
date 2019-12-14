@@ -9,6 +9,7 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { AccountService } from 'src/app/Services/account.service';
 import { User } from 'src/app/Models/user.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-detail-assignment',
@@ -25,7 +26,7 @@ export class DetailAssignmentComponent implements OnInit {
   isAuthorized: boolean = false;
   currentUser: User;
 
-  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService) { }
+  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService, private location : Location) { }
 
   ngOnInit() {
     this.success = false;
@@ -99,6 +100,10 @@ export class DetailAssignmentComponent implements OnInit {
   viewCandidate(candidateID) {
     this._accountService.currentAccount.next(candidateID);
     this.router.navigate(["/account"]);
+  }
+
+  pageBack(){
+    this.location.back();
   }
 
 }

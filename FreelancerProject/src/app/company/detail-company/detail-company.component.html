@@ -1,7 +1,7 @@
 <div class="container" *ngIf="show">
-  <div class="row back">
-    <button class="btn btn-outline-primary btn-pill">Back</button>
-  </div>
+    <div class="row sticky-top">
+        <button class="btn btn-light btn-pill w-100 mb-3 mt-3" (click)="pageBack()">Back</button>
+      </div>
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12">
       <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">

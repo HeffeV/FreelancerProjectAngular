@@ -15,6 +15,7 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { AccountService } from 'src/app/Services/account.service';
 import { User } from 'src/app/Models/user.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: "app-detail-company",
@@ -34,7 +35,7 @@ export class DetailCompanyComponent implements OnInit {
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService: AssignmentService,
-    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService) { }
+    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private location : Location) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -127,6 +128,10 @@ export class DetailCompanyComponent implements OnInit {
   btnSelectAssignment(id: number) {
     this._assignmentService.currentAssignment.next(id);
     this.router.navigate(["/assignmentdetail"]);
+  }
+
+  pageBack(){
+    this.location.back();
   }
 
   addReview() {

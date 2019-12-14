@@ -1,6 +1,8 @@
 <div class="container" *ngIf="show">
+    <div class="row sticky-top">
+        <button class="btn btn-light btn-pill w-100 mb-3 mt-3" (click)="pageBack()">Back</button>
+      </div>
   <div class="row">
-
     <div class="col-lg-8 col-md-8 col-sm-12">
       <h1 class="text-primary">{{assignment.assignmentName}}
         <div *ngIf="isAuthorized">
