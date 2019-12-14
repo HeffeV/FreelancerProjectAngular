@@ -73,7 +73,7 @@ export class EditAssignmentComponent implements OnInit {
 
     console.log("SAVE" + this.assignment);
     this._assignmentService.putAssignment(this.assignment).subscribe(result => {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['assignmentdetail']);
     });
   }
 

@@ -1,74 +1,90 @@
-<mat-horizontal-stepper #stepper>
-  <!-- <mat-step [stepControl]="firstFormGroup">
-    <ng-template matStepLabel>Choose company</ng-template>
-    <ul>
-      <li *ngFor="let c of companiesByUser">
-        {{c.companyName}} <button (click)="selectCompany(c)" class="btn btn-light" matStepperNext>Select this
-          company</button>
-      </li>
-    </ul>
-  </mat-step> -->
-
-  <mat-step [stepControl]="addAssignment">
-    <form>
-      <ng-template matStepLabel>Fill out the name and description of the assignment</ng-template>
-      <label for="assignmentName">Name</label>
-      <input [(ngModel)]="tassignment.assignmentName" id="assignmentName" name="assignmentName" class="form-control">
-      <label for="description">Description</label>
-      <input [(ngModel)]="tassignment.description" id="description" name="desscription" class="form-control">
-      <div class="col-lg-3 col-md-3 col-sm-12">
-        <label for="inputavatar" id="imagelabel" class="btn btn-primary">
-          Add Image
-        </label>
-        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-          [uploader]="uploader" (change)="fileInput.value=''" multiple />
-      </div>
-    </form>
-    <button mat-button matStepperNext class="btn btn-light" (click)="addNameToAssignment()">Next</button>
-
-  </mat-step>
-
-  <mat-step [stepControl]="addTags">
-    <ng-template matStepLabel>Add tags</ng-template>
-
-    <label for="tag">Tags (Enter om toe te voegen)</label>
-    <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)" [(ngModel)]="tag">
-    <span class="badge badge-primary mr-2" *ngFor="let t of assignment.tagAssignments">{{t.tag.tagName}}</span>
-
-    <button mat-button matStepperPrevious class="btn btn-light">Back</button>
-    <button mat-button matStepperNext class="btn btn-light">Next</button>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Overview</ng-template>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th scope="row">Name</th>
-          <td>{{assignment.assignmentName}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Description</th>
-          <td>{{assignment.description}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Company</th>
-          <td *ngIf="company">{{company.companyName}}</td>
-        </tr>
-        <tr>
-          <th scope="row">Status</th>
-          <td>Draft</td>
-          <!-- {{assignment.status}} --  -->
-        </tr>
-        <tr>
-          <th scope="row">Tags</th>
-          <td>
-            <div *ngFor="let ta of assignment.tagAssignments">
-              {{ta.tag.tagName}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <mat-vertical-stepper #stepper>
+        <mat-step [stepControl]="addAssignment">
+          <form>
+            <ng-template matStepLabel>Fill out the name and description of the assignment</ng-template>
+            <div class="row">
+              <div class="col-lg-10 col-md-11 col-sm-12">
+                <div class="form-group">
+                  <label for="assignmentName">Name</label>
+                  <input [(ngModel)]="tassignment.assignmentName" id="assignmentName" name="assignmentName"
+                    class="form-control">
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-1 col-sm-12">
+                <div class="form-group">
+                  <label for="inputavatar" id="imagelabel" class="btn btn-primary mt-4 w-100">
+                    Add Image
+                  </label>
+                  <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect
+                    [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''" multiple />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea [(ngModel)]="tassignment.description" id="description" name="desscription"
+                    class="form-control"></textarea>
+                </div>
+              </div>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button (click)="postAssignment()" class="btn btn-light">Post</button>
-  </mat-step>
-</mat-horizontal-stepper>
+          </form>
+          <button mat-button matStepperNext class="btn btn-info" (click)="addNameToAssignment()">Next</button>
+        </mat-step>
+        <mat-step [stepControl]="addTags">
+          <ng-template matStepLabel>Add tags</ng-template>
+          <div class="row">
+            <div class="col-12">
+              <label for="tag">Tags</label>
+              <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)"
+                [(ngModel)]="tag">
+              <span class="badge badge-primary mr-2 mt-2"
+                *ngFor="let t of assignment.tagAssignments">{{t.tag.tagName}}</span>
+            </div>
+          </div>
+          <button mat-button matStepperPrevious class="btn btn-warning mt-4 mr-4">Back</button>
+          <button mat-button matStepperNext class="btn btn-info mt-4">Next</button>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Overview</ng-template>
+          <div class="row">
+            <div class="col-12">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">Name</th>
+                    <td>{{assignment.assignmentName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Description</th>
+                    <td>{{assignment.description}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Company</th>
+                    <td *ngIf="company">{{company.companyName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Status</th>
+                    <td>Draft</td>
+                    <!-- {{assignment.status}} --  -->
+                  </tr>
+                  <tr>
+                    <th scope="row">Tags</th>
+                    <td>
+                      <div *ngFor="let ta of assignment.tagAssignments">
+                        {{ta.tag.tagName}}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button (click)="postAssignment()" class="btn btn-info">Add assignment</button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>
