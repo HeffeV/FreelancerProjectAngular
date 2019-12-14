@@ -25,6 +25,7 @@ export class DetailAssignmentComponent implements OnInit {
   alreadyApplied: boolean;
   isAuthorized: boolean = false;
   currentUser: User;
+  isUser: boolean = false;
 
   constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService, private location : Location) { }
 
@@ -46,6 +47,10 @@ export class DetailAssignmentComponent implements OnInit {
       var userID = this._userService.getUserID();
       this._accountService.getUser(userID).subscribe(result => {
         this.currentUser = result;
+
+        if(this.currentUser.userType.type == "user"){
+          this.isUser = true;
+        }
 
         this._assignmentService.checkIfOwnAssignment(this.assignment).subscribe(isOwnAssignment => {
           //if the currentuser is logged in and the currentuser owns the assignment (through his companies) and the currentuser is a recruiter
