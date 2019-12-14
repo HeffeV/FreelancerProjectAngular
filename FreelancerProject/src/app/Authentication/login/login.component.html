@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetPass()" >Reset
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetPass()" [disabled]="!resetPassForm.valid">Reset
             password</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from 'src/app/Models/user-login.model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
 
   resetPassForm = this.fb.group({
-    email: [''],
+    email: ['', Validators.required],
   });
 
   constructor(private fb: FormBuilder, private _authenticateService: AuthenticateService, private router: Router, private _accountService: AccountService, private toast: ToastrService) {
