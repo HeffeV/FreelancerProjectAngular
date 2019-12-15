@@ -130,12 +130,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="tag">Tags</label>
+                                    <label for="tag">Tags (enter to add)</label>
                                     <input type="text" class="form-control" id="tag" name="tag"
                                         (keyup.enter)="addTag($event)" [(ngModel)]="tag" placeholder="Tag name"
                                         required>
                                     <span class="badge badge-primary mr-2"
-                                        *ngFor="let tagCompany of company.tagCompanies" (dblclick)="deleteTag(tagCompany)">{{tagCompany.tag.tagName}}</span>
+                                        *ngFor="let tagCompany of company.tagCompanies"
+                                        (dblclick)="deleteTag(tagCompany)">{{tagCompany.tag.tagName}}</span>
                                 </div>
                             </div>
                         </div>

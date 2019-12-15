@@ -92,9 +92,20 @@ export class EditAssignmentComponent implements OnInit {
 
   //delete the tag from this assignment
   deleteTagAssignment(tagAssignment: TagAssignment) {
-    this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
-      this.ngOnInit();
-    });
+    if (tagAssignment.tagAssignmentID == 0) {
+      const index = this.assignment.tagAssignments.indexOf(tagAssignment, 0);
+      if (index > -1) {
+        this.assignment.tagAssignments.splice(index, 1);
+      }
+    }
+    else {
+      this._tagService.deleteTagAssignments(tagAssignment.tagAssignmentID).subscribe(ta => {
+        const index = this.assignment.tagAssignments.indexOf(tagAssignment, 0);
+        if (index > -1) {
+          this.assignment.tagAssignments.splice(index, 1);
+        }
+      });
+    }
   }
 
   configureFileUploader() {

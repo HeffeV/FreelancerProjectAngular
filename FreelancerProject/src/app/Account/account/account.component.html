@@ -273,20 +273,21 @@
             {{skill.skill.category.categoryName}}</p>
         </div>
       </div>
-      <h5>Tags
-        <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to delete</small>
-      </h5>
-      <div class="form-row">
-        <div class="form-group col-md-10">
-          <input class="form-control" name="tag" #newtag>
-        </div>
-        <div class="form-group col-md-22">
-          <input type="button" class="btn btn-primary btn-pill" value="Add tag" (click)="addTag(newtag.value)">
-        </div>
-      </div>
-      <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
-        (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
+
     </form>
+    <h5>Tags
+      <small class="text-muted" *ngIf="user.tagUsers.length > 0">Double click on badge to delete</small>
+    </h5>
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <input class="form-control" name="tag" #newtag>
+      </div>
+      <div class="form-group col-md-22">
+        <input type="button" class="btn btn-primary btn-pill" value="Add tag" (click)="addTag(newtag.value)">
+      </div>
+    </div>
+    <span class="badge badge-primary mr-2 mb-2" *ngFor="let t of user.tagUsers"
+      (dblclick)="deleteTag(t)">{{t.tag.tagName}}</span>
     <div class="w-100">
       <hr>
       <input type="button" class="btn btn-danger btn-pill float-right my-4" value="Delete account" data-toggle="modal"

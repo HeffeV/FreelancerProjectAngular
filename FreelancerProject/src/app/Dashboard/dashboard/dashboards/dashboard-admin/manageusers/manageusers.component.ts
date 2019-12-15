@@ -49,7 +49,7 @@ export class ManageusersComponent implements OnInit {
 
   countries: any = [];
   constructor(private userservice: UserserviceService, private fb: FormBuilder, private accountService: AccountService, private _tagService: TagService,
-    private countryService: CountryService,) { }
+    private countryService: CountryService, ) { }
 
   ngOnInit() {
     this.findUser();
@@ -70,7 +70,7 @@ export class ManageusersComponent implements OnInit {
   }
   getCountries() {
     this.countryService.getCountries().subscribe(
-      result => {console.log(result); this.countries = result; }
+      result => { console.log(result); this.countries = result; }
     );
   }
   selectUser(user: User) {
@@ -82,12 +82,20 @@ export class ManageusersComponent implements OnInit {
   }
 
   deleteTag(tagUser: TagUser) {
-    this._tagService.deleteTagUser(tagUser.tagUserID).subscribe(ta => {
+    if (tagUser.tagUserID == 0) {
       const index = this.user.tagUsers.indexOf(tagUser, 0);
       if (index > -1) {
         this.user.tagUsers.splice(index, 1);
       }
-    });
+    }
+    else {
+      this._tagService.deleteTagUser(tagUser.tagUserID).subscribe(ta => {
+        const index = this.user.tagUsers.indexOf(tagUser, 0);
+        if (index > -1) {
+          this.user.tagUsers.splice(index, 1);
+        }
+      });
+    }
   }
 
   getSkills() {

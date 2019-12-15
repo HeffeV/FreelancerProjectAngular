@@ -126,12 +126,20 @@ export class AccountComponent implements OnInit {
   }
 
   deleteTag(tagUser: TagUser) {
-    this._tagService.deleteTagUser(tagUser.tagUserID).subscribe(ta => {
+    if (tagUser.tagUserID == 0) {
       const index = this.user.tagUsers.indexOf(tagUser, 0);
       if (index > -1) {
         this.user.tagUsers.splice(index, 1);
       }
-    });
+    }
+    else {
+      this._tagService.deleteTagUser(tagUser.tagUserID).subscribe(ta => {
+        const index = this.user.tagUsers.indexOf(tagUser, 0);
+        if (index > -1) {
+          this.user.tagUsers.splice(index, 1);
+        }
+      });
+    }
   }
 
   getSkills() {

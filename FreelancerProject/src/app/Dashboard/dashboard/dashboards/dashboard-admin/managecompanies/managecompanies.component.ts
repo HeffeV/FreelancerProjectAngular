@@ -32,7 +32,7 @@ export class ManagecompaniesComponent implements OnInit {
   countries: any = [];
 
   constructor(private fb: FormBuilder, private companyService: CompanyService,
-              private _tagService: TagService, private countryService: CountryService) { }
+    private _tagService: TagService, private countryService: CountryService) { }
 
   ngOnInit() {
     this.findCompany();
@@ -75,18 +75,26 @@ export class ManagecompaniesComponent implements OnInit {
     event.preventDefault();
   }
 
-  deleteTag(tagCompany) {
-    this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+  deleteTag(tagCompany: TagCompany) {
+    if (tagCompany.tagCompanyID == 0) {
       const index = this.company.tagCompanies.indexOf(tagCompany, 0);
       if (index > -1) {
         this.company.tagCompanies.splice(index, 1);
       }
-    });
+    }
+    else {
+      this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+        const index = this.company.tagCompanies.indexOf(tagCompany, 0);
+        if (index > -1) {
+          this.company.tagCompanies.splice(index, 1);
+        }
+      });
+    }
   }
 
   getCountries() {
     this.countryService.getCountries().subscribe(
-      result => {console.log(result); this.countries = result; }
+      result => { console.log(result); this.countries = result; }
     );
   }
 }
