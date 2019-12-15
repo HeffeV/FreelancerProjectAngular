@@ -12,7 +12,7 @@ import { ReviewService } from 'src/app/Services/review.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { UserCompany } from 'src/app/Models/user-company.model';
-import { take } from 'rxjs/observable'
+import { take } from 'rxjs/observable';
 
 @Component({
   selector: "app-dashboard-recruiter",
