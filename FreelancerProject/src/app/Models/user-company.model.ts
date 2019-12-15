@@ -5,6 +5,7 @@ export class UserCompany {
     constructor(
         public userCompanyID:number,
         public company:Company,
-        public user:User
+        public user:User,
+        public accepted:Boolean
     ){}
 }
