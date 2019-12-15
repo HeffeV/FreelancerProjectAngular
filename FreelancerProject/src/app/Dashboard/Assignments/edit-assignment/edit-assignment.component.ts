@@ -35,7 +35,7 @@ export class EditAssignmentComponent implements OnInit {
 
   ngOnInit() {
     //create a form to edit the assignment
-    this.assignment = new Assignment(0, [], "", "", null, null, [], null, "");
+    this.assignment;
     this.updateAssignment = this._formBuilder.group({
       assignmentID: [0, Validators.required],
       tags: [''],
