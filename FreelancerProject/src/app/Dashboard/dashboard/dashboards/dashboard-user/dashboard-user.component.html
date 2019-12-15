@@ -86,8 +86,8 @@
                 <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
                 <div class="card-body d-flex flex-column">
                   <h5 class="card-title">{{assignment.assignmentName}}
-                    <button *ngIf="checkIfUserReviewedCompany(assignment.company.companyID)" type="button"
-                      class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company)"
+                    <button type="button"
+                      class="btn btn-light btn-circle btn-md float-right" (click)="changeCompany(assignment.company, assignment.company.companyID)"
                       data-toggle="modal" data-target="#reviewModal"> <i class="fas fa-feather-alt fa-2x text-info"
                         id="addreview"></i></button>
                   </h5>
@@ -154,7 +154,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button *ngIf="reviewed==true" type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
+        <button *ngIf="reviewed==false" type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
       </div>
     </div>
   </div>
