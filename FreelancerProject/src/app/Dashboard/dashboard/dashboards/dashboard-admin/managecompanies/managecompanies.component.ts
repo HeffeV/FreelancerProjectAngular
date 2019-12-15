@@ -6,6 +6,7 @@ import { CompanyFilterModel } from 'src/app/Models/companyfilter.model';
 import { Tag } from 'src/app/Models/tag.model';
 import { TagCompany } from 'src/app/Models/tag-company';
 import { TagService } from 'src/app/Services/tag.service';
+import { CountryService } from 'src/app/Services/country.service';
 
 @Component({
   selector: 'app-managecompanies',
@@ -28,12 +29,15 @@ export class ManagecompaniesComponent implements OnInit {
     Name: ['']
   });
 
+  countries: any = [];
+
   constructor(private fb: FormBuilder, private companyService: CompanyService,
-              private _tagService: TagService) { }
+              private _tagService: TagService, private countryService: CountryService) { }
 
   ngOnInit() {
     this.findCompany();
     this.filterForm.reset();
+    this.getCountries();
   }
 
   findCompany() {
@@ -80,4 +84,9 @@ export class ManagecompaniesComponent implements OnInit {
     });
   }
 
+  getCountries() {
+    this.countryService.getCountries().subscribe(
+      result => {console.log(result); this.countries = result; }
+    );
+  }
 }

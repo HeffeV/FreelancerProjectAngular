@@ -1,21 +1,26 @@
 <div class="container">
-  <div *ngIf="true" class="card mx-auto align-middle">
-    <div class="card-body">
-      <h3 class="card-title">Login
-          <button class="btnMargin btn btn-warning float-right registerknop m-0" routerLink="/register" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Register</button>
-      </h3>
-      <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <label>Email</label>
-        <input class="form-control" type="text" formControlName="email" />
-        <label>Password</label>
-        <input class="form-control" type="password" formControlName="password" />
-        <button class="btnMargin btn btn-info" type="submit" [disabled]="!loginForm.valid || submitted">Login</button>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card" style="max-width: 100%;">
+        <div class="card-body">
+          <h3 class="card-title">Login
+            <button class="btnMargin btn btn-warning float-right registerknop m-0" routerLink="/register"
+              routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Register</button>
+          </h3>
+          <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label>Email</label>
+            <input class="form-control" type="text" formControlName="email" />
+            <label>Password</label>
+            <input class="form-control" type="password" formControlName="password" />
+            <button class="btnMargin btn btn-info" type="submit"
+              [disabled]="!loginForm.valid || submitted">Login</button>
 
-        <label class="d-block pt-3" data-toggle="modal" data-target="#ModalPass">Forgot password?</label>
-      </form>
+            <label class="d-block pt-3" data-toggle="modal" data-target="#ModalPass">Forgot password?</label>
+          </form>
+        </div>
+        <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
+      </div>
     </div>
-    <div class="alert alert-danger" *ngIf="showError">{{loginError}}</div>
   </div>
 </div>
 
@@ -40,7 +45,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetPass()" [disabled]="!resetPassForm.valid">Reset
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetPass()"
+            [disabled]="!resetPassForm.valid">Reset
             password</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>

@@ -5,6 +5,7 @@ import { TagCompany } from 'src/app/Models/tag-company';
 import { Tag } from 'src/app/Models/tag.model';
 import { Company } from 'src/app/Models/company.model';
 import { TagService } from 'src/app/Services/tag.service';
+import { CountryService } from 'src/app/Services/country.service';
 
 @Component({
   selector: 'app-edit-company',
@@ -20,15 +21,19 @@ export class EditCompanyComponent implements OnInit {
   tag = '';
   tagToAdd:Tag;
   tagCompany:TagCompany;
+  countries: any = [];
 
   constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router,
-              private readonly _tagService: TagService) { }
+              private readonly _tagService: TagService, private countryService: CountryService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
       this.id = res;
       this.getCompany(this.id);
     });
+    this.countryService.getCountries().subscribe(
+      result => {console.log(result); this.countries = result; }
+    );
   }
 
 

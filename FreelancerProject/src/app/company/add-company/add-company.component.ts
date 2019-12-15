@@ -11,6 +11,7 @@ import {
   ParsedResponseHeaders
 } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
+import { CountryService } from 'src/app/Services/country.service';
 
 @Component({
   selector: 'app-add-company',
@@ -22,6 +23,7 @@ export class AddCompanyComponent implements OnInit {
   company: any = {};
   location: any = {};
   contactInfo: any = {};
+  countries: any = [];
   tags: string[] = [];
   tag = '';
   image = '';
@@ -30,10 +32,13 @@ export class AddCompanyComponent implements OnInit {
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
   constructor(private companyService: CompanyService, private router: Router,
-    private toast: ToastrService) { }
+              private toast: ToastrService, private countryService: CountryService) { }
 
   ngOnInit() {
     this.configureFileUploader();
+    this.countryService.getCountries().subscribe(
+      result => {this.countries = result; }
+    );
   }
 
 

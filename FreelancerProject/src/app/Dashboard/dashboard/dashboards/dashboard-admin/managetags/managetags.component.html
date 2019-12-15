@@ -68,7 +68,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4 required">
                                             <label>Select tag</label>
-                                            <select class="form-control" id="tagSelect" formControlName="Tag"
+                                            <select class="custom-select" id="tagSelect" formControlName="Tag"
                                                 (change)="onChange($event.target.value)">
                                                 <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">
                                                     {{tag.tagName}}
@@ -95,7 +95,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4 required">
                                             <label>Select tag</label>
-                                            <select class="form-control" id="tagSelect" formControlName="Tag"
+                                            <select class="custom-select" id="tagSelect" formControlName="Tag"
                                                 (change)="onDeleteChange($event.target.value)">
                                                 <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">
                                                     {{tag.tagName}}

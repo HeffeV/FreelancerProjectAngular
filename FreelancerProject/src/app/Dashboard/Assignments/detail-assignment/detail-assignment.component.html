@@ -1,20 +1,21 @@
 <div class="container" *ngIf="show">
   <div class="row">
     <div class="col-2">
-      <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go back</button>
+      <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go
+        back</button>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-12">
       <h1 class="text-primary">{{assignment.assignmentName}}
-        <div *ngIf="isAuthorized">
+        <span *ngIf="isAuthorized">
           <button type="button" class="btn btn-primary btn-pill m-2"
             (click)="editAssignment(assignment.assignmentID)">Edit</button>
           <button type="button" class="btn btn-danger btn-pill m-2"
             (click)="deleteAssignment(assignment.assignmentID)">Delete</button>
-        </div>
+        </span>
       </h1>
-      <h3 class="text-secondary">{{assignment.description}}</h3>
+      <p class="text-muted">{{assignment.description}}</p>
       <h5><i class="material-icons">my_location</i> {{assignment.location.address}}, {{assignment.location.postcode}},
         {{assignment.location.country}}</h5>
       <h5><i class="material-icons">assignment</i> Status : {{assignment.status.currentStatus}}</h5>
@@ -39,55 +40,8 @@
         </div>
       </div>
 
-      <h5><i class="material-icons">location_city</i> Company</h5>
-      <div class="col-12">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-            alt="Assignment image">
-          <div class="card-body">
-            <h4 class="card-title">{{assignment.company.companyName}}</h4>
-            <p class="card-text">{{assignment.company.about}}</p>
-            <button class="btn btn-primary" (click)="btnSelectCompany(assignment.company.companyID)">Tell me more
-              &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="isAuthorized">
-        <h5><i class="material-icons">people_alt</i> Candidates</h5>
-        <div class="accordion" id="accordionUserAssignments">
-          <div class="card">
-            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
-              <h5 class="mb-0">
-                View Candidates
-                <i class="fas fa-sort-down float-right text-primary"></i>
-              </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-              data-parent="#accordionUserAssignments">
-              <div class="card-body">
-                <div *ngFor="let ua of assignment.userAssignments">
-                  <p>{{ua.user.username}} ({{ua.user.name}} {{ua.user.lastName}})</p>
-                  <div *ngIf="isAccepted == false">
-                    <button class="btn btn-light" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
-                      candidate</button>
-                    <button class="btn btn-light" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
-                      candidate</button>
-                  </div>
-                  <div *ngIf="isAccepted == true">
-                    <div class="alert alert-success" role="alert">
-                      Successfully accepted!
-                    </div>
-                  </div>
-                  <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h5 class="text-primary company" (click)="btnSelectCompany(assignment.company.companyID)"><i
+          class="fas fa-building"></i> {{assignment.company.companyName}}</h5>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
@@ -101,5 +55,57 @@
       <span class="badge badge-primary mr-2 mb-2" *ngFor="let ta of assignment.tagAssignments">{{ta.tag.tagName}}</span>
     </div>
 
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="isAuthorized">
+        <div class="accordion" id="accordionUserAssignments">
+          <div class="card">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              <h5 class="mb-0">
+                <i class="material-icons">people_alt</i> View Candidates
+                <i class="fas fa-sort-down float-right text-primary"></i>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+              data-parent="#accordionUserAssignments">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let ua of assignment.userAssignments">
+                    <div class="card w-100">
+                      <img *ngIf="ua.user.image==''" class="card-img-top" src="../../../../assets/profilepic.png"
+                        alt="profilepic">
+                      <img *ngIf="ua.user.image!=''" class="card-img-top" [src]="ua.user.image" alt="profilepic">
+                      <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">{{ua.user.name}} {{ua.user.lastName}}</h4>
+                        <h5 class="card-subtitle text-muted">{{ua.user.username}}</h5>
+                        <div *ngIf="isAccepted == false">
+                          <button class="btn btn-success mb-2 w-100"
+                            (click)="acceptCandidate(assignment, ua.user.userID)">Accept
+                            this
+                            candidate</button>
+                          <button class="btn btn-danger mb-2 w-100"
+                            (click)="declineCandidate(assignment, ua.user.userID)">Decline
+                            this
+                            candidate</button>
+                        </div>
+                        <div *ngIf="isAccepted == true">
+                          <div class="alert alert-success" role="alert">
+                            Successfully accepted!
+                          </div>
+                        </div>
+                        <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,1295 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>freelancer-project documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">freelancer-project documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ManagetagsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-managetags</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./managetags.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./managetags.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createForm">createForm</a>
+                            </li>
+                            <li>
+                                <a href="#deleteForm">deleteForm</a>
+                            </li>
+                            <li>
+                                <a href="#editForm">editForm</a>
+                            </li>
+                            <li>
+                                <a href="#error">error</a>
+                            </li>
+                            <li>
+                                <a href="#existingTags">existingTags</a>
+                            </li>
+                            <li>
+                                <a href="#registerError">registerError</a>
+                            </li>
+                            <li>
+                                <a href="#success">success</a>
+                            </li>
+                            <li>
+                                <a href="#successInfo">successInfo</a>
+                            </li>
+                            <li>
+                                <a href="#tag">tag</a>
+                            </li>
+                            <li>
+                                <a href="#tags">tags</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createAllTags">createAllTags</a>
+                            </li>
+                            <li>
+                                <a href="#createTag">createTag</a>
+                            </li>
+                            <li>
+                                <a href="#deleteTag">deleteTag</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onChange">onChange</a>
+                            </li>
+                            <li>
+                                <a href="#onDeleteChange">onDeleteChange</a>
+                            </li>
+                            <li>
+                                <a href="#reset">reset</a>
+                            </li>
+                            <li>
+                                <a href="#saveTag">saveTag</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, tagservice: <a href="../injectables/TagService.html">TagService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tagservice</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TagService.html" target="_self" >TagService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createAllTags"></a>
+                    <span class="name">
+                        <b>
+                            createAllTags
+                        </b>
+                        <a href="#createAllTags"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createAllTags()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTag"></a>
+                    <span class="name">
+                        <b>
+                            createTag
+                        </b>
+                        <a href="#createTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTag()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteTag"></a>
+                    <span class="name">
+                        <b>
+                            deleteTag
+                        </b>
+                        <a href="#deleteTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteTag()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChange"></a>
+                    <span class="name">
+                        <b>
+                            onChange
+                        </b>
+                        <a href="#onChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onChange(deviceValue)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>deviceValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDeleteChange"></a>
+                    <span class="name">
+                        <b>
+                            onDeleteChange
+                        </b>
+                        <a href="#onDeleteChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDeleteChange(deviceValue)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>deviceValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reset"></a>
+                    <span class="name">
+                        <b>
+                            reset
+                        </b>
+                        <a href="#reset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reset()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:100</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveTag"></a>
+                    <span class="name">
+                        <b>
+                            saveTag
+                        </b>
+                        <a href="#saveTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveTag()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createForm"></a>
+                        <span class="name">
+                            <b>
+                            createForm</b>
+                            <a href="#createForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.fb.group({
+    TagName: [&#x27;&#x27;],
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deleteForm"></a>
+                        <span class="name">
+                            <b>
+                            deleteForm</b>
+                            <a href="#deleteForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.fb.group({
+    Tag: [&#x27;&#x27;],
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editForm"></a>
+                        <span class="name">
+                            <b>
+                            editForm</b>
+                            <a href="#editForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.fb.group({
+    TagName: [&#x27;&#x27;],
+    Tag: [&#x27;&#x27;],
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="error"></a>
+                        <span class="name">
+                            <b>
+                            error</b>
+                            <a href="#error"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="existingTags"></a>
+                        <span class="name">
+                            <b>
+                            existingTags</b>
+                            <a href="#existingTags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Tag.html" target="_self" >Tag[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registerError"></a>
+                        <span class="name">
+                            <b>
+                            registerError</b>
+                            <a href="#registerError"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="success"></a>
+                        <span class="name">
+                            <b>
+                            success</b>
+                            <a href="#success"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="successInfo"></a>
+                        <span class="name">
+                            <b>
+                            successInfo</b>
+                            <a href="#successInfo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tag"></a>
+                        <span class="name">
+                            <b>
+                            tag</b>
+                            <a href="#tag"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Tag.html" target="_self" >Tag</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tags"></a>
+                        <span class="name">
+                            <b>
+                            tags</b>
+                            <a href="#tags"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Tag.html" target="_self" >Tag[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/Dashboard/dashboard/dashboards/dashboard-admin/managetags/managetags.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder } from &#x27;@angular/forms&#x27;;
+import { Tag } from &#x27;src/app/Models/tag.model&#x27;;
+import { TagService } from &#x27;src/app/Services/tag.service&#x27;;
+
+@Component({
+  selector: &#x27;app-managetags&#x27;,
+  templateUrl: &#x27;./managetags.component.html&#x27;,
+  styleUrls: [&#x27;./managetags.component.scss&#x27;]
+})
+export class ManagetagsComponent implements OnInit {
+  success: boolean;
+  successInfo: string;
+  registerError: string;
+  error: boolean;
+  tag: Tag;
+  tags: Tag[];
+  existingTags: Tag[];
+  createForm &#x3D; this.fb.group({
+    TagName: [&#x27;&#x27;],
+  })
+  editForm &#x3D; this.fb.group({
+    TagName: [&#x27;&#x27;],
+    Tag: [&#x27;&#x27;],
+  })
+  deleteForm &#x3D; this.fb.group({
+    Tag: [&#x27;&#x27;],
+  })
+
+  constructor(private fb: FormBuilder, private tagservice: TagService) { }
+
+  ngOnInit() {
+    this.tags &#x3D; [];
+    this.tagservice.getTags().subscribe(e &#x3D;&gt; {
+      this.existingTags &#x3D; e;
+    })
+    this.error &#x3D; false;
+    this.success &#x3D; false;
+    this.successInfo &#x3D; &quot;&quot;;
+    this.registerError &#x3D; &quot;&quot;;
+  }
+
+  onChange(deviceValue) {
+    this.success &#x3D; false;
+    this.editForm.controls[&quot;TagName&quot;].setValue(this.existingTags.find(x &#x3D;&gt; x.tagID &#x3D;&#x3D; deviceValue).tagName);
+  }
+
+  onDeleteChange(deviceValue) {
+    this.success &#x3D; false;
+  }
+
+
+  deleteTag() {
+    this.tagservice.deleteTag(this.deleteForm.value.Tag).subscribe((res: any) &#x3D;&gt; {
+      this.success &#x3D; true;
+      this.successInfo &#x3D; &quot;Successfully removed!&quot;
+      this.tagservice.getTags().subscribe(e &#x3D;&gt; {
+        this.existingTags &#x3D; e;
+      })
+    },
+      e &#x3D;&gt; {
+        this.registerError &#x3D; &#x27;Error deleting tag&#x27;;
+        this.error &#x3D; true;
+      });
+  }
+
+  createTag() {
+    if (this.createForm.value.TagName !&#x3D; &quot; &quot;) {
+      this.tag &#x3D; new Tag(0, this.createForm.value.TagName);
+      if (this.tags.find(x &#x3D;&gt; x.tagName &#x3D;&#x3D; this.tag.tagName) &#x3D;&#x3D; null) {
+        this.tags.push(this.tag);
+        this.error &#x3D; false;
+        this.registerError &#x3D; &quot;&quot;;
+      }
+      else {
+        this.error &#x3D; true;
+        this.registerError &#x3D; &quot;Tag already added&quot;;
+      }
+    }
+  }
+  createAllTags() {
+    this.tags.forEach(t &#x3D;&gt; {
+      this.tagservice.postTag(t).subscribe((res: any) &#x3D;&gt; {
+        this.success &#x3D; true;
+        this.successInfo +&#x3D; t.tagName + &quot; created successfully. &quot;
+      },
+        e &#x3D;&gt; {
+          if (e.status &#x3D;&#x3D; 404) {
+            this.registerError +&#x3D; t.tagName + &#x27; already exists! &#x27;;
+          }
+          else {
+            this.registerError &#x3D; &#x27;Something went wrong, please try again later.&#x27;;
+          }
+          this.error &#x3D; true;
+        });
+    });
+    this.tags &#x3D; [];
+  };
+
+  reset() {
+    this.tags &#x3D; [];
+    this.error &#x3D; false;
+    this.success &#x3D; false;
+    this.successInfo &#x3D; &quot;&quot;;
+    this.registerError &#x3D; &quot;&quot;;
+  }
+
+  saveTag() {
+    this.tag &#x3D; new Tag(this.editForm.value.Tag, this.editForm.value.TagName);
+    this.tagservice.updateTag(this.tag).subscribe((res: any) &#x3D;&gt; {
+      this.success &#x3D; true;
+      this.successInfo &#x3D; &quot;Successfully updated!&quot;
+      this.tagservice.getTags().subscribe((res: any) &#x3D;&gt; {
+        this.existingTags &#x3D; res;
+      })
+    },
+
+      e &#x3D;&gt; {
+        this.registerError &#x3D; &#x27;Something went wrong, please try again later.&#x27;;
+        this.error &#x3D; true;
+      });
+  };
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card&quot; style&#x3D;&quot;width: 18rem;&quot;&gt;
+    &lt;img src&#x3D;&quot;../../../../../../assets/tag.png&quot; class&#x3D;&quot;card-img-top&quot; alt&#x3D;&quot;...&quot;&gt;
+    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+        &lt;h5 class&#x3D;&quot;card-title&quot;&gt;Manage Tags&lt;/h5&gt;
+        &lt;p class&#x3D;&quot;card-text&quot;&gt;Create, edit and remove tags.&lt;/p&gt;
+        &lt;button class&#x3D;&quot;btn btn-primary&quot; data-toggle&#x3D;&quot;modal&quot; data-target&#x3D;&quot;#ModalTag&quot; (click)&#x3D;&quot;ngOnInit()&quot;&gt;Open
+            window&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;modal fade&quot; id&#x3D;&quot;ModalTag&quot; tabindex&#x3D;&quot;-1&quot; role&#x3D;&quot;dialog&quot; aria-labelledby&#x3D;&quot;ModalTagLabel&quot; aria-hidden&#x3D;&quot;true&quot;
+    data-backdrop&#x3D;&quot;false&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog modal-lg&quot; role&#x3D;&quot;document&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+            &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+                &lt;h5 class&#x3D;&quot;modal-title text-primary&quot; id&#x3D;&quot;ModalTagLabel&quot;&gt;Manage tags&lt;/h5&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; data-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;
+                    &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot;&gt;
+                        &lt;div class&#x3D;&quot;list-group&quot; id&#x3D;&quot;list-tab&quot; role&#x3D;&quot;tablist&quot;&gt;
+                            &lt;a class&#x3D;&quot;list-group-item list-group-item-action active&quot; id&#x3D;&quot;list-create-list&quot;
+                                data-toggle&#x3D;&quot;list&quot; href&#x3D;&quot;#list-create&quot; role&#x3D;&quot;tab&quot; aria-controls&#x3D;&quot;create&quot;&gt;Create&lt;/a&gt;
+                            &lt;a class&#x3D;&quot;list-group-item list-group-item-action&quot; id&#x3D;&quot;list-edit-list&quot; data-toggle&#x3D;&quot;list&quot;
+                                href&#x3D;&quot;#list-edit&quot; role&#x3D;&quot;tab&quot; aria-controls&#x3D;&quot;edit&quot;&gt;Edit&lt;/a&gt;
+                            &lt;a class&#x3D;&quot;list-group-item list-group-item-action&quot; id&#x3D;&quot;list-delete-list&quot; data-toggle&#x3D;&quot;list&quot;
+                                href&#x3D;&quot;#list-delete&quot; role&#x3D;&quot;tab&quot; aria-controls&#x3D;&quot;delete&quot;&gt;Delete&lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-10&quot;&gt;
+                        &lt;div class&#x3D;&quot;tab-content&quot; id&#x3D;&quot;nav-tabContent&quot;&gt;
+                            &lt;div class&#x3D;&quot;tab-pane fade show active&quot; id&#x3D;&quot;list-create&quot; role&#x3D;&quot;tabpanel&quot;
+                                aria-labelledby&#x3D;&quot;list-create-list&quot;&gt;
+                                &lt;form [formGroup]&#x3D;&quot;createForm&quot; autocomplete&#x3D;&quot;off&quot;&gt;
+                                    &lt;div class&#x3D;&quot;form-row&quot;&gt;
+                                        &lt;div class&#x3D;&quot;form-group col-md-2 required&quot;&gt;
+                                            &lt;input class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;TagName&quot; placeholder&#x3D;&quot;tagname&quot;&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;col-md-2&quot;&gt;
+                                            &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;createTag()&quot;&gt;Add&lt;/button&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;col-md-2&quot;&gt;
+                                            &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;reset()&quot;&gt;Reset&lt;/button&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;form-row&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-light col-md-12&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;tags.length&gt;0&quot;&gt;
+                                            &lt;h6&gt;Tags to create:&lt;/h6&gt;
+                                            &lt;span class&#x3D;&quot;badge badge-primary mr-2&quot;
+                                                *ngFor&#x3D;&quot;let tag of tags&quot;&gt;{{tag.tagName}}&lt;/span&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;createAllTags()&quot;&gt;Create
+                                        tags&lt;/button&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-success&quot; *ngIf&#x3D;&quot;success&quot;&gt;{{successInfo}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-danger&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{registerError}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/form&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;tab-pane fade&quot; id&#x3D;&quot;list-edit&quot; role&#x3D;&quot;tabpanel&quot; aria-labelledby&#x3D;&quot;list-edit-list&quot;&gt;
+                                &lt;form [formGroup]&#x3D;&quot;editForm&quot; autocomplete&#x3D;&quot;off&quot;&gt;
+                                    &lt;div class&#x3D;&quot;form-row&quot;&gt;
+                                        &lt;div class&#x3D;&quot;form-group col-md-4 required&quot;&gt;
+                                            &lt;label&gt;Select tag&lt;/label&gt;
+                                            &lt;select class&#x3D;&quot;custom-select&quot; id&#x3D;&quot;tagSelect&quot; formControlName&#x3D;&quot;Tag&quot;
+                                                (change)&#x3D;&quot;onChange($event.target.value)&quot;&gt;
+                                                &lt;option *ngFor&#x3D;&quot;let tag of existingTags&quot; value&#x3D;&quot;{{tag.tagID}}&quot;&gt;
+                                                    {{tag.tagName}}
+                                                &lt;/option&gt;
+                                            &lt;/select&gt;
+                                        &lt;/div&gt;
+                                        &lt;div class&#x3D;&quot;form-group col-md-4 required&quot;&gt;
+                                            &lt;label&gt;Tagname&lt;/label&gt;
+                                            &lt;input class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;TagName&quot;&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;saveTag()&quot;&gt;Save&lt;/button&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-success&quot; *ngIf&#x3D;&quot;success&quot;&gt;{{successInfo}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-danger&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{registerError}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/form&gt;
+                            &lt;/div&gt;
+                            &lt;div class&#x3D;&quot;tab-pane fade&quot; id&#x3D;&quot;list-delete&quot; role&#x3D;&quot;tabpanel&quot;
+                                aria-labelledby&#x3D;&quot;list-delete-list&quot;&gt;
+                                &lt;form [formGroup]&#x3D;&quot;deleteForm&quot; autocomplete&#x3D;&quot;off&quot;&gt;
+                                    &lt;div class&#x3D;&quot;form-row&quot;&gt;
+                                        &lt;div class&#x3D;&quot;form-group col-md-4 required&quot;&gt;
+                                            &lt;label&gt;Select tag&lt;/label&gt;
+                                            &lt;select class&#x3D;&quot;custom-select&quot; id&#x3D;&quot;tagSelect&quot; formControlName&#x3D;&quot;Tag&quot;
+                                                (change)&#x3D;&quot;onDeleteChange($event.target.value)&quot;&gt;
+                                                &lt;option *ngFor&#x3D;&quot;let tag of existingTags&quot; value&#x3D;&quot;{{tag.tagID}}&quot;&gt;
+                                                    {{tag.tagName}}
+                                                &lt;/option&gt;
+                                            &lt;/select&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;deleteTag()&quot;&gt;Delete&lt;/button&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-success&quot; *ngIf&#x3D;&quot;success&quot;&gt;{{successInfo}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class&#x3D;&quot;container containermargin&quot;&gt;
+                                        &lt;div class&#x3D;&quot;alert alert-danger&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{registerError}}&lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/form&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger&quot; data-dismiss&#x3D;&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./managetags.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.modal-backdrop{
+    display: none;
+}
+.card{
+    margin: 25px;
+}
+.containermargin{
+    margin: 10px;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card" style="width: 18rem;">    <img src="../../../../../../assets/tag.png" class="card-img-top" alt="...">    <div class="card-body">        <h5 class="card-title">Manage Tags</h5>        <p class="card-text">Create, edit and remove tags.</p>        <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTag" (click)="ngOnInit()">Open            window</button>    </div></div><div class="modal fade" id="ModalTag" tabindex="-1" role="dialog" aria-labelledby="ModalTagLabel" aria-hidden="true"    data-backdrop="false">    <div class="modal-dialog modal-lg" role="document">        <div class="modal-content">            <div class="modal-header">                <h5 class="modal-title text-primary" id="ModalTagLabel">Manage tags</h5>                <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>            </div>            <div class="modal-body">                <div class="row">                    <div class="col-2">                        <div class="list-group" id="list-tab" role="tablist">                            <a class="list-group-item list-group-item-action active" id="list-create-list"                                data-toggle="list" href="#list-create" role="tab" aria-controls="create">Create</a>                            <a class="list-group-item list-group-item-action" id="list-edit-list" data-toggle="list"                                href="#list-edit" role="tab" aria-controls="edit">Edit</a>                            <a class="list-group-item list-group-item-action" id="list-delete-list" data-toggle="list"                                href="#list-delete" role="tab" aria-controls="delete">Delete</a>                        </div>                    </div>                    <div class="col-10">                        <div class="tab-content" id="nav-tabContent">                            <div class="tab-pane fade show active" id="list-create" role="tabpanel"                                aria-labelledby="list-create-list">                                <form [formGroup]="createForm" autocomplete="off">                                    <div class="form-row">                                        <div class="form-group col-md-2 required">                                            <input class="form-control" formControlName="TagName" placeholder="tagname">                                        </div>                                        <div class="col-md-2">                                            <button class="btn btn-primary" (click)="createTag()">Add</button>                                        </div>                                        <div class="col-md-2">                                            <button class="btn btn-primary" (click)="reset()">Reset</button>                                        </div>                                    </div>                                    <div class="form-row">                                        <div class="alert alert-light col-md-12" role="alert" *ngIf="tags.length>0">                                            <h6>Tags to create:</h6>                                            <span class="badge badge-primary mr-2"                                                *ngFor="let tag of tags">{{tag.tagName}}</span>                                        </div>                                    </div>                                    <button class="btn btn-primary" (click)="createAllTags()">Create                                        tags</button>                                    <div class="container containermargin">                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>                                    </div>                                    <div class="container containermargin">                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>                                    </div>                                </form>                            </div>                            <div class="tab-pane fade" id="list-edit" role="tabpanel" aria-labelledby="list-edit-list">                                <form [formGroup]="editForm" autocomplete="off">                                    <div class="form-row">                                        <div class="form-group col-md-4 required">                                            <label>Select tag</label>                                            <select class="custom-select" id="tagSelect" formControlName="Tag"                                                (change)="onChange($event.target.value)">                                                <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">                                                    {{tag.tagName}}                                                </option>                                            </select>                                        </div>                                        <div class="form-group col-md-4 required">                                            <label>Tagname</label>                                            <input class="form-control" formControlName="TagName">                                        </div>                                    </div>                                    <button class="btn btn-primary" (click)="saveTag()">Save</button>                                    <div class="container containermargin">                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>                                    </div>                                    <div class="container containermargin">                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>                                    </div>                                </form>                            </div>                            <div class="tab-pane fade" id="list-delete" role="tabpanel"                                aria-labelledby="list-delete-list">                                <form [formGroup]="deleteForm" autocomplete="off">                                    <div class="form-row">                                        <div class="form-group col-md-4 required">                                            <label>Select tag</label>                                            <select class="custom-select" id="tagSelect" formControlName="Tag"                                                (change)="onDeleteChange($event.target.value)">                                                <option *ngFor="let tag of existingTags" value="{{tag.tagID}}">                                                    {{tag.tagName}}                                                </option>                                            </select>                                        </div>                                    </div>                                    <button class="btn btn-primary" (click)="deleteTag()">Delete</button>                                    <div class="container containermargin">                                        <div class="alert alert-success" *ngIf="success">{{successInfo}}</div>                                    </div>                                    <div class="container containermargin">                                        <div class="alert alert-danger" *ngIf="error">{{registerError}}</div>                                    </div>                                </form>                            </div>                        </div>                    </div>                </div>            </div>            <div class="modal-footer">                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AccountComponent', 'selector': 'app-account'},{'name': 'AddAssignmentComponent', 'selector': 'app-add-assignment'},{'name': 'AddCompanyComponent', 'selector': 'app-add-company'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BrowseAssignmentComponent', 'selector': 'app-browse-assignment'},{'name': 'CompanyComponent', 'selector': 'app-company'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardRecruiterComponent', 'selector': 'app-dashboard-recruiter'},{'name': 'DashboardUserComponent', 'selector': 'app-dashboard-user'},{'name': 'DetailAssignmentComponent', 'selector': 'app-detail-assignment'},{'name': 'DetailCompanyComponent', 'selector': 'app-detail-company'},{'name': 'EditAssignmentComponent', 'selector': 'app-edit-assignment'},{'name': 'EditCompanyComponent', 'selector': 'app-edit-company'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManageassignmentsComponent', 'selector': 'app-manageassignments'},{'name': 'ManagecompaniesComponent', 'selector': 'app-managecompanies'},{'name': 'ManagereviewsComponent', 'selector': 'app-managereviews'},{'name': 'ManageskillsComponent', 'selector': 'app-manageskills'},{'name': 'ManagetagsComponent', 'selector': 'app-managetags'},{'name': 'ManageusersComponent', 'selector': 'app-manageusers'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ManagetagsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ManagetagsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

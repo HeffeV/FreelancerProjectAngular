@@ -15,7 +15,7 @@
               <div class="col-lg-5 col-md-3 col-sm-12">
                 <div class="form-group required">
                   <label>Tags</label>
-                  <select class="form-control" id="tagSelect" formControlName="Tag">
+                  <select class="custom-select" id="tagSelect" formControlName="Tag">
                     <option *ngFor="let tag of tags" value="{{tag.tagID}}">{{tag.tagName}}</option>
                   </select>
                 </div>
