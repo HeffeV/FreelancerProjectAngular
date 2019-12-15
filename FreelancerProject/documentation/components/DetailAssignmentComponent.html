@@ -1,0 +1,1616 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>freelancer-project documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">freelancer-project documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DetailAssignmentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-detail-assignment</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./detail-assignment.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./detail-assignment.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alreadyApplied">alreadyApplied</a>
+                            </li>
+                            <li>
+                                <a href="#assignment">assignment</a>
+                            </li>
+                            <li>
+                                <a href="#currentUser">currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#error">error</a>
+                            </li>
+                            <li>
+                                <a href="#isAccepted">isAccepted</a>
+                            </li>
+                            <li>
+                                <a href="#isAuthorized">isAuthorized</a>
+                            </li>
+                            <li>
+                                <a href="#isUser">isUser</a>
+                            </li>
+                            <li>
+                                <a href="#show">show</a>
+                            </li>
+                            <li>
+                                <a href="#success">success</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#acceptCandidate">acceptCandidate</a>
+                            </li>
+                            <li>
+                                <a href="#apply">apply</a>
+                            </li>
+                            <li>
+                                <a href="#btnSelectCompany">btnSelectCompany</a>
+                            </li>
+                            <li>
+                                <a href="#cancelAssignment">cancelAssignment</a>
+                            </li>
+                            <li>
+                                <a href="#declineCandidate">declineCandidate</a>
+                            </li>
+                            <li>
+                                <a href="#deleteAssignment">deleteAssignment</a>
+                            </li>
+                            <li>
+                                <a href="#editAssignment">editAssignment</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#pageBack">pageBack</a>
+                            </li>
+                            <li>
+                                <a href="#viewCandidate">viewCandidate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_assignmentService: <a href="../injectables/AssignmentService.html">AssignmentService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, _companyService: <a href="../injectables/CompanyService.html">CompanyService</a>, _authenticateService: <a href="../injectables/AuthenticateService.html">AuthenticateService</a>, _accountService: <a href="../injectables/AccountService.html">AccountService</a>, _userService: <a href="../injectables/UserserviceService.html">UserserviceService</a>, location: <a href="../classes/Location.html">Location</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_assignmentService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AssignmentService.html" target="_self" >AssignmentService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_companyService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CompanyService.html" target="_self" >CompanyService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_authenticateService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticateService.html" target="_self" >AuthenticateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_accountService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AccountService.html" target="_self" >AccountService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserserviceService.html" target="_self" >UserserviceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>location</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Location.html" target="_self" >Location</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="acceptCandidate"></a>
+                    <span class="name">
+                        <b>
+                            acceptCandidate
+                        </b>
+                        <a href="#acceptCandidate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>acceptCandidate(assignment, candidateID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignment</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>candidateID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apply"></a>
+                    <span class="name">
+                        <b>
+                            apply
+                        </b>
+                        <a href="#apply"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>apply(assignment)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignment</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btnSelectCompany"></a>
+                    <span class="name">
+                        <b>
+                            btnSelectCompany
+                        </b>
+                        <a href="#btnSelectCompany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>btnSelectCompany(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelAssignment"></a>
+                    <span class="name">
+                        <b>
+                            cancelAssignment
+                        </b>
+                        <a href="#cancelAssignment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelAssignment(assignment)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:100</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignment</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="declineCandidate"></a>
+                    <span class="name">
+                        <b>
+                            declineCandidate
+                        </b>
+                        <a href="#declineCandidate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>declineCandidate(assignment, candidateID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignment</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>candidateID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteAssignment"></a>
+                    <span class="name">
+                        <b>
+                            deleteAssignment
+                        </b>
+                        <a href="#deleteAssignment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteAssignment(assignmentID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignmentID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editAssignment"></a>
+                    <span class="name">
+                        <b>
+                            editAssignment
+                        </b>
+                        <a href="#editAssignment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editAssignment(assignmentID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>assignmentID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageBack"></a>
+                    <span class="name">
+                        <b>
+                            pageBack
+                        </b>
+                        <a href="#pageBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>pageBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewCandidate"></a>
+                    <span class="name">
+                        <b>
+                            viewCandidate
+                        </b>
+                        <a href="#viewCandidate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>viewCandidate(candidateID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>candidateID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alreadyApplied"></a>
+                        <span class="name">
+                            <b>
+                            alreadyApplied</b>
+                            <a href="#alreadyApplied"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="assignment"></a>
+                        <span class="name">
+                            <b>
+                            assignment</b>
+                            <a href="#assignment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Assignment.html" target="_self" >Assignment</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentUser"></a>
+                        <span class="name">
+                            <b>
+                            currentUser</b>
+                            <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="error"></a>
+                        <span class="name">
+                            <b>
+                            error</b>
+                            <a href="#error"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isAccepted"></a>
+                        <span class="name">
+                            <b>
+                            isAccepted</b>
+                            <a href="#isAccepted"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isAuthorized"></a>
+                        <span class="name">
+                            <b>
+                            isAuthorized</b>
+                            <a href="#isAuthorized"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isUser"></a>
+                        <span class="name">
+                            <b>
+                            isUser</b>
+                            <a href="#isUser"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show"></a>
+                        <span class="name">
+                            <b>
+                            show</b>
+                            <a href="#show"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="success"></a>
+                        <span class="name">
+                            <b>
+                            success</b>
+                            <a href="#success"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/Dashboard/Assignments/detail-assignment/detail-assignment.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Assignment } from &#x27;src/app/Models/assignment.model&#x27;;
+import { FormBuilder } from &#x27;@angular/forms&#x27;;
+import { TagService } from &#x27;src/app/Services/tag.service&#x27;;
+import { AssignmentService } from &#x27;src/app/Services/assignment.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { CompanyService } from &#x27;src/app/Services/company.service&#x27;;
+import { UserserviceService } from &#x27;src/app/Services/userservice.service&#x27;;
+import { AuthenticateService } from &#x27;src/app/Services/authenticate.service&#x27;;
+import { AccountService } from &#x27;src/app/Services/account.service&#x27;;
+import { User } from &#x27;src/app/Models/user.model&#x27;;
+import { Location } from &#x27;@angular/common&#x27;;
+
+@Component({
+  selector: &#x27;app-detail-assignment&#x27;,
+  templateUrl: &#x27;./detail-assignment.component.html&#x27;,
+  styleUrls: [&#x27;./detail-assignment.component.scss&#x27;]
+})
+export class DetailAssignmentComponent implements OnInit {
+
+  assignment: Assignment;
+  show: Boolean &#x3D; false;
+  success: Boolean &#x3D; false;
+  error: Boolean &#x3D; false
+  alreadyApplied: boolean;
+  isAuthorized: boolean &#x3D; false;
+  currentUser: User;
+  isUser: boolean &#x3D; false;
+  isAccepted: boolean &#x3D; false;
+
+  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService, private location: Location) { }
+
+  ngOnInit() {
+    this.success &#x3D; false;
+    this.error &#x3D; false;
+    //get currentAssignment(ID)
+    this._assignmentService.currentAssignment.subscribe(assignmentID &#x3D;&gt; {
+
+      //load the full assignment-object
+      this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result &#x3D;&gt; {
+        this.assignment &#x3D; result;
+        this.show &#x3D; true;
+        //check if the currentUser has already applied to this assignment
+        this._assignmentService.alreadyApplied(this.assignment).subscribe(result &#x3D;&gt; {
+          result &#x3D;&#x3D; null ? this.alreadyApplied &#x3D; false : this.alreadyApplied &#x3D; true;
+        });
+
+        this._assignmentService.CheckIfCandidateIsAccepted(this.assignment.assignmentID).subscribe(result &#x3D;&gt; {
+          this.isAccepted &#x3D; result;
+        });
+        var userID &#x3D; this._userService.getUserID();
+        this._accountService.getUser(userID).subscribe(result &#x3D;&gt; {
+          this.currentUser &#x3D; result;
+
+          if (this.currentUser.userType.type &#x3D;&#x3D; &quot;user&quot;) {
+            this.isUser &#x3D; true;
+          }
+
+          this._assignmentService.checkIfOwnAssignment(this.assignment).subscribe(isOwnAssignment &#x3D;&gt; {
+            //if the currentuser is logged in and the currentuser owns the assignment (through his companies) and the currentuser is a recruiter
+            //then the currentuser can edit and delete the assignment(ngIf in HTML)
+            if (this._authenticateService.CheckLoggedIn() &amp;&amp;
+              isOwnAssignment &#x3D;&#x3D; true &amp;&amp; this.currentUser.userType.type &#x3D;&#x3D; &quot;recruiter&quot;) {
+              this.isAuthorized &#x3D; true;
+            }
+          });
+        });
+
+      });
+    })
+  }
+
+  //navigate to the details of the company thats owns this assignment
+  btnSelectCompany(id: number) {
+    this._companyService.currentCompany.next(id);
+    this.router.navigate([&quot;/companydetail&quot;]);
+  }
+  //navigate to the edit-page for this assignment
+  editAssignment(assignmentID) {
+    this._assignmentService.currentAssignment.next(assignmentID);
+    this.router.navigate([&#x27;/editAssignment&#x27;]);
+  }
+  //delete this assignment
+  deleteAssignment(assignmentID) {
+    this._assignmentService.deleteAssigment(assignmentID).subscribe(a &#x3D;&gt; {
+      this.router.navigate([&quot;/dashboard&quot;]);
+    });
+  }
+  //apply for this assignment
+  apply(assignment) {
+    this._assignmentService.applyForAssignment(assignment.assignmentID).subscribe((res: any) &#x3D;&gt; {
+      this.success &#x3D; true;
+    },
+      err &#x3D;&gt; {
+        this.error &#x3D; true;
+        this.success &#x3D; false;
+      });
+  }
+  //cancel applying for this assignment
+  cancelAssignment(assignment) {
+    this._assignmentService.cancelAssignment(assignment).subscribe(result &#x3D;&gt; {
+      this.ngOnInit();
+    });
+  }
+  //company accepts this user for the assignment
+  acceptCandidate(assignment, candidateID) {
+    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe(result &#x3D;&gt; {
+      this.ngOnInit();
+    })
+  }
+  //company accepts this user for the assignment
+  declineCandidate(assignment, candidateID) {
+    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe(result &#x3D;&gt; {
+      this.ngOnInit();
+    })
+  }
+
+  //navigate to the details page of this user
+  viewCandidate(candidateID) {
+    this._accountService.currentAccount.next(candidateID);
+    this.router.navigate([&quot;/account&quot;]);
+  }
+
+  pageBack() {
+    this.location.back();
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot; *ngIf&#x3D;&quot;show&quot;&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-2&quot;&gt;
+      &lt;button class&#x3D;&quot;btn btn-info w-100 mb-3 mt-3&quot; (click)&#x3D;&quot;pageBack()&quot;&gt;&lt;i class&#x3D;&quot;fas fa-arrow-left&quot;&gt;&lt;/i&gt; Go
+        back&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-lg-8 col-md-8 col-sm-12&quot;&gt;
+      &lt;h1 class&#x3D;&quot;text-primary&quot;&gt;{{assignment.assignmentName}}
+        &lt;span *ngIf&#x3D;&quot;isAuthorized&quot;&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary btn-pill m-2&quot;
+            (click)&#x3D;&quot;editAssignment(assignment.assignmentID)&quot;&gt;Edit&lt;/button&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger btn-pill m-2&quot;
+            (click)&#x3D;&quot;deleteAssignment(assignment.assignmentID)&quot;&gt;Delete&lt;/button&gt;
+        &lt;/span&gt;
+      &lt;/h1&gt;
+      &lt;p class&#x3D;&quot;text-muted&quot;&gt;{{assignment.description}}&lt;/p&gt;
+      &lt;h5&gt;&lt;i class&#x3D;&quot;material-icons&quot;&gt;my_location&lt;/i&gt; {{assignment.location.address}}, {{assignment.location.postcode}},
+        {{assignment.location.country}}&lt;/h5&gt;
+      &lt;h5&gt;&lt;i class&#x3D;&quot;material-icons&quot;&gt;assignment&lt;/i&gt; Status : {{assignment.status.currentStatus}}&lt;/h5&gt;
+
+      &lt;div *ngIf&#x3D;&quot;isUser &#x3D;&#x3D; true&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;alreadyApplied &#x3D;&#x3D; false&quot;&gt;
+          &lt;button type&#x3D;&quot;button&quot; *ngIf&#x3D;&quot;!success&quot; class&#x3D;&quot;btn btn-primary btn-pill m-2&quot; (click)&#x3D;&quot;apply(assignment)&quot;&gt;Apply
+            for this assignment&lt;/button&gt;
+          &lt;div class&#x3D;&quot;alert alert-success&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;success&quot;&gt;
+            Successfully applied!
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-light&quot; (click)&#x3D;&quot;cancelAssignment(assignment)&quot;&gt;Cancel&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;error&quot;&gt;
+            Error applying!
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div *ngIf&#x3D;&quot;alreadyApplied &#x3D;&#x3D; true&quot;&gt;
+          &lt;div class&#x3D;&quot;alert alert-success&quot; role&#x3D;&quot;alert&quot;&gt;
+            Successfully applied!
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-light&quot; (click)&#x3D;&quot;cancelAssignment(assignment)&quot;&gt;Cancel&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;h5 class&#x3D;&quot;text-primary company&quot; (click)&#x3D;&quot;btnSelectCompany(assignment.company.companyID)&quot;&gt;&lt;i
+          class&#x3D;&quot;fas fa-building&quot;&gt;&lt;/i&gt; {{assignment.company.companyName}}&lt;/h5&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;col-lg-4 col-md-4 col-sm-12 mt-2&quot;&gt;
+
+      &lt;img *ngIf&#x3D;&quot;assignment.image&#x3D;&#x3D;&#x27;&#x27;&quot; src&#x3D;&quot;../../../assets/sea.jfif&quot; class&#x3D;&quot;img-fluid&quot; alt&#x3D;&quot;img&quot;&gt;
+      &lt;img *ngIf&#x3D;&quot;assignment.image!&#x3D;&#x27;&#x27;&quot; src&#x3D;&quot;{{assignment.image}}&quot; class&#x3D;&quot;img-fluid&quot; alt&#x3D;&quot;img&quot;&gt;
+
+      &lt;h4 class&#x3D;&quot;text-muted mt-3 mb-2&quot;&gt;
+        &lt;hr&gt;
+      &lt;/h4&gt;
+      &lt;span class&#x3D;&quot;badge badge-primary mr-2 mb-2&quot; *ngFor&#x3D;&quot;let ta of assignment.tagAssignments&quot;&gt;{{ta.tag.tagName}}&lt;/span&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12&quot;&gt;
+      &lt;div *ngIf&#x3D;&quot;isAuthorized&quot;&gt;
+        &lt;div class&#x3D;&quot;accordion&quot; id&#x3D;&quot;accordionUserAssignments&quot;&gt;
+          &lt;div class&#x3D;&quot;card&quot;&gt;
+            &lt;div class&#x3D;&quot;card-header&quot; id&#x3D;&quot;headingOne&quot; data-toggle&#x3D;&quot;collapse&quot; data-target&#x3D;&quot;#collapseOne&quot;
+              aria-expanded&#x3D;&quot;true&quot; aria-controls&#x3D;&quot;collapseOne&quot;&gt;
+              &lt;h5 class&#x3D;&quot;mb-0&quot;&gt;
+                &lt;i class&#x3D;&quot;material-icons&quot;&gt;people_alt&lt;/i&gt; View Candidates
+                &lt;i class&#x3D;&quot;fas fa-sort-down float-right text-primary&quot;&gt;&lt;/i&gt;
+              &lt;/h5&gt;
+            &lt;/div&gt;
+
+            &lt;div id&#x3D;&quot;collapseOne&quot; class&#x3D;&quot;collapse show&quot; aria-labelledby&#x3D;&quot;headingOne&quot;
+              data-parent&#x3D;&quot;#accordionUserAssignments&quot;&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-lg-4 col-md-6 col-sm-12&quot; *ngFor&#x3D;&quot;let ua of assignment.userAssignments&quot;&gt;
+                    &lt;div class&#x3D;&quot;card w-100&quot;&gt;
+                      &lt;img *ngIf&#x3D;&quot;ua.user.image&#x3D;&#x3D;&#x27;&#x27;&quot; class&#x3D;&quot;card-img-top&quot; src&#x3D;&quot;../../../../assets/profilepic.png&quot;
+                        alt&#x3D;&quot;profilepic&quot;&gt;
+                      &lt;img *ngIf&#x3D;&quot;ua.user.image!&#x3D;&#x27;&#x27;&quot; class&#x3D;&quot;card-img-top&quot; [src]&#x3D;&quot;ua.user.image&quot; alt&#x3D;&quot;profilepic&quot;&gt;
+                      &lt;div class&#x3D;&quot;card-body d-flex flex-column&quot;&gt;
+                        &lt;h4 class&#x3D;&quot;card-title&quot;&gt;{{ua.user.name}} {{ua.user.lastName}}&lt;/h4&gt;
+                        &lt;h5 class&#x3D;&quot;card-subtitle text-muted&quot;&gt;{{ua.user.username}}&lt;/h5&gt;
+                        &lt;div *ngIf&#x3D;&quot;isAccepted &#x3D;&#x3D; false&quot;&gt;
+                          &lt;button class&#x3D;&quot;btn btn-success mb-2 w-100&quot;
+                            (click)&#x3D;&quot;acceptCandidate(assignment, ua.user.userID)&quot;&gt;Accept
+                            this
+                            candidate&lt;/button&gt;
+                          &lt;button class&#x3D;&quot;btn btn-danger mb-2 w-100&quot;
+                            (click)&#x3D;&quot;declineCandidate(assignment, ua.user.userID)&quot;&gt;Decline
+                            this
+                            candidate&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;div *ngIf&#x3D;&quot;isAccepted &#x3D;&#x3D; true&quot;&gt;
+                          &lt;div class&#x3D;&quot;alert alert-success&quot; role&#x3D;&quot;alert&quot;&gt;
+                            Successfully accepted!
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;viewCandidate(ua.user.userID)&quot;&gt;View info&lt;/button&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./detail-assignment.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.company {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.text-muted {
+    font-size: 20px;
+}
+
+.card-header{
+    background-color: white;
+    cursor: pointer;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container" *ngIf="show">  <div class="row">    <div class="col-2">      <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go        back</button>    </div>  </div>  <div class="row">    <div class="col-lg-8 col-md-8 col-sm-12">      <h1 class="text-primary">{{assignment.assignmentName}}        <span *ngIf="isAuthorized">          <button type="button" class="btn btn-primary btn-pill m-2"            (click)="editAssignment(assignment.assignmentID)">Edit</button>          <button type="button" class="btn btn-danger btn-pill m-2"            (click)="deleteAssignment(assignment.assignmentID)">Delete</button>        </span>      </h1>      <p class="text-muted">{{assignment.description}}</p>      <h5><i class="material-icons">my_location</i> {{assignment.location.address}}, {{assignment.location.postcode}},        {{assignment.location.country}}</h5>      <h5><i class="material-icons">assignment</i> Status : {{assignment.status.currentStatus}}</h5>      <div *ngIf="isUser == true">        <div *ngIf="alreadyApplied == false">          <button type="button" *ngIf="!success" class="btn btn-primary btn-pill m-2" (click)="apply(assignment)">Apply            for this assignment</button>          <div class="alert alert-success" role="alert" *ngIf="success">            Successfully applied!            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>          </div>          <div class="alert alert-danger" role="alert" *ngIf="error">            Error applying!          </div>        </div>        <div *ngIf="alreadyApplied == true">          <div class="alert alert-success" role="alert">            Successfully applied!            <button type="button" class="btn btn-light" (click)="cancelAssignment(assignment)">Cancel</button>          </div>        </div>      </div>      <h5 class="text-primary company" (click)="btnSelectCompany(assignment.company.companyID)"><i          class="fas fa-building"></i> {{assignment.company.companyName}}</h5>    </div>    <div class="col-lg-4 col-md-4 col-sm-12 mt-2">      <img *ngIf="assignment.image==\'\'" src="../../../assets/sea.jfif" class="img-fluid" alt="img">      <img *ngIf="assignment.image!=\'\'" src="{{assignment.image}}" class="img-fluid" alt="img">      <h4 class="text-muted mt-3 mb-2">        <hr>      </h4>      <span class="badge badge-primary mr-2 mb-2" *ngFor="let ta of assignment.tagAssignments">{{ta.tag.tagName}}</span>    </div>  </div>  <div class="row">    <div class="col-12">      <div *ngIf="isAuthorized">        <div class="accordion" id="accordionUserAssignments">          <div class="card">            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"              aria-expanded="true" aria-controls="collapseOne">              <h5 class="mb-0">                <i class="material-icons">people_alt</i> View Candidates                <i class="fas fa-sort-down float-right text-primary"></i>              </h5>            </div>            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"              data-parent="#accordionUserAssignments">              <div class="card-body">                <div class="row">                  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let ua of assignment.userAssignments">                    <div class="card w-100">                      <img *ngIf="ua.user.image==\'\'" class="card-img-top" src="../../../../assets/profilepic.png"                        alt="profilepic">                      <img *ngIf="ua.user.image!=\'\'" class="card-img-top" [src]="ua.user.image" alt="profilepic">                      <div class="card-body d-flex flex-column">                        <h4 class="card-title">{{ua.user.name}} {{ua.user.lastName}}</h4>                        <h5 class="card-subtitle text-muted">{{ua.user.username}}</h5>                        <div *ngIf="isAccepted == false">                          <button class="btn btn-success mb-2 w-100"                            (click)="acceptCandidate(assignment, ua.user.userID)">Accept                            this                            candidate</button>                          <button class="btn btn-danger mb-2 w-100"                            (click)="declineCandidate(assignment, ua.user.userID)">Decline                            this                            candidate</button>                        </div>                        <div *ngIf="isAccepted == true">                          <div class="alert alert-success" role="alert">                            Successfully accepted!                          </div>                        </div>                        <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>                      </div>                    </div>                  </div>                </div>              </div>            </div>          </div>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccountComponent', 'selector': 'app-account'},{'name': 'AddAssignmentComponent', 'selector': 'app-add-assignment'},{'name': 'AddCompanyComponent', 'selector': 'app-add-company'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BrowseAssignmentComponent', 'selector': 'app-browse-assignment'},{'name': 'CompanyComponent', 'selector': 'app-company'},{'name': 'DashboardAdminComponent', 'selector': 'app-dashboard-admin'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardRecruiterComponent', 'selector': 'app-dashboard-recruiter'},{'name': 'DashboardUserComponent', 'selector': 'app-dashboard-user'},{'name': 'DetailAssignmentComponent', 'selector': 'app-detail-assignment'},{'name': 'DetailCompanyComponent', 'selector': 'app-detail-company'},{'name': 'EditAssignmentComponent', 'selector': 'app-edit-assignment'},{'name': 'EditCompanyComponent', 'selector': 'app-edit-company'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManageassignmentsComponent', 'selector': 'app-manageassignments'},{'name': 'ManagecompaniesComponent', 'selector': 'app-managecompanies'},{'name': 'ManagereviewsComponent', 'selector': 'app-managereviews'},{'name': 'ManageskillsComponent', 'selector': 'app-manageskills'},{'name': 'ManagetagsComponent', 'selector': 'app-managetags'},{'name': 'ManageusersComponent', 'selector': 'app-manageusers'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DetailAssignmentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DetailAssignmentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
