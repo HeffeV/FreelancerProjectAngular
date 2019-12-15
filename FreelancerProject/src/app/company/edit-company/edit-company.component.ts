@@ -19,12 +19,12 @@ export class EditCompanyComponent implements OnInit {
   location: any = {};
   contactInfo: any = {};
   tag = '';
-  tagToAdd:Tag;
-  tagCompany:TagCompany;
+  tagToAdd: Tag;
+  tagCompany: TagCompany;
   countries: any = [];
 
   constructor(private readonly companyService: CompanyService, private route: ActivatedRoute, private router: Router,
-              private readonly _tagService: TagService, private countryService: CountryService) { }
+    private readonly _tagService: TagService, private countryService: CountryService) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -32,7 +32,7 @@ export class EditCompanyComponent implements OnInit {
       this.getCompany(this.id);
     });
     this.countryService.getCountries().subscribe(
-      result => {console.log(result); this.countries = result; }
+      result => { console.log(result); this.countries = result; }
     );
   }
 
@@ -64,12 +64,20 @@ export class EditCompanyComponent implements OnInit {
     );
   }
 
-  deleteTag(tagCompany) {
-    this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+  deleteTag(tagCompany: TagCompany) {
+    if (tagCompany.tagCompanyID == 0) {
       const index = this.company.tagCompanies.indexOf(tagCompany, 0);
       if (index > -1) {
         this.company.tagCompanies.splice(index, 1);
       }
-    });
+    }
+    else {
+      this._tagService.deleteTagCompany(tagCompany.tagCompanyID).subscribe(ta => {
+        const index = this.company.tagCompanies.indexOf(tagCompany, 0);
+        if (index > -1) {
+          this.company.tagCompanies.splice(index, 1);
+        }
+      });
+    }
   }
 }
