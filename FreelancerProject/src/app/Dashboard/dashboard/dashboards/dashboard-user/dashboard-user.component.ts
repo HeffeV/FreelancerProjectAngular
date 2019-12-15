@@ -7,6 +7,7 @@ import { Review } from 'src/app/Models/review.model';
 import { ToastrService } from 'ngx-toastr';
 import { ReviewService } from 'src/app/Services/review.service';
 import { Subscription } from 'rxjs';
+import { Company } from 'src/app/Models/company.model';
 
 @Component({
   selector: 'app-dashboard-user',
@@ -19,8 +20,8 @@ export class DashboardUserComponent implements OnInit {
   requestedAssignments: Assignment[];
   inProgressAssignments: Assignment[];
   finishedAssignments: Assignment[];
-  company: any = {};
-  review: any = {} = new Review(0, 0, '', '', null, null, true);
+  company: Company;
+  review: Review = new Review(0, 0, '', '', null, null, true);
   constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router,
     private toast: ToastrService, private readonly reviewService: ReviewService) { }
 
