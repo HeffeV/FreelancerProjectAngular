@@ -64,7 +64,7 @@ export class CompanyService {
   }
   leaveCompany(companyID){
     const userID = this._userService.getUserID();
-    return this.http.delete<UserCompany>("https://localhost:5001/api/Company/LeaveCompany?companyID="+ companyID + "&recruiterID=" + userID);
+    return this.http.delete<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/LeaveCompany?companyID="+ companyID + "&recruiterID=" + userID);
   }
   inviteRecruiterToCompany(companyID, recruiterEmail) {
     return this.http.post<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/InviteRecruiter?companyID=" + companyID + "&recruiterEmail=" + recruiterEmail, null);

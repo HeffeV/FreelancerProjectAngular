@@ -262,9 +262,16 @@
             </div>
           </div>
         </form>
+        <div class="alert alert-success" role="alert" *ngIf="succesInvite">
+          Successfully invited!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorInvite">
+          This email doesn't belong to an existing recruiter!
+        </div>
       </div>
+      <button type="button" class="btn btn-primary"(click)="addRecruiterToCompany()">Invite</button>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addRecruiterToCompany()">Invite</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

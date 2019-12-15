@@ -187,9 +187,15 @@ export class DashboardRecruiterComponent implements OnInit {
   }
   addRecruiterToCompany() {
     const { email } = this.inviteForm.value;
-    this._companyService.inviteRecruiterToCompany(this.selectedCompany.companyID,email).subscribe((res: any) => {
-      console.log(res);
-    });
+    this._companyService.inviteRecruiterToCompany(this.selectedCompany.companyID, email).subscribe((res: any) => {
+      this.succesInvite = true;
+      this.errorInvite = false;
+    },
+      err => {
+        this.errorInvite = true;
+        this.succesInvite = false;
+      });
+
   }
 
 }
