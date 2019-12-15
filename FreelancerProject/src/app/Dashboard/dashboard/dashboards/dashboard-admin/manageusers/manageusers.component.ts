@@ -9,6 +9,7 @@ import { Tag } from 'src/app/Models/tag.model';
 import { UserSkill } from 'src/app/Models/userskill.model';
 import { AccountService } from 'src/app/Services/account.service';
 import { TagService } from 'src/app/Services/tag.service';
+import { CountryService } from 'src/app/Services/country.service';
 
 @Component({
   selector: 'app-manageusers',
@@ -46,12 +47,15 @@ export class ManageusersComponent implements OnInit {
     UserType: ['']
   });
 
-  constructor(private userservice: UserserviceService, private fb: FormBuilder, private accountService: AccountService, private _tagService: TagService) { }
+  countries: any = [];
+  constructor(private userservice: UserserviceService, private fb: FormBuilder, private accountService: AccountService, private _tagService: TagService,
+    private countryService: CountryService,) { }
 
   ngOnInit() {
     this.findUser();
     this.filterForm.reset();
     this.getSkills();
+    this.getCountries();
   }
 
   findUser() {
@@ -63,6 +67,11 @@ export class ManageusersComponent implements OnInit {
         this.users = e;
       });
     });
+  }
+  getCountries() {
+    this.countryService.getCountries().subscribe(
+      result => {console.log(result); this.countries = result; }
+    );
   }
   selectUser(user: User) {
     this.user = user;

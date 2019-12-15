@@ -16,10 +16,7 @@
             <div class="form-group">
               <label for="country">Country</label>
               <select id="country" name="country" class="custom-select" [(ngModel)]="company.location.country">
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Åland Islands">Åland Islands</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
+                <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
               </select>
             </div>
           </div>
@@ -73,7 +70,7 @@
             </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-primary btn-pill">
+        <input type="submit" class="btn btn-primary btn-pill" value="Edit Company">
       </form>
     </div>
   </div>

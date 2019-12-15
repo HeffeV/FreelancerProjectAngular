@@ -19,12 +19,14 @@ import {
 } from 'ng2-file-upload';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { ToastrService } from 'ngx-toastr';
+import { CountryService } from 'src/app/Services/country.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  countries: any = [];
   loggedUser: any = null;
   id: number = null;
   user: User = {
@@ -60,7 +62,8 @@ export class AccountComponent implements OnInit {
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
 
-  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService, private _authenticateService: AuthenticateService, private toast: ToastrService) {
+  constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService, private _authenticateService: AuthenticateService, private toast: ToastrService,
+              private countryService: CountryService ) {
 
   }
 
@@ -89,6 +92,7 @@ export class AccountComponent implements OnInit {
 
   onSubmit() {
     this.accountService.updateUser(this.user).subscribe(res => {
+      this.ngOnInit();
       this.toast.success('Account saved');
     });
     this.isEditable = false;
@@ -187,7 +191,9 @@ export class AccountComponent implements OnInit {
         console.log("loggedUser id");
       }
     });
-
+    this.countryService.getCountries().subscribe(
+      result => {console.log(result); this.countries = result; }
+    );
     this.configureFileUploader();
   }
 

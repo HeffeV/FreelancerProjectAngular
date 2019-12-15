@@ -12,6 +12,7 @@ import {
   ParsedResponseHeaders
 } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
+import { CountryService } from 'src/app/Services/country.service';
 
 @Component({
   selector: 'app-register',
@@ -50,11 +51,13 @@ export class RegisterComponent implements OnInit {
   @Input()
   responses: Array<any>;
   uploader: FileUploader;
+  countries: any = [];
   constructor(
     private fb: FormBuilder,
     private _userservice: UserserviceService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private countryService: CountryService
   ) { }
 
   ngOnInit() {
@@ -62,6 +65,9 @@ export class RegisterComponent implements OnInit {
     this.informationForm.reset();
     this.showError = false;
     this.configureFileUploader();
+    this.countryService.getCountries().subscribe(
+      result => {console.log(result); this.countries = result;}
+    );
   }
 
   // passwoords checken of ze overeenkomen

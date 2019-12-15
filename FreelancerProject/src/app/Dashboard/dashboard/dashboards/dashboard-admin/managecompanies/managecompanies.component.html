@@ -29,10 +29,8 @@
                             <div class="form-group col-md-4 required">
                                 <label>Country</label>
                                 <select class="custom-select" formControlName="Country">
-                                    <option value=" Afghanistan">Afghanistan</option>
-                                    <option value="Åland Islands">Åland Islands</option>
-                                    <option value="Albania">Albania</option>
-                                    <option value="Algeria">Algeria</option>
+                                    <option value="">No country selected</option>
+                                    <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4 required">
@@ -85,10 +83,7 @@
                                     <label for="country">Country</label>
                                     <select id="country" name="country" class="custom-select"
                                         [(ngModel)]="company.location.country">
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Åland Islands">Åland Islands</option>
-                                        <option value="Albania">Albania</option>
-                                        <option value="Algeria">Algeria</option>
+                                        <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
                                     </select>
                                 </div>
                             </div>
