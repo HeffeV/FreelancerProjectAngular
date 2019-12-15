@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <button type="button" class="btn btn-primary float-right mb-3" (click)="watchInvites()" data-toggle="modal"
+      <button type="button" class="btn btn-info float-left mb-3" (click)="watchInvites()" data-toggle="modal"
         data-target="#invitesModal">
         See Invites</button>
       <button type="button" class="btn btn-primary float-right mb-3" (click)="GoToNewCompany()"><i
@@ -25,16 +25,20 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12">
-                  <button type="button" class="btn btn-info float-left" (click)="goSelectCompany(c.companyID)"><i
-                      class="fas fa-feather-alt"></i> Details Company</button>
-                  <button type="button" class="btn btn-danger float-left" (click)="leaveCompany(c.companyID)"><i
-                      class="material-icons">
-                      clear</i> Leave this Company</button>
-                      <button type="button" class="btn btn-primary float-right mb-3" (click)="modalRecruiterToCompany(c)" data-toggle="modal"
-        data-target="#inviteToCompanyModal">Invite Recruiter to this company </button>
-                  <button type="button" class="btn btn-primary float-right" (click)="GoToNewAssignment(c.companyID)"><i
-                      class="fas fa-plus"></i> New
-                    Assignment</button>
+                  <div class="float-left d-flex flex-column">
+                    <button type="button" class="btn btn-info mb-3" (click)="goSelectCompany(c.companyID)"><i
+                        class="fas fa-feather-alt float-left"></i> Details Company</button>
+                    <button type="button" class="btn btn-danger" (click)="leaveCompany(c.companyID)"><i
+                        class="material-icons float-left">
+                        clear</i> Leave this Company</button>
+                  </div>
+                  <div class="float-right d-flex flex-column">
+                    <button type="button" class="btn btn-primary mb-3" (click)="modalRecruiterToCompany(c)"
+                      data-toggle="modal" data-target="#inviteToCompanyModal">Invite Recruiter to this company </button>
+                    <button type="button" class="btn btn-primary"
+                      (click)="GoToNewAssignment(c.companyID)"><i class="fas fa-plus"></i> New
+                      Assignment</button>
+                  </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch"
                   *ngFor="let assignment of c.assignments">
@@ -124,7 +128,8 @@
               </div>
             </div>
           </div>
-          <div *ngIf="selectedAssignment.userAssignments==null || selectedAssignment.userAssignments.length==0" class="card">
+          <div *ngIf="selectedAssignment.userAssignments==null || selectedAssignment.userAssignments.length==0"
+            class="card">
             <div class="card-body">
               <h4 class="card-title text-primary">This assignment doesn't have any participants 😢</h4>
             </div>
@@ -258,7 +263,7 @@
           <div class="form-row">
             <div class="form-group col-md-8 required">
               <label>Email</label>
-              <input class="form-control" formControlName="email"/>
+              <input class="form-control" formControlName="email" />
             </div>
           </div>
         </form>
@@ -272,6 +277,8 @@
       <button type="button" class="btn btn-primary"(click)="addRecruiterToCompany()">Invite</button>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"
+          (click)="addRecruiterToCompany()">Invite</button>
       </div>
     </div>
   </div>
