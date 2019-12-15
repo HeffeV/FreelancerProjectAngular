@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" [fixedInViewport]="true" class="text-center d-flex align-items-center">
-    <img src="../../assets/profilepic.png" class="img-fluid avatar" alt="standard avatar">
+    <img src="../../assets/subplementum.png" class="img-fluid avatar" alt="Subplementum logo">
     <ul *ngIf="checkIfLoggedIn()" class="list-group list-group-flush">
       <li class="list-group-item va" routerLink="/home" routerLinkActive="active"><i
           class="material-icons float-left">home</i>Home</li>
@@ -9,7 +9,7 @@
       <li class="list-group-item va" routerLink="/dashboard" routerLinkActive="active"><i
           class="material-icons float-left">dashboard</i>Dashboard</li>
       <li class="list-group-item va" routerLink="/account" routerLinkActive="active" (click)="changeAccount()"><i
-          class="material-icons float-left" >account_box</i>My account</li>
+          class="material-icons float-left">account_box</i>My account</li>
       <li class="list-group-item logout" (click)="logOut()" routerLink="" routerLinkActive="active"><i
           class="material-icons float-left">logout</i>Logout</li>
     </ul>
@@ -17,7 +17,8 @@
     <ul *ngIf="!checkIfLoggedIn()" class="list-group">
       <li class="list-group-item va" routerLink="/home" routerLinkActive="active"><i
           class="material-icons float-left">home</i>Home</li>
-      <li class="list-group-item " routerLink="/login" routerLinkActive="active"><i class="fas fa-feather-alt float-left"></i>Login</li>
+      <li class="list-group-item " routerLink="/login" routerLinkActive="active"><i
+          class="fas fa-feather-alt float-left"></i>Login</li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>
