@@ -1,155 +1,165 @@
-<div class="container" *ngIf="show">
-  <div class="row">
-    <div class="col-2">
-      <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go back</button>
+<div class=container *ngIf="company!=null">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go
+          back</button>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
-      <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
-      <label for="inputavatar" id="penlabel">
-        <h6 class="text-info">Edit Picture</h6>
-      </label>
-      <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-        [uploader]="uploader" (change)="fileInput.value=''" multiple />
-      <h4 class="text-muted mt-3 mb-2">Contact
-        <hr>
-      </h4>
-      <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
-        {{company.userCompanies[0].user.lastName}}</h5>
-      <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
-      <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
-      <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
-    </div>
-    <div class="col-lg-8 col-md-8 col-sm-12">
-      <h1 class="text-primary">{{company.companyName}}
-        <div *ngIf="isAuthorized">
-          <button type="button" class="btn btn-primary btn-pill m-2"
-            (click)="editCompany(company.companyID)">Edit</button>
-          <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
-            data-target="#deleteModal">Delete</button>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
+        <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
+        <label for="inputavatar" id="penlabel">
+          <h6 class="text-info">Edit Picture</h6>
+        </label>
+        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+          [uploader]="uploader" (change)="fileInput.value=''" multiple />
+        <h4 class="text-muted mt-3 mb-2">Contact
+          <hr>
+        </h4>
+        <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
+          {{company.userCompanies[0].user.lastName}}</h5>
+        <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
+        <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
+        <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <h1 class="text-primary">{{company.companyName}}
+          <div *ngIf="isAuthorized">
+            <button type="button" class="btn btn-primary btn-pill m-2"
+              (click)="editCompany(company.companyID)">Edit</button>
+            <button type="button" class="btn btn-danger btn-pill m-2" data-toggle="modal"
+              data-target="#deleteModal">Delete</button>
+          </div>
+        </h1>
+        <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
+          {{company.location.postcode}}, {{company.location.address}}</h5>
+        <p>{{company.about}}</p>
+        <div class="row" *ngIf="company.assignments!=null">
+          <h3 class="text-secondary col-12">Assignments</h3>
+          <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch"
+            *ngFor="let assignment of company.assignments">
+            <div class="card w-100 mb-3">
+              <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
+              <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
+              <div class="card-body d-flex flex-column h-100">
+                <h4 class="card-title">{{assignment.assignmentName}}</h4>
+                <p class="card-text">{{assignment.description}}</p>
+                <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary mt-auto">Tell me
+                  more
+                  &rarr;</button>
+              </div>
+              <div class="card-footer">
+                <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
+                  <span class="badge badge-info mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </h1>
-      <h5 class="text-muted"><i class="material-icons">location_city</i> {{company.location.country}},
-        {{company.location.postcode}}, {{company.location.address}}</h5>
-      <p>{{company.about}}</p>
-      <div class="row">
-        <h3 class="text-secondary col-12">Assignments</h3>
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-stretch"
-          *ngFor="let assignment of company.assignments">
-          <div class="card w-100 mb-3">
-            <img *ngIf="assignment.image==''" src="../../../assets/sea.jfif" class="card-img-top" alt="img">
-            <img *ngIf="assignment.image!=''" [src]="assignment.image" class="card-img-top" alt="img">
+        <div class="col-12" *ngIf="company.assignments==null||company.assignments.length==0">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-primary">This company doesn't have any assignments 😢</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5" *ngIf="company.reviews!=null">
+        <div class="col-12">
+          <h3 class="text-secondary">Reviews</h3>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let review of company.reviews">
+          <div class="card mb-5">
+            <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+              alt="card image cap">
             <div class="card-body d-flex flex-column h-100">
-              <h4 class="card-title">{{assignment.assignmentName}}</h4>
-              <p class="card-text">{{assignment.description}}</p>
-              <button (click)="btnSelectAssignment(assignment.assignmentID)" class="btn btn-primary mt-auto">Tell me
-                more
-                &rarr;</button>
-            </div>
-            <div class="card-footer">
-              <span *ngFor="let tagAssignment of assignment.tagAssignments; let i=index">
-                <span class="badge badge-info mr-2" *ngIf="i<3">{{tagAssignment.tag.tagName}}</span>
-              </span>
+              <h5 class="card-title">{{review.title}} <span class="badge badge-success"
+                  *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
+                  *ngIf="review.score<=5">{{review.score}}</span></h5>
+              <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
+              <p class="card-text">{{review.description}}</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-12" *ngIf="company.assignments.length==0">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title text-primary">This company doesn't have any assignments 😢</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-12">
-        <h3 class="text-secondary">Reviews</h3>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let review of company.reviews">
-        <div class="card mb-5">
-          <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
-            alt="card image cap">
-          <div class="card-body d-flex flex-column h-100">
-            <h5 class="card-title">{{review.title}} <span class="badge badge-success"
-                *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
-                *ngIf="review.score<=5">{{review.score}}</span></h5>
-            <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
-            <p class="card-text">{{review.description}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12" *ngIf="company.reviews.length==0">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title text-primary">This company doesn't have any reviews 😢</h4>
+        <div class="col-12" *ngIf="company.reviews.length==0">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-primary">This company doesn't have any reviews 😢</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-  aria-hidden="true" data-backdrop="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-primary" id="deleteModalLabel">Are you sure? 😢</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="deleteModalLabel">Are you sure? 😢</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          This action will delete the company itself including its assignments and its reviews!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nope</button>
+          <button type="button" class="btn btn-danger" (click)="deleteCompany(company.companyID)">Yes</button>
+        </div>
       </div>
-      <div class="modal-body">
-        This action will delete the company itself including its assignments and its reviews!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Nope</button>
-        <button type="button" class="btn btn-danger" (click)="deleteCompany(company.companyID)">Yes</button>
+    </div>
+  </div>
+  <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="reviewModalLabel">Give your opinion about {{company.companyName}}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="reviewtitle">Title</label>
+                  <input type="text" class="form-control" id="reviewtitle" name="reviewtitle"
+                    [(ngModel)]="review.title">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="reviewdescription">Description</label>
+                  <input type="text" class="form-control" id="reviewdescription" name="reviewdescription"
+                    [(ngModel)]="review.description">
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label for="reviewscore">Score</label>
+                  <input type="number" class="form-control" id="reviewscore" name="reviewscore" min="0"
+                    [(ngModel)]="review.score">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
-  aria-hidden="true" data-backdrop="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-primary" id="reviewModalLabel">Give your opinion about {{company.companyName}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                <label for="reviewtitle">Title</label>
-                <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" [(ngModel)]="review.title">
-              </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                <label for="reviewdescription">Description</label>
-                <input type="text" class="form-control" id="reviewdescription" name="reviewdescription"
-                  [(ngModel)]="review.description">
-              </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="form-group">
-                <label for="reviewscore">Score</label>
-                <input type="number" class="form-control" id="reviewscore" name="reviewscore" min="0"
-                  [(ngModel)]="review.score">
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
-      </div>
-    </div>
+<div class="d-flex justify-content-center" *ngIf="company==null">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
 </div>

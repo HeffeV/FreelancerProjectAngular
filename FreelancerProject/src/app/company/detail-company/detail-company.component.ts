@@ -15,7 +15,8 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { AccountService } from 'src/app/Services/account.service';
 import { User } from 'src/app/Models/user.model';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { Company } from 'src/app/Models/company.model';
 
 @Component({
   selector: "app-detail-company",
@@ -25,7 +26,7 @@ import {Location} from '@angular/common';
 export class DetailCompanyComponent implements OnInit {
 
   id: number;
-  company: any = {};
+  company: Company;
   review: any = {} = new Review(0, 0, '', '', null, null);
   show: Boolean = false;
   fileToUpload: File = null;
@@ -35,7 +36,7 @@ export class DetailCompanyComponent implements OnInit {
   responses: Array<any>;
   uploader: FileUploader = new FileUploader(null);
   constructor(private readonly companyService: CompanyService, private router: Router, private _assignmentService: AssignmentService,
-    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private location : Location) { }
+    private toast: ToastrService, private _userService: UserserviceService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private location: Location) { }
 
   ngOnInit() {
     this.companyService.currentCompany.subscribe((res: any) => {
@@ -131,7 +132,7 @@ export class DetailCompanyComponent implements OnInit {
     this.router.navigate(["/assignmentdetail"]);
   }
 
-  pageBack(){
+  pageBack() {
     this.location.back();
   }
 

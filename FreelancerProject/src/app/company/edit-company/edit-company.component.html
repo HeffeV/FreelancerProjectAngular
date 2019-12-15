@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="row" *ngIf="company!=null">
+<div class="container" *ngIf="company!=null">
+  <div class="row">
     <div class="col-12">
-      <form (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()" class="was-validated"  #form="ngForm">
+      <form (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()" class="was-validated" #form="ngForm">
         <div class="row">
           <div class="col-12">
             <div class="form-group">
@@ -65,13 +65,18 @@
               <label for="tag">Tags <span class="text-muted">Double click to delete</span></label>
               <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)"
                 [(ngModel)]="tag" placeholder="Tag name">
-              <span class="badge badge-primary mr-2"
-                *ngFor="let tagCompany of company.tagCompanies" (dblclick)="deleteTag(tagCompany)">{{tagCompany.tag.tagName}}</span>
+              <span class="badge badge-primary mr-2" *ngFor="let tagCompany of company.tagCompanies"
+                (dblclick)="deleteTag(tagCompany)">{{tagCompany.tag.tagName}}</span>
             </div>
           </div>
         </div>
         <input type="submit" class="btn btn-primary btn-pill" value="Edit Company" [disabled]="form.invalid">
       </form>
     </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="company==null">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
 </div>
