@@ -67,7 +67,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <form *ngIf="company!=null">
+                    <form *ngIf="company!=null" class="was-validated">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <label for="country">Country</label>
                                     <select id="country" name="country" class="custom-select"
-                                        [(ngModel)]="company.location.country">
+                                        [(ngModel)]="company.location.country" required>
                                         <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
                                     </select>
                                 </div>
@@ -107,7 +107,7 @@
                                 <div class="form-group">
                                     <label for="bio">Biography</label>
                                     <textarea class="form-control" id="bio" name="bio"
-                                        [(ngModel)]="company.about"></textarea>
+                                        [(ngModel)]="company.about" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                 <div class="form-group">
                                     <label for="linked">LinkedIn</label>
                                     <input type="text" class="form-control" id="linked" name="linked"
-                                        [(ngModel)]="company.contactInfo.linkedIn" placeholder="LinkedIn" required>
+                                        [(ngModel)]="company.contactInfo.linkedIn" placeholder="LinkedIn">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -133,7 +133,7 @@
                                     <label for="tag">Tags (enter to add)</label>
                                     <input type="text" class="form-control" id="tag" name="tag"
                                         (keyup.enter)="addTag($event)" [(ngModel)]="tag" placeholder="Tag name"
-                                        required>
+                                        >
                                     <span class="badge badge-primary mr-2"
                                         *ngFor="let tagCompany of company.tagCompanies"
                                         (dblclick)="deleteTag(tagCompany)">{{tagCompany.tag.tagName}}</span>
