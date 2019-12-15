@@ -154,11 +154,14 @@ export class DashboardRecruiterComponent implements OnInit {
     this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID)
     .subscribe(
       result => {
-        show = result; console.log('the loggedin user has reviewed this ', result);
+        show = result; console.log('the loggedin user has reviewed this ', result); this.unsubscribeFromCall();
       }
     );
     this.checkSub.unsubscribe();
     return show;
+  }
+  unsubscribeFromCall() {
+    this.checkSub.unsubscribe();
   }
 
   watchInvites() {
