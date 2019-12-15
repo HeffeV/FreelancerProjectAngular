@@ -72,7 +72,7 @@
                         <i class="fas fa-users fa-2x text-info usersicon" data-toggle="modal" data-target="#userModal"
                           (click)="changeSelectedAssignment(assignment)" *ngIf="assignment.status.statusID==4"></i>
                         <button
-                          *ngIf="assignment.status.currentStatus=='Open' && assignment.userAssignments.length > 0 && checkIfCompanyReviewedUser(c.companyID, assignment.userAssignments[0].user.userID)"
+                          *ngIf="assignment.userAssignments.length > 0 && checkIfCompanyReviewedUser(c.companyID, assignment.userAssignments[0].user.userID)"
                           type="button" class="btn btn-light btn-circle btn-md float-left mt-1"
                           (click)="changeSelectedUser(assignment.userAssignments[0].user, c)" data-toggle="modal"
                           data-target="#reviewModal"> <i class="fas fa-feather-alt fa-2x text-info"
@@ -155,33 +155,33 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #form="ngForm">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                 <label for="reviewtitle">Title</label>
-                <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" [(ngModel)]="review.title">
+                <input type="text" class="form-control" id="reviewtitle" name="reviewtitle" [(ngModel)]="review.title" required>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                 <label for="reviewdescription">Description</label>
                 <input type="text" class="form-control" id="reviewdescription" name="reviewdescription"
-                  [(ngModel)]="review.description">
+                  [(ngModel)]="review.description" required>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
                 <label for="reviewscore">Score</label>
                 <input type="number" class="form-control" id="reviewscore" name="reviewscore" min="0"
-                  [(ngModel)]="review.score">
+                  [(ngModel)]="review.score" required>
               </div>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
+        <button [disabled]="form.invalid" type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
       </div>
     </div>
   </div>

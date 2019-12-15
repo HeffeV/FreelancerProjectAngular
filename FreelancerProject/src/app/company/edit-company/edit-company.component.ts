@@ -32,7 +32,7 @@ export class EditCompanyComponent implements OnInit {
       this.getCompany(this.id);
     });
     this.countryService.getCountries().subscribe(
-      result => { console.log(result); this.countries = result; }
+      result => {this.countries = result; }
     );
   }
 

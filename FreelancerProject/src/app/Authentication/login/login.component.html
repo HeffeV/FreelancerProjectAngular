@@ -9,7 +9,7 @@
           </h3>
           <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <label>Email</label>
-            <input class="form-control" type="text" formControlName="email" />
+            <input class="form-control" type="text" formControlName="email" required />
             <label>Password</label>
             <input class="form-control" type="password" formControlName="password" />
             <button class="btnMargin btn btn-info" type="submit"

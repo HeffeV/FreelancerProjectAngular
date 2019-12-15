@@ -59,6 +59,7 @@ export class DetailCompanyComponent implements OnInit {
     var userID = this._userService.getUserID();
     this._accountService.getUser(userID).subscribe(currentUser => {
       this.companyService.checkIfOwnCompany(this.company).subscribe(isOwnCompany => {
+        console.log(isOwnCompany);
         if (this._authenticateService.CheckLoggedIn() &&
           isOwnCompany == true && currentUser.userType.type == "recruiter") {
           this.isAuthorized = true;

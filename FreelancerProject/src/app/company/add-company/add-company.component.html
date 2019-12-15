@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+      <form #form="ngForm" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()" class="was-validated">
         <div class="row">
           <div class="col-lg-9 col-md-9 col-sm-12">
             <div class="form-group">
@@ -22,7 +22,7 @@
           <div class="col-lg-5 col-md-5 col-sm-12">
             <div class="form-group">
               <label for="country">Country</label>
-              <select id="country" name="country" class="custom-select" [(ngModel)]="location.country">
+              <select id="country" name="country" class="custom-select" [(ngModel)]="location.country" required>
                 <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
               </select>
             </div>
@@ -55,7 +55,7 @@
             <div class="form-group">
               <label for="linked">LinkedIn</label>
               <input type="text" class="form-control" id="linked" name="linked" [(ngModel)]="contactInfo.linkedIn"
-                placeholder="LinkedIn">
+                placeholder="LinkedIn" required>
             </div>
           </div>
           <div class="col-6">
@@ -71,12 +71,12 @@
             <div class="form-group">
               <label for="tag">Tags</label>
               <input type="text" class="form-control" id="tag" name="tag" (keyup.enter)="addTag($event)"
-                [(ngModel)]="tag" placeholder="Tag name" required>
+                [(ngModel)]="tag" placeholder="Tag name">
               <span class="badge badge-primary mr-2" *ngFor="let tagname of tags">{{tagname}}</span>
             </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Add Company">
+        <input type="submit" class="btn btn-primary" value="Add Company" [disabled]="form.invalid">
       </form>
     </div>
   </div>

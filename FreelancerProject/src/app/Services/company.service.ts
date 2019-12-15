@@ -32,6 +32,8 @@ export class CompanyService {
 
   deleteCompany(id) {
     return this.http.delete<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + id);
+    //return this.http.delete<any>('https://localhost:44308/api/Company/' + id);
+
   }
 
   updateCompany(company) {
@@ -43,6 +45,8 @@ export class CompanyService {
   checkIfOwnCompany(company) {
     const userID = this._userService.getUserID();
     return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
+    //return this.http.get<any>("https://localhost:44308/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
+
   }
   filterCompanies(filtermodel: CompanyFilterModel) {
     return this.http.post<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/filteredCompanies", filtermodel);

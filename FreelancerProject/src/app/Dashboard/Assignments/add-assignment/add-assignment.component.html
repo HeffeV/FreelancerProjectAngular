@@ -3,14 +3,14 @@
     <div class="col-12">
       <mat-vertical-stepper #stepper>
         <mat-step [stepControl]="addAssignment">
-          <form>
+          <form class="was-validated" #form="ngForm">
             <ng-template matStepLabel>Fill out the name and description of the assignment</ng-template>
             <div class="row">
               <div class="col-lg-10 col-md-11 col-sm-12">
                 <div class="form-group">
                   <label for="assignmentName">Name</label>
                   <input [(ngModel)]="tassignment.assignmentName" id="assignmentName" name="assignmentName"
-                    class="form-control">
+                    class="form-control" required>
                 </div>
               </div>
               <div class="col-lg-2 col-md-1 col-sm-12">
@@ -26,12 +26,13 @@
                 <div class="form-group">
                   <label for="description">Description</label>
                   <textarea [(ngModel)]="tassignment.description" id="description" name="desscription"
-                    class="form-control"></textarea>
+                    class="form-control" required></textarea>
                 </div>
               </div>
             </div>
+            <button [disabled]="form.invalid" class="btn btn-info" matStepperNext class="btn btn-info"
+              (click)="addNameToAssignment()">Next</button>
           </form>
-          <button mat-button matStepperNext class="btn btn-info" (click)="addNameToAssignment()">Next</button>
         </mat-step>
         <mat-step [stepControl]="addTags">
           <ng-template matStepLabel>Add tags</ng-template>
@@ -44,8 +45,8 @@
                 *ngFor="let t of assignment.tagAssignments">{{t.tag.tagName}}</span>
             </div>
           </div>
-          <button mat-button matStepperPrevious class="btn btn-warning mt-4 mr-4">Back</button>
-          <button mat-button matStepperNext class="btn btn-info mt-4">Next</button>
+          <button class="btn btn-warning mr-3" matStepperPrevious class="btn btn-warning mt-4 mr-4">Back</button>
+          <button class="btn btn-info" matStepperNext class="btn btn-info mt-4">Next</button>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Overview</ng-template>

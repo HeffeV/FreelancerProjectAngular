@@ -1,11 +1,11 @@
 <div class="container">
   <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="registerForm">
-      <form [formGroup]="registerForm" autocomplete="off">
+      <form [formGroup]="registerForm" autocomplete="off" class="was-validated">
         <div class="form-row">
           <div class="form-group col-md-8 required">
             <label>Username</label>
-            <input class="form-control" formControlName="Username">
+            <input class="form-control" formControlName="Username" required>
           </div>
           <div class="form-group col-md-4 required">
             <label>Account type</label>
@@ -17,65 +17,65 @@
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input class="form-control" formControlName="Email">
+          <input type="email" class="form-control" formControlName="Email" required>
         </div>
         <div formGroupName="Passwords">
           <div class="form-group required">
             <label>Password</label>
-            <input type="password" class="form-control" formControlName="Password">
+            <input type="password" class="form-control" formControlName="Password"  minlength="4" required>
           </div>
           <div class="form-group required">
             <label>Confirm Password</label>
-            <input type="password" class="form-control" formControlName="ConfirmPassword">
+            <input type="password" class="form-control" formControlName="ConfirmPassword"  minlength="4" required>
             <label class="text-danger"
               *ngIf="registerForm.get('Passwords.ConfirmPassword').touched && registerForm.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
               Passwords do not match.</label>
           </div>
         </div>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button class="btn btn-info" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="informationForm">
-      <form [formGroup]="informationForm">
+      <form [formGroup]="informationForm" class="was-validated">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Name</label>
-            <input class="form-control" formControlName="Name">
+            <input class="form-control" formControlName="Name" required>
           </div>
           <div class="form-group col-md-4">
             <label>Lastname</label>
-            <input class="form-control" formControlName="LastName">
+            <input class="form-control" formControlName="LastName" required>
           </div>
           <div class="form-group col-md-4">
             <label>Mobile</label>
-            <input class="form-control" formControlName="MobileNumber">
+            <input class="form-control" formControlName="MobileNumber" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Street + number</label>
-            <input class="form-control" formControlName="Address">
+            <label>Address</label>
+            <input class="form-control" formControlName="Address" required>
           </div>
           <div class="form-group col-md-3">
             <label>Postcode</label>
-            <input class="form-control" formControlName="PostCode">
+            <input class="form-control" formControlName="PostCode" required>
           </div>
           <div class="form-group col-md-3">
             <label for="country">Country</label>
-            <select name="country" id=" country" formControlName="Country" class="custom-select">
+            <select name="country" id="country" formControlName="Country" class="custom-select" required>
               <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
             </select>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12">
             <label>Year of birth</label>
-            <input class="form-control" formControlName="BirthYear" type="number">
+            <input class="form-control" formControlName="BirthYear" type="number" required>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12">
-            <label for="inputavatar" id="imagelabel" class="btn btn-primary">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <label for="inputavatar" id="imagelabel" class="btn btn-primary w-100 mt-4">
               Add Image
             </label>
             <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
@@ -83,8 +83,8 @@
           </div>
         </div>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext class="btn btn-primary">Next</button>
+          <button class="btn btn-warning mr-5" matStepperPrevious>Back</button>
+          <button class="btn btn-info mr-5" matStepperNext class="btn btn-primary">Next</button>
         </div>
       </form>
     </mat-step>
@@ -136,9 +136,9 @@
       </table>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()" (click)="resetForm()">Reset</button>
-        <button mat-button (click)="onSubmit()">Add</button>
+        <button class="btn btn-warning mr-2" matStepperPrevious>Back</button>
+        <button class="btn btn-danger mr-2" (click)="stepper.reset()" (click)="resetForm()">Reset</button>
+        <button class="btn btn-info mr-2" (click)="onSubmit()">Add</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

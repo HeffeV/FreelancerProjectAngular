@@ -194,9 +194,9 @@
     </div>
   </div>
   <div *ngIf="user!=null && isEditable">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="was-validated">
       <div class="form-row mb-4">
-        <input type="submit" class="btn btn-primary btn-pill" value="Save">
+        <input type="submit" class="btn btn-primary btn-pill" [disabled]="form.invalid" value="Save">
         <input type="button" class="btn btn-danger btn-pill mx-3" value="Cancel" (click)="cancelEdit()">
         <input type="button" class="btn btn-outline-info btn-pill float-right" value="Change password"
           data-toggle="modal" data-target="#ModalPass">
@@ -205,39 +205,39 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Name</label>
-          <input class="form-control" name="Name" [(ngModel)]="user.name">
+          <input class="form-control" name="Name" [(ngModel)]="user.name" required>
         </div>
         <div class="form-group col-md-6">
           <label>Lastname</label>
-          <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
+          <input class="form-control" name="LastName" [(ngModel)]="user.lastName" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Email</label>
-          <input class="form-control" name="Email" [(ngModel)]="user.email">
+          <input class="form-control" name="Email" [(ngModel)]="user.email" required>
         </div>
         <div class="form-group col-md-4">
           <label>Username</label>
-          <input class="form-control" name="Username" [(ngModel)]="user.username">
+          <input class="form-control" name="Username" [(ngModel)]="user.username" required>
         </div>
         <div class="form-group col-md-2">
           <label>Birthyear</label>
-          <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
+          <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Street + number</label>
-          <input class="form-control" name="Address" [(ngModel)]="user.location.address">
+          <input class="form-control" name="Address" [(ngModel)]="user.location.address" required>
         </div>
         <div class="form-group col-md-3">
           <label>Postcode</label>
-          <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
+          <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode" required>
         </div>
         <div class="form-group col-md-3">
           <label for="country">Country</label>
-          <select name="country" id="country" class="custom-select" [(ngModel)]="user.location.country">
+          <select name="country" id="country" class="custom-select"  [(ngModel)]="user.location.country" required>
             <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
           </select>
         </div>
@@ -245,15 +245,15 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Bio</label>
-          <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
+          <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio" required></textarea>
         </div>
         <div class="form-group col-md-3">
           <label>Mobile</label>
-          <input class="form-control" name="MobileNumber" [(ngModel)]="user.contactInfo.mobileNumber">
+          <input class="form-control" name="MobileNumber" [(ngModel)]="user.contactInfo.mobileNumber" required>
         </div>
         <div class="form-group col-md-3">
           <label>LinkedIn</label>
-          <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn">
+          <input class="form-control" name="LinkedIn" [(ngModel)]="user.contactInfo.linkedIn" required>
         </div>
       </div>
       <h5>Skills
@@ -291,7 +291,7 @@
     <div class="w-100">
       <hr>
       <input type="button" class="btn btn-danger btn-pill float-right my-4" value="Delete account" data-toggle="modal"
-        data-target="#ModalConfirm">
+        data-target="#ModalConfirm" >
     </div>
   </div>
 </div>

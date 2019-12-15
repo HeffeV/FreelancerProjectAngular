@@ -12,6 +12,7 @@ import { ReviewService } from 'src/app/Services/review.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { UserCompany } from 'src/app/Models/user-company.model';
+import { take } from 'rxjs/observable'
 
 @Component({
   selector: "app-dashboard-recruiter",
@@ -150,7 +151,8 @@ export class DashboardRecruiterComponent implements OnInit {
 
   checkIfCompanyReviewedUser(companyID, userID) {
     let show = false;
-    this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID).subscribe(
+    this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID)
+    .subscribe(
       result => {
         show = result; console.log('the loggedin user has reviewed this ', result);
       }
