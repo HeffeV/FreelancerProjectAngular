@@ -11,11 +11,11 @@
           class="img-fluid profilepic" width="200px" height="200px">
         <img *ngIf="user.image!=null && user.image !=''" [src]="user.image" class="img-fluid profilepic" width="200px"
           height="200px">
-        <label for="inputavatar" id="penlabel">
+        <label *ngIf="id == null && !isEditable" for="inputavatar" id="penlabel">
           <h6 class="text-info">Edit Picture</h6>
         </label>
-        <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
-          [uploader]="uploader" (change)="fileInput.value=''" multiple />
+        <input *ngIf="id == null && !isEditable" type="file" name="inputavatar" id="inputavatar" #fileInput
+          ng2FileSelect [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''" multiple />
       </div>
       <div>
         <h6 class="pt-2">{{user.username}}</h6>
@@ -237,7 +237,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="country">Country</label>
-          <select name="country" id="country" class="custom-select"  [(ngModel)]="user.location.country">
+          <select name="country" id="country" class="custom-select" [(ngModel)]="user.location.country">
             <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
           </select>
         </div>

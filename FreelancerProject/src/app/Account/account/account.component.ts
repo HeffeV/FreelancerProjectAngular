@@ -63,8 +63,30 @@ export class AccountComponent implements OnInit {
   uploader: FileUploader = new FileUploader(null);
 
   constructor(private accountService: AccountService, private companyService: CompanyService, private userService: UserserviceService, private assignmentservice: AssignmentService, private router: Router, private fb: FormBuilder, private _tagService: TagService, private _authenticateService: AuthenticateService, private toast: ToastrService,
-              private countryService: CountryService ) {
+    private countryService: CountryService) {
 
+  }
+
+  ngOnInit() {
+    this.loggedUser = this.userService.getUser();
+    this.accountService.currentAccount.subscribe((res: any) => {
+      this.id = res;
+      if (this.id == this.loggedUser.UserID) {
+        this.loadUser(this.id);
+        this.id = null;
+      }
+      else if (this.id != null) {
+        this.loadUser(this.id);
+      }
+      else {
+        this.loadUser(this.loggedUser.UserID);
+      }
+      console.log(this.id + "  " + this.loggedUser.UserID)
+    });
+    this.countryService.getCountries().subscribe(
+      result => { this.countries = result; }
+    );
+    this.configureFileUploader();
   }
 
   loadUser(id: number) {
@@ -178,24 +200,6 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.loggedUser = this.userService.getUser();
-    this.accountService.currentAccount.subscribe((res: any) => {
-      this.id = res;
-      if (this.id != null) {
-        this.loadUser(this.id);
-        console.log("id");
-      }
-      else {
-        this.loadUser(this.loggedUser.UserID);
-        console.log("loggedUser id");
-      }
-    });
-    this.countryService.getCountries().subscribe(
-      result => {console.log(result); this.countries = result; }
-    );
-    this.configureFileUploader();
-  }
 
   configureFileUploader() {
     const uploaderOptions: FileUploaderOptions = {

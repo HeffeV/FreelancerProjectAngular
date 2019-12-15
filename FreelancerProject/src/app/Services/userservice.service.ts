@@ -20,7 +20,7 @@ export class UserserviceService {
   }
 
   //current user returned (userid)
-  getUser() {
+  getUser(): User {
     if (localStorage.getItem('token') != null) {
       let jwtData = localStorage.getItem("token").split('.')[1];
       let decodedJwt = window.atob(jwtData);
