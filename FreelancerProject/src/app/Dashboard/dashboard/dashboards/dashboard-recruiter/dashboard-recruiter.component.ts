@@ -11,6 +11,7 @@ import { Review } from 'src/app/Models/review.model';
 import { ReviewService } from 'src/app/Services/review.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { UserCompany } from 'src/app/Models/user-company.model';
 
 @Component({
   selector: "app-dashboard-recruiter",
@@ -24,8 +25,15 @@ export class DashboardRecruiterComponent implements OnInit {
   selectedAssignment: any = {};
   selectedUser: any = {};
   selectedCompany: any = {};
-  review: any = {} = new Review(0, 0 , '', '', null, null, false);
+  review: any = {} = new Review(0, 0, '', '', null, null, false);
   checkSub: Subscription;
+  invites: UserCompany[];
+  inviteForm = this._formBuilder.group({
+    email: ['']
+  });
+  succesInvite: Boolean = false;
+  errorInvite: Boolean = false;
+
   constructor(
     private _assignmentService: AssignmentService,
     private _userService: UserserviceService,
@@ -36,13 +44,18 @@ export class DashboardRecruiterComponent implements OnInit {
     private companyService: CompanyService,
     private reviewService: ReviewService,
     private toast: ToastrService,
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.succesInvite = false;
+    this.errorInvite = false;
     var userID = this._userService.getUserID();
     this._companyService.getCompaniesByUserID(userID).subscribe(result => {
       console.log(result);
       this.companies = result;
+    });
+    this._companyService.getCompanyInvites().subscribe(result => {
+      this.invites = result;
     });
   }
   //delete the assignment
@@ -130,7 +143,7 @@ export class DashboardRecruiterComponent implements OnInit {
     } else {
       console.log(this.review);
       this.reviewService.addReviewToUser(this.review).subscribe(
-        result => {console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
+        result => { console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
       );
     }
   }
@@ -138,10 +151,45 @@ export class DashboardRecruiterComponent implements OnInit {
   checkIfCompanyReviewedUser(companyID, userID) {
     let show = false;
     this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID).subscribe(
-      result => {show = result; console.log('the loggedin user has reviewed this ', result);
-    }
+      result => {
+        show = result; console.log('the loggedin user has reviewed this ', result);
+      }
     );
     this.checkSub.unsubscribe();
     return show;
   }
+
+  watchInvites() {
+    this._companyService.getCompanyInvites().subscribe(result => {
+      this.invites = result;
+      console.log(this.invites);
+    });
+  }
+  acceptInvite(companyID) {
+    this._companyService.acceptInvite(companyID).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+  declineInvite(companyID) {
+    this._companyService.declineInvite(companyID).subscribe(result => {
+      this.ngOnInit()
+    });
+  }
+
+  leaveCompany(companyID) {
+    this._companyService.leaveCompany(companyID).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
+  modalRecruiterToCompany(company) {
+    this.selectedCompany = company;
+  }
+  addRecruiterToCompany() {
+    const { email } = this.inviteForm.value;
+    this._companyService.inviteRecruiterToCompany(this.selectedCompany.companyID,email).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
 }

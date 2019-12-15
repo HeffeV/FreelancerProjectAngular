@@ -16,6 +16,7 @@ import { ManageusersComponent } from './dashboard/dashboards/dashboard-admin/man
 import { ManageassignmentsComponent } from './dashboard/dashboards/dashboard-admin/manageassignments/manageassignments.component';
 import { ManagecompaniesComponent } from './dashboard/dashboards/dashboard-admin/managecompanies/managecompanies.component';
 import { ManagereviewsComponent } from './dashboard/dashboards/dashboard-admin/managereviews/managereviews.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ManagereviewsComponent } from './dashboard/dashboards/dashboard-admin/m
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FileUploadModule
+    FileUploadModule,
+    MatButtonModule
   ],
   exports: [
     ReactiveFormsModule

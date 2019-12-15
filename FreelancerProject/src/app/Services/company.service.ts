@@ -4,6 +4,7 @@ import { Company } from '../Models/company.model';
 import { BehaviorSubject } from 'rxjs';
 import { UserserviceService } from './userservice.service';
 import { CompanyFilterModel } from '../Models/companyfilter.model';
+import { UserCompany } from '../Models/user-company.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,25 @@ export class CompanyService {
   }
   getAllCompanies() {
     return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company");
+  }
+  getCompanyInvites(){
+    const userID = this._userService.getUserID();
+    return this.http.get<UserCompany[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/GetCompanyInvites?userID="+ userID);
+  }
+  acceptInvite(companyID){
+    const userID = this._userService.getUserID();
+    return this.http.put<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/AcceptInviteCompany?companyID=" + companyID + "&recruiterID=" + userID, null);
+  }
+  declineInvite(companyID){
+    const userID = this._userService.getUserID();
+    return this.http.delete<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/DeclineInviteCompany?companyID=" + companyID + "&recruiterID=" + userID);
+  }
+  leaveCompany(companyID){
+    const userID = this._userService.getUserID();
+    return this.http.delete<UserCompany>("https://localhost:5001/api/Company/LeaveCompany?companyID="+ companyID + "&recruiterID=" + userID);
+  }
+  inviteRecruiterToCompany(companyID, recruiterEmail) {
+    return this.http.post<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/InviteRecruiter?companyID=" + companyID + "&recruiterEmail=" + recruiterEmail, null);
   }
 }
 

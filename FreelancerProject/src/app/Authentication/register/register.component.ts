@@ -83,12 +83,14 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm.value.userType == "Recruiter") {
+    console.log(this.registerForm.value.UserType);
+    if (this.registerForm.value.UserType == "Recruiter") {
       this.userType = new UserType(2, "recruiter");
     }
     else {
       this.userType = new UserType(1, "user");
     }
+    console.log(this.userType);
     this.model = new User(
       0,
       this.registerForm.value.Email,
