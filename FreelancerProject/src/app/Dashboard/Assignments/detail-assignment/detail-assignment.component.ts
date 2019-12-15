@@ -9,7 +9,7 @@ import { UserserviceService } from 'src/app/Services/userservice.service';
 import { AuthenticateService } from 'src/app/Services/authenticate.service';
 import { AccountService } from 'src/app/Services/account.service';
 import { User } from 'src/app/Models/user.model';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-assignment',
@@ -26,44 +26,48 @@ export class DetailAssignmentComponent implements OnInit {
   isAuthorized: boolean = false;
   currentUser: User;
   isUser: boolean = false;
+  isAccepted: boolean = false;
 
-  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService, private location : Location) { }
+  constructor(private _assignmentService: AssignmentService, private router: Router, private _companyService: CompanyService, private _authenticateService: AuthenticateService, private _accountService: AccountService, private _userService: UserserviceService, private location: Location) { }
 
   ngOnInit() {
     this.success = false;
     this.error = false;
     //get currentAssignment(ID)
     this._assignmentService.currentAssignment.subscribe(assignmentID => {
-   
+
       //load the full assignment-object
-    this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result => {
-      this.assignment = result;
-      this.show = true;
-      //check if the currentUser has already applied to this assignment
-      this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
-        result == null ? this.alreadyApplied = false : this.alreadyApplied = true;
-      });
-
-      var userID = this._userService.getUserID();
-      this._accountService.getUser(userID).subscribe(result => {
-        this.currentUser = result;
-
-        if(this.currentUser.userType.type == "user"){
-          this.isUser = true;
-        }
-
-        this._assignmentService.checkIfOwnAssignment(this.assignment).subscribe(isOwnAssignment => {
-          //if the currentuser is logged in and the currentuser owns the assignment (through his companies) and the currentuser is a recruiter
-          //then the currentuser can edit and delete the assignment(ngIf in HTML)
-          if (this._authenticateService.CheckLoggedIn() &&
-            isOwnAssignment == true && this.currentUser.userType.type == "recruiter") {
-            this.isAuthorized = true;
-          }
+      this._assignmentService.getAssignmentEdit(assignmentID).subscribe(result => {
+        this.assignment = result;
+        this.show = true;
+        //check if the currentUser has already applied to this assignment
+        this._assignmentService.alreadyApplied(this.assignment).subscribe(result => {
+          result == null ? this.alreadyApplied = false : this.alreadyApplied = true;
         });
-      });
 
-    });
-  })
+        this._assignmentService.CheckIfCandidateIsAccepted(this.assignment.assignmentID).subscribe(result => {
+          this.isAccepted = result;
+        });
+        var userID = this._userService.getUserID();
+        this._accountService.getUser(userID).subscribe(result => {
+          this.currentUser = result;
+
+          if (this.currentUser.userType.type == "user") {
+            this.isUser = true;
+          }
+
+          this._assignmentService.checkIfOwnAssignment(this.assignment).subscribe(isOwnAssignment => {
+            //if the currentuser is logged in and the currentuser owns the assignment (through his companies) and the currentuser is a recruiter
+            //then the currentuser can edit and delete the assignment(ngIf in HTML)
+            if (this._authenticateService.CheckLoggedIn() &&
+              isOwnAssignment == true && this.currentUser.userType.type == "recruiter") {
+              this.isAuthorized = true;
+            }
+          });
+        });
+
+      });
+    })
   }
 
   //navigate to the details of the company thats owns this assignment
@@ -99,14 +103,14 @@ export class DetailAssignmentComponent implements OnInit {
     });
   }
   //company accepts this user for the assignment
-  acceptCandidate(assignment,candidateID){
-    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+  acceptCandidate(assignment, candidateID) {
+    this._assignmentService.acceptCandidate(assignment.assignmentID, candidateID).subscribe(result => {
       this.ngOnInit();
     })
   }
   //company accepts this user for the assignment
-  declineCandidate(assignment,candidateID){
-    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe( result => {
+  declineCandidate(assignment, candidateID) {
+    this._assignmentService.declineCandidate(assignment.assignmentID, candidateID).subscribe(result => {
       this.ngOnInit();
     })
   }
@@ -117,7 +121,7 @@ export class DetailAssignmentComponent implements OnInit {
     this.router.navigate(["/account"]);
   }
 
-  pageBack(){
+  pageBack() {
     this.location.back();
   }
 

@@ -68,10 +68,17 @@
               <div class="card-body">
                 <div *ngFor="let ua of assignment.userAssignments">
                   <p>{{ua.user.username}} ({{ua.user.name}} {{ua.user.lastName}})</p>
-                  <button class="btn btn-light" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
-                    candidate</button>
-                  <button class="btn btn-light" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
-                    candidate</button>
+                  <div *ngIf="isAccepted == false">
+                    <button class="btn btn-light" (click)="acceptCandidate(assignment, ua.user.userID)">Accept this
+                      candidate</button>
+                    <button class="btn btn-light" (click)="declineCandidate(assignment, ua.user.userID)">Decline this
+                      candidate</button>
+                  </div>
+                  <div *ngIf="isAccepted == true">
+                    <div class="alert alert-success" role="alert">
+                      Successfully accepted!
+                    </div>
+                  </div>
                   <button class="btn btn-light" (click)="viewCandidate(ua.user.userID)">View info</button>
                 </div>
               </div>

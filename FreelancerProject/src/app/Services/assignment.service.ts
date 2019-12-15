@@ -84,4 +84,7 @@ export class AssignmentService {
   declineCandidate(assignmentID,candidateID){
     return this.http.put<Assignment>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/DeclineAssignmentCandidate?assignmentID=" + assignmentID + "&candidateID=" + candidateID, null);
   }
+  CheckIfCandidateIsAccepted(assignmentID){
+    return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/CheckIfCandidateIsAccepted?assignmentID=" + assignmentID);
+  }
 }
