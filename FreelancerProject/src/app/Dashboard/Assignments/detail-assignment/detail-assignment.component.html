@@ -52,15 +52,15 @@
         </div>
       </div>
       <div *ngIf="isAuthorized">
+        <h5><i class="material-icons">people_alt</i> Candidates</h5>
         <div class="accordion" id="accordionUserAssignments">
           <div class="card">
-            <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                  aria-expanded="true" aria-controls="collapseOne">
-                  Candidates
-                </button>
-              </h2>
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              <h5 class="mb-0">
+                View Candidates
+                <i class="fas fa-sort-down float-right text-primary"></i>
+              </h5>
             </div>
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
@@ -79,7 +79,7 @@
                       Successfully accepted!
                     </div>
                   </div>
-                  <button class="btn btn-light" (click)="viewCandidate(ua.user.userID)">View info</button>
+                  <button class="btn btn-primary" (click)="viewCandidate(ua.user.userID)">View info</button>
                 </div>
               </div>
             </div>
