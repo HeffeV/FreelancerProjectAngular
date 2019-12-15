@@ -129,10 +129,10 @@
           <div class="row">
             <div class="col-sm-12 col-lg-4 d-flex align-items-stretch" *ngFor="let assignment of user.userAssignments">
               <div class="card mb-3" *ngIf="assignment.assignment.status != null && !zeroAssignments">
-                <img *ngIf="assignment.assignment.image==''" class="card-img-top"
-                  src="../../../assets/assignment.png"
+                <img *ngIf="assignment.assignment.image==''" class="card-img-top" src="../../../assets/assignment.png"
                   alt="Assignment image">
-                <img *ngIf="assignment.assignment.image!=''" class="card-img-top" [src]="assignment.assignment.image" alt="Image top">
+                <img *ngIf="assignment.assignment.image!=''" class="card-img-top" [src]="assignment.assignment.image"
+                  alt="Image top">
                 <div class="card-body d-flex flex-column h-100">
                   <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
                   <p class="card-text">{{assignment.assignment.description}}</p>
@@ -172,8 +172,9 @@
               <div class="card mb-3">
                 <img *ngIf="review.company.image==''" class="card-img-top" src="../../../assets/company.jpg"
                   alt="Card image cap">
-                <img *ngIf="review.company.image!=''" class="card-img-top" [src]="review.company.image" alt="Card image cap">
-                <img  src="" alt="">
+                <img *ngIf="review.company.image!=''" class="card-img-top" [src]="review.company.image"
+                  alt="Card image cap">
+                <img src="" alt="">
                 <div class="card-body d-flex flex-column h-100">
                   <h5 class="card-title mb-3">{{review.title}} <span class="badge badge-success"
                       *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
@@ -341,13 +342,6 @@
       </div>
     </div>
   </form>
-</div>
-<div class="container" *ngIf="user.userID==0">
-  <div class="d-flex justify-content-center" *ngIf="companies==null">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
 </div>
 <div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmLabel"
   aria-hidden="true" data-backdrop="false">
