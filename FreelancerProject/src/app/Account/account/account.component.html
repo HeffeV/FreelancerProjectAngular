@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user.userID!=0">
   <h3>
     Account information
     <small class="btn btn-outline-primary" (click)="changeToEditable()" *ngIf="id == null && !isEditable">Edit
@@ -237,7 +237,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="country">Country</label>
-          <select name="country" id="country" class="custom-select"  [(ngModel)]="user.location.country" required>
+          <select name="country" id="country" class="custom-select" [(ngModel)]="user.location.country" required>
             <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
           </select>
         </div>
@@ -291,13 +291,13 @@
     <div class="w-100">
       <hr>
       <input type="button" class="btn btn-danger btn-pill float-right my-4" value="Delete account" data-toggle="modal"
-        data-target="#ModalConfirm" >
+        data-target="#ModalConfirm">
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="ModalPass" tabindex="-1" role="dialog" aria-labelledby="ModalPassLabel" aria-hidden="true"
-  data-backdrop="false">
+  data-backdrop="false" *ngIf="user.userID!=0">
   <form #form="ngForm">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -339,7 +339,13 @@
     </div>
   </form>
 </div>
-
+<div class="container" *ngIf="user.userID==0">
+  <div class="d-flex justify-content-center" *ngIf="companies==null">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="ModalConfirm" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmLabel"
   aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-lg" role="document">
