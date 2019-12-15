@@ -123,7 +123,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form *ngIf="reviewed==false">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
@@ -147,9 +147,14 @@
             </div>
           </div>
         </form>
+        <div class="card" *ngIf="reviewed==true">
+            <div class="card-header">
+                <h4 class="card-title text-primary">You have already reviewed this company 😢</h4>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
+        <button *ngIf="reviewed==true" type="button" class="btn btn-primary" data-dismiss="modal" (click)="addReview()">Add review</button>
       </div>
     </div>
   </div>

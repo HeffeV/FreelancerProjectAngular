@@ -33,11 +33,11 @@ export class ReviewService {
     return this.http.delete<Review>("https://freelancerprojectapi.azurewebsites.net/api/Review/" + id);
   }
   getFilteredReviews(filterModel: FilterReviewModel) {
-    return this.http.post<Review[]>("https://localhost:44308/api/Review/filterReviews", filterModel);
+    return this.http.post<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review/filterReviews", filterModel);
   }
   
   checkIfCompanyReviewUser(companyid, userid) {
-    return this.http.get<any>('https://localhost:44308/api/Review/checkifcompanyrevieweduser/'
+    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifcompanyrevieweduser/'
      + companyid + '/' + userid);
   }
 }

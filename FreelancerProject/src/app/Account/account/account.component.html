@@ -129,9 +129,10 @@
           <div class="row">
             <div class="col-sm-12 col-lg-4 d-flex align-items-stretch" *ngFor="let assignment of user.userAssignments">
               <div class="card mb-3" *ngIf="assignment.assignment.status != null && !zeroAssignments">
-                <img class="card-img-top"
-                  src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
+                <img *ngIf="assignment.assignment.image==''" class="card-img-top"
+                  src="../../../assets/assignment.png"
                   alt="Assignment image">
+                <img *ngIf="assignment.assignment.image!=''" class="card-img-top" [src]="assignment.assignment.image" alt="Image top">
                 <div class="card-body d-flex flex-column h-100">
                   <h4 class="card-title">{{assignment.assignment.assignmentName}}</h4>
                   <p class="card-text">{{assignment.assignment.description}}</p>
@@ -169,8 +170,10 @@
           <div class="row">
             <div class="col-sm-12 col-lg-4 d-flex align-items-stretch" *ngFor="let review of user.reviews">
               <div class="card mb-3">
-                <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
+                <img *ngIf="review.company.image==''" class="card-img-top" src="../../../assets/company.jpg"
                   alt="Card image cap">
+                <img *ngIf="review.company.image!=''" class="card-img-top" [src]="review.company.image" alt="Card image cap">
+                <img  src="" alt="">
                 <div class="card-body d-flex flex-column h-100">
                   <h5 class="card-title mb-3">{{review.title}} <span class="badge badge-success"
                       *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"

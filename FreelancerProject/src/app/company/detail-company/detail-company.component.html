@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class=container *ngIf="company!=null">
   <div class="container">
     <div class="row">
@@ -5,6 +6,32 @@
         <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go
           back</button>
       </div>
+=======
+<div class="container" *ngIf="show">
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-info w-100 mb-3 mt-3" (click)="pageBack()"><i class="fas fa-arrow-left"></i> Go
+        back</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <img src="../../../assets/company.jpg" *ngIf="company.image==''" class="img-fluid avatar" alt="img">
+      <img [src]="company.image" *ngIf="company.image!=''" class="img-fluid avatar" alt="img">
+      <label for="inputavatar" id="penlabel">
+        <h6 class="text-info">Edit Picture</h6>
+      </label>
+      <input type="file" name="inputavatar" id="inputavatar" #fileInput ng2FileSelect [style.display]="'none'"
+        [uploader]="uploader" (change)="fileInput.value=''" multiple />
+      <h4 class="text-muted mt-3 mb-2">Contact
+        <hr>
+      </h4>
+      <h5><i class="material-icons text-primary mr-2">person</i>{{company.userCompanies[0].user.name}}
+        {{company.userCompanies[0].user.lastName}}</h5>
+      <h5><i class="material-icons text-primary mr-2">mail</i>{{company.userCompanies[0].user.email}}</h5>
+      <h5><i class="fab fa-linkedin text-primary mr-2"></i><a [href]="company.contactInfo.linkedIn">LinkedIn</a></h5>
+      <h5><i class="material-icons text-primary mr-2">mobile_friendly</i>{{company.contactInfo.mobileNumber}}</h5>
+>>>>>>> fixed review
     </div>
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-12">
@@ -66,21 +93,22 @@
           </div>
         </div>
       </div>
-      <div class="row mt-5" *ngIf="company.reviews!=null">
-        <div class="col-12">
-          <h3 class="text-secondary">Reviews</h3>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let review of company.reviews">
-          <div class="card mb-5">
-            <img class="card-img-top" src="https://designrevision.com/demo/shards/images/stock-photos/3.jpg"
-              alt="card image cap">
-            <div class="card-body d-flex flex-column h-100">
-              <h5 class="card-title">{{review.title}} <span class="badge badge-success"
-                  *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
-                  *ngIf="review.score<=5">{{review.score}}</span></h5>
-              <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
-              <p class="card-text">{{review.description}}</p>
-            </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <h3 class="text-secondary">Reviews</h3>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let review of company.reviews">
+        <div class="card mb-5">
+          <img *ngIf="review.user.image==''" class="card-img-top" src="../../../assets/profilepic.png"
+            alt="card image cap">
+          <img *ngIf="review.user.image!=''" [src]="review.user.image" class="card-img-top" alt="">
+          <div class="card-body d-flex flex-column h-100">
+            <h5 class="card-title">{{review.title}} <span class="badge badge-success"
+                *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
+                *ngIf="review.score<=5">{{review.score}}</span></h5>
+            <h6 class="card-subtitle text-muted">By {{review.user.name}} {{review.user.lastName}}</h6>
+            <p class="card-text">{{review.description}}</p>
           </div>
         </div>
         <div class="col-12" *ngIf="company.reviews.length==0">

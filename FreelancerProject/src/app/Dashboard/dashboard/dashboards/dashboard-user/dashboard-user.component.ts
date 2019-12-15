@@ -10,34 +10,45 @@ import { Subscription } from 'rxjs';
 import { Company } from 'src/app/Models/company.model';
 
 @Component({
-  selector: 'app-dashboard-user',
-  templateUrl: './dashboard-user.component.html',
-  styleUrls: ['./dashboard-user.component.scss']
+  selector: "app-dashboard-user",
+  templateUrl: "./dashboard-user.component.html",
+  styleUrls: ["./dashboard-user.component.scss"]
 })
 export class DashboardUserComponent implements OnInit {
-
   checkSub: Subscription;
   requestedAssignments: Assignment[];
   inProgressAssignments: Assignment[];
   finishedAssignments: Assignment[];
   company: Company;
-  review: Review = new Review(0, 0, '', '', null, null, true);
-  constructor(private _assignmentService: AssignmentService, private _formBuilder: FormBuilder, private router: Router,
-    private toast: ToastrService, private readonly reviewService: ReviewService) { }
+  reviewed = false;
+  review: any = ({} = new Review(0, 0, "", "", null, null, true));
+  constructor(
+    private _assignmentService: AssignmentService,
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private toast: ToastrService,
+    private readonly reviewService: ReviewService
+  ) {}
 
   ngOnInit() {
     //get the requested assignments for this user - the ones he applied for - hasnt been accepted or declined yet
-    this._assignmentService.getRequestedAssignmentsByUserID().subscribe(result => {
-      this.requestedAssignments = result;
-    });
+    this._assignmentService
+      .getRequestedAssignmentsByUserID()
+      .subscribe(result => {
+        this.requestedAssignments = result;
+      });
     //get the in progress assignments for this user - the ones he applied for and has been selected for
-    this._assignmentService.getInProgressAssignmentsByUserID().subscribe(result => {
-      this.inProgressAssignments = result;
-    });
+    this._assignmentService
+      .getInProgressAssignmentsByUserID()
+      .subscribe(result => {
+        this.inProgressAssignments = result;
+      });
     //get the finished assignments for this user - the ones he applied for and has been selected for and he finished
-    this._assignmentService.getFinishedAssignmentsByUserID().subscribe(result => {
-      this.finishedAssignments = result;
-    });
+    this._assignmentService
+      .getFinishedAssignmentsByUserID()
+      .subscribe(result => {
+        this.finishedAssignments = result;
+      });
   }
   //user cancels his apply for this assignment
   cancelAssignment(assignment) {
@@ -51,30 +62,34 @@ export class DashboardUserComponent implements OnInit {
     this.router.navigate(["/assignmentdetail"]);
   }
 
-  changeCompany(company) {
+  changeCompany(company, companyID) {
     this.company = company;
+    this.checkIfUserReviewedCompany(companyID);
   }
   addReview() {
     this.review.company = this.company;
-    if (this.review.score > 10 || this.review.score < 0 || this.review.title === '' || this.review.description === '') {
-      this.toast.error('Please fill in the fields correctly');
+    if (
+      this.review.score > 10 ||
+      this.review.score < 0 ||
+      this.review.title === "" ||
+      this.review.description === ""
+    ) {
+      this.toast.error("Please fill in the fields correctly");
     } else {
       console.log(this.review);
-      this.reviewService.addReview(this.review).subscribe(
-        result => { console.log(result); this.ngOnInit(); this.toast.success('Your review has been added'); }
-      );
+      this.reviewService.addReview(this.review).subscribe(result => {
+        console.log(result);
+        this.ngOnInit();
+        this.toast.success("Your review has been added");
+      });
     }
   }
 
   checkIfUserReviewedCompany(companyID) {
-    let show = false;
-    this.checkSub = this.reviewService.checkIfUserReviewedCompany(companyID).subscribe(
-      result => {
-        show = result; console.log('the loggedin user has reviewed this ', result);
-      }
-    );
-
-    this.checkSub.unsubscribe();
-    return show;
+    this.reviewService
+      .checkIfUserReviewedCompany(companyID)
+      .subscribe(result => {
+        this.reviewed = result;
+      });
   }
 }

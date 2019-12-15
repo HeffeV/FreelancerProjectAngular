@@ -33,6 +33,7 @@ export class DashboardRecruiterComponent implements OnInit {
   });
   succesInvite: Boolean = false;
   errorInvite: Boolean = false;
+  reviewed = false;
 
   constructor(
     private _assignmentService: AssignmentService,
@@ -130,10 +131,10 @@ export class DashboardRecruiterComponent implements OnInit {
     this.router.navigate(["/companydetail"]);
   }
 
-  changeSelectedUser(user, company) {
+  changeSelectedUser(user, company, companyID, userID) {
     this.selectedUser = user;
     this.selectedCompany = company;
-    console.log('this is : ', this.selectedUser, this.selectedCompany);
+    this.checkIfCompanyReviewedUser(companyID, userID);
   }
 
   addReview() {
@@ -150,19 +151,16 @@ export class DashboardRecruiterComponent implements OnInit {
   }
 
   checkIfCompanyReviewedUser(companyID, userID) {
-    let show = false;
-    this.checkSub = this.reviewService.checkIfCompanyReviewUser(companyID, userID)
+    this.reviewService.checkIfCompanyReviewUser(companyID, userID)
     .subscribe(
       result => {
-        show = result; console.log('the loggedin user has reviewed this ', result); this.unsubscribeFromCall();
+        this.reviewed = result;
+        console.log(result);
       }
     );
-    this.checkSub.unsubscribe();
-    return show;
+
   }
-  unsubscribeFromCall() {
-    this.checkSub.unsubscribe();
-  }
+
 
   watchInvites() {
     this._companyService.getCompanyInvites().subscribe(result => {
@@ -177,7 +175,7 @@ export class DashboardRecruiterComponent implements OnInit {
   }
   declineInvite(companyID) {
     this._companyService.declineInvite(companyID).subscribe(result => {
-      this.ngOnInit()
+      this.ngOnInit();
     });
   }
 

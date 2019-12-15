@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
     this.showError = false;
     this.configureFileUploader();
     this.countryService.getCountries().subscribe(
-      result => {console.log(result); this.countries = result;}
+      result => {this.countries = result;}
     );
   }
 

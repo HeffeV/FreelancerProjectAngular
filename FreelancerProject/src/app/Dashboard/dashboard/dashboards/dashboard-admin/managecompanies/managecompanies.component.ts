@@ -94,7 +94,7 @@ export class ManagecompaniesComponent implements OnInit {
 
   getCountries() {
     this.countryService.getCountries().subscribe(
-      result => { console.log(result); this.countries = result; }
+      result => {this.countries = result; }
     );
   }
 }
