@@ -72,14 +72,14 @@
                             </tbody>
                         </table>
                     </div>
-                    <form *ngIf="assignment!=null">
+                    <form *ngIf="assignment!=null" class="was-validated">
                         <div class="form-group required">
                             <label for="assignmentName">Name</label>
-                            <input class="form-control" name="assignmentName" [(ngModel)]="assignment.assignmentName">
+                            <input class="form-control" name="assignmentName" [(ngModel)]="assignment.assignmentName" required>
                         </div>
                         <div>
                             <label for="description">Description</label>
-                            <input class="form-control" name="description" [(ngModel)]="assignment.description">
+                            <input class="form-control" name="description" [(ngModel)]="assignment.description" required>
                         </div>
                         <div>
                             <label for="company">Company</label>

@@ -68,44 +68,44 @@
                             </tbody>
                         </table>
                     </div>
-                    <form *ngIf="user.username!=''">
+                    <form *ngIf="user.username!=''" class="was-validated">
                         <h5>Personal info of {{user.username}}</h5>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Name</label>
-                                <input class="form-control" name="Name" [(ngModel)]="user.name">
+                                <input class="form-control" name="Name" [(ngModel)]="user.name" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Lastname</label>
-                                <input class="form-control" name="LastName" [(ngModel)]="user.lastName">
+                                <input class="form-control" name="LastName" [(ngModel)]="user.lastName" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Email</label>
-                                <input class="form-control" name="Email" [(ngModel)]="user.email">
+                                <input class="form-control" name="Email" [(ngModel)]="user.email" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Username</label>
-                                <input class="form-control" name="Username" [(ngModel)]="user.username">
+                                <input class="form-control" name="Username" [(ngModel)]="user.username" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label>Birthyear</label>
-                                <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear">
+                                <input class="form-control" name="Birthyear" [(ngModel)]="user.birthYear" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Street + number</label>
-                                <input class="form-control" name="Address" [(ngModel)]="user.location.address">
+                                <input class="form-control" name="Address" [(ngModel)]="user.location.address" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Postcode</label>
-                                <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode">
+                                <input class="form-control" name="PostCode" [(ngModel)]="user.location.postcode" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Country</label>
-                                <select name="country" id="country" class="custom-select" [(ngModel)]="user.location.country">
+                                <select name="country" id="country" class="custom-select" [(ngModel)]="user.location.country" required>
                                     <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
                                 </select>
                             </div>
@@ -113,11 +113,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Bio</label>
-                                <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio"></textarea>
+                                <textarea class="form-control" name="Bio" rows="4" [(ngModel)]="user.bio" required></textarea>
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Mobile</label>
-                                <input class="form-control" name="MobileNumber"
+                                <input class="form-control" name="MobileNumber" required
                                     [(ngModel)]="user.contactInfo.mobileNumber">
                             </div>
                             <div class="form-group col-md-3">
