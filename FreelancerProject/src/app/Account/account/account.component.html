@@ -69,14 +69,6 @@
           </div>
           <div class="row mt-3">
             <div class="col-sm-12 col-lg-6">
-              <div class="font-weight-bold">Email:</div>
-            </div>
-            <div class="col-sm-12 col-lg-6">
-              {{user.email}}
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-sm-12 col-lg-6">
               <div class="font-weight-bold">Age:</div>
             </div>
             <div class="col-sm-12 col-lg-6">
@@ -96,6 +88,7 @@
               <div class="font-weight-bold">Contact:</div>
             </div>
             <div class="col-sm-12 col-lg-6">
+              <div>{{user.email}}</div>
               <div>{{user.contactInfo.mobileNumber}}</div>
               <div>{{user.contactInfo.linkedIn}}</div>
             </div>
@@ -144,7 +137,7 @@
             <div class="col-12" *ngIf="zeroAssignments">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-primary">No assignments 😢</h4>
+                  <h4 class="card-title text-primary">No finished assignments 😢</h4>
                 </div>
               </div>
             </div>

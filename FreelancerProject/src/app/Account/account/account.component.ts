@@ -57,6 +57,7 @@ export class AccountComponent implements OnInit {
   newPass2: string = null;
   error: string = null;
   age: number = null;
+  hasPermission: Boolean = false;
 
   @Input()
   responses: Array<any>;
@@ -81,7 +82,6 @@ export class AccountComponent implements OnInit {
       else {
         this.loadUser(this.loggedUser.UserID);
       }
-      console.log(this.id + "  " + this.loggedUser.UserID)
     });
     this.countryService.getCountries().subscribe(
       result => { this.countries = result; }
@@ -98,8 +98,7 @@ export class AccountComponent implements OnInit {
         this.checkStatusFinished();
         this.getSkills();
         this.age = this.getAgeFromBirthYear(this.user.birthYear);
-        console.log(this.age);
-        console.log(this.user.birthYear);
+        //this.checkPermission();
       });
   }
 
@@ -208,6 +207,33 @@ export class AccountComponent implements OnInit {
     }
   }
 
+  /*checkPermission() {
+    console.log(this.user);
+    if (this.id != null) {
+      if (this.user.userAssignments.length > 0) {
+        this.accountService.getUser(this.loggedUser.UserID)
+          .subscribe(res => {
+          this.loggedUser = res;
+          this.user.userAssignments.forEach(ua => {
+            console.log(this.loggedUser);
+            if (this.loggedUser.userCompanies.length > 0) {
+              this.loggedUser.userCompanies.forEach(uc => {
+                if (ua.assignment.company.companyID == uc.company.companyID) {
+                  this.hasPermission = true;
+                }
+                else {
+                  this.hasPermission = false;
+                }
+              });
+            }
+          });
+          });
+      }
+    }
+    else {
+      this.hasPermission = true;
+    }
+  }*/
 
   configureFileUploader() {
     const uploaderOptions: FileUploaderOptions = {
