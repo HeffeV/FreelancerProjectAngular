@@ -73,9 +73,9 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12 d-flex align-items-stretch" *ngFor="let review of company.reviews">
         <div class="card mb-5">
-          <img *ngIf="review.user.image==''" class="card-img-top" src="../../../assets/profilepic.png"
+          <img *ngIf="review.user.image=='' || review.user.image==null" class="card-img-top" src="../../../assets/profilepic.png"
             alt="card image cap">
-          <img *ngIf="review.user.image!=''" [src]="review.user.image" class="card-img-top" alt="">
+          <img *ngIf="review.user.image!='' && review.user.image!=null" [src]="review.user.image" class="card-img-top" alt="">
           <div class="card-body d-flex flex-column h-100">
             <h5 class="card-title">{{review.title}} <span class="badge badge-success"
                 *ngIf="review.score>5">{{review.score}}</span><span class="badge badge-danger"
