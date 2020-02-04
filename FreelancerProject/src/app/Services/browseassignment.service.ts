@@ -17,12 +17,12 @@ export class BrowseAssignmentService {
   constructor(private http: HttpClient) { }
 
   getAssignments() {
-    return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/AllOpenAssignments");
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignment/AllOpenAssignments");
   }
   getFilteredAssignments(filterModel: FilterModel): Observable<Assignment[]> {
-    return this.http.post<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/filterAssignments", filterModel);
+    return this.http.post<Assignment[]>("https://localhost:5001/api/Assignment/filterAssignments", filterModel);
   }
   getTags() {
-    return this.http.get<Tag[]>("https://freelancerprojectapi.azurewebsites.net/api/Tag");
+    return this.http.get<Tag[]>("https://localhost:5001/api/Tag");
   }
 }

@@ -17,61 +17,61 @@ export class CompanyService {
   constructor(private http: HttpClient, private _userService: UserserviceService) { }
 
   getCompaniesByUserID(userID: number) {
-    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/ByUser?userID=" + userID);
+    return this.http.get<Company[]>("https://localhost:5001/api/Company/ByUser?userID=" + userID);
   }
 
   addCompany(company) {
-    return this.http.post<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
+    return this.http.post<Company>('https://localhost:5001/api/Company/', company);
   }
   getCompany(companyID) {
-    return this.http.get<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyID);
+    return this.http.get<Company>('https://localhost:5001/api/Company/' + companyID);
   }
   getCompanyDetail(companyId) {
-    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + companyId);
+    return this.http.get<any>('https://localhost:5001/api/Company/' + companyId);
   }
 
   deleteCompany(id) {
-    return this.http.delete<any>('https://freelancerprojectapi.azurewebsites.net/api/Company/' + id);
+    return this.http.delete<any>('https://localhost:5001/api/Company/' + id);
     //return this.http.delete<any>('https://localhost:44308/api/Company/' + id);
 
   }
 
   updateCompany(company) {
-    return this.http.put<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/', company);
+    return this.http.put<Company>('https://localhost:5001/api/Company/', company);
   }
   updateImage(company) {
-    return this.http.put<Company>('https://freelancerprojectapi.azurewebsites.net/api/Company/updateimage', company);
+    return this.http.put<Company>('https://localhost:5001/api/Company/updateimage', company);
   }
   checkIfOwnCompany(company) {
     const userID = this._userService.getUserID();
-    return this.http.get<any>("https://freelancerprojectapi.azurewebsites.net/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
+    return this.http.get<any>("https://localhost:5001/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
     //return this.http.get<any>("https://localhost:44308/api/Company/CheckIfOwnCompany?companyID=" + company.companyID + "&userID=" + userID);
 
   }
   filterCompanies(filtermodel: CompanyFilterModel) {
-    return this.http.post<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/filteredCompanies", filtermodel);
+    return this.http.post<Company[]>("https://localhost:5001/api/Company/filteredCompanies", filtermodel);
   }
   getAllCompanies() {
-    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company");
+    return this.http.get<Company[]>("https://localhost:5001/api/Company");
   }
-  getCompanyInvites(){
+  getCompanyInvites() {
     const userID = this._userService.getUserID();
-    return this.http.get<UserCompany[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/GetCompanyInvites?userID="+ userID);
+    return this.http.get<UserCompany[]>("https://localhost:5001/api/Company/GetCompanyInvites?userID=" + userID);
   }
-  acceptInvite(companyID){
+  acceptInvite(companyID) {
     const userID = this._userService.getUserID();
-    return this.http.put<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/AcceptInviteCompany?companyID=" + companyID + "&recruiterID=" + userID, null);
+    return this.http.put<UserCompany>("https://localhost:5001/api/Company/AcceptInviteCompany?companyID=" + companyID + "&recruiterID=" + userID, null);
   }
-  declineInvite(companyID){
+  declineInvite(companyID) {
     const userID = this._userService.getUserID();
-    return this.http.delete<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/DeclineInviteCompany?companyID=" + companyID + "&recruiterID=" + userID);
+    return this.http.delete<UserCompany>("https://localhost:5001/api/Company/DeclineInviteCompany?companyID=" + companyID + "&recruiterID=" + userID);
   }
-  leaveCompany(companyID){
+  leaveCompany(companyID) {
     const userID = this._userService.getUserID();
-    return this.http.delete<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/LeaveCompany?companyID="+ companyID + "&recruiterID=" + userID);
+    return this.http.delete<UserCompany>("https://localhost:5001/api/Company/LeaveCompany?companyID=" + companyID + "&recruiterID=" + userID);
   }
   inviteRecruiterToCompany(companyID, recruiterEmail) {
-    return this.http.post<UserCompany>("https://freelancerprojectapi.azurewebsites.net/api/Company/InviteRecruiter?companyID=" + companyID + "&recruiterEmail=" + recruiterEmail, null);
+    return this.http.post<UserCompany>("https://localhost:5001/api/Company/InviteRecruiter?companyID=" + companyID + "&recruiterEmail=" + recruiterEmail, null);
   }
 }
 

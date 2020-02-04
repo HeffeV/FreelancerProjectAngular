@@ -10,33 +10,33 @@ import { UserSkill } from '../Models/userskill.model';
 })
 export class AccountService {
 
-  private account:number = null;
+  private account: number = null;
 
   currentAccount = new BehaviorSubject(this.account);
 
   constructor(private http: HttpClient) { }
 
-  getUser(id: number) : Observable<User>{
-    return this.http.get<User>("https://freelancerprojectapi.azurewebsites.net/api/User/" + id);
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>("https://localhost:5001/api/User/" + id);
   }
 
-  updateUser(user: User){
-    return this.http.put("https://freelancerprojectapi.azurewebsites.net/api/User", user);
+  updateUser(user: User) {
+    return this.http.put("https://localhost:5001/api/User", user);
   }
 
-  getSkills(id: number): Observable<Skill[]>{
-    return this.http.get<Skill[]>("https://freelancerprojectapi.azurewebsites.net/api/Skill/"+id);
+  getSkills(id: number): Observable<Skill[]> {
+    return this.http.get<Skill[]>("https://localhost:5001/api/Skill/" + id);
   }
 
-  deleteSkill(id: number){
-    return this.http.delete<UserSkill>("https://freelancerprojectapi.azurewebsites.net/api/Skill/userSkill/" + id);
+  deleteSkill(id: number) {
+    return this.http.delete<UserSkill>("https://localhost:5001/api/Skill/userSkill/" + id);
   }
 
   updateAvater(user) {
-    return this.http.put('https://freelancerprojectapi.azurewebsites.net/api/User/updateavatar', user);
+    return this.http.put('https://localhost:5001/api/User/updateavatar', user);
   }
 
-  resetPassword(email: string){
-    return this.http.put("https://freelancerprojectapi.azurewebsites.net/api/User/resetPassword/"+ email, null);
+  resetPassword(email: string) {
+    return this.http.put("https://localhost:5001/api/User/resetPassword/" + email, null);
   }
 }

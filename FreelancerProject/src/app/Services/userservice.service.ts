@@ -10,13 +10,13 @@ export class UserserviceService {
   constructor(private http: HttpClient) { }
 
   addUser(userReg: User) {
-    return this.http.post<User>("https://freelancerprojectapi.azurewebsites.net/api/User", userReg);
+    return this.http.post<User>("https://localhost:5001/api/User", userReg);
   }
   getFilteredUsers(userfilter: UserFilterModel) {
-    return this.http.post<User[]>("https://freelancerprojectapi.azurewebsites.net/api/User/filteredUsers", userfilter);
+    return this.http.post<User[]>("https://localhost:5001/api/User/filteredUsers", userfilter);
   }
   deleteUser(id: number) {
-    return this.http.delete<User>("https://freelancerprojectapi.azurewebsites.net/api/User/" + id);
+    return this.http.delete<User>("https://localhost:5001/api/User/" + id);
   }
 
   //current user returned (userid)

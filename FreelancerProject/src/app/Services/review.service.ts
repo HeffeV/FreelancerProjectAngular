@@ -11,33 +11,33 @@ export class ReviewService {
   constructor(private http: HttpClient) { }
 
   addReview(review) {
-    return this.http.post<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/addreviewtocompany', review);
+    return this.http.post<any>('https://localhost:5001/api/Review/addreviewtocompany', review);
   }
 
   addReviewToUser(review) {
-    return this.http.post<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/addreviewtouser', review);
+    return this.http.post<any>('https://localhost:5001/api/Review/addreviewtouser', review);
   }
 
   checkIfUserReviewedCompany(companyid) {
-    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifuserreviewedcompany/' + companyid);
+    return this.http.get<any>('https://localhost:5001/api/Review/checkifuserreviewedcompany/' + companyid);
   }
 
 
   getAllReviews() {
-    return this.http.get<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review");
+    return this.http.get<Review[]>("https://localhost:5001/api/Review");
   }
   adminUpdateReview(review: Review) {
-    return this.http.put<Review>("https://freelancerprojectapi.azurewebsites.net/api/Review/adminPut", review);
+    return this.http.put<Review>("https://localhost:5001/api/Review/adminPut", review);
   }
   adminDeleteReview(id: number) {
-    return this.http.delete<Review>("https://freelancerprojectapi.azurewebsites.net/api/Review/" + id);
+    return this.http.delete<Review>("https://localhost:5001/api/Review/" + id);
   }
   getFilteredReviews(filterModel: FilterReviewModel) {
-    return this.http.post<Review[]>("https://freelancerprojectapi.azurewebsites.net/api/Review/filterReviews", filterModel);
+    return this.http.post<Review[]>("https://localhost:5001/api/Review/filterReviews", filterModel);
   }
-  
+
   checkIfCompanyReviewUser(companyid, userid) {
-    return this.http.get<any>('https://freelancerprojectapi.azurewebsites.net/api/Review/checkifcompanyrevieweduser/'
-     + companyid + '/' + userid);
+    return this.http.get<any>('https://localhost:5001/api/Review/checkifcompanyrevieweduser/'
+      + companyid + '/' + userid);
   }
 }

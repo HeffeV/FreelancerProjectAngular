@@ -11,9 +11,9 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getAssignments() {
-    return this.http.get<Assignment[]>("https://freelancerprojectapi.azurewebsites.net/api/Assignment/getRandoms");
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignment/getRandoms");
   }
-  getCompanies(){
-    return this.http.get<Company[]>("https://freelancerprojectapi.azurewebsites.net/api/Company/getRandoms");
+  getCompanies() {
+    return this.http.get<Company[]>("https://localhost:5001/api/Company/getRandoms");
   }
 }

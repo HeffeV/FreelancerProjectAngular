@@ -11,25 +11,25 @@ export class SkillService {
   constructor(private http: HttpClient) { }
 
   getAllSkills() {
-    return this.http.get<Skill[]>("https://freelancerprojectapi.azurewebsites.net/api/Skill/getSkills");
+    return this.http.get<Skill[]>("https://localhost:5001/api/Skill/getSkills");
   }
 
   getAllCategories() {
-    return this.http.get<Category[]>("https://freelancerprojectapi.azurewebsites.net/api/Skill/getCategories");
+    return this.http.get<Category[]>("https://localhost:5001/api/Skill/getCategories");
   }
 
   createCategory(category: Category) {
-    return this.http.post<Category>("https://freelancerprojectapi.azurewebsites.net/api/Skill/PostCategory", category);
+    return this.http.post<Category>("https://localhost:5001/api/Skill/PostCategory", category);
   }
   createSkill(skill: Skill) {
-    return this.http.post<Skill>("https://freelancerprojectapi.azurewebsites.net/api/Skill/PostSkill", skill);
+    return this.http.post<Skill>("https://localhost:5001/api/Skill/PostSkill", skill);
   }
 
   deleteCategory(id: number) {
-    return this.http.delete<Category>("https://freelancerprojectapi.azurewebsites.net/api/Skill/DeleteCategory?id=" + id);
+    return this.http.delete<Category>("https://localhost:5001/api/Skill/DeleteCategory?id=" + id);
   }
 
   deleteSkill(id: number) {
-    return this.http.delete<Skill>("https://freelancerprojectapi.azurewebsites.net/api/Skill/DeleteSkill?id=" + id);
+    return this.http.delete<Skill>("https://localhost:5001/api/Skill/DeleteSkill?id=" + id);
   }
 }
